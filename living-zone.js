@@ -35,7 +35,7 @@
     return factors?clamp(value,.3,3):clamp(value,key==='discount'?-0.2:key==='danger'?-2:0,key==='discount'?.2:key==='danger'?3:key==='medicalPrice'?.25:3);
   }
   function remember(s,id,help){if(!W.people[id])return;const m=s.worldState.npcMemory[id]||{trust:0};s.worldState.npcMemory[id]={...m,trust:clamp(m.trust+(help?1:-1),-3,3),helped:m.helped||help,betrayed:m.betrayed||!help,lastSeen:s.worldClock};}
-  function renown(s,n,key){if(!key||s.worldState.claims.includes('renown:'+key))return;s.worldState.claims.push('renown:'+key);const before=s.worldState.renown;s.worldState.renown=clamp(before+n);const delta=s.worldState.renown-before;if(delta){s.log.push('Известность: '+(delta>0?'+':'')+delta+'.');s.log=s.log.slice(-10);}}
+  function renown(s,n,key){if(!key||s.worldState.claims.includes('renown:'+key))return;s.worldState.claims.push('renown:'+key);const before=s.worldState.renown;s.worldState.renown=clamp(before+n);const delta=s.worldState.renown-before;if(delta){window.ZoneRPGLog.write(s,'Известность: '+(delta>0?'+':'')+delta+'.');}}
   function onQuest(s,q){renown(s,q.personalStory?3:2,'quest:'+q.id);if(W.people[q.giver]&&!W.people[q.giver].personalStory){remember(s,q.giver,true);s.worldState.npcMemory[q.giver].requestCompleted=true;}}
   function renownName(n){return n<10?'Незнакомец':n<25?'Местный':n<45?'Бывалый':n<70?'Известный сталкер':n<90?'Ветеран Зоны':'Легенда';}
   function note(s,title,text){s.worldState.news.push({title,text,time:s.worldClock});s.worldState.news=s.worldState.news.slice(-24);}

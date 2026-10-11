@@ -62,3 +62,5 @@ body[data-event-rare=true] .event-card{border-color:#a58e58;box-shadow:0 0 30px 
 .scene-actions{align-items:flex-start}.scene-actions .story-action{min-width:0;max-width:100%}.story-action{border-color:#677456;background:#1c271d}.story-action-label{display:block;max-width:28ch;white-space:normal;overflow-wrap:anywhere}.story-cooldown{flex-basis:100%;color:#a7ae97}
 
 .scene-card .scene-actions>button{height:52px;box-sizing:border-box;padding:11px 14px;line-height:14px;max-width:100%;overflow-wrap:anywhere}.scene-card .story-action-label{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden}.scene-card .story-action{flex:0 1 270px}
+
+.event-copy{max-width:65ch;line-height:1.6;overflow-wrap:anywhere}.credits-panel{max-width:48ch}.credits-panel dl{display:grid;gap:14px}.credits-panel dt{font-size:12px;color:#a8b292}.credits-panel dd{margin:4px 0 0;overflow-wrap:anywhere}.credits-panel p{line-height:1.6}
