@@ -50,3 +50,11 @@ body[data-event-rare=true] .event-card{border-color:#a58e58;box-shadow:0 0 30px 
 
 /* Personal stories inherit the PDA layout and touch targets. */
 .story-hint,.story-summary{padding:12px;border:1px solid #677456;background:#1c271d;margin:8px 0;overflow-wrap:anywhere}.story-hint .secondary-button{width:100%;margin-top:8px}.story-theme{color:#d1c48b}.story-person{display:flex;gap:12px;align-items:center;padding:10px 0;border-bottom:1px solid #394735}.story-person img{width:48px;height:60px;image-rendering:pixelated}.story-person div{min-width:0;overflow-wrap:anywhere}.story-decisions{padding-left:20px;overflow-wrap:anywhere}.story-decisions li{margin-bottom:8px}
+
+/* Living Zone: compact information, shared existing button styles. */
+.world-readout{font-size:.8rem;color:var(--muted,#a8b39c);line-height:1.5;overflow-wrap:anywhere}
+.renown-readout{color:#bbc69c}
+.legend-entry{border-left:2px solid #aaa16b}
+.path-statistics>div{display:flex;justify-content:space-between;gap:16px;border-bottom:1px solid #354034;padding:10px 0;overflow-wrap:anywhere}
+.path-statistics span{min-width:0}
+.path-statistics strong{flex-shrink:0}

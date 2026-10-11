@@ -16,7 +16,12 @@
     Math.random=()=>.4;
     if(!ZoneRPGSave.has()){
       const s=ZoneRPGState.fresh();
-      if(scenario==='v81-rumors'){
+      if(scenario.startsWith('v9-')){
+        s.known=['cordon','garbage','agro'];s.player.location='garbage';s.visited=['cordon','garbage'];s.worldState=window.ZoneRPGLiving.fresh('garbage');s.worldClock=4;
+        if(scenario==='v9-return'){s.worldState.locations.garbage={visits:2,decision:'help',decidedAt:0,decisionVisit:1,state:'caravan',callbackDone:false};s.worldState.npcMemory.makar={trust:1,helped:true,betrayed:false,lastSeen:0};s.worldState.claims=['decision:garbage'];}
+        if(scenario==='v9-world')s.worldEvents=[{id:'v9_medShortage',endsAt:10}];
+        if(scenario==='v9-old'){s.version=12;delete s.worldState;s.player.money=7241;}
+      }else if(scenario==='v81-rumors'){
         Math.random=()=>.99;s.known=Object.keys(ZoneRPGWorld.locations);s.knowledge=['rumor:cordon','camp news cordon','npc-met:sidorovich','v63 ironBoar observed'];
       }else if(scenario.startsWith('v8-')){
         const bg=scenario.split('-').at(-1);Object.assign(s,ZoneRPGState.fresh(ZoneRPGState.BACKGROUNDS[bg]?bg:'soldier'));s.known=Object.keys(ZoneRPGWorld.locations);
@@ -48,7 +53,7 @@
         const id={tool63a:'garbage_tagged_crate',tool63b:'agro_generator',tool63c:'valley_captive',mutant63:'v63_marshLeech',medicine:'event_8_5',food:'event_6_5',tools:'event_6_3',boar:'event_5_4',bandit:'event_4_2',tracks:'site_railway_2'}[scenario],def=ZoneRPGWorld.events.find(x=>x.id===id),stages=def.stages||[{id:'main',text:def.text,choices:def.choices}],stage=scenario==='medicine'?stages.find(x=>x.choices.some(c=>c.label.startsWith('Купить припасы'))):stages[0];
         if(scenario.startsWith('tool63')){s.player.location=({tool63a:'garbage',tool63b:'agro',tool63c:'darkvalley'})[scenario];s.inventory.push({id:'tools',qty:1});s.attributes={strength:10,agility:10,endurance:10,perception:10,intelligence:10};}if(scenario==='tracks')s.player.location='railway';if(scenario==='bandit')s.player.location='checkpoint';s.event={id,category:def.category,text:stage.text,choices:stage.choices,flow:{version:1,stageId:stage.id,stageIndex:stages.indexOf(stage),phase:'choices',origin:'explore',chain:[id],visitedStages:[stage.id],claimedActions:[],history:[],flags:{},pending:null,resultText:'',lastChoice:''}};
       }
-      if(scenario==='v8-old')sessionStorage.setItem(key,JSON.stringify(s));else ZoneRPGSave.write(s);
+      if(scenario==='v8-old'||scenario==='v9-old')sessionStorage.setItem(key,JSON.stringify(s));else ZoneRPGSave.write(s);
     }
   }
   if(scenario.startsWith('session63-'))Math.random=()=>.99;
