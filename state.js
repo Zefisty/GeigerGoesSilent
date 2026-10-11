@@ -1,6 +1,6 @@
 (() => {
-  const VERSION = 13;
-  const LEGACY_VERSIONS = [2,3,4,5,6,7,8,9,10,11,12];
+  const VERSION = 14;
+  const LEGACY_VERSIONS = [2,3,4,5,6,7,8,9,10,11,12,13];
   const KEY = 'zonerpg-pda-save';
   const clamp = (value, min, max, fallback = 0) => Number.isFinite(Number(value))
     ? Math.max(min, Math.min(max, Number(value))) : fallback;
@@ -60,6 +60,7 @@
     for(const [id,qty] of Object.entries(background.items)){const existing=state.inventory.find(row=>row.id===id);if(existing)existing.qty+=qty;else state.inventory.push(window.ZoneRPGItems.items[id].stackable?{id,qty}:{id,qty,instanceId:'item-'+state.nextItemInstance++});}
     for(const [key,n] of Object.entries(background.reputation||{}))state.reputation[key]+=n;
     state.player.health=100+(state.attributes.endurance-2)*2;state.player.stamina=100+(state.attributes.endurance-2)*2;
+    state.zoneStory=window.ZoneRPGZone.fresh();
     state.personalStory=window.ZoneRPGStories.fresh(state.backgroundId);
     state.worldState=window.ZoneRPGLiving.fresh(state.player.location);
     window.ZoneRPGLiving.observe(state,state.player.location);
@@ -215,6 +216,8 @@
     base.worldClock=clamp(input.worldClock,0,999999,0);
     base.worldEvents=Array.isArray(input.worldEvents)?input.worldEvents.filter(x=>world.worldEvents?.some(d=>d.id===x.id)&&Number.isFinite(x.endsAt)&&x.endsAt>base.worldClock).map(x=>({id:x.id,endsAt:x.endsAt})).slice(-5):[];
     base.worldState=window.ZoneRPGLiving.normalize(input.worldState,base);
+    base.zoneStory=window.ZoneRPGZone.normalize(input.zoneStory);
+    window.ZoneRPGZone.quest(base);
     if(!base.worldState.observations[base.player.location])window.ZoneRPGLiving.observe(base,base.player.location);
     const rawCombat=input.combat;
     if(rawCombat&&typeof rawCombat==='object'&&world.enemyTypes[rawCombat.type]){

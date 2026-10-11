@@ -46,6 +46,7 @@
   for(const [id,d] of Object.entries(W.locations))notes.set(id,{title:d.name,text:d.description});
   for(const [id,d] of Object.entries(W.factions))notes.set(id,{title:d.name,text:'Сведения об отношениях доступны в разделе «Фракции».'});
   for(const [id,d] of Object.entries(I.items))notes.set(id,{title:d.name,text:d.description||'Предмет отмечен в КПК.'});
+  for(const [id,e]of Object.entries(window.ZoneRPGZoneData.endings)){add('zone_ending_'+id,'После передачи архива',e.text);}
   function canonical(id){return typeof id==='string'?(aliases.get(id.toLowerCase())||id):null;}
   function unknown(id){if(!warned.has(id)){warned.add(id);console.warn('[ZoneRPG] Нет определения записи КПК:',id);}return {title:'Неизвестная запись',text:'Описание этой записи пока недоступно.'};}
   function readable(text){return typeof text==='string'&&/[А-Яа-яЁё]/.test(text)&&!/[a-z]/.test(text);}
@@ -65,5 +66,5 @@
     return {...raw,id:def?.id||candidate||null,title:def?.title||raw.title,text:def?.text||raw.text};
   }
   function heard(input,records,knowledge){return [...new Set([...(Array.isArray(input)?input:[]),...records.map(r=>r.id),...knowledge.filter(k=>/^rumor_/i.test(k))].filter(id=>typeof id==='string').map(canonical))];}
-  window.ZoneRPGKnowledge={display,record,heard,canonical,pool:(loc,s)=>(pools[loc]||[]).map(id=>definitions.get(id)).filter(r=>{if(!r.consequence)return true;const d=s?.worldState?.locations[r.consequence.location];return d?.decision===r.consequence.decision&&s.worldClock-d.decidedAt>=3;}),rumor:id=>definitions.get(canonical(id))};
+  window.ZoneRPGKnowledge={display,record,heard,canonical,pool:(loc,s)=>[...(pools[loc]||[]),...(s?.zoneStory?.ending?['zone_ending_'+s.zoneStory.ending]:[])].map(id=>definitions.get(id)).filter(r=>{if(!r.consequence)return true;const d=s?.worldState?.locations[r.consequence.location];return d?.decision===r.consequence.decision&&s.worldClock-d.decidedAt>=3;}),rumor:id=>definitions.get(canonical(id))};
 })();
