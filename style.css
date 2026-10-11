@@ -58,3 +58,7 @@ body[data-event-rare=true] .event-card{border-color:#a58e58;box-shadow:0 0 30px 
 .path-statistics>div{display:flex;justify-content:space-between;gap:16px;border-bottom:1px solid #354034;padding:10px 0;overflow-wrap:anywhere}
 .path-statistics span{min-width:0}
 .path-statistics strong{flex-shrink:0}
+
+.scene-actions{align-items:flex-start}.scene-actions .story-action{min-width:0;max-width:100%}.story-action{border-color:#677456;background:#1c271d}.story-action-label{display:block;max-width:28ch;white-space:normal;overflow-wrap:anywhere}.story-cooldown{flex-basis:100%;color:#a7ae97}
+
+.scene-card .scene-actions>button{height:52px;box-sizing:border-box;padding:11px 14px;line-height:14px;max-width:100%;overflow-wrap:anywhere}.scene-card .story-action-label{display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2;overflow:hidden}.scene-card .story-action{flex:0 1 270px}

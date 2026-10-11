@@ -139,7 +139,7 @@
      {id:'fight',text:name+' выходит на линию огня.',choices:[{label:'Вступить в бой',combat:id,enemyId:id,nextStage:'after',resultText:'Контакт начинается.'}]},
      {id:'after',text:'Дорога снова свободна. На месте боя остались отметки других следопытов.',choices:[end('Записать контакт','Результат боя отмечен в КПК.',{knowledge:'enemy '+id})]}],{rarity:home==='mirrorLake'?'very_rare':'uncommon',minDepth:2});
  for(const [id,name,role,faction,home,greeting]of cast){
-   event('npc_story_'+id,'Встреча · '+name,[home],[{id:'greet',text:greeting,choices:[end('Спросить о секторе',W.locations[home].description,{newsRoll:true,knowledge:'met '+id}),end('Предложить помощь','Поручения доступны в разделе заданий КПК.',{knowledge:'help '+id})]}],{kind:'both'});
+   event('npc_story_'+id,'Встреча · '+name,[home],[{id:'greet',text:greeting,choices:[end('Спросить о секторе',W.locations[home].description,{newsRoll:true,knowledge:'met '+id}),end('Предложить помощь','Ты предлагаешь помощь. '+name+' советует сверить список заказов в КПК: этот разговор не добавляет нового поручения.',{knowledge:'help '+id})]}],{kind:'both'});
    W.quests.push({id:'v7_job_'+id,title:name+': полевой заказ',text:'Проверь сектор '+W.locations[home].name+' трижды и вернись к заказчику.',type:'explore',target:home,objectiveLocation:home,count:3,reward:300+W.locations[home].danger*45,rep:faction,repGain:4,giver:id,giverLocations:[home]});
  }
  const lines=[['loners','guide7','radioHill'],['duty','guard7','dutyFort'],['freedom','freedom7','freeCamp'],['ecologists','prof7','researchCamp']];
@@ -181,7 +181,7 @@
  for(const npc of ['prof7','quarryTech','damMedic','guide7']){
    const q=W.quests.find(x=>x.id==='v7_job_'+npc);q.type='research';q.count=3;q.title=W.people[npc].name+': специальное исследование';q.text='В секторе '+W.locations[q.target].name+' запусти полевое исследование из журнала, затем сдай отчёт.';
    event('v7_research_'+npc,'Специальное исследование',[q.target],[
-     {id:'setup',text:'Установи приборы на участке, указанном заказчиком.',choices:[{label:'Разметить участок',nextStage:'sample',effects:{researchQuest:q.id,stamina:-2},resultText:'Контрольные точки отмечены.'}]},
+     {id:'setup',text:npc==='quarryTech'?'Ты спускаешься к опоре крана и обходишь участок по краю осыпи. На мокром бетоне видны свежие борозды от троса. Резец просил проверить, где проводка касается металла; ты выбираешь три точки для замера.':'Ты находишь участок по отметке заказчика и проверяешь землю вокруг. Затем раскладываешь приборы так, чтобы сравнить показания в трёх точках.',choices:[{label:'Разметить участок',nextStage:'sample',effects:{researchQuest:q.id,stamina:-2},resultText:'Ты закрепляешь метки у трёх ориентиров. Теперь показания можно сверить, не заходя вслепую в опасный участок.'}]},
      {id:'sample',text:'Нужно выбрать метод отбора. Пробы весят больше, записи безопаснее.',choices:[{label:'Снять показания',nextStage:'report',effects:{researchQuest:q.id},resultText:'Прибор сохранил серию показаний.'},{label:'Собрать материал',nextStage:'report',effects:{researchQuest:q.id,add:{sealedSample:1},radiation:2},resultText:'Проба опечатана.'}]},
      {id:'report',text:'Объедини наблюдения в отчёт для заказчика.',choices:[end('Составить отчёт','Полевая работа завершена. Вернись к заказчику.',{researchQuest:q.id,knowledge:'survey '+q.target})]}
    ],{kind:'directed',rarity:'uncommon',requiredQuest:q.id,art:'tower'});
