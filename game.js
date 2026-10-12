@@ -3,6 +3,7 @@
   const render=()=>window.ZoneRPGUI.render(engine.getState());
   function run(name,value,extra){engine.action(name,value,extra);}
   function activate(el){const a=el.dataset.action,v=el.dataset.value,x=el.dataset.extra;
+    if(a==='databaseTab'){window.ZoneRPGUI.setDatabaseTab(v);render();return;}
     if(a==='home'){run('mainMenu');return;}
     if(a==='panel'){if(v==='menu'){run('openPanel','pause');return;}run('openPanel',v);return;}
     if(a==='travelPanel'){run('openPanel','map');return;}
