@@ -11,8 +11,8 @@ test('Legacy never overwrites an existing new slot',()=>{
  const r=runtime(),s=r.S.fresh();r.Save.write(s,'manual');s.player.money=999;r.store.set(r.S.KEY,JSON.stringify(s));
  assert.equal(r.Save.read('manual').data.player.money,620);assert.equal(r.Save.read('auto').ok,false);
 });
-test('Metadata and start screen show both independent choices',()=>{
- const r=runtime(),s=r.S.fresh();r.Save.write(s,'manual');s.player.location='garbage';s.player.rank=8;r.Save.write(s,'auto');r.E.action('mainMenu');
+test('Metadata and Continue picker show both independent choices',()=>{
+ const r=runtime(),s=r.S.fresh();r.Save.write(s,'manual');s.player.location='garbage';s.player.rank=8;r.Save.write(s,'auto');r.E.action('mainMenu');assert.doesNotMatch(r.root.innerHTML,/class="save-card"/);r.ctx.window.ZoneRPGUI.setSavePicker(true);r.ctx.window.ZoneRPGUI.render(r.E.getState());
  assert.match(r.root.innerHTML,/data-action="load" data-value="auto"/);assert.match(r.root.innerHTML,/data-action="load" data-value="manual"/);
  const slots=r.Save.slots();assert.equal(slots[0].location,'garbage');assert.equal(slots[0].level,8);assert.ok(slots.every(x=>x.rank&&x.background&&Date.parse(x.savedAt)));
  assert.match(r.root.innerHTML,/Свалка/);assert.match(r.root.innerHTML,/Кордон/);
