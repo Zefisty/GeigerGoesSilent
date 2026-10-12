@@ -7,7 +7,7 @@ function runtime(){
   vm.createContext(ctx);for(const file of ['config.js','items.js','world.js','content-v7.js','content-v72.js','personal-stories.js','living-content.js','living-zone.js','expedition.js','narrative.js','zone-story-data.js','zone-story.js','knowledge.js','state.js','save.js','engine.js','zone-ui.js','ui.js'])vm.runInContext(fs.readFileSync(path.join(ROOT,file),'utf8'),ctx,{filename:file});
   const {ZoneRPGState:S,ZoneRPGEngine:E,ZoneRPGWorld:W,ZoneRPGItems:I,ZoneRPGSave:Save,ZoneRPGUI:UI}=ctx.window;
   E.onChange(()=>UI.render(E.getState()));
-  return{ctx,S,E,W,I,Save,root,store,warnings,errors,load(s){store.set(S.KEY,JSON.stringify(s));E.action('load');return E.getState();}};
+  return{ctx,S,E,W,I,Save,root,store,warnings,errors,load(s){store.set(Save.KEYS.manual,JSON.stringify(s));E.action('load');return E.getState();}};
 }
 function eventSave(r,id,stageId,origin='explore',destination=null){
   const s=r.S.fresh(),def=r.W.events.find(x=>x.id===id);assert.ok(def,id);const stages=def.stages||[{id:'main',text:def.text,choices:def.choices}],stage=stages.find(x=>x.id===stageId)||stages[0];

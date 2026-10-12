@@ -5,7 +5,7 @@ function test(name,fn){fn();console.log('PASS '+name);passed++;}
 const xp=s=>s.player.xp+Array.from({length:s.player.rank-1},(_,i)=>120+i*75).reduce((a,b)=>a+b,0);
 function listen(r){r.E.action('news');select(r,'Послушать слухи');const s=r.E.getState();select(r,'Продолжить');return s;}
 function travel(r,id){r.ctx.Math.random=()=>.999;r.E.action('travel',id);assert.equal(r.E.getState().player.location,id);assert.equal(r.E.getState().event,null);}
-function raw(r){r.E.action('save');return JSON.parse(r.store.get(r.S.KEY));}
+function raw(r){r.E.action('save');return JSON.parse(r.store.get(r.Save.KEYS.manual));}
 
 test('Every background starts with an empty history and the correct world visit',()=>{const r=runtime();for(const bg of Object.keys(r.S.BACKGROUNDS)){r.E.action('startGame',bg);const s=r.E.getState();assert.equal(s.rumorVisit.location,s.player.location);assert.equal(s.rumorVisit.heard,false);assert.equal(s.heardRumors.length,0);assert.equal(s.rumors.length,0);}});
 test('First rumor gives 8 XP and real title/text in both PDA sections',()=>{const r=runtime();r.load(r.S.fresh());const s=listen(r);assert.equal(xp(s),8);assert.equal(s.rumors.length,1);assert.equal(s.heardRumors.length,1);assert.equal(s.rumorVisit.heard,true);assert.ok(s.event.text.includes(s.rumors[0].title));assert.ok(s.event.text.includes(s.rumors[0].text));for(const panel of ['notebook','encyclopedia']){r.E.action('openPanel',panel);assert.ok(r.root.innerHTML.includes(s.rumors[0].title));assert.ok(r.root.innerHTML.includes(s.rumors[0].text));assert.ok(!r.root.innerHTML.includes(s.rumors[0].id));}assert.equal(r.warnings.length,0);});

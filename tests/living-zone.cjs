@@ -4,7 +4,7 @@ let passed=0;
 function test(name,fn){fn();console.log('PASS '+name);passed++;}
 const L=r=>r.ctx.window.ZoneRPGLiving,D=r=>r.ctx.window.ZoneRPGLivingData;
 const end=s=>s.event?.flow.phase==='result'&&!s.event.flow.pending?.nextStage&&!s.event.flow.pending?.nextEvent;
-function raw(r){r.E.action('save');return JSON.parse(r.store.get(r.S.KEY));}
+function raw(r){r.E.action('save');return JSON.parse(r.store.get(r.Save.KEYS.manual));}
 function stock(r){const s=raw(r);Object.assign(s.player,{health:100,stamina:100,hunger:0,thirst:0,radiation:0,money:9000});r.load(s);}
 function settle(r){for(let n=0;n<40;n++){const s=r.E.getState();assert.notEqual(s.mode,'dead');if(end(s))return s;if(s.combat){r.ctx.Math.random=()=>0;r.E.action('flee');continue;}const c=s.event.choices.find(c=>c.action==='advance')||s.event.choices.find(c=>c.finish&&!c.combat&&!c.effects?.itemCost&&(c.effects?.money??0)>=0)||s.event.choices.find(c=>!c.combat&&!c.effects?.itemCost);assert.ok(c,s.event.id);select(r,c.label);}throw Error('Unfinished event');}
 function depart(r,id){stock(r);r.ctx.Math.random=()=>.999;r.E.action('travel',id);assert.equal(r.E.getState().player.location,id);assert.equal(r.E.getState().event,null);}
