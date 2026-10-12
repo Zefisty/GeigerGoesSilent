@@ -125,3 +125,7 @@ body[data-motion="reduced"] .reward-toast{animation:none;position:static;transfo
 
 @media(prefers-reduced-motion:reduce){.reward-toast.survival-warning{position:fixed;left:50%;transform:translateX(-50%);margin:0;animation:none}}
 body[data-motion="reduced"] .reward-toast.survival-warning{position:fixed;left:50%;transform:translateX(-50%);margin:0;animation:none}
+
+/* The six More controls keep the same two-column grid on every screen. */
+.menu-actions.more-actions{grid-template-columns:repeat(2,minmax(0,1fr));align-items:stretch}
+.menu-actions.more-actions>button{height:100%;min-height:48px;min-width:0}

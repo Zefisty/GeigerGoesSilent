@@ -39,13 +39,14 @@ test('Warnings visible during combat and expedition without changing state',()=>
  const view=r.E.getState();view.player.stamina=10;const before=JSON.stringify(view);r.ctx.window.ZoneRPGUI.render(view);assert.match(r.root.innerHTML,/выносливость на исходе/);assert.equal(JSON.stringify(view),before);
  }
 });
-test('Manual save button is before Pause, unique and absent in More',()=>{
- const r=runtime();r.load(r.S.fresh());r.E.action('openPanel','more');const html=r.root.innerHTML,header=html.slice(0,html.indexOf('</header>'));
- assert.match(header,/system-controls/);assert.ok(header.indexOf('data-action="save"')<header.indexOf('data-value="pause"'));assert.equal((html.match(/data-action="save"/g)||[]).length,1);
- const more=html.slice(html.lastIndexOf('<div class="overlay-shade">'));assert.ok(!more.includes('data-action="save"'));for(const value of ['encyclopedia','statistics','settings','credits','pause'])assert.ok(more.includes('data-value="'+value+'"'));
- const css=fs.readFileSync(path.join(__dirname,'../style.css'),'utf8');assert.ok(css.includes('.system-controls{display:flex;flex-wrap:wrap'));assert.ok(css.includes('.system-controls .system-button{padding:6px 8px;font-size:10px}'));
+test('Six More buttons end with Save then Pause in a two-column grid',()=>{
+ const r=runtime();r.load(r.S.fresh());r.E.action('openPanel','more');const html=r.root.innerHTML,more=html.slice(html.lastIndexOf('<div class="overlay-shade">')),grid=more.slice(more.indexOf('<div class="menu-actions more-actions">'));
+ const buttons=[...grid.matchAll(new RegExp('<button[^>]*>([^<]*)</button>','g'))];assert.equal(buttons.length,6);assert.equal(buttons[4][1],'Сохранить');assert.equal(buttons[5][1],'Пауза');
+ assert.equal((html.match(/data-action="save"/g)||[]).length,1);
+ for(const value of ['encyclopedia','statistics','settings','credits'])assert.ok(more.includes('data-value="'+value+'"'));
+ const css=fs.readFileSync(path.join(__dirname,'../style.css'),'utf8');assert.ok(css.includes('.menu-actions.more-actions{grid-template-columns:repeat(2,minmax(0,1fr))'));assert.ok(css.includes('.menu-actions.more-actions>button{height:100%;min-height:48px;min-width:0}'));
 });
-test('Real top Save click writes only manual and shows immediate feedback',()=>{
+test('Real manual Save click writes only manual and shows immediate feedback',()=>{
  const r=runtime(),handlers={};r.load(r.S.fresh());r.Save.write(r.E.getState(),'auto');const auto=r.store.get(r.Save.KEYS.auto);
  r.root.addEventListener=(name,fn)=>handlers[name]=fn;r.ctx.window.addEventListener=()=>{};vm.runInContext(fs.readFileSync(path.join(__dirname,'../game.js'),'utf8'),r.ctx);
  handlers.click({target:{closest:()=>({dataset:{action:'save'}})},preventDefault(){}});
@@ -55,8 +56,26 @@ test('Manual save feedback coexists with warning in a single toast',()=>{
  const r=runtime();r.ctx.performance.now=()=>100;const s=r.S.fresh();s.player.health=25;r.load(s);r.E.action('save');
  assert.equal((r.root.innerHTML.match(/class="reward-toast/g)||[]).length,1);assert.match(r.root.innerHTML,/Внимание/);assert.match(r.root.innerHTML,/<small>Игра сохранена вручную/);
 });
-test('Top manual Save restores expedition encounter/result',()=>{
+test('More manual Save restores expedition encounter/result',()=>{
  const r=runtime();r.load(r.S.fresh());r.E.action('explore');select(r,'Забрать запас');const state=r.E.getState();r.E.action('save');const auto=r.store.get(r.Save.KEYS.auto);r.E.action('eventReturn');r.E.action('load','manual');
  assert.equal(r.E.getState().expedition.depth,state.expedition.depth);assert.equal(r.E.getState().event.id,state.event.id);assert.equal(r.E.getState().event.flow.phase,state.event.flow.phase);assert.equal(r.E.getState().mode,'event');assert.ok(auto);
+});
+test('Real Pause click and Resume preserve the current encounter',()=>{
+ const r=runtime(),handlers={};r.load(r.S.fresh());r.E.action('explore');const before=JSON.stringify(r.E.getState().event);
+ r.root.addEventListener=(name,fn)=>handlers[name]=fn;r.ctx.window.addEventListener=()=>{};vm.runInContext(fs.readFileSync(path.join(__dirname,'../game.js'),'utf8'),r.ctx);
+ const click=dataset=>handlers.click({target:{closest:()=>({dataset})},preventDefault(){}});
+ for(const value of ['encyclopedia','statistics','settings','credits']){click({action:'panel',value});assert.equal(r.E.getState().mode,value);assert.equal(JSON.stringify(r.E.getState().event),before);}
+ click({action:'panel',value:'pause'});assert.equal(r.E.getState().mode,'pause');assert.match(r.root.innerHTML,/Вернуться в игру/);
+ click({action:'resume'});assert.equal(r.E.getState().mode,'event');assert.equal(JSON.stringify(r.E.getState().event),before);
+});
+test('Completed expedition cannot add a seventh More box; report stays accessible',()=>{
+ const r=runtime(),s=r.S.fresh();s.lastExpedition={originLocationId:s.player.location,depth:2,summary:{hours:1,xp:10,money:20,kills:0,items:{}},history:[]};r.load(s);r.E.action('openPanel','more');
+ const grid=r.root.innerHTML.split('<div class="menu-actions more-actions">')[1];assert.equal((grid.match(/<button/g)||[]).length,6);
+ r.E.action('openPanel','statistics');assert.match(r.root.innerHTML,/data-value="expeditionReport"/);r.E.action('openPanel','expeditionReport');assert.match(r.root.innerHTML,/Итоги вылазки/);
+});
+test('Survival alert implementation remains identical to v10.2.4 HEAD',()=>{
+ const old=require('node:child_process').execFileSync('git',['show','HEAD:ui.js'],{cwd:path.join(__dirname,'..'),encoding:'utf8'});
+ const current=fs.readFileSync(path.join(__dirname,'../ui.js'),'utf8');const block=text=>text.slice(text.indexOf('const survivalRules='),text.indexOf('let mapObserver='));
+ assert.ok(block(old).length>100);assert.equal(block(current),block(old));
 });
 console.log(passed+' v10.2.4 checks passed.');
