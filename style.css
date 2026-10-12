@@ -123,3 +123,6 @@ body[data-motion="reduced"] .reward-toast{animation:none;position:static;transfo
 
 @media(prefers-reduced-motion:reduce){.reward-toast.survival-warning{position:fixed;left:50%;transform:translateX(-50%);margin:0;animation:none}}
 body[data-motion="reduced"] .reward-toast.survival-warning{position:fixed;left:50%;transform:translateX(-50%);margin:0;animation:none}
+
+/* Keep the final More pair in one row at mobile widths. */
+.menu-actions.more-actions{grid-template-columns:repeat(2,minmax(0,1fr))}

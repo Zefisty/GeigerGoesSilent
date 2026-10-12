@@ -39,21 +39,24 @@ test('Warnings visible during combat and expedition without changing state',()=>
  const view=r.E.getState();view.player.stamina=10;const before=JSON.stringify(view);r.ctx.window.ZoneRPGUI.render(view);assert.match(r.root.innerHTML,/выносливость на исходе/);assert.equal(JSON.stringify(view),before);
  }
 });
-test('More, Pause and Statistics match the v10.2.3 rendered snapshot',()=>{
+test('Header matches stable UI and has no Save or Pause controls',()=>{
  const base=require('node:child_process').execFileSync('git',['show','eb935ce:ui.js'],{cwd:path.join(__dirname,'..'),encoding:'utf8'});
- for(const completed of [false,true]){
-  const r=runtime(),s=r.S.fresh();if(completed)s.lastExpedition={originLocationId:s.player.location,depth:2,summary:{hours:1,xp:10,money:20,kills:0,items:{}},history:[]};r.load(s);
-  const current=r.ctx.window.ZoneRPGUI;vm.runInContext(base,r.ctx);const stable=r.ctx.window.ZoneRPGUI;
-  for(const mode of ['more','pause','statistics']){const state={...r.E.getState(),mode,feedback:null};current.render(state);const actual=r.root.innerHTML;stable.render(state);assert.equal(actual,r.root.innerHTML,mode);}
- }
- const css=fs.readFileSync(path.join(__dirname,'../style.css'),'utf8');assert.doesNotMatch(css,/system-controls|system-button|more-actions/);
+ const r=runtime();r.load(r.S.fresh());const current=r.ctx.window.ZoneRPGUI;vm.runInContext(base,r.ctx);const stable=r.ctx.window.ZoneRPGUI;
+ for(const mode of ['play','more','pause','inventory','character','map']){const state={...r.E.getState(),mode,feedback:null};current.render(state);const header=r.root.innerHTML.match(/<header[^]*?<\/header>/)[0];assert.doesNotMatch(header,/Сохранить|Пауза|data-action="save"|data-value="pause"/);stable.render(state);assert.equal(header,r.root.innerHTML.match(/<header[^]*?<\/header>/)[0]);}
+ const css=fs.readFileSync(path.join(__dirname,'../style.css'),'utf8');assert.doesNotMatch(css,/system-controls|system-button/);
+});
+test('More has six controls ending Save then Pause, including after an expedition',()=>{
+ for(const completed of [false,true]){const r=runtime(),s=r.S.fresh();if(completed)s.lastExpedition={originLocationId:s.player.location,depth:2,summary:{hours:1,xp:10,money:20,kills:0,items:{}},history:[]};r.load(s);r.E.action('openPanel','more');const html=r.root.innerHTML,grid=html.split('<div class="menu-actions more-actions">')[1],buttons=[...grid.matchAll(new RegExp('<button[^>]*>([^<]*)</button>','g'))];assert.equal(buttons.length,6);assert.equal(buttons[4][1],'Сохранить');assert.equal(buttons[5][1],'Пауза');assert.equal((html.match(/data-action="save"/g)||[]).length,1);assert.equal((html.match(/data-value="pause"/g)||[]).length,1);
+ for(const id of ['encyclopedia','statistics','settings','credits']){assert.ok(grid.includes('data-value="'+id+'"'));r.E.action('openPanel',id);assert.equal(r.E.getState().mode,id);}
+ if(completed){r.E.action('openPanel','statistics');assert.match(r.root.innerHTML,/data-value="expeditionReport"/);r.E.action('openPanel','expeditionReport');assert.match(r.root.innerHTML,/Итоги вылазки/);}}
+ const css=fs.readFileSync(path.join(__dirname,'../style.css'),'utf8');assert.ok(css.includes('.menu-actions.more-actions{grid-template-columns:repeat(2,minmax(0,1fr))}'));assert.ok(css.lastIndexOf('.menu-actions.more-actions')>css.indexOf('@media(max-width:540px)'));assert.match(css,/\.menu-actions>button\{[^}]*width:100%[^}]*min-width:0[^}]*min-height:48px/);
 });
 test('Original manual Save keeps autosave independent and Pause resumes the encounter',()=>{
- const r=runtime(),handlers={};r.load(r.S.fresh());r.E.action('explore');r.E.action('openPanel','more');assert.match(r.root.innerHTML,/Сохранить игру/);
+ const r=runtime(),handlers={};r.load(r.S.fresh());r.E.action('explore');r.E.action('openPanel','more');assert.match(r.root.innerHTML,/data-action="save">Сохранить/);
  const before=JSON.stringify(r.E.getState().event);r.Save.write(r.E.getState(),'auto');const auto=r.store.get(r.Save.KEYS.auto);
  r.root.addEventListener=(name,fn)=>handlers[name]=fn;r.ctx.window.addEventListener=()=>{};vm.runInContext(fs.readFileSync(path.join(__dirname,'../game.js'),'utf8'),r.ctx);
  const click=dataset=>handlers.click({target:{closest:()=>({dataset})},preventDefault(){}});
- click({action:'save'});assert.equal(r.store.get(r.Save.KEYS.auto),auto);assert.ok(r.Save.read('manual').ok);
+ click({action:'save'});assert.equal(r.store.get(r.Save.KEYS.auto),auto);assert.ok(r.Save.read('manual').ok);assert.equal(r.Save.KEYS.manual,'zonerpg_manual_save');assert.match(r.root.innerHTML,/reward-toast[^]*Игра сохранена вручную\./);
  click({action:'panel',value:'pause'});assert.equal(r.E.getState().mode,'pause');click({action:'resume'});assert.equal(r.E.getState().mode,'event');assert.equal(JSON.stringify(r.E.getState().event),before);
 });
 test('Survival alert implementation is unchanged from the current release',()=>{
