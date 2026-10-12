@@ -1,0 +1,21 @@
+const assert=require('node:assert/strict');
+const {runtime}=require('./runtime.cjs');
+const r=runtime(),UI=r.ctx.window.ZoneRPGUI,L=r.ctx.window.ZoneRPGLiving;
+r.load(r.S.fresh());r.E.action('openPanel','map');
+function node(id){return r.root.innerHTML.match(new RegExp('<button class="map-node [^>]*data-value="'+id+'"[^>]*>([\\s\\S]*?)</button>'))?.[1];}
+assert.match(node('cordon'),/Радиация: 4%/);
+let view=r.E.getState();const hidden=view.map.find(n=>!n.known);
+assert.ok(hidden);assert.ok(!node(hidden.id).includes('map-radiation'));
+const before=JSON.stringify(view);
+view.worldState.locations.cordon={...view.worldState.locations.cordon,temporaryState:'aftermath',endsAt:view.worldClock+3};
+UI.render(view);assert.ok(node('cordon').includes('Радиация: 4% · +1/поиск'));
+assert.equal(view.locations.cordon.rad,4);
+view.worldClock+=4;UI.render(view);assert.match(node('cordon'),/Радиация: 4%/);assert.ok(!node('cordon').includes('/поиск'));
+view=r.E.getState();const event=r.W.worldEvents.find(e=>e.modifiers?.radiation&&e.locations.length);
+assert.ok(event);const id=event.locations[0];view.map.find(n=>n.id===id).known=true;
+view.worldEvents.push({id:event.id,endsAt:view.worldClock+5});
+UI.render(view);const modifier=L.modifier(view,'radiation',id);
+assert.ok(modifier>0);assert.ok(node(id).includes('+'+Number(modifier.toFixed(2)).toLocaleString('ru-RU')+'/поиск'));
+view.worldClock+=6;UI.render(view);assert.ok(!node(id).includes('/поиск'));
+assert.equal(JSON.stringify(r.E.getState()),before,'Rendering never changes engine state');
+console.log('PASS Base radiation, hidden data, temporary state, incident, expiration and render purity');

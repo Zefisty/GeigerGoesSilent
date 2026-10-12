@@ -92,3 +92,6 @@ body[data-motion="reduced"] .reward-toast{animation:none;position:static;transfo
 .main-explore{flex-basis:auto;flex-grow:0;min-height:44px;font-size:1rem;font-weight:700;border-color:#a4ad73;background:#626e43}
 .settings-section{margin:1rem 0;padding:0 1rem 1rem;border:1px solid var(--line);border-radius:var(--card-radius)}.settings-section legend{padding:0 .5rem;color:var(--olive)}.setting-line{gap:1rem}.setting-line input[type=range]{width:160px;max-width:100%;accent-color:var(--olive)}.setting-line select{min-width:120px}.setting-line small{display:block;max-width:45ch;color:var(--muted);line-height:1.5}
 @media(max-width:480px){.setting-line{align-items:flex-start;flex-wrap:wrap}.setting-line input[type=range]{width:100%}.settings-section{padding:0 .65rem .65rem}.main-explore{flex-basis:auto}}
+
+/* Keep route geometry visible behind the existing responsive node grid. */
+@media(max-width:700px){.zone-map>svg{display:block;pointer-events:none}}
