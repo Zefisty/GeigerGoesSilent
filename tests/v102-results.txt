@@ -1,0 +1,329 @@
+PASS Audio contexts, feedback, atmosphere, combat panels and pagehide cleanup (mock Web Audio).
+PASS Muting and zero master volume silence both channels; new context and UI cues use bounded original oscillators.
+PASS Counts, references, item icons, faction symbols and new enemy sprites
+  40 distinct encounters in 50
+PASS 50 successive encounters, prepared resources, no idle emission, bounded depth and save/load
+PASS Every sector returns to its own origin, including v8 migration and temporary encounter coordinates
+PASS Low stamina leaves Continue disabled but Return free; stages use a distinct advance label
+PASS Seven joinable factions validate membership, enemies, discount, refusal and persistence
+PASS Directed research is deterministic, persistent and rewarded exactly once
+PASS Faction chains gate previous completion and offer the next real contract
+PASS Unique mirror reward stays single across save and repeated clicks; chain retains origin
+PASS Human, mutant and elite scaled combat maintain IDs/stats across compact save, defeat grants loot once
+PASS World event clocks, expiration and save/load remain bounded
+PASS Local pools differ in at least ten sectors and new content remains reachable
+PASS Medusa clamping and new equipment effects never grant free health
+  372 new choices exercised
+PASS Every v7 choice executes with valid prerequisites and survives state sanitization
+PASS Temporary closure blocks only its road and expires without mutating world topology
+PASS Expedition report persists after Return; ordinary travel cannot become an expedition
+PASS Dead saves never resume exploration or revive the player
+PASS All weapon slots empty remain renderable in location and inventory
+PASS Scavenger start immediately recognises the already reached Garbage route target
+PASS NPC memory and field discoveries persist after notes age out
+PASS Faction symbols, journal, report and field guide screens render without missing state fields
+20 v7 checks passed.
+PASS All six story actions use the ordinary button class and share dimensions without a wrapping card
+PASS Military brief and next scene are distinct and explain identity, caller and first objective
+PASS All military-specific choices are contextual: eight sector labels differ
+PASS Post-combat ammunition updates the correct stack, one log and one summary, surviving reload
+PASS All post-combat actions work for humans and mutants with factual items or information
+PASS Full backpack never records uncollected loot
+PASS Mara gives canonical antirad with matching text and actual logged inventory reward
+PASS World decision enters rumor pool after delay, archive survives load and no internal flags leak
+PASS All twenty callbacks have specific narrative and no generic technical result
+PASS Lazarev help does not invent quest unlocks
+PASS Rezets survey is narrative and retains its original deterministic quest steps
+PASS Faction panel has one personal reputation per card and membership; internal hostility unchanged
+PASS v9 save schema stays 13 and existing reward item quantities remain canonical
+13 v9.1 checks passed.
+PASS Data validation: 20 incidents, 10 evolving sectors, 20 callbacks, 8 legends, 3 complete secret chains
+PASS Every world event has affected sectors, bounded duration, numeric effects and an end result
+PASS Migration v12 preserves stories, equipment, factions, rumors, quests, expedition, cash and old world progress
+PASS Malformed world fields sanitize without invalid references, NaN stats or invented rewards
+PASS Mutant activity changes risk, encounter weights, loot modifiers, ordinary NPCs and UI
+PASS Active quest givers, all story NPCs and three-legged Bandit never disappear during instability
+PASS World event expiration removes effects, updates learned status and survives save/load
+PASS Unknown active events stay out of the PDA until learned through travel or radio
+PASS Serious radio news at the existing 12-hour cadence carries no reward
+PASS Garbage decision persists; return hours later opens a deterministic callback and NPC remembers
+PASS Every sector has both meaningful choices, different evolution and a later reaction
+PASS Full backpack leaves callback rewards unclaimed and available for later
+PASS No repeated consequence item, reputation, money or renown reward after compact save
+PASS Eighteen reactive NPC options have real state effects, once per visit and reload restoration
+PASS Renown thresholds, bounded values, faction independence and positive/negative attention
+PASS Known legendary content appears only at deep/night eligible sectors and is weighted extremely rarely
+PASS Real deep exploration can trigger a legendary encounter; completed IDs block future draws
+PASS All eight legends resolve through real stages, compact saves and once-only journals/rewards
+PASS All three secret chains progress deterministically after their first clue and preserve state
+PASS Weapon traits change real damage and noise; silent weapons retain zero noise
+PASS Special fight only evolves its sector after victory; flee never completes the help choice
+PASS Caravan moves only its own trader, offers stock, expires and never changes the graph/story homes
+PASS Shortage and familiarity price modifiers are bounded and purchase deducts the displayed price
+PASS Night/weather combine bounded weights without permanent effects or timers
+PASS Rumor per-visit rules survive real world news, rest, expeditions and save/load
+PASS New artifact slots never grant free HP, modifiers do not stack across repeated load
+PASS PDA panels, legend art and local item categories load without exposed IDs or broken scripts
+PASS Long run: 50 encounters, deep Return, world changes, repeated saves/loads, bounded memory and no softlock
+PASS New field choices execute with real background/equipment prerequisites and keep world references valid
+PASS All renown sources are once-only, quest requests enter memory, deep returns cannot farm rank
+PASS Character artifact UI targets equipped instances correctly and never displays an undefined slot
+PASS A repeated paid incident ends with an explanation, no duplicate XP and an available exit
+PASS Four isolated v9 browser saves load decisions, world incidents and legacy migration
+33 Living Zone checks passed.
+PASS Complete display/chain/item audit covers every event and quest without leaks
+PASS Narrative module changes display copy only; mechanics match the pre-polish definitions
+PASS Fifty ordinary scenes have distinct authored intros and coherent inspection continuations
+PASS Six personal arcs retain all six chapter locations, objectives and meaningful field scenes
+PASS Sasha and Yegor cannot appear as live contacts before the rescue; load preserves presentation
+PASS Hunter finale describes evidence without claiming a compulsory killed trophy
+PASS All eight legends have three developed, distinct narrative stages
+PASS All world broadcasts retain bounded modifiers and explicit expiration outcomes
+PASS Credits use placeholders and central version, open and close back to More
+PASS Credits do not change an active expedition and return through More to the same event
+PASS Level-up still logs the exact XP receipt once
+PASS Money-only reward has one receipt and correct once-only total
+PASS Item and ammo rewards use canonical names, exact stacks and one summary entry
+PASS Mixed reputation, renown, cash and item rewards log actual changes
+PASS Full inventory blocks an item reward without fake receipt, costs or a claim
+PASS Existing unique story reward and save schema remain canonical and do not duplicate
+PASS Audit catches deliberate JS leaks, placeholders and consecutive duplicate sentences
+PASS Loading an old active choice scene refreshes prose without changing rewards or progression
+18 v9.2 checks passed.
+PASS Global dock and panel return preserve choices and result across all PDA sections
+PASS Map is viewable, every travel control disabled and engine travel blocked
+PASS Global Explore cannot advance or restart active expedition; encounter Continue still advances
+PASS Single save under More preserves result, origin, depth and inventory after load
+PASS All location screens omit raw preparation JS and duplicate inventory/save CTAs
+PASS Combat navigation uses existing combat item system and returns to same enemy
+6 navigation checks passed
+PASS Zero stamina: free recovery and continued exploration in all 29 locations
+PASS Every consumable applies only declared effects; energy restores exactly 35
+PASS Camp news has visible rumor, journal entry, persistence and no duplicate claim
+PASS Six starts apply bonuses once, survive schema10 save/load and show character history
+PASS Equipment actions, all slots, artifact limit and localised touch stat help
+PASS All event links, stages, enemy IDs, NPCs, item IDs and quest definitions are sane
+  24 complete investigation flows exercised
+PASS 20+ investigation scenarios continue, survive save and finish through choices
+PASS Compare tracks leads to preparation, a trail, cache and return
+  79 combat choices checked
+PASS Every combat entry keeps one enemy identity; NPC military uses human soldier
+PASS Railway cargo: accept, two real explores, save, turn in through NPC and reward once
+PASS Tunnel steps: NPC accepts, directs to dog, combat win, continuation, real turn-in
+PASS Tools gate five real repair actions, stay reusable and never duplicate rewards
+PASS Graph: 29 reachable, symmetric, no dump shortcut, unique roads and map locations
+PASS Schema6/6.1 migration preserves progress and adds safe background/origin defaults
+PASS Old completed inspection migrates to continuation without claiming old loot twice
+  1132 event stages checked for local assets
+PASS Every rendered event stage resolves to existing local scene and sprite assets
+PASS Inventory disables full magazines, equipped drops and occupied artifact slots
+PASS Location-bound hunting quests count victories only in their named sectors
+18 polish checks passed.
+PASS First run rookie intro → rumor → cache → combat → return → save
+PASS First run soldier intro → rumor → cache → combat → return → save
+PASS First run technician intro → rumor → cache → combat → return → save
+PASS First run hunter intro → rumor → cache → combat → return → save
+PASS First run scavenger intro → rumor → cache → combat → return → save
+PASS First run medic intro → rumor → cache → combat → return → save
+PASS Tutorial dismiss, disabling and resetting preserve progress and survive save
+PASS Schema 14 migration preserves cash, inventory and historical battles
+PASS Knife has no aim/reload/ammo controls, consumes no ammunition and attacks
+PASS Aim costs stamina, gives enemy turn and persists until one attack
+PASS Aim unavailable with low stamina and melee
+PASS Cover reduces exactly one enemy strike and costs 5 stamina
+PASS Cover denied with insufficient stamina without enemy turn
+PASS Mandatory encounter blocks retreat in engine and UI after reload
+PASS Retreat depends on agility, stamina and enemy; success and failure resolve
+PASS Reload out of combat enters combat with same magazine and reserve
+PASS Feedback contains real loot, XP and reputation results
+PASS Mute, volume, tutorial and manual turn-in settings persist
+PASS All primary screens expose no JS interpolation, raw operators or undefined text
+  mean VM render 0.09 ms
+PASS Render microbenchmark: location, inventory, expedition and combat
+PASS Shotgun loses power at range; knife closes distance and state persists
+PASS Brute windup and mobile enemy evasion retain canonical identities
+PASS Intro supply does not enter normal or deep random event pools
+23 first-impression checks passed.
+PASS Pig NPC has separate identity, three-legged local art, interactions, no combat fallback
+PASS Pig care is bounded by world time; food consumed, gift once, memory survives save
+PASS Six starts differ in stats/items/reputation/intro, Rookie has two flexible points
+PASS Medic passive healing works once; background modifiers never stack after load
+PASS Paid rest with 0 or 34 money changes no gameplay state; explicit free breath remains
+PASS Toolkit hatch grants APS and ammo once, retains toolkit and flag after reload
+PASS Full backpack leaves hatch reward unclaimed until space exists
+PASS Knife has no ammunition UI/reload; attacks, accuracy, mastery, miss and save work
+PASS All boar intro text is in-world, no pause/developer instructions
+PASS Every post-combat choice has useful outcome and once-only flag across compact save
+PASS Flee does not grant post-combat victory loot/knowledge XP
+PASS Twenty successful event draws avoid last three IDs, history survives save/load
+PASS Small event pool falls back to a repeat only when no alternative exists
+PASS Ordinary Yantar exploration never counts anomaly traces; directed action does
+PASS Field Notes directed search succeeds by third attempt and progress persists
+PASS All 55 quests have valid NPC/location/reward metadata and manual reward exactly once
+PASS Route arrival records objective but manual turn-in pays only at giver
+PASS Auto turn-in defaults OFF, persists, pays eligible local routes only and never story choices
+PASS v9 migration preserves old progression/gear, resets false anomaly count and defaults auto OFF
+PASS Faction UI shows personal reputation and membership without a faction relations matrix
+PASS Compact CSS affects dock only; More keeps 48px targets and navigation regression
+PASS Browser harness loads local scripts and all five v7.2 fixtures sanitize correctly
+22 quality v7.2 checks passed.
+PASS All trader stock identifiers and prices; invalid item does not break state/load
+PASS Radio route completion, return and save/load at warehouses
+PASS Interrupted travel finishes on load without repeating costs
+PASS PM, knife, empty slots: display uses same weapon as attack/reload/save
+PASS All saved enemy types keep canonical visuals/stats; local sprites exist
+PASS Medicine purchase is medical, charged once, including result reload
+PASS Full backpack purchase does not charge money or grant partial goods
+PASS Water/cans inspection gives information first, then the stated goods once
+PASS Tool box yields tools, not medicines/wires
+PASS Save with item reward restores history/progression without ReferenceError
+PASS Old schema saves and corrupted save give clear result without deleting data
+PASS Neutral Russian item-use messages
+PASS Common loot selects different fitting items instead of always wires
+13 regression checks passed.
+PASS Every background starts with an empty history and the correct world visit
+PASS First rumor gives 8 XP and real title/text in both PDA sections
+PASS Repeated clicks, panels, rest and save/load do not open another visit
+PASS Cordon -> Garbage -> Cordon resets only the visit and prefers unseen rumors
+PASS Travel request leaves visit intact until arrival, including pending travel save/load
+PASS Expedition and return to its origin preserve the world visit
+PASS Save/load with temporary encounter coordinates preserves the expedition origin visit
+PASS NPC camp news shares the visit guard and never repeats rumor XP
+PASS Exhausted local pool returns explanation without duplicate notes or XP
+PASS All available rumors across repeated real visits pay exactly once
+PASS v11 migration preserves text records, resolves ID-only records and prevents known rumor XP
+PASS Legacy rumor IDs stored as text resolve through the same registry
+  706 knowledge definitions checked
+PASS Every current knowledge key resolves centrally; enemy/item/location/faction/quest IDs are localized
+PASS Unknown IDs never leak and warn only once across repeated render
+PASS Rumor button remains enabled and uses the other location actions CSS class
+15 v8.1 checks passed.
+PASS Story graph: 36 quests, 72 events, 18 persistent NPCs, 12 working local rewards
+PASS Six backgrounds initialize unique intro, first quest marker and no future chapter spoilers
+PASS rookie entire six-chapter a route uses real roads/manual claims, middle saves, ending and exactly two unique items
+PASS rookie entire six-chapter b route uses real roads/manual claims, middle saves, ending and exactly two unique items
+PASS soldier entire six-chapter a route uses real roads/manual claims, middle saves, ending and exactly two unique items
+PASS soldier entire six-chapter b route uses real roads/manual claims, middle saves, ending and exactly two unique items
+PASS technician entire six-chapter a route uses real roads/manual claims, middle saves, ending and exactly two unique items
+PASS technician entire six-chapter b route uses real roads/manual claims, middle saves, ending and exactly two unique items
+PASS hunter entire six-chapter a route uses real roads/manual claims, middle saves, ending and exactly two unique items
+PASS hunter entire six-chapter b route uses real roads/manual claims, middle saves, ending and exactly two unique items
+PASS scavenger entire six-chapter a route uses real roads/manual claims, middle saves, ending and exactly two unique items
+PASS scavenger entire six-chapter b route uses real roads/manual claims, middle saves, ending and exactly two unique items
+PASS medic entire six-chapter a route uses real roads/manual claims, middle saves, ending and exactly two unique items
+PASS medic entire six-chapter b route uses real roads/manual claims, middle saves, ending and exactly two unique items
+PASS Legacy v10 migration initializes adapted story, preserves inventory/quests/cash and grants nothing
+PASS Guaranteed story event by third eligible encounter; expedition Continue/Return preserve origin and progress
+PASS Foreign NPCs/events never enter background pool; hostile story faction has neutral contact route
+PASS Story refusal, no toolkit/medkit and failed stat gates always leave a noncombat path
+PASS Post-story combat cannot pretend victory after retreat; alternative rescue remains available
+PASS Full backpack preserves final reward for later; unique weapons/medicine/equipment are functional
+PASS Auto setting never delivers story dialogue quests; dead NPC and malformed memory remain safe
+PASS Trust unlocks a real optional plan check and story choice persists
+PASS Every reward category can equip/use, reload persists, no extra HP on replacement
+PASS All 18 side encounters resolve once and all 18 NPC contacts render local portraits
+PASS Five isolated v8 browser fixture saves initialize/migrate through current schema
+25 personal-story checks passed.
+PASS Six background cards use distinct local assets with different geometry
+PASS Intro information continues for rookie
+PASS Intro information continues for soldier
+PASS Intro information continues for technician
+PASS Intro information continues for hunter
+PASS Intro information continues for scavenger
+PASS Intro information continues for medic
+PASS Military plan check does not resolve quest and offers an informed decision
+PASS All six personal first inspections are intermediate, not cosmetic stat gates
+PASS Rank deterministic and independent of cash, renown and equipment
+PASS Single maximum attribute or mastery cannot produce legendary rank
+PASS All seven rank thresholds are reachable and ordered with capped components
+PASS Faction rank gate and membership persistence loners
+PASS Faction rank gate and membership persistence bandits
+PASS Faction rank gate and membership persistence duty
+PASS Faction rank gate and membership persistence mercs
+PASS New audio settings default safely and persist with all existing state
+PASS Settings have unified boolean selects, three sliders and compact explore
+PASS Map grid nodes keep identical untransformed positions in every state
+PASS Combat loot and additional body result are distinct, paid once, survive save
+PASS Semantic UI sounds map forward, back, neutral and error deterministically
+PASS Real mixer gain graph updates master 1 / .5 / 0 live without restarting ambient
+PASS Local music same context and repeated unlock never replay or reset playhead
+23 v10.2 checks passed.
+PASS Continue immediately selects next encounter with no emitted idle state
+PASS Three encounters retain warehouse origin; Return keeps earned rewards
+PASS Return works in five sectors and never defaults to cordon
+PASS Dark valley session survives multiple Continue, save/load and Return
+PASS Return uses session origin rather than temporary encounter sector
+PASS Scripted continuation precedes the next ordinary encounter
+PASS Exhausted Continue keeps result/origin; Return unlocks free recovery
+PASS Empty search has distinct Continue/Return with no completion XP
+PASS Legacy versions 6/7 recover current sector as missing exploration origin
+PASS Every visited/current location remains discovered across all save versions
+PASS Southern tunnel: visit, actions, save/load, leave and revisit stays known
+PASS Graph: all 29 reachable, valid IDs, reverse roads, unique render edges
+PASS Deduplication preserves explicit one-way edge and renderer uses its arrow only
+  90 directed routes traversed
+PASS Every ordinary directed road is traversable in both directions
+PASS Cordon/dead village return and Pripyat/warehouses/valley/dump history
+PASS Warehouse news cannot farm XP; claims survive save and trip counter changes
+PASS Repeated inspection, conversation and reading definitions never repeat completion XP
+PASS Every active quest has a status; station and city route use generic target names
+PASS All six starts have safe varied locations, intro, reputation and persistent metadata
+PASS Background-specific actions are gated, functional and saved for all six histories
+PASS Toolkit reaches three useful choices through real entry stages, without consumption
+PASS Five new enemies have distinct stats, scenes, intros and valid canonical sprites
+PASS Mutant pool respects early/late sectors, night and depth
+PASS New enemy mechanics: telegraphed heavy hit and radioactive wound
+PASS Local favicon is declared; all consumers preserve only declared stamina changes
+PASS Every delivery quest checks readiness before consuming goods and pays once
+PASS New mutant artifacts are not routine drops; quest delivery UI uses actual stock
+27 v6.3 checks passed.
+PASS long route: 44 actual travel actions, 28 expeditions, hooks, 20 quests, ending, post-game and save/load.
+PASS All content references, assets, routes, main stages and unique item traits validate
+PASS New characters keep main story dormant, regardless of all six backgrounds
+PASS Three gradual hooks create the first main quest, preserving Personal Story
+PASS Full main path rookie → science persists through every stage
+PASS Full main path rookie → control persists through every stage
+PASS Full main path rookie → independent persists through every stage
+PASS Full main path rookie → channel persists through every stage
+PASS Full main path soldier → science persists through every stage
+PASS Full main path soldier → control persists through every stage
+PASS Full main path soldier → independent persists through every stage
+PASS Full main path soldier → channel persists through every stage
+PASS Full main path technician → science persists through every stage
+PASS Full main path technician → control persists through every stage
+PASS Full main path technician → independent persists through every stage
+PASS Full main path technician → channel persists through every stage
+PASS Full main path hunter → science persists through every stage
+PASS Full main path hunter → control persists through every stage
+PASS Full main path hunter → independent persists through every stage
+PASS Full main path hunter → channel persists through every stage
+PASS Full main path scavenger → science persists through every stage
+PASS Full main path scavenger → control persists through every stage
+PASS Full main path scavenger → independent persists through every stage
+PASS Full main path scavenger → channel persists through every stage
+PASS Full main path medic → science persists through every stage
+PASS Full main path medic → control persists through every stage
+PASS Full main path medic → independent persists through every stage
+PASS Full main path medic → channel persists through every stage
+PASS Major information branches and witness choice are real persistent consequences
+PASS Monolith-related outcome requires late decisions and cannot be selected after betraying witness
+PASS Sarcophagus remains closed with old documents until real route and preparation stages
+PASS Northern preparation is explicit and does not consume supplies simply for checking
+PASS All hidden routes persist, respect direction and temporary expiration, update map
+PASS POI discovery, visit, knowledge and save/load work without revealing unknown places
+PASS Six secret chains have honest next-location hints and once-only final loot/routes
+PASS Guide payment is once-only and insufficient money never unlocks a route
+PASS Full inventory cancels unique reward and story progress together; retry after unloading works
+PASS Knowledge progresses, costs time/money, cannot be spammed in one visit, and persists
+PASS Schema 13 migrates into current schema without changing inventory, money, stories or current battle
+PASS Story event result reload does not duplicate cash, XP or unique item rewards
+PASS Optional local audio supports all states and safely falls back on missing file
+PASS PDA, credits, audio controls and achievements preserve an active expedition
+PASS Post-story mission and ending service persist: science
+PASS Post-story mission and ending service persist: control
+PASS Post-story mission and ending service persist: independent
+PASS Post-story mission and ending service persist: channel
+PASS Twenty consecutive expeditions stay active and return cleanly
+PASS Reward fees are not charged for full backpack or a remote service
+PASS Main Story background actions are gated and functional across all nineteen non-final steps
+48 v10 checks passed.

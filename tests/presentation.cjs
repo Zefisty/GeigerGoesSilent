@@ -6,7 +6,7 @@ function raw(r){const s=r.E.getState();s.quests.completed=s.quests.completed.map
 function seedCombat(r,type='dog',slot='sidearm'){const s=r.S.fresh();s.mode='combat';s.equipment.activeWeaponSlot=slot;s.combat={type,enemy:{hp:r.W.enemyTypes[type].hp,maxHp:r.W.enemyTypes[type].hp},turn:2,aimed:false,log:[]};return s;}
 for(const bg of ['rookie','soldier','technician','hunter','scavenger','medic'])test('First run '+bg+' intro → rumor → cache → combat → return → save',()=>{
  const r=runtime();r.E.action('newGame');r.E.action('startGame',bg);assert.ok(r.E.getState().event.id.startsWith('v72_intro_'));
- for(let n=0;n<8&&r.E.getState().event;n++){const c=r.E.getState().event.choices[0];select(r,c.label);}
+ for(let n=0;n<8&&r.E.getState().event;n++){const event=r.E.getState().event,c=event.flow.phase==='choices'&&event.flow.stageId==='orientation'?event.choices.find(c=>c.finish):event.choices[0];select(r,c.label);}
  assert.equal(r.E.getState().mode,'play');assert.ok(r.E.getState().quests.active.length);r.E.action('news');select(r,'Послушать слухи');assert.equal(r.E.getState().rumorVisit.heard,true);select(r,'Продолжить');
  r.E.action('explore');assert.equal(r.E.getState().event.id,'first_visit_cache');select(r,'Забрать запас');assert.ok(r.E.getState().event.flow.rewards.items.some(x=>x.id==='bandage'));select(r,'Продолжить');assert.equal(r.E.getState().event.id,'first_visit_dog');select(r,'Держать позицию');assert.equal(r.E.getState().combat.type,'dog');
  r.ctx.Math.random=()=>0;for(let n=0;n<20&&r.E.getState().combat;n++){if(r.E.getState().activeWeapon.magazine)r.E.action('attack');else r.E.action('reload');}
