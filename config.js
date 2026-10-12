@@ -1,6 +1,6 @@
 (() => {
   window.ZoneRPGLog={write(s,text){s.log.push(text);s.log=s.log.slice(-10);}};
-  window.ZoneRPGConfig={version:'10.2.3',credits:{developer:'Zefisty',betaTester:'DOCLIK',music:'Sajen'}};
+  window.ZoneRPGConfig={version:'10.2.4',credits:{developer:'Zefisty',betaTester:'DOCLIK',music:'Sajen'}};
 })();
 
 // UI dictionary only. Narrative content remains in its existing definitions.

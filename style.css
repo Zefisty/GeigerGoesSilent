@@ -115,3 +115,13 @@ body[data-motion="reduced"] .reward-toast{animation:none;position:static;transfo
 .zone-map .map-faction{font-size:7px;white-space:normal;line-height:1.2;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
 .map-current-label{font-size:7px;color:#d1bc75}
 @media(max-width:700px){.zone-map .map-radiation{font-size:9px}.zone-map .map-faction{font-size:8px}.database-tabs .tiny-button{min-height:32px}}
+
+/* Compact manual-save / pause controls and one shared warning toast. */
+.system-controls{display:flex;flex-wrap:wrap;gap:6px;margin-left:auto;align-items:center}
+.system-controls .system-button{padding:7px 10px;min-height:32px;white-space:nowrap}
+.reward-toast.survival-warning{animation-duration:4.5s;border-color:#c8a05c;background:#30281e;color:#f0d49a}
+.reward-toast small{display:block;margin-top:5px;font-size:11px;color:#d6ddc0}
+@media(max-width:600px){.topbar{flex-wrap:wrap;gap:8px}.system-controls{gap:4px;flex-shrink:0}.system-controls .system-button{padding:6px 8px;font-size:10px}.reward-toast{max-width:calc(100vw - 20px);box-sizing:border-box;white-space:normal}}
+
+@media(prefers-reduced-motion:reduce){.reward-toast.survival-warning{position:fixed;left:50%;transform:translateX(-50%);margin:0;animation:none}}
+body[data-motion="reduced"] .reward-toast.survival-warning{position:fixed;left:50%;transform:translateX(-50%);margin:0;animation:none}
