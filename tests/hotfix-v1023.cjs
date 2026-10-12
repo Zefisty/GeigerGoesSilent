@@ -2,7 +2,7 @@ const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('n
 const {runtime,select}=require('./runtime.cjs');
 let passed=0;function test(name,fn){fn();passed++;console.log('PASS '+name);}
 function panel(r){return r.root.innerHTML.slice(r.root.innerHTML.lastIndexOf('<div class="overlay-shade">'));}
-test('More has six controls with manual Save restored',()=>{
+test('More has six global entries instead of fourteen',()=>{
  const r=runtime();r.load(r.S.fresh());r.E.action('openPanel','more');const html=panel(r);
  assert.equal((html.match(/data-action="/g)||[]).length-1,6);
  for(const id of ['zoneStory','zonePlaces','achievements','personalStory','worldStatus','zoneLegends','factions','notebook'])assert.ok(!html.includes('data-value="'+id+'"'));
