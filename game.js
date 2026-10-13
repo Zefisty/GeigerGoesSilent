@@ -3,6 +3,15 @@
   const render=()=>window.ZoneRPGUI.render(engine.getState());
   function run(name,value,extra){engine.action(name,value,extra);}
   function activate(el){const a=el.dataset.action,v=el.dataset.value,x=el.dataset.extra;
+    if(a==='restPicker'||a==='restPickerBack'){
+      const s=engine.getState();if(a==='restPicker'&&(s.mode!=='play'||s.event||s.combat||s.expedition.active||s.travelTo))return;
+      window.ZoneRPGUI.setRestPicker(a==='restPicker');render();return;
+    }
+    if(a==='restChoice'){
+      const s=engine.getState();if(!window.ZoneRPGUI.isRestPickerOpen()||s.mode!=='play'||s.event||s.combat||s.expedition.active||s.travelTo||!['short','camp'].includes(v))return;
+      run(v==='short'?'breath':'rest');const after=engine.getState();window.ZoneRPGUI.setRestPicker(after.worldClock===s.worldClock,after.log.at(-1)||'');render();return;
+    }
+    if(a==='close'&&window.ZoneRPGUI.isRestPickerOpen()){window.ZoneRPGUI.setRestPicker(false);render();return;}
     if(a==='savePicker'||a==='savePickerBack'){if(engine.getState().mode!=='menu')return;window.ZoneRPGUI.setSavePicker(a==='savePicker'&&engine.getState().hasSave);render();return;}
     if(a==='close'&&engine.getState().mode==='menu'&&window.ZoneRPGUI.isSavePickerOpen()){window.ZoneRPGUI.setSavePicker(false);render();return;}
     if(a==='databaseTab'){window.ZoneRPGUI.setDatabaseTab(v);render();return;}
@@ -20,6 +29,6 @@
   root.addEventListener('click',e=>{const el=e.target.closest('[data-action]');if(!el||el.disabled)return;e.preventDefault();window.ZoneRPGAudio?.unlock();if(['attack','reload','buy','sell','turnIn','acceptQuest'].includes(el.dataset.action)){el.disabled=true;setTimeout(()=>{if(el.isConnected)el.disabled=false;},180);}activate(el);});
   root.addEventListener('input',e=>{const name=e.target.dataset.setting;if(!['volume','musicVolume','effectsVolume'].includes(name))return;engine.action('setSetting',{key:name,value:Number(e.target.value),live:true});});
   root.addEventListener('change',e=>{const name=e.target.dataset.setting;if(!name)return;let value=e.target.value;if(value==='true')value=true;else if(value==='false')value=false;else if(['scale','volume','musicVolume','effectsVolume'].includes(name))value=Number(value);run('setSetting',{key:name,value});});
-  window.addEventListener('keydown',e=>{const target=e.target;if(target?.matches('input,select,textarea,[contenteditable="true"]'))return;const k=e.key.toLowerCase();if(k==='escape'){const s=engine.getState();if(s.mode==='menu'&&window.ZoneRPGUI.isSavePickerOpen()){window.ZoneRPGUI.setSavePicker(false);render();e.preventDefault();return;}if(s.mode==='menu'||s.mode==='dead')return;if(s.mode==='play'){run('openPanel','pause');}else if(s.mode==='combatItems'||s.mode==='combatWeapons')run('openPanel','combat');else run('closePanel');e.preventDefault();return;}if(['i','m','j','c'].includes(k)){const s=engine.getState();if(!['play','event'].includes(s.mode)||s.combat)return;run('openPanel',({i:'inventory',m:'map',j:'quests',c:'character'})[k]);e.preventDefault();}});
+  window.addEventListener('keydown',e=>{const target=e.target;if(target?.matches('input,select,textarea,[contenteditable="true"]'))return;const k=e.key.toLowerCase();if(k==='escape'){const s=engine.getState();if(window.ZoneRPGUI.isRestPickerOpen()){window.ZoneRPGUI.setRestPicker(false);render();e.preventDefault();return;}if(s.mode==='menu'&&window.ZoneRPGUI.isSavePickerOpen()){window.ZoneRPGUI.setSavePicker(false);render();e.preventDefault();return;}if(s.mode==='menu'||s.mode==='dead')return;if(s.mode==='play'){run('openPanel','pause');}else if(s.mode==='combatItems'||s.mode==='combatWeapons')run('openPanel','combat');else run('closePanel');e.preventDefault();return;}if(['i','m','j','c'].includes(k)){const s=engine.getState();if(!['play','event'].includes(s.mode)||s.combat)return;run('openPanel',({i:'inventory',m:'map',j:'quests',c:'character'})[k]);e.preventDefault();}});
   engine.onChange(render);render();
 })();
