@@ -6,7 +6,7 @@
     pistol19:{name:'Форт-12',damage:28,accuracy:.78,magazine:12,ammoType:'ammo919',reloadTime:1.4,fireRate:.65,critChance:.12,weaponClass:'pistol',price:1400,weight:1.1,range:'короткая'},
     sawedoff:{name:'Обрез',damage:48,accuracy:.57,magazine:2,ammoType:'ammo1270',reloadTime:1.8,fireRate:.45,critChance:.18,weaponClass:'shotgun',price:1600,weight:2.4,range:'короткая'},
     shotgun:{name:'ТОЗ-34',damage:56,accuracy:.61,magazine:2,ammoType:'ammo1270',reloadTime:2,fireRate:.42,critChance:.2,weaponClass:'shotgun',price:2600,weight:3.2,range:'короткая'},
-    aksu:{name:'АКС-74У',damage:28,accuracy:.69,magazine:30,ammoType:'ammo545',reloadTime:1.8,fireRate:.9,critChance:.1,weaponClass:'rifle',price:4200,weight:3.1,range:'средняя'},
+    aksu:{name:'АКС-74У',damage:35,accuracy:.69,magazine:30,ammoType:'ammo545',reloadTime:1.8,fireRate:.9,critChance:.1,weaponClass:'rifle',price:4200,weight:3.1,range:'средняя'},
     ak:{name:'АКМ',damage:37,accuracy:.67,magazine:30,ammoType:'ammo762',reloadTime:2,fireRate:.78,critChance:.12,weaponClass:'rifle',price:5600,weight:3.8,range:'средняя'},
     vintar:{name:'Винтарь-ВС',damage:64,accuracy:.9,magazine:10,ammoType:'ammo9x39',reloadTime:2.2,fireRate:.48,critChance:.22,weaponClass:'sniper',price:12500,weight:3.7,range:'дальняя'},
     aps:{name:'АПС',damage:31,accuracy:.7,magazine:20,ammoType:'ammo918',reloadTime:1.5,fireRate:.88,critChance:.11,weaponClass:'pistol',price:2300,weight:1.2,range:'короткая'},
@@ -14,6 +14,7 @@
     huntingRifle:{name:'Охотничья винтовка',damage:46,accuracy:.8,magazine:5,ammoType:'ammo762',reloadTime:2,fireRate:.55,critChance:.16,weaponClass:'rifle',price:3900,weight:3.5,range:'средняя'}
   };
   const items = {
+    mutantParts:{name:'Ткани мутанта',type:'loot',description:'Биологический образец для исследователей.',price:65,weight:.35,stackable:true,effect:null,icon:'food'},
     knife:{name:'Охотничий нож',type:'weapon',slot:'melee',description:'Тихое оружие для ближнего боя.',price:150,weight:.4,stackable:false,effect:null,weaponId:'knife'},
     pm:{name:'ПМ',type:'weapon',slot:'sidearm',description:'Старый, но надёжный пистолет.',price:900,weight:.9,stackable:false,effect:null,weaponId:'pm'},
     pistol19:{name:'Форт-12',type:'weapon',slot:'sidearm',description:'Пистолет под патрон 9×19.',price:1400,weight:1.1,stackable:false,effect:null,weaponId:'pistol19'},
@@ -43,7 +44,7 @@
     medkit:'medkit',bandage:'bandage',antirad:'antirad',canned:'canned',bread:'ration',water:'water',energy:'energy-drink',
     jacket:'armor-light',leather:'armor-light',vest:'armor-vest',stalkerSuit:'armor-suit',armySuit:'armor-suit',exoskeleton:'armor-exo',
     gasmask:'gas-mask',sealedHelmet:'helmet',fieldPack:'backpack',milPack:'backpack',echoDetector:'detector',svarog:'detector-pro',
-    jellyfish:'artifact-medusa',stoneflower:'artifact-stoneflower',meatchunk:'artifact-meatchunk',flash:'artifact-flash',gravi:'artifact-gravi',spark:'artifact-spark',nightstar:'artifact-nightstar',shell:'artifact-shell',fireball:'artifact-fireball',moonlight:'artifact-moonlight',battery:'artifact-battery',goldfish:'artifact-goldfish',soul:'artifact-soul',needle:'artifact-needle',bubble:'artifact-bubble',motherBeads:'artifact-beads',documents:'quest-document',tools:'tools',electronics:'electronics',parts:'parts',wires:'wires',valuables:'valuables'
+    jellyfish:'artifact-medusa',stoneflower:'artifact-stoneflower',meatchunk:'artifact-meatchunk',flash:'artifact-flash',gravi:'artifact-gravi',spark:'artifact-spark',nightstar:'artifact-nightstar',shell:'artifact-shell',fireball:'artifact-fireball',moonlight:'artifact-moonlight',battery:'artifact-battery',goldfish:'artifact-goldfish',soul:'artifact-soul',needle:'artifact-needle',bubble:'artifact-bubble',motherBeads:'artifact-beads',mutantParts:'mutant-parts',documents:'quest-document',tools:'tools',electronics:'electronics',parts:'parts',wires:'wires',valuables:'valuables'
   };
   const iconFallback=item=>{
     if(item.slot==='melee')return 'knife';

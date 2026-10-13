@@ -48,7 +48,8 @@
     end('Осмотреть тела','Ты проверяешь ремни и карманы поверженного противника.',{postCombat:'body'}),
     end('Осмотреть поле боя','На земле остались гильзы, следы и отметки чужого укрытия.',{postCombat:'clue'}),
     end('Изучить противника','Ты заносишь наблюдения в полевой справочник.',{postCombat:'study'}),
-    end('Проверить оружие врага','Ты проверяешь, что ещё можно снять с повреждённого снаряжения.',{postCombat:'salvage'}),
+    {...end('Проверить оружие врага','Ты проверяешь, что ещё можно снять с повреждённого снаряжения.',{postCombat:'salvage'}),when:{combatWon:true,enemyKind:'human'}},
+    {...end('Осмотреть ткани мутанта','Ты отделяешь пригодный биологический образец.',{postCombat:'biological'}),when:{combatWon:true,enemyKind:'mutant'}},
     end('Продолжить путь','Ты покидаешь место стычки, не задерживаясь.',{stamina:2})
   ];
   for(const e of W.events)for(const stage of e.stages||[]){
@@ -72,4 +73,7 @@
     medic:['У перевязочного стола','Мара просит взглянуть на повязку дозорного. Ты проверяешь кровообращение и показываешь, как ослабить тугой узел.','Помочь дозорному','Рука теплеет. Мара благодарит за спокойную работу.',{knowledge:'Медицинская заметка: после перевязки проверяй пальцы и кровообращение.'}]
   };
   for(const [id,[title,text,label,result,effects]] of Object.entries(intros))addEvent('v72_intro_'+id,title,[],[{id:'intro',text,choices:[{label,effects,nextStage:'orientation',resultText:result},end('Выйти к дороге','Ты проверяешь вещи и выходишь к дороге.')]},{id:'orientation',text:result+' Первое дело отмечено в КПК. Можно осмотреть сектор, подготовить вещи и вернуться к людям после вылазки.',choices:[{label:'Проверить первое задание в КПК',action:'questPanel'},end('Записать и выйти к дороге','Ты выходишь в сектор. Первое поручение осталось в КПК.')]}],{kind:'intro'});
+  const well=W.quests.find(q=>q.id==='village_medic');well.count=1;well.text='Найди аптечный ящик у Тихого колодца в мёртвой деревне и доложи Анике. Только осмотр самого ящика подтверждает находку.';
+  addEvent('v103_medical_crate','Аптечный ящик у Тихого колодца',[],[{id:'crate',text:'За колодцем виден ящик с выцветшим медицинским крестом. Сверь его маркировку с поручением Аники.',choices:[{label:'Осмотреть аптечный ящик',when:{questActive:'village_medic',notFlag:'quietWellMedicalCrateFound'},effects:{quietWellMedicalCrate:true},finish:true,resultText:'Маркировка совпала. Аптечный ящик найден; вернись к Анике с отчётом.'},end('Уйти','Ты оставляешь ящик на месте.')]}]);
+  for(const enemy of Object.values(W.enemyTypes))if(enemy.kind==='mutant'||enemy.faction==='mutants')enemy.loot=enemy.loot.map(id=>id==='parts'?'mutantParts':id).filter(id=>!['weapon','ammo'].includes(window.ZoneRPGItems.items[id]?.type));
 })();

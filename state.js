@@ -1,6 +1,6 @@
 (() => {
-  const VERSION = 15;
-  const LEGACY_VERSIONS = [2,3,4,5,6,7,8,9,10,11,12,13,14];
+  const VERSION = 16;
+  const LEGACY_VERSIONS = [2,3,4,5,6,7,8,9,10,11,12,13,14,15];
   const KEY = 'zonerpg-pda-save';
   const clamp = (value, min, max, fallback = 0) => Number.isFinite(Number(value))
     ? Math.max(min, Math.min(max, Number(value))) : fallback;
@@ -46,7 +46,7 @@
       reputation: {loners:5,bandits:-10,duty:0,freedom:0,military:-5,ecologists:0,mercs:0,mutants:-10,monolith:-25},
       quests: {active:[{id:'first_road',step:0,progress:0,searchAttempts:0,acceptedAtLocation:'cordon'}],completed:[]},
       known:['cordon','rookie','checkpoint','garbage'], visited:['cordon'], seenEvents:[], recentEvents:[], takenCaches:[], explores:{},expedition:window.ZoneRPGExpedition.empty(),lastExpedition:null,discoveredEnemies:[],discoveredArtifacts:[],npcMemory:{},factionMembership:null,worldClock:0,worldEvents:[],explorationCount:0,explorationActive:false,explorationOriginLocationId:null,explorationSessionDepth:0,eventXPClaims:[],backgroundInteractions:[],knowledge:[],
-      worldFlags:{documentsFound:false,stationOpen:false,hatchOpened:false,pigGiftClaimed:false}, travelTo:null, event:null, combat:null,
+      worldFlags:{quietWellMedicalCrateFound:false,documentsFound:false,stationOpen:false,hatchOpened:false,pigGiftClaimed:false}, travelTo:null, event:null, combat:null,
       log:['Ты входишь в Зону. На Кордоне ещё можно передумать.'], rumors:[], heardRumors:[], rumorVisit:{location:'cordon',heard:false}, tutorial:window.ZoneRPGOnboarding.fresh(), settings:{musicVolume:1,effectsVolume:1,tutorialHints:true,muted:false,scale:1,reduceMotion:false,music:true,sfx:true,volume:.35,autoTurnInQuests:false},
       statistics:{earnings:0,artifacts:0,kills:0,quests:0}
     };
@@ -62,7 +62,7 @@
     state.player.health=100+(state.attributes.endurance-2)*2;state.player.stamina=100+(state.attributes.endurance-2)*2;
     state.zoneStory=window.ZoneRPGZone.fresh();
     state.personalStory=window.ZoneRPGStories.fresh(state.backgroundId);
-    state.worldState=window.ZoneRPGLiving.fresh(state.player.location);
+    state.worldState=window.ZoneRPGLiving.fresh(state.player.location);window.ZoneRPGShops.sync(state);
     window.ZoneRPGLiving.observe(state,state.player.location);
     return state;
   }
@@ -192,6 +192,7 @@
     base.heardRumors=window.ZoneRPGKnowledge.heard(input.heardRumors,base.rumors,base.knowledge);
     if(input.worldFlags&&typeof input.worldFlags==='object')for(const key of Object.keys(base.worldFlags))base.worldFlags[key]=Boolean(input.worldFlags[key]);
     if(input.settings&&typeof input.settings==='object'){base.settings.scale=Number(input.settings.scale);base.settings.reduceMotion=Boolean(input.settings.reduceMotion);base.settings.music=input.settings.music!==false;base.settings.sfx=input.settings.sfx!==false;base.settings.volume=clamp(input.settings.volume,0,1,.35);base.settings.musicVolume=clamp(input.settings.musicVolume,0,1,1);base.settings.effectsVolume=clamp(input.settings.effectsVolume,0,1,1);base.settings.autoTurnInQuests=input.settings.autoTurnInQuests===true;base.settings.tutorialHints=input.settings.tutorialHints!==false;base.settings.muted=input.settings.muted===true;}
+    for(const q of base.quests.active)if(q.id==='village_medic')q.progress=base.worldFlags.quietWellMedicalCrateFound?1:0;
     base.settings.scale=[1,1.1].includes(base.settings.scale)?base.settings.scale:1;
     if(input.statistics&&typeof input.statistics==='object')for(const key of Object.keys(base.statistics))base.statistics[key]=clamp(input.statistics[key],0,999999,0);
     base.log=Array.isArray(input.log)?input.log.filter(x=>typeof x==='string').slice(-10).map(text=>text.replace(/\b(strength|agility|endurance|perception|intelligence|pistols|smg|rifles|shotguns|melee|rifleMastery)\b/g,key=>ATTRIBUTE_INFO[key]?.name||MASTERY_NAMES[key]||'Владение винтовками')):base.log;
@@ -215,7 +216,7 @@
     base.factionMembership=world.factions[input.factionMembership]?.joinable?input.factionMembership:null;
     base.worldClock=clamp(input.worldClock,0,999999,0);
     base.worldEvents=Array.isArray(input.worldEvents)?input.worldEvents.filter(x=>world.worldEvents?.some(d=>d.id===x.id)&&Number.isFinite(x.endsAt)&&x.endsAt>base.worldClock).map(x=>({id:x.id,endsAt:x.endsAt})).slice(-5):[];
-    base.worldState=window.ZoneRPGLiving.normalize(input.worldState,base);
+    base.worldState=window.ZoneRPGLiving.normalize(input.worldState,base);base.traderStocks=window.ZoneRPGShops.normalize(input.traderStocks,base);
     base.zoneStory=window.ZoneRPGZone.normalize(input.zoneStory);
     window.ZoneRPGZone.quest(base);
     if(!base.worldState.observations[base.player.location])window.ZoneRPGLiving.observe(base,base.player.location);

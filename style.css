@@ -126,3 +126,15 @@ body[data-motion="reduced"] .reward-toast.survival-warning{position:fixed;left:5
 
 /* Keep the final More pair in one row at mobile widths. */
 .menu-actions.more-actions{grid-template-columns:repeat(2,minmax(0,1fr))}
+
+/* Dense PDA rows retain readable text and touch targets. */
+.shop-list,.item-list{gap:5px}
+.shop-row,.item-row-card{padding:7px 9px;gap:8px}
+.shop-row .item-info p,.item-row-card .item-info p{margin:3px 0;font-size:11px;line-height:1.35}
+.shop-row .item-symbol,.item-row-card .item-symbol{width:30px;height:30px;flex-basis:30px}
+.shop-actions{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:4px;flex:0 0 170px;min-width:0}
+.shop-quantity{grid-column:1/-1;display:grid;grid-template-columns:auto auto minmax(0,1fr);align-items:center;gap:4px;font-size:11px}
+.shop-quantity input{width:100%;min-width:0;margin:0}
+.shop-total{font:11px monospace;color:var(--amber)}
+@media(max-width:650px){.shop-actions{flex-basis:125px}.shop-row,.item-row-card{gap:6px;padding:7px}.shop-actions button{min-height:36px}}
+@media(max-width:400px){.shop-row{display:grid;grid-template-columns:30px minmax(0,1fr)}.shop-actions{grid-column:2;grid-template-columns:minmax(0,1fr) auto;align-items:center}.shop-quantity{grid-column:1/-1}.shop-row .item-info,.item-row-card .item-info{min-width:0;overflow-wrap:anywhere}}
