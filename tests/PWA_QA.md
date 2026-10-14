@@ -31,30 +31,12 @@ Manifest id/start_url/scope remain ./; name, short_name, display and colors are 
 
 PWA/icon suites include no-old-z-icons, actual PNG contents/hash/dimensions/opaque background, maskable safe zone, HTML/favicon/Apple, manifest metadata and precache path validation, old-cache removal, offline fetch and unchanged gameplay/UI/registration checks. Full local run: 434 PASS across 28 executable test suites, zero failures (runtime.cjs/server.cjs are helpers; audit-v72.cjs is a report generator). Dedicated icon/PWA checks: 23 PASS (7 radiation, 3 no-old-z-icons, 13 PWA). All 58 JS/CJS files passed syntax checking. All JS/CJS pass node --check; manifest JSON and HTML parse; git diff --check passes. No commit/push or deployment.
 
-## Exact working-tree file list
+## Desktop shortcut ICO follow-up (current)
 
-- `D` `assets/pwa/radiation-green-192.png`
-- `D` `assets/pwa/radiation-green-512.png`
-- `D` `assets/pwa/radiation-green-apple-180.png`
-- `D` `assets/pwa/radiation-green-favicon-32.png`
-- `D` `assets/pwa/radiation-green-favicon-48.png`
-- `D` `assets/pwa/radiation-green-maskable-512.png`
-- `D` `assets/pwa/zonerpg-radiation-v1.png`
-- `M` `design/render-green-icons.py`
-- `D` `design/zonerpg-radiation-v1.prompt.txt`
-- `M` `index.html`
-- `M` `manifest.webmanifest`
-- `M` `pwa-assets.js`
-- `M` `service-worker.js`
-- `M` `tests/PWA_QA.md`
-- `M` `tests/pwa.cjs`
-- `M` `tests/radiation-icons.cjs`
-- `M` `tests/world-logic.cjs`
-- `??` `assets/pwa/radiation-green-v2-192.png`
-- `??` `assets/pwa/radiation-green-v2-512.png`
-- `??` `assets/pwa/radiation-green-v2-apple-180.png`
-- `??` `assets/pwa/radiation-green-v2-favicon-32.png`
-- `??` `assets/pwa/radiation-green-v2-favicon-48.png`
-- `??` `assets/pwa/radiation-green-v2-maskable-512.png`
-- `??` `design/green-icon-assets.json`
-- `??` `tests/no-old-z-icons.cjs`
+The previous patch had PNG links and valid PWA metadata but no real favicon.ico. Thus some legacy/shortcut paths could still depend on cached browser/bookmark icons; the exact OS/browser selection was not observed. This patch adds a real multi-image ICO derived exclusively from the approved green 512px PNG: 16, 24, 32, 48, 64, 128 and 256px. Files: favicon.ico and assets/pwa/radiation-green-v3-shortcut.ico (identical bytes). HTML rel=icon explicitly offers the versioned ICO and existing PNG 32/48; rel=shortcut icon now uses the ICO. Apple 180 and manifest entries are unchanged. No new icon design.
+
+The renderer and hash audit include both ICO copies. The PWA folder now contains six approved PNGs plus the versioned ICO. CACHE_VERSION is v5-green-shortcut-icons; precache includes both ICO URLs. Activation removes older same-app caches through the unchanged strategy. Tests verify actual ICO headers, directory offsets, all decoded frame dimensions, green pixels/opaque background, hashes, all HTML resources, unchanged manifest and offline ICO bytes. no-old-z-icons now accepts the approved default ICO while continuing to reject retired icon assets.
+
+Fresh shortcuts get only green resources exposed by the project after deployment. Existing browser/bookmark/OS shortcuts may still need recreation; actual Edge desktop/home-screen installation was not tested. On GitHub Pages, project fallback lives at /ZoneRPG/favicon.ico and explicit HTML links resolve under /ZoneRPG/. A browser request to the origin-level /favicon.ico is outside this repository's Pages scope and cannot be replaced by this project; explicit versioned links provide the correct project icon.
+
+Current follow-up validation: 53 PASS across icon, no-old-z-icons, shortcut, PWA and world-logic suites. All 59 JS/CJS syntax checks, manifest JSON, HTML parsing, ICO validation and git diff --check passed. The 434/28 full-suite result above belongs to the preceding cleanup, not this follow-up. No gameplay/UI or save changes; no commit/push.

@@ -1,5 +1,7 @@
 // Lightweight offline shell only; regenerate this list when adding local images/scripts.
 self.ZoneRPGPrecache = [
+  "./favicon.ico",
+  "./assets/pwa/radiation-green-v3-shortcut.ico",
   "./assets/pwa/radiation-green-v2-192.png",
   "./assets/pwa/radiation-green-v2-512.png",
   "./assets/pwa/radiation-green-v2-apple-180.png",

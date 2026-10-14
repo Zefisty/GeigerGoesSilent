@@ -32,5 +32,33 @@
       "bytes": 10071,
       "sha256": "1551d695f83fbbf1e27dfe06a8a1ca2c08a5cc4b15a2ac8664220a0dbbeacb0a"
     }
+  },
+  "desktopIcons": {
+    "assets/pwa/radiation-green-v3-shortcut.ico": {
+      "sizes": [
+        16,
+        24,
+        32,
+        48,
+        64,
+        128,
+        256
+      ],
+      "bytes": 21613,
+      "sha256": "5915482c8d849207b0e558acead7d9029f38dd678a11b4b2932dbc728b4e51a6"
+    },
+    "favicon.ico": {
+      "sizes": [
+        16,
+        24,
+        32,
+        48,
+        64,
+        128,
+        256
+      ],
+      "bytes": 21613,
+      "sha256": "5915482c8d849207b0e558acead7d9029f38dd678a11b4b2932dbc728b4e51a6"
+    }
   }
 }

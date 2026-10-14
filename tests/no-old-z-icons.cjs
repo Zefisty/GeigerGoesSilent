@@ -2,7 +2,7 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs'), path = require('node:path'), crypto = require('node:crypto');
 const ROOT = path.resolve(__dirname, '..');
 const read = file => fs.readFileSync(path.join(ROOT, file));
-const retired = /(?:assets\/favicon\.(?:svg|png|ico)|(?:^|[/'"\s])favicon\.ico|assets\/pwa\/(?:icon-(?:192|512|maskable-512)|apple-touch-icon)\.png|(?:zonerpg-)?radiation-(?:v1|192|512|apple-180|favicon-32|favicon-48|maskable-512)\.(?:png|svg)|radiation-green-(?!v2-)[\w-]+\.png)/i;
+const retired = /(?:assets\/favicon\.(?:svg|png|ico)|assets\/pwa\/(?:icon-(?:192|512|maskable-512)|apple-touch-icon)\.png|(?:zonerpg-)?radiation-(?:v1|192|512|apple-180|favicon-32|favicon-48|maskable-512)\.(?:png|svg)|radiation-green-(?!v2-)[\w-]+\.png)/i;
 function walk(dir) {
   return fs.readdirSync(dir, {withFileTypes:true}).flatMap(entry => {
     if (['.git', 'node_modules', 'tests', 'design'].includes(entry.name)) return [];
@@ -20,11 +20,11 @@ test('no-old-z-icons: no retired icon references in any shipped source/config', 
   for (const old of ['./assets/favicon.svg', './assets/pwa/icon-192.png', './assets/pwa/icon-512.png', './assets/pwa/icon-maskable-512.png', './assets/pwa/apple-touch-icon.png', './assets/pwa/zonerpg-radiation-v1.png', './assets/pwa/radiation-green-512.png'])
     assert.match(old, retired, 'Regression detector must reject ' + old);
 });
-test('Only the six approved versioned green PNGs remain in application assets', () => {
+test('Only approved green PNG/ICO assets remain in application assets', () => {
   const audit = JSON.parse(read('design/green-icon-assets.json'));
   const files = Object.keys(audit.icons);
   assert.equal(files.length, 6);
-  assert.deepEqual(fs.readdirSync(path.join(ROOT, 'assets/pwa')).sort(), files.map(f => path.basename(f)).sort());
+  assert.deepEqual(fs.readdirSync(path.join(ROOT, 'assets/pwa')).sort(), [...files, ...Object.keys(audit.desktopIcons).filter(f => f.startsWith('assets/pwa/'))].map(f => path.basename(f)).sort());
   assert.equal(crypto.createHash('sha256').update(read(audit.source).toString().replace(/\r\n/g, '\n')).digest('hex'), audit.sourceSHA256);
   for (const [file, meta] of Object.entries(audit.icons)) {
     assert.match(file, /^assets\/pwa\/radiation-green-v2-/);

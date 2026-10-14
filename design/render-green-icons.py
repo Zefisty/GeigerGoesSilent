@@ -43,4 +43,14 @@ for name, size in [('192',192), ('512',512), ('apple-180',180),
     image.resize((size,size), Image.Resampling.BOX).save(target, optimize=True)
     data = target.read_bytes()
     audit['icons'][relative] = {'size': size, 'bytes': len(data), 'sha256': hashlib.sha256(data).hexdigest()}
+# Desktop/legacy shortcuts: a real multi-image ICO and a default-path copy.
+ico_sizes = [(n,n) for n in (16,24,32,48,64,128,256)]
+ico_path = ROOT / 'assets/pwa/radiation-green-v3-shortcut.ico'
+with Image.open(ROOT / 'assets/pwa/radiation-green-v2-512.png') as approved:
+    approved.save(ico_path, format='ICO', sizes=ico_sizes)
+ico_data = ico_path.read_bytes()
+(ROOT / 'favicon.ico').write_bytes(ico_data)
+audit['desktopIcons'] = {}
+for relative in ('assets/pwa/radiation-green-v3-shortcut.ico', 'favicon.ico'):
+    audit['desktopIcons'][relative] = {'sizes': [n for n,_ in ico_sizes], 'bytes': len(ico_data), 'sha256': hashlib.sha256(ico_data).hexdigest()}
 (ROOT / 'design/green-icon-assets.json').write_text(json.dumps(audit, indent=2) + '\n', encoding='utf-8')

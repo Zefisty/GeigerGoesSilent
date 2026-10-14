@@ -40,11 +40,11 @@ await test('Version replacement cleans only this ZoneRPG scope and leaves active
 });
 await test('Final green cache purges legacy icon caches and stores only approved icon bytes',async()=>{
  const base='https://zefisty.github.io/ZoneRPG/',prefix='zonerpg-%2FZoneRPG%2F-',shared=new Map();
- for(const version of ['v1','v2-radiation-icons','v3-green-radiation-icons'])shared.set(prefix+version,new Map([[base+'assets/pwa/icon-512.png',new Response('old Z')]]));
- shared.set('another-app',new Map());const w=worker(base,shared);assert.equal(w.name(),prefix+'v4-green-radiation-final');await w.install();await w.activate();
+ for(const version of ['v1','v2-radiation-icons','v3-green-radiation-icons','v4-green-radiation-final'])shared.set(prefix+version,new Map([[base+'assets/pwa/icon-512.png',new Response('old Z')]]));
+ shared.set('another-app',new Map());const w=worker(base,shared);assert.equal(w.name(),prefix+'v5-green-shortcut-icons');await w.install();await w.activate();
  assert.deepEqual([...shared.keys()].sort(),['another-app',w.name()].sort());
- const icons=[...shared.get(w.name()).keys()].filter(url=>url.includes('/assets/pwa/'));assert.equal(icons.length,6);
- w.ctl.online=false;for(const url of icons){assert.match(url,/radiation-green-v2-/);assert.deepEqual(Buffer.from(await(await w.request(url)).arrayBuffer()),fs.readFileSync(path.join(ROOT,new URL(url).pathname.slice('/ZoneRPG/'.length))));}
+ const icons=[...shared.get(w.name()).keys()].filter(url=>url.includes('/assets/pwa/')||url.endsWith('/favicon.ico'));assert.equal(icons.length,8);
+ w.ctl.online=false;for(const url of icons){assert.match(url,/radiation-green-v[23]-|\/favicon\.ico$/);assert.deepEqual(Buffer.from(await(await w.request(url)).arrayBuffer()),fs.readFileSync(path.join(ROOT,new URL(url).pathname.slice('/ZoneRPG/'.length))));}
  for(const old of ['assets/favicon.svg','assets/pwa/icon-512.png','assets/pwa/radiation-512.png','assets/pwa/radiation-green-512.png'])assert.equal(await w.request(old),null);
 });
 await test('Failed next-version install cannot replace the existing offline shell',async()=>{
