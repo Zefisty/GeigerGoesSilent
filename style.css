@@ -138,3 +138,42 @@ body[data-motion="reduced"] .reward-toast.survival-warning{position:fixed;left:5
 .shop-total{font:11px monospace;color:var(--amber)}
 @media(max-width:650px){.shop-actions{flex-basis:125px}.shop-row,.item-row-card{gap:6px;padding:7px}.shop-actions button{min-height:36px}}
 @media(max-width:400px){.shop-row{display:grid;grid-template-columns:30px minmax(0,1fr)}.shop-actions{grid-column:2;grid-template-columns:minmax(0,1fr) auto;align-items:center}.shop-quantity{grid-column:1/-1}.shop-row .item-info,.item-row-card .item-info{min-width:0;overflow-wrap:anywhere}}
+
+/* Art pack: compact field illustrations, readable portraits, original category icons. */
+.location-header-art,.event-art,.poi-card img{display:block;object-fit:cover;object-position:center 43%;image-rendering:pixelated;background:#111a15;border:1px solid #526046;box-shadow:0 1px 0 #9ba97b20,0 8px 22px #0003;filter:none}
+.location-header-art{height:clamp(148px,19vw,196px);margin:14px 0 16px}
+.event-art{height:clamp(142px,18vw,188px);margin:14px 0 10px}
+.poi-card img{height:160px;margin-bottom:12px}
+.title-brief{background-image:linear-gradient(180deg,#111a15a8,#111a15ef 70%),url("assets/art/locations/camp.png");background-size:cover;background-position:center;box-shadow:inset 0 1px #a9b48b22,0 18px 60px #0006}
+.title-brief>span{color:#c0cba8}
+.background-portrait{width:88px;height:88px;object-fit:cover;float:none;align-self:flex-start;margin:0 0 12px;border:1px solid #606d50;box-shadow:4px 4px 0 #0b110d}
+.profile-sprite{width:88px;height:88px;flex:0 0 auto;object-fit:cover;border:1px solid #687854}
+.npc-face{flex:0 0 64px;width:64px;height:64px;background:#111a15;border:1px solid #59694c;box-shadow:3px 3px 0 #0c120e}
+.npc-face img{display:block;width:100%;height:100%;object-fit:cover}
+.person-row>div:nth-child(2){min-width:0;flex:1 1 160px}
+.story-person img{width:64px;height:64px;flex:0 0 auto;object-fit:cover;border:1px solid #516045}
+.npc-scene-portrait{width:48px;height:48px;object-fit:cover;vertical-align:middle}
+.encyclopedia-portrait{width:108px;height:108px;object-fit:cover;border:1px solid #56644a;margin:0 0 12px 12px}
+.sprite-stage{min-height:228px;background-position:center 45%;box-shadow:inset 0 0 72px #090f0bd9}
+.sprite-stage:after{display:none}
+.enemy-sprite{width:176px;height:176px;object-fit:cover;border:1px solid #8c8060;box-shadow:0 10px 28px #0009;filter:none}
+.player-sprite{width:64px;height:64px;object-fit:cover;border:1px solid #59694c}
+.combat-arena[data-enemy="alphaBoar"] .enemy-sprite,.combat-arena[data-enemy="zone_elite_boar"] .enemy-sprite,.combat-arena[data-enemy="zone_elite_guard"] .enemy-sprite{border-color:#bc9c65;box-shadow:0 0 0 3px #7d66322b,0 10px 28px #0009}
+.item-symbol{background:#101a13;border-color:#3d4c36;box-shadow:inset 0 0 10px #0003}
+.item-symbol .item-icon{width:34px;height:34px;filter:none}
+.rarity-uncommon{border-color:#70865b}.rarity-rare{border-color:#688d8b}.rarity-very_rare{border-color:#9984ac}.rarity-anomalous,.rarity-legendary,.rarity-unique{border-color:#bc9b5d;box-shadow:inset 0 0 10px #bc9b5d18}
+.faction-symbol{width:38px;height:38px;object-fit:contain;image-rendering:pixelated;vertical-align:middle}
+.trader-art{display:flex;align-items:center;gap:14px;margin:0 0 14px;padding:12px;background:linear-gradient(120deg,#263020,#171e18);border:1px solid #4b5c40}
+.trader-art img{display:block;object-fit:cover;image-rendering:pixelated;border:1px solid #73815b;flex:0 0 auto}
+.trader-art small,.trader-art strong{display:block}.trader-art small{font:9px monospace;color:#a2af8e;letter-spacing:.12em;margin-bottom:5px}.trader-art strong{font:19px Georgia,serif;color:#e0dfc9}
+@media(max-width:700px){
+ .location-header-art{height:142px}.event-art{height:132px}.poi-card img{height:138px}
+ .background-portrait{width:76px;height:76px}.profile-sprite{width:64px;height:64px}
+ .npc-face{flex-basis:48px;width:48px;height:48px}.person-row>div:nth-child(2){flex-basis:calc(100% - 62px)}
+ .story-person img{width:48px;height:48px}.encyclopedia-portrait{width:80px;height:80px}
+ .sprite-stage{min-height:206px}.enemy-sprite{width:156px;height:156px}.player-sprite{width:48px;height:48px}
+ .trader-art{padding:10px;gap:10px}.trader-art img{width:52px;height:52px}.trader-art strong{font-size:17px}
+}
+@media(prefers-reduced-motion:reduce){.enemy-sprite{animation:none}}
+
+.event-art[src*="/portraits/"]{object-fit:contain;object-position:center;background:radial-gradient(ellipse at center,#34402a,#111a15 72%)}

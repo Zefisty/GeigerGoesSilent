@@ -1,0 +1,1076 @@
+{
+  "version": 1,
+  "generatedWith": "OpenAI built-in image_gen; original pixel art",
+  "assets": {
+    "assets/art/locations/village.png": {
+      "width": 384,
+      "height": 256,
+      "bytes": 62683,
+      "sha256": "eb5db0f9d396b01288217853dd429dad2a84839fa2cadaeaeda52930e8f16ac4"
+    },
+    "assets/art/locations/cordon.png": {
+      "width": 384,
+      "height": 256,
+      "bytes": 62283,
+      "sha256": "d02fb24f10e491c90c1eb18387570de4efe6b60a7214682326e61352ba38ca77"
+    },
+    "assets/art/locations/scrapyard.png": {
+      "width": 384,
+      "height": 256,
+      "bytes": 67338,
+      "sha256": "07b983931b97b3fbb238745536050cc9116e1f3772c98199ba2633a79c1b32eb"
+    },
+    "assets/art/locations/dark-valley.png": {
+      "width": 384,
+      "height": 256,
+      "bytes": 61856,
+      "sha256": "75e3694495021ae8b5780d94a6f742e52d2744d20b2634aa1951ee20a4e36c70"
+    },
+    "assets/art/locations/agro.png": {
+      "width": 384,
+      "height": 256,
+      "bytes": 64030,
+      "sha256": "aeba0590fd8cf5c790fca8f352d1b3f2f6e2c6fe4fd24bc31aac3854c6c981ff"
+    },
+    "assets/art/locations/checkpoint.png": {
+      "width": 384,
+      "height": 256,
+      "bytes": 63592,
+      "sha256": "0f4e266fac27e9280c7eb5cc5d00e0f0f2e95bb9da23708298b55da799213f10"
+    },
+    "assets/art/locations/railway.png": {
+      "width": 384,
+      "height": 256,
+      "bytes": 68685,
+      "sha256": "ecb4ed29450e2dd76994df140af11124c58aa1bfc2506c515becbf432633bfad"
+    },
+    "assets/art/locations/red-forest.png": {
+      "width": 384,
+      "height": 256,
+      "bytes": 74968,
+      "sha256": "c97f63bad11744a99a4b9debfb33b5f34c7b3fddf62eb95ce6bb43cb3fbcb5ca"
+    },
+    "assets/art/locations/tunnel.png": {
+      "width": 384,
+      "height": 256,
+      "bytes": 72409,
+      "sha256": "34ff35f40030a5e7aad04cfb3d7f72404f1f1d544252227f461c124155f7b019"
+    },
+    "assets/art/locations/laboratory.png": {
+      "width": 384,
+      "height": 256,
+      "bytes": 71205,
+      "sha256": "ad24dbb20a3a1aa099e63385ea77dbe20ab3a9957cdebb2d20012c49aba9d6b2"
+    },
+    "assets/art/locations/camp.png": {
+      "width": 384,
+      "height": 256,
+      "bytes": 69385,
+      "sha256": "40b9bb32a2c282b1ade98bb1299bfc6f4335b61c519623644c5aec02303a41cb"
+    },
+    "assets/art/locations/anomaly.png": {
+      "width": 384,
+      "height": 256,
+      "bytes": 64294,
+      "sha256": "96ff6648af73cec6fb1d5076dc0295b72b6f77f47fd3d6f058243589de9168a2"
+    },
+    "assets/art/locations/ruins.png": {
+      "width": 384,
+      "height": 256,
+      "bytes": 69615,
+      "sha256": "472852657e83cbedfb897ddd8bb37490073ac181cc9be15cfdb09cc5164c0969"
+    },
+    "assets/art/locations/industrial.png": {
+      "width": 384,
+      "height": 256,
+      "bytes": 67588,
+      "sha256": "5bb6a30e2d3296adc68f1fbb3dd8fd75d6eff3778cfb091f8f620d4998b48ce8"
+    },
+    "assets/art/locations/swamp.png": {
+      "width": 384,
+      "height": 256,
+      "bytes": 71574,
+      "sha256": "e364438ab0b376143f54f5568cb6996e711a5caea917b553921693fd2b99c257"
+    },
+    "assets/art/locations/reactor.png": {
+      "width": 384,
+      "height": 256,
+      "bytes": 60591,
+      "sha256": "714d3ced6ed279c96b6fd1af4d11a52f90931093bb4013539632c7e792dbe569"
+    },
+    "assets/art/events/campfire.png": {
+      "width": 384,
+      "height": 256,
+      "bytes": 67332,
+      "sha256": "267a95ef73b106daf5d162142cd654dcbf6efbb42f6ab99ba2750bf996dffebe"
+    },
+    "assets/art/events/stash.png": {
+      "width": 384,
+      "height": 256,
+      "bytes": 76531,
+      "sha256": "36ba13c108f7c63ca1cd6f4adb7fbc7a2906175edea50e8e63cd8526fdfa3040"
+    },
+    "assets/art/events/medical-crate.png": {
+      "width": 384,
+      "height": 256,
+      "bytes": 70917,
+      "sha256": "be79769a233e39c6c202cf102c5fd9b45be64516d8a67946b1b8fac592c55c28"
+    },
+    "assets/art/events/anomaly.png": {
+      "width": 384,
+      "height": 256,
+      "bytes": 69568,
+      "sha256": "ffc902dda890bc4515a2de31ef84a65993f9fc6d7891361813fe9d1d08d2a122"
+    },
+    "assets/art/events/tracks.png": {
+      "width": 384,
+      "height": 256,
+      "bytes": 74343,
+      "sha256": "c834c14b746352dbee498232ff55b7a94fd4d823c781bcacba6caf4d6b7b7f90"
+    },
+    "assets/art/events/ambush.png": {
+      "width": 384,
+      "height": 256,
+      "bytes": 67444,
+      "sha256": "a2b3bf7e190367c38c9948b66b08ad97d0ef6696e7c0865e5ddc46ea34918df1"
+    },
+    "assets/art/events/passage.png": {
+      "width": 384,
+      "height": 256,
+      "bytes": 72679,
+      "sha256": "429350e80130ee5dc627a3056f366cbe4c0a8342d72330eff97f2c32920ac614"
+    },
+    "assets/art/events/abandoned-camp.png": {
+      "width": 384,
+      "height": 256,
+      "bytes": 69972,
+      "sha256": "a8969a98ad01da8c1ada44ca100d2f9853dc9b9aee5be16467fcd8eb36849fab"
+    },
+    "assets/art/events/battlefield.png": {
+      "width": 384,
+      "height": 256,
+      "bytes": 68110,
+      "sha256": "f0e62cb47be3c9831155d4faa43a237b3b83393fdbac3525b7f13ccf11b00edf"
+    },
+    "assets/art/events/wounded.png": {
+      "width": 384,
+      "height": 256,
+      "bytes": 74811,
+      "sha256": "3f92cd4cbca1fbff7a6bc8642a78fc0a83ec76c4c811f61364a3135501154eca"
+    },
+    "assets/art/events/radio.png": {
+      "width": 384,
+      "height": 256,
+      "bytes": 68241,
+      "sha256": "1d0f1630218ff388b58d27abf42ca5bfae12ba1e53524744e9303696f55d9cec"
+    },
+    "assets/art/events/documents.png": {
+      "width": 384,
+      "height": 256,
+      "bytes": 68319,
+      "sha256": "9a27abcd3483ecb75c1e21a9c0850ed6a44290867f0142c29a41fb3cdbdd8048"
+    },
+    "assets/art/events/artifact.png": {
+      "width": 384,
+      "height": 256,
+      "bytes": 69858,
+      "sha256": "82efba434034bdf3eba2441a8234922a137b5d95bc32270b0e387d62b4268e39"
+    },
+    "assets/art/events/trader.png": {
+      "width": 384,
+      "height": 256,
+      "bytes": 70180,
+      "sha256": "255119d099929e6ef34f7198d409a2c383dace8d064930e41c94596c5f1ba884"
+    },
+    "assets/art/events/workshop.png": {
+      "width": 384,
+      "height": 256,
+      "bytes": 70274,
+      "sha256": "6f6b42841bc491dac4de82c172f0c785496ba208cc72d3c398bef5204f573da9"
+    },
+    "assets/art/events/night-signal.png": {
+      "width": 384,
+      "height": 256,
+      "bytes": 64630,
+      "sha256": "272129659092b3b7f55c20d2a044c08e4f81cd13352ba40b7bfdc3b529b418eb"
+    },
+    "assets/art/portraits/rookie.png": {
+      "width": 160,
+      "height": 160,
+      "bytes": 19244,
+      "sha256": "4f6d398e987f131d95f860eff53dbb40ed02c23e9f723fb577a8bc85465b979f"
+    },
+    "assets/art/portraits/soldier.png": {
+      "width": 160,
+      "height": 160,
+      "bytes": 19006,
+      "sha256": "7813c59856f890efcc7eb9f693e43a527b92d442d75ba305872ecc932b336880"
+    },
+    "assets/art/portraits/technician.png": {
+      "width": 160,
+      "height": 160,
+      "bytes": 19761,
+      "sha256": "1583c0b83337e902f3cfd8915cef513bb925f75929738fde26c8039347355d52"
+    },
+    "assets/art/portraits/hunter.png": {
+      "width": 160,
+      "height": 160,
+      "bytes": 20880,
+      "sha256": "91365fe72918405894cffe5d2fe10a1fc72294ab485f527d804bbce8c9be40f6"
+    },
+    "assets/art/portraits/scavenger.png": {
+      "width": 160,
+      "height": 160,
+      "bytes": 20464,
+      "sha256": "e03b7790d8ce3bff0c2289af0e1fa824d6434779f25917552f92821d6b38b474"
+    },
+    "assets/art/portraits/medic.png": {
+      "width": 160,
+      "height": 160,
+      "bytes": 19419,
+      "sha256": "ea9d0bffe10f7a21a6b6579d0c17a869962d2009fe187e876e1f145c7047cb51"
+    },
+    "assets/art/portraits/trader.png": {
+      "width": 160,
+      "height": 160,
+      "bytes": 20073,
+      "sha256": "85d2e71460b62cea03419780a15eacda2e8d4a24439c0cac512b3121ada93cfa"
+    },
+    "assets/art/portraits/mechanic.png": {
+      "width": 160,
+      "height": 160,
+      "bytes": 20568,
+      "sha256": "5cae9b8917042c7fcfbb5fa2308447f7b22b09e9cd2f6e58c115d468169e512b"
+    },
+    "assets/art/portraits/veteran.png": {
+      "width": 160,
+      "height": 160,
+      "bytes": 19797,
+      "sha256": "22ca7f5add75be85ebeeba5f5e841b200f81054856ba1b54fe3f8bca81008d77"
+    },
+    "assets/art/portraits/researcher.png": {
+      "width": 160,
+      "height": 160,
+      "bytes": 19101,
+      "sha256": "41a76ba8ff96d2a9978686e366585bc869837f1a4fe454c0725c2b3ba9527ecc"
+    },
+    "assets/art/portraits/radio.png": {
+      "width": 160,
+      "height": 160,
+      "bytes": 19643,
+      "sha256": "b6f33a392a6d74f5906817e925a2f92361f59a369098f1aae5ea81d1eb92c12a"
+    },
+    "assets/art/portraits/stranger.png": {
+      "width": 160,
+      "height": 160,
+      "bytes": 19992,
+      "sha256": "f092cf39b12cad4aa13032e0872d086d72c58cb61612d1b27bce0e842ef9a470"
+    },
+    "assets/art/portraits/defender.png": {
+      "width": 160,
+      "height": 160,
+      "bytes": 20054,
+      "sha256": "55d3b409010120b7289bf215c7e4f445c286d33e661c8d979c9d3230abc755e6"
+    },
+    "assets/art/portraits/scout.png": {
+      "width": 160,
+      "height": 160,
+      "bytes": 20474,
+      "sha256": "f945844515bcfd62ad01f97fde92e33ec669862b47534e41f0630494a098a152"
+    },
+    "assets/art/portraits/biologist.png": {
+      "width": 160,
+      "height": 160,
+      "bytes": 20372,
+      "sha256": "47a9aef8a9fbcb6cca5e3b9068c66c57c41cc5c479e3367e51581f897830ad41"
+    },
+    "assets/art/portraits/pig-bandit.png": {
+      "width": 160,
+      "height": 160,
+      "bytes": 20518,
+      "sha256": "af1e49973d688fba653f6f0699eceb2bdb4342b45a05419618f0719fc22fa871"
+    },
+    "assets/art/enemies/feral-dog.png": {
+      "width": 160,
+      "height": 160,
+      "bytes": 19997,
+      "sha256": "b7d577acf64b565906e69ec2cb2715e2fe2f81c3b125747e9122da7897625502"
+    },
+    "assets/art/enemies/blind-hound.png": {
+      "width": 160,
+      "height": 160,
+      "bytes": 20331,
+      "sha256": "0b2a4d87960033b7681e88a029f9d9437bc7552bd7bf3d52b3ea36cd0d4a9712"
+    },
+    "assets/art/enemies/boar.png": {
+      "width": 160,
+      "height": 160,
+      "bytes": 20042,
+      "sha256": "03144cac66712710edf4d3525e5f0badd2036645deb88cccf308074b4a16d995"
+    },
+    "assets/art/enemies/alpha-boar.png": {
+      "width": 160,
+      "height": 160,
+      "bytes": 20384,
+      "sha256": "8092030886c8e196127c43caa893013783067ae11264e4c2c68551e803f3132d"
+    },
+    "assets/art/enemies/bloodsucker.png": {
+      "width": 160,
+      "height": 160,
+      "bytes": 20751,
+      "sha256": "670974cf613397d5306fa203a14004373fe431cff20e69912bf66b4cf30843d4"
+    },
+    "assets/art/enemies/snork.png": {
+      "width": 160,
+      "height": 160,
+      "bytes": 20737,
+      "sha256": "e1995fa2e6b1eee17dea707e444a63d876e364d6b61549387aa03f5d079a7283"
+    },
+    "assets/art/enemies/controller.png": {
+      "width": 160,
+      "height": 160,
+      "bytes": 20476,
+      "sha256": "0ce90331c9ec57a2b89e76a0451ce081dd9c0dac6347707b6e04739e48176e7d"
+    },
+    "assets/art/enemies/giant.png": {
+      "width": 160,
+      "height": 160,
+      "bytes": 20988,
+      "sha256": "0114384240eacf6f05c57cc94676cab0296fa2e9425cdcd97df7f4ed6bfa6edc"
+    },
+    "assets/art/enemies/anomalous-dog.png": {
+      "width": 160,
+      "height": 160,
+      "bytes": 20929,
+      "sha256": "66d1208f69eedaa8fc3878c933f10f8c6d6d2ec4728372bf28eec8490918f010"
+    },
+    "assets/art/enemies/leech.png": {
+      "width": 160,
+      "height": 160,
+      "bytes": 19812,
+      "sha256": "25a05a6dddd5b7f3b9337adfe6c0bb375bfb241047c9dd012e7b80c466254a07"
+    },
+    "assets/art/enemies/lurker.png": {
+      "width": 160,
+      "height": 160,
+      "bytes": 21259,
+      "sha256": "106754e5561534313c3d2811b3ca668650aa18dc0f29a99c0274c96cdb82a1d2"
+    },
+    "assets/art/enemies/electro-snork.png": {
+      "width": 160,
+      "height": 160,
+      "bytes": 19983,
+      "sha256": "2021b28898fbbbd48fcf464999bd0d9eed9fc09104bb3d20a38407d25a9f5030"
+    },
+    "assets/art/enemies/bandit.png": {
+      "width": 160,
+      "height": 160,
+      "bytes": 20661,
+      "sha256": "d60e7289ac4731a5945e35d2e96f758560c111b106d1438ea359b1d48bbc043a"
+    },
+    "assets/art/enemies/soldier.png": {
+      "width": 160,
+      "height": 160,
+      "bytes": 20267,
+      "sha256": "79f6f0076c4c0d82e1451ef293f7367442027619c2ec2cfa7e5cd1803527c5e7"
+    },
+    "assets/art/enemies/merc.png": {
+      "width": 160,
+      "height": 160,
+      "bytes": 20549,
+      "sha256": "ea995f6c4c10ea9b4d4da7b504bb21a3c8950f54e7d2fdc21991802afe454180"
+    },
+    "assets/art/enemies/sentinel.png": {
+      "width": 160,
+      "height": 160,
+      "bytes": 20291,
+      "sha256": "3116b6325548c2e1f4c55d4c685866b776d2e9b3613a4d3971e4d579bbc9f696"
+    },
+    "assets/art/items/pistol.png": {
+      "width": 64,
+      "height": 64,
+      "bytes": 2895,
+      "sha256": "a0993f444bf07d3cd9ea774bf301a9c85b0fa1520667a9b10f023005d5a9f09d"
+    },
+    "assets/art/items/pistol-heavy.png": {
+      "width": 64,
+      "height": 64,
+      "bytes": 2936,
+      "sha256": "2291ddf486edbb7322314634a29448f57411e7c2de739682453f3be24678bb3d"
+    },
+    "assets/art/items/rifle.png": {
+      "width": 64,
+      "height": 64,
+      "bytes": 2915,
+      "sha256": "a7faeb8ada70ace1982d3c7c9b245c98af6783ae0c705c5ca2239b10efc5de66"
+    },
+    "assets/art/items/smg.png": {
+      "width": 64,
+      "height": 64,
+      "bytes": 3021,
+      "sha256": "7e18038791b0d0bb668cccd0a25b01987b60c148e0004d7c5931f232a3f282be"
+    },
+    "assets/art/items/sniper.png": {
+      "width": 64,
+      "height": 64,
+      "bytes": 2917,
+      "sha256": "55ee6370aaf13a5d3d8f3ea7fd8f3def92862d943e8fa3631fc680582f8e168f"
+    },
+    "assets/art/items/shotgun.png": {
+      "width": 64,
+      "height": 64,
+      "bytes": 2776,
+      "sha256": "372891ae0c78bd0aba8bbba1f549b4083ee63622ba8c129357f0c8a16c77992d"
+    },
+    "assets/art/items/sawedoff.png": {
+      "width": 64,
+      "height": 64,
+      "bytes": 2799,
+      "sha256": "576183266e7890709a55f35fab40fc18f3423dceb0a0395241f0f258a3801737"
+    },
+    "assets/art/items/knife.png": {
+      "width": 64,
+      "height": 64,
+      "bytes": 2895,
+      "sha256": "7100ee23a9604ef96a888e85a7d6e83903b771234e6623d7343578bde9abb72b"
+    },
+    "assets/art/items/armor-light.png": {
+      "width": 64,
+      "height": 64,
+      "bytes": 3172,
+      "sha256": "56c78af06f30877efb6730746e7823a6a9f5f5ce335684f05513ed06eb423e24"
+    },
+    "assets/art/items/armor-vest.png": {
+      "width": 64,
+      "height": 64,
+      "bytes": 3107,
+      "sha256": "3d93adbb952735d3600cf39def220e7a345b5ac9f811b010649f4d2cca43ab87"
+    },
+    "assets/art/items/armor-suit.png": {
+      "width": 64,
+      "height": 64,
+      "bytes": 3155,
+      "sha256": "04e723a3836f059f0a4d36006f3190f438ae2a83402f34431318076e523c3b83"
+    },
+    "assets/art/items/armor-exo.png": {
+      "width": 64,
+      "height": 64,
+      "bytes": 3221,
+      "sha256": "31725fa5043a3084be7743e993fadd62b2fcda2d0d412935bc82aa8d1e344fae"
+    },
+    "assets/art/items/helmet.png": {
+      "width": 64,
+      "height": 64,
+      "bytes": 3036,
+      "sha256": "624e22aa8e6a152fcb359b819b8e4a2279863f8aa316da4813dac8a4becd0b64"
+    },
+    "assets/art/items/gas-mask.png": {
+      "width": 64,
+      "height": 64,
+      "bytes": 3120,
+      "sha256": "c60b706de10b77f91e614a4b9c348b797cfbf125e6e01e0273e30356e82a4761"
+    },
+    "assets/art/items/backpack.png": {
+      "width": 64,
+      "height": 64,
+      "bytes": 3171,
+      "sha256": "9828cc5ee803e61b7b435032f8dbcfde1145cc836f96e22c2edbdca61656becb"
+    },
+    "assets/art/items/detector.png": {
+      "width": 64,
+      "height": 64,
+      "bytes": 2982,
+      "sha256": "459055a3057b8daaee3428e8b411d1bbc60b6207ec84c444258f1d7fe7cedc7e"
+    },
+    "assets/art/items/medkit.png": {
+      "width": 64,
+      "height": 64,
+      "bytes": 2973,
+      "sha256": "026af0cf15916c143c826654d958e6f294beef41c4f5ba6209615e656f053dc5"
+    },
+    "assets/art/items/bandage.png": {
+      "width": 64,
+      "height": 64,
+      "bytes": 3035,
+      "sha256": "2326af5a92e06e70fbb34336b3c1bf5c944569ea10b9ce974ec12ba96618bb17"
+    },
+    "assets/art/items/antirad.png": {
+      "width": 64,
+      "height": 64,
+      "bytes": 2848,
+      "sha256": "12c81cf7292af715dd684f1e359f60d7d5247ced6068a4a638cba76de171ff69"
+    },
+    "assets/art/items/pills.png": {
+      "width": 64,
+      "height": 64,
+      "bytes": 2999,
+      "sha256": "a885d21c504df91b227c77b0168f1384ad782beb6cde8e8e17d3623021a5ee8e"
+    },
+    "assets/art/items/canned.png": {
+      "width": 64,
+      "height": 64,
+      "bytes": 3054,
+      "sha256": "f3a1f5475617061a47d3d79d4a8642c918384a8376cf294d552421b3391dc055"
+    },
+    "assets/art/items/ration.png": {
+      "width": 64,
+      "height": 64,
+      "bytes": 2987,
+      "sha256": "8a1d1fd4522f67221c3155619af7ff9ee52d5e0f1dc7872a5854602d59f8ab34"
+    },
+    "assets/art/items/water.png": {
+      "width": 64,
+      "height": 64,
+      "bytes": 2987,
+      "sha256": "6d9ac8ef89a4764a3e0db0f2efc1d74d42fc285e9be449afb1fe088b85f7100d"
+    },
+    "assets/art/items/energy-drink.png": {
+      "width": 64,
+      "height": 64,
+      "bytes": 2943,
+      "sha256": "d536721a383c3542c0824fe8355ac0eb40a3958f871462375367c74a610bca22"
+    },
+    "assets/art/items/ammo-pistol.png": {
+      "width": 64,
+      "height": 64,
+      "bytes": 2813,
+      "sha256": "b690a5c6f71da71d2e2dba13ea197214f8cee1b4a811bbae92f898d7cc212c15"
+    },
+    "assets/art/items/ammo-rifle.png": {
+      "width": 64,
+      "height": 64,
+      "bytes": 2977,
+      "sha256": "efa517b747d9dd23edaacdb4d78a75752fb533277270d6e787bc497b949ffdae"
+    },
+    "assets/art/items/ammo-shells.png": {
+      "width": 64,
+      "height": 64,
+      "bytes": 2807,
+      "sha256": "bf7fe34c8c34e7cdb75412e19887b431dfce34f07477c977c01b625bbf39dbc8"
+    },
+    "assets/art/items/mutant-parts.png": {
+      "width": 64,
+      "height": 64,
+      "bytes": 3121,
+      "sha256": "757c9db6e319b8579080e4824648e21c98a6465800a5a6b69282536ed9fcd6e3"
+    },
+    "assets/art/items/tools.png": {
+      "width": 64,
+      "height": 64,
+      "bytes": 3099,
+      "sha256": "00ccadfdd55051e0a0b83e148c90126f979e1e1820f621ef2974ea91b1b79e0e"
+    },
+    "assets/art/items/parts.png": {
+      "width": 64,
+      "height": 64,
+      "bytes": 3176,
+      "sha256": "0d22ebf7fc66880796117699e2e2e21c2d8d15035c5336e57fbd71ba496857a1"
+    },
+    "assets/art/items/electronics.png": {
+      "width": 64,
+      "height": 64,
+      "bytes": 3066,
+      "sha256": "81425b0a2c1dce75eb394058e90a60fb15bfef4869ad6e0c7d8b781f82e3b0c6"
+    },
+    "assets/art/items/wires.png": {
+      "width": 64,
+      "height": 64,
+      "bytes": 3106,
+      "sha256": "2c2530ab37bd318abf4b245c9aed47efeaae9641fab9eae22e339e9e0bde6ed9"
+    },
+    "assets/art/items/artifact-medusa.png": {
+      "width": 64,
+      "height": 64,
+      "bytes": 3031,
+      "sha256": "0c96912646bf9e78448e5b706d27c867f123de889a00299809ff0db01a876744"
+    },
+    "assets/art/items/artifact-stoneflower.png": {
+      "width": 64,
+      "height": 64,
+      "bytes": 3071,
+      "sha256": "ef594c1a600dadedd29e67ba6cd4dc364d89500b0418085a9d31db9f4040a316"
+    },
+    "assets/art/items/artifact-spark.png": {
+      "width": 64,
+      "height": 64,
+      "bytes": 3053,
+      "sha256": "105d44c599587abcf8a7f2b5c784195b2068a444aff1909e972ebb87d53b125b"
+    },
+    "assets/art/items/artifact-shell.png": {
+      "width": 64,
+      "height": 64,
+      "bytes": 3032,
+      "sha256": "1eb2b673462e962112e15ac0fb390ec0165bbdc472a4c4fd4570ab48b7ea57e0"
+    },
+    "assets/art/items/artifact-nightstar.png": {
+      "width": 64,
+      "height": 64,
+      "bytes": 3136,
+      "sha256": "c833de3871fff079f8ac6fb7f91c34aad890dc587f33b8fb4cd5be9ff7d1e51e"
+    },
+    "assets/art/items/artifact-needle.png": {
+      "width": 64,
+      "height": 64,
+      "bytes": 2989,
+      "sha256": "e1606edd6d3d208a40dc464d79554bdc27fb863970f3fee4503840654275744d"
+    },
+    "assets/art/items/artifact-moonlight.png": {
+      "width": 64,
+      "height": 64,
+      "bytes": 3114,
+      "sha256": "65521557445b7048de3f0c582f48a95d12f6c68492cc6f5de9e71cc38f4f2d08"
+    },
+    "assets/art/items/artifact-meatchunk.png": {
+      "width": 64,
+      "height": 64,
+      "bytes": 3107,
+      "sha256": "d8cda4fd71528222ce0b05d548e2458528097c8217d98a40c13f0ad8f7061c00"
+    },
+    "assets/art/items/artifact-gravi.png": {
+      "width": 64,
+      "height": 64,
+      "bytes": 3112,
+      "sha256": "28a239382067cfa349bc2366629a68f41c1ba62afeaad57e117f383cd9b2857f"
+    },
+    "assets/art/items/artifact-goldfish.png": {
+      "width": 64,
+      "height": 64,
+      "bytes": 2968,
+      "sha256": "0d0b8fcf2378d1b4d27cf7d289ac1b81df21380eb35c2b3af64e03d4d03dc2b7"
+    },
+    "assets/art/items/artifact-flash.png": {
+      "width": 64,
+      "height": 64,
+      "bytes": 3033,
+      "sha256": "ab9913c32c4548eb25cde2ec03f223e09186f76997d96dc8d7c5a7621380f620"
+    },
+    "assets/art/items/artifact-fireball.png": {
+      "width": 64,
+      "height": 64,
+      "bytes": 3080,
+      "sha256": "1d1ae585b387b0ba6282ca5148540696a7c3150c2a413bee78c3dbcc7a45480f"
+    },
+    "assets/art/items/artifact-bubble.png": {
+      "width": 64,
+      "height": 64,
+      "bytes": 3107,
+      "sha256": "69dbd23ba643c9cefba7d164c346cbce98ea163d8b4c088eb3cc33970c8f39d4"
+    },
+    "assets/art/items/artifact-beads.png": {
+      "width": 64,
+      "height": 64,
+      "bytes": 3154,
+      "sha256": "76455db24b625fcb285a35c5159dbb3554d4671fd1ad479f782711a243a22199"
+    },
+    "assets/art/items/artifact-battery.png": {
+      "width": 64,
+      "height": 64,
+      "bytes": 3010,
+      "sha256": "22b335981cfcb2e28508511f7a35b48bd51570763c5c27533bcf03027e4a6028"
+    },
+    "assets/art/items/artifact-soul.png": {
+      "width": 64,
+      "height": 64,
+      "bytes": 3172,
+      "sha256": "c76cbabc67216cc6f9471388b83ce7bc87d356dde34c28d7bb7d47a0cbe5b1f6"
+    },
+    "assets/art/items/quest-document.png": {
+      "width": 64,
+      "height": 64,
+      "bytes": 3076,
+      "sha256": "3550a4942ac3c67d1b4d94a0e69849bc0776d73d646f604b5530bb443e130781"
+    },
+    "assets/art/items/map.png": {
+      "width": 64,
+      "height": 64,
+      "bytes": 3152,
+      "sha256": "56863c41d4c5361610ff5af87d40d5701ba2ad247342b21e6d9e105886874603"
+    },
+    "assets/art/items/journal.png": {
+      "width": 64,
+      "height": 64,
+      "bytes": 3125,
+      "sha256": "4f260922b1179facfde94eb9d771ebf7d91d4376c689e7c0d51ffbc83a1a9542"
+    },
+    "assets/art/items/rare-box.png": {
+      "width": 64,
+      "height": 64,
+      "bytes": 3074,
+      "sha256": "847de6c55870021b0fc2b9ecba66736bc4bd3742b6bf9d9d6cf81a7c93e3b4f9"
+    },
+    "assets/art/items/sample.png": {
+      "width": 64,
+      "height": 64,
+      "bytes": 3045,
+      "sha256": "77157546cea37bfba13c25dea13b86546be9c7dcdb9069b163d94387d3f4e296"
+    },
+    "assets/art/items/valuables.png": {
+      "width": 64,
+      "height": 64,
+      "bytes": 3122,
+      "sha256": "edbb3898dd523268887c65a457d087f0a9ebbbe454f010e2481bff34ee685ac5"
+    },
+    "assets/art/items/detector-pro.png": {
+      "width": 64,
+      "height": 64,
+      "bytes": 3016,
+      "sha256": "e847bd2a3a9ae727f810770f12a2b3348a817a3c87729bf43aec966a3072c27d"
+    },
+    "assets/art/items/military-pack.png": {
+      "width": 64,
+      "height": 64,
+      "bytes": 3180,
+      "sha256": "4466d1945e3a20993219ccb4701acd609e30620cd148f6dce297009b3264b9bd"
+    },
+    "assets/art/items/food.png": {
+      "width": 64,
+      "height": 64,
+      "bytes": 2948,
+      "sha256": "e2aa45be8b62b1ce9152d28d0e775f901d532f79a7ae5d8137a11fb32a82db60"
+    },
+    "assets/art/items/medical.png": {
+      "width": 64,
+      "height": 64,
+      "bytes": 2984,
+      "sha256": "736b7b9c92e4290064f58ace7d059b7ea14c63691d794a238c51116101cc398c"
+    },
+    "assets/art/items/artifact-rare.png": {
+      "width": 64,
+      "height": 64,
+      "bytes": 3072,
+      "sha256": "02a05cf3d9d0542bc7722faa994b60e69a2aea2ac286eefeaca03cdb935658ad"
+    },
+    "assets/art/items/artifact-dark.png": {
+      "width": 64,
+      "height": 64,
+      "bytes": 3105,
+      "sha256": "9727a8ccb7fcacc5a544b98d596271721a458e27888621d0d6f81207c5c35081"
+    },
+    "assets/art/items/radio.png": {
+      "width": 64,
+      "height": 64,
+      "bytes": 3142,
+      "sha256": "eb403774f1cb365847409153b2e9dc9098cc7ccf06e8051d2a750887fc3e4554"
+    },
+    "assets/art/items/key.png": {
+      "width": 64,
+      "height": 64,
+      "bytes": 2968,
+      "sha256": "b30ed16fbacfc90ea3141bae1d60779e844a5505b9209b3b9c2ecfcb93223dc9"
+    },
+    "assets/art/items/fuse.png": {
+      "width": 64,
+      "height": 64,
+      "bytes": 3062,
+      "sha256": "0eff7b9d36736781d0b155659519f2ee46237ff1b2a262fded61741990006b71"
+    },
+    "assets/art/items/salvage.png": {
+      "width": 64,
+      "height": 64,
+      "bytes": 3220,
+      "sha256": "ba63e1b707af71584cf6b5637a9a09471ca6573cb4314244d4eb120773051940"
+    },
+    "assets/art/enemies/rat-swarm.png": {
+      "width": 160,
+      "height": 160,
+      "bytes": 21495,
+      "sha256": "11ca03e24621025dab97c65e21617935b0e72ec07140380e14a44ba0b6c08ee5"
+    },
+    "assets/art/enemies/reed-crawler.png": {
+      "width": 160,
+      "height": 160,
+      "bytes": 21011,
+      "sha256": "92bf3d76f75d3cf9725b67ac6691bf0389f8cfb250f6a5c1a85ac340c092c674"
+    },
+    "assets/art/enemies/quarry-dog.png": {
+      "width": 160,
+      "height": 160,
+      "bytes": 19212,
+      "sha256": "6dd40fb7a4ac8a3a559d29f54db7dbd481d73b6ed48c74284b8768b6d8ade686"
+    },
+    "assets/art/enemies/ash-walker.png": {
+      "width": 160,
+      "height": 160,
+      "bytes": 19313,
+      "sha256": "048c9003bfa4d0a9f66e43ac003e23516d42c60e003330b2298ff30f3c8c2195"
+    },
+    "assets/art/enemies/mirror-stalker.png": {
+      "width": 160,
+      "height": 160,
+      "bytes": 20194,
+      "sha256": "6e9fff10f317208670757684e0e85a0227c5d5a90af6bbc41a2cb3b0f5224d9e"
+    },
+    "assets/art/enemies/elite-boar.png": {
+      "width": 160,
+      "height": 160,
+      "bytes": 21374,
+      "sha256": "17d8fcb8ec39e40f10f404a327d91e17d708cad130a20e4d70164c614bd9fe92"
+    },
+    "assets/art/enemies/armored-bandit.png": {
+      "width": 160,
+      "height": 160,
+      "bytes": 20632,
+      "sha256": "10768f05c45516e19c9cda0b63f120eee146f83c06c231a974cc835eb134d0f3"
+    },
+    "assets/art/enemies/snork-veteran.png": {
+      "width": 160,
+      "height": 160,
+      "bytes": 20248,
+      "sha256": "9326b82395dfab4c5e8a617a5132178762075f24d40e7f829f2d6b2ff6c9e86e"
+    },
+    "assets/art/portraits/gromova.png": {
+      "width": 160,
+      "height": 160,
+      "bytes": 19715,
+      "sha256": "5001bced6f75b849f969d05f49b02f6a01d5d52e3d90e379a819e866dfc80d40"
+    },
+    "assets/art/portraits/orlov.png": {
+      "width": 160,
+      "height": 160,
+      "bytes": 19781,
+      "sha256": "b47bc969b1d24d3042f3fe880b7913acbfed06aa412a1c1f81be5768f9a32358"
+    },
+    "assets/art/portraits/motyl.png": {
+      "width": 160,
+      "height": 160,
+      "bytes": 19836,
+      "sha256": "3bf294415518d1c0a48cb8a34c7bbac3e44e4c2848ade96c07cc5af9f0f2bd4e"
+    },
+    "assets/art/portraits/rada.png": {
+      "width": 160,
+      "height": 160,
+      "bytes": 19505,
+      "sha256": "44a097c65ed02eefa3bd835902f29d7c91a78fb8bdcc831999cb5f1c03b6cf6d"
+    },
+    "assets/art/portraits/zhdan.png": {
+      "width": 160,
+      "height": 160,
+      "bytes": 20447,
+      "sha256": "555f5babf6fa6ef13c29f0f11ad5c786e6a19b0e239c8fbce4ebcaecc1708dbf"
+    },
+    "assets/art/portraits/serov.png": {
+      "width": 160,
+      "height": 160,
+      "bytes": 20152,
+      "sha256": "6d9ec8e088f452bb1e566c70d697a6090dc01f9bd745cad32333a0fa1e66e140"
+    },
+    "assets/art/portraits/dron.png": {
+      "width": 160,
+      "height": 160,
+      "bytes": 20368,
+      "sha256": "87d4465e6112c002eaaac6698c6453bb29391b81b6cdb1d0b62f185707075b4e"
+    },
+    "assets/art/portraits/veres.png": {
+      "width": 160,
+      "height": 160,
+      "bytes": 20713,
+      "sha256": "d0267be7a399fe25c20faba2361d26ae3a369c4ff3b5fe2b530897cb0b854305"
+    }
+  },
+  "sources": {
+    "locations": {
+      "atlas": "exec-11850c23-9f61-4a4c-9fc4-56d09f0b7f12.png",
+      "sha256": "495446eae409386a8209dd846e12e180944442e6333f08ceebdb23e2ac660d0a",
+      "grid": [
+        4,
+        4
+      ],
+      "names": [
+        "village",
+        "cordon",
+        "scrapyard",
+        "dark-valley",
+        "agro",
+        "checkpoint",
+        "railway",
+        "red-forest",
+        "tunnel",
+        "laboratory",
+        "camp",
+        "anomaly",
+        "ruins",
+        "industrial",
+        "swamp",
+        "reactor"
+      ]
+    },
+    "events": {
+      "atlas": "exec-79c34066-4ac7-49ad-8caa-64a96d9aa740.png",
+      "sha256": "afa0c4bcd3da2cfa39c9847a37649102e1f50106ad6c10ecc324b3f580caa5e0",
+      "grid": [
+        4,
+        4
+      ],
+      "names": [
+        "campfire",
+        "stash",
+        "medical-crate",
+        "anomaly",
+        "tracks",
+        "ambush",
+        "passage",
+        "abandoned-camp",
+        "battlefield",
+        "wounded",
+        "radio",
+        "documents",
+        "artifact",
+        "trader",
+        "workshop",
+        "night-signal"
+      ]
+    },
+    "portraits": {
+      "atlas": "exec-2370cd18-d400-4ecd-bc86-6c0eafb30817.png",
+      "sha256": "39d74e9ccfd21a2eb632d784ae1e57ccadc6314b9968c79cde81e2db5219d283",
+      "grid": [
+        4,
+        4
+      ],
+      "names": [
+        "rookie",
+        "soldier",
+        "technician",
+        "hunter",
+        "scavenger",
+        "medic",
+        "trader",
+        "mechanic",
+        "veteran",
+        "researcher",
+        "radio",
+        "stranger",
+        "defender",
+        "scout",
+        "biologist",
+        "pig-bandit"
+      ]
+    },
+    "enemies": {
+      "atlas": "exec-7c1d8304-8a37-4984-a511-0c89c28333d9.png",
+      "sha256": "580e3c2bbb6572b30cce806a54cddfd158c224edf34ee26e6d168a0f6a20774a",
+      "grid": [
+        4,
+        4
+      ],
+      "names": [
+        "feral-dog",
+        "blind-hound",
+        "boar",
+        "alpha-boar",
+        "bloodsucker",
+        "snork",
+        "controller",
+        "giant",
+        "anomalous-dog",
+        "leech",
+        "lurker",
+        "electro-snork",
+        "bandit",
+        "soldier",
+        "merc",
+        "sentinel"
+      ]
+    },
+    "items": {
+      "atlas": "exec-875957fe-be99-4a47-9bad-74c55fb26f91.png",
+      "sha256": "5736fd6a49d6d2dd4b8031109ab326f589477e0c7537c60ef33089840225f0ed",
+      "grid": [
+        8,
+        8
+      ],
+      "names": [
+        "pistol",
+        "pistol-heavy",
+        "rifle",
+        "smg",
+        "sniper",
+        "shotgun",
+        "sawedoff",
+        "knife",
+        "armor-light",
+        "armor-vest",
+        "armor-suit",
+        "armor-exo",
+        "helmet",
+        "gas-mask",
+        "backpack",
+        "detector",
+        "medkit",
+        "bandage",
+        "antirad",
+        "pills",
+        "canned",
+        "ration",
+        "water",
+        "energy-drink",
+        "ammo-pistol",
+        "ammo-rifle",
+        "ammo-shells",
+        "mutant-parts",
+        "tools",
+        "parts",
+        "electronics",
+        "wires",
+        "artifact-medusa",
+        "artifact-stoneflower",
+        "artifact-spark",
+        "artifact-shell",
+        "artifact-nightstar",
+        "artifact-needle",
+        "artifact-moonlight",
+        "artifact-meatchunk",
+        "artifact-gravi",
+        "artifact-goldfish",
+        "artifact-flash",
+        "artifact-fireball",
+        "artifact-bubble",
+        "artifact-beads",
+        "artifact-battery",
+        "artifact-soul",
+        "quest-document",
+        "map",
+        "journal",
+        "rare-box",
+        "sample",
+        "valuables",
+        "detector-pro",
+        "military-pack",
+        "food",
+        "medical",
+        "artifact-rare",
+        "artifact-dark",
+        "radio",
+        "key",
+        "fuse",
+        "salvage"
+      ]
+    },
+    "special": {
+      "atlas": "exec-816a5b93-9027-4c57-8ff7-7fdd3f900584.png",
+      "sha256": "868b1fc6e6ad5edebcd5a973cece0a9ff9c1656142929ffce97000ed424c53e0",
+      "grid": [
+        4,
+        4
+      ],
+      "names": [
+        "rat-swarm",
+        "reed-crawler",
+        "quarry-dog",
+        "ash-walker",
+        "mirror-stalker",
+        "elite-boar",
+        "armored-bandit",
+        "snork-veteran",
+        "gromova",
+        "orlov",
+        "motyl",
+        "rada",
+        "zhdan",
+        "serov",
+        "dron",
+        "veres"
+      ]
+    }
+  }
+}

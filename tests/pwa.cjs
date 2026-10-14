@@ -26,7 +26,7 @@ await test('Radiation PNG icons have real 192/512/180 dimensions and maskable sa
 });
 await test('Precache covers actual shell scripts and lightweight images only, all paths exist',()=>{
  const w=worker(),assets=Array.from(w.ctx.self.ZoneRPGPrecache);let bytes=0;for(const file of assets){assert.ok(file.startsWith('./'));assert.ok(!file.includes('..'));assert.ok(!/tests\/|\.git\/|\.mp3$|\.ogg$/.test(file));bytes+=fs.statSync(path.join(ROOT,file)).size;}
- assert.ok(bytes<2*1024*1024);const html=fs.readFileSync(path.join(ROOT,'index.html'),'utf8');for(const [,script]of html.matchAll(/<script[^>]+src="([^"]+)"/g))assert.ok(assets.includes('./'+script));assert.ok(assets.includes('./index.html'));assert.ok(assets.includes('./style.css'));assert.ok(assets.includes('./assets/sprites/item-icons/mutant-parts.svg'));
+ assert.ok(bytes<5*1024*1024);const html=fs.readFileSync(path.join(ROOT,'index.html'),'utf8');for(const [,script]of html.matchAll(/<script[^>]+src="([^"]+)"/g))assert.ok(assets.includes('./'+script));assert.ok(assets.includes('./index.html'));assert.ok(assets.includes('./style.css'));assert.ok(assets.includes('./assets/sprites/item-icons/mutant-parts.svg'));
 });
 await test('Install and activate create a complete offline shell on the first visit',async()=>{
  const w=worker();await w.install();await w.activate();assert.equal(w.ctl.claims,1);w.ctl.online=false;const root=await w.request('./',{mode:'navigate'});assert.match(await root.text(),/ZoneRPG/);for(const file of ['index.html?installed=1','engine.js','shops.js','style.css','assets/pwa/radiation-green-v2-192.png','assets/sprites/item-icons/mutant-parts.svg'])assert.equal((await w.request(file,{mode:file.startsWith('index')?'navigate':'same-origin'})).status,200);
@@ -50,8 +50,8 @@ await test('Version replacement cleans only this ZoneRPG scope and leaves active
 });
 await test('Final green cache purges legacy icon caches and stores only approved icon bytes',async()=>{
  const base='https://zefisty.github.io/ZoneRPG/',prefix='zonerpg-%2FZoneRPG%2F-',shared=new Map();
- for(const version of ['v1','v2-radiation-icons','v3-green-radiation-icons','v4-green-radiation-final','v5-green-shortcut-icons'])shared.set(prefix+version,new Map([[base+'assets/pwa/icon-512.png',new Response('old Z')]]));
- shared.set('another-app',new Map());const w=worker(base,shared);assert.equal(w.name(),prefix+'v6-header-radiation');await w.install();await w.activate();
+ for(const version of ['v1','v2-radiation-icons','v3-green-radiation-icons','v4-green-radiation-final','v5-green-shortcut-icons','v6-header-radiation'])shared.set(prefix+version,new Map([[base+'assets/pwa/icon-512.png',new Response('old Z')]]));
+ shared.set('another-app',new Map());const w=worker(base,shared);assert.equal(w.name(),prefix+'v7-field-art');await w.install();await w.activate();
  assert.deepEqual([...shared.keys()].sort(),['another-app',w.name()].sort());
  const icons=[...shared.get(w.name()).keys()].filter(url=>url.includes('/assets/pwa/')||url.endsWith('/favicon.ico'));assert.equal(icons.length,8);
  w.ctl.online=false;for(const url of icons){assert.match(url,/radiation-green-v[23]-|\/favicon\.ico$/);assert.deepEqual(Buffer.from(await(await w.request(url)).arrayBuffer()),fs.readFileSync(path.join(ROOT,new URL(url).pathname.slice('/ZoneRPG/'.length))));}
@@ -70,8 +70,8 @@ await test('Registration handles unsupported, insecure, file and rejected regist
  const code=fs.readFileSync(path.join(ROOT,'pwa-register.js'),'utf8');for(const testCase of [{protocol:'https:',secure:true,supported:true,sync:true},{protocol:'https:',secure:true,supported:true},{protocol:'http:',secure:true,supported:true},{protocol:'file:',secure:false,supported:true},{protocol:'http:',secure:false,supported:true},{protocol:'https:',secure:true,supported:false}]){
  const events={},calls=[],warnings=[],base=testCase.protocol==='https:'?'https://zefisty.github.io/ZoneRPG/':'http://localhost:41736/',ctx={URL,location:{protocol:testCase.protocol},document:{currentScript:{src:new URL('pwa-register.js',base).href}},navigator:testCase.supported?{serviceWorker:{register:(url,options)=>{calls.push({url,options});if(testCase.sync)throw Error('blocked synchronously');return Promise.reject(Error('blocked'));}}}:{},window:{isSecureContext:testCase.secure,addEventListener:(name,fn)=>events[name]=fn},console:{warn:(...args)=>warnings.push(args)}};vm.createContext(ctx);vm.runInContext(code,ctx);if(events.load){await events.load();await Promise.resolve();}const allowed=testCase.supported&&testCase.secure;assert.equal(calls.length,allowed?1:0);if(allowed){assert.equal(calls[0].url,new URL('service-worker.js',base).href);assert.equal(calls[0].options.scope,base);assert.equal(calls[0].options.updateViaCache,'none');assert.equal(warnings.length,1);}}
 });
-await test('PWA patch does not modify gameplay, CSS, saves or start-screen logic',()=>{
- const cp=require('node:child_process');for(const file of ['engine.js','game.js','ui.js','state.js','save.js','shops.js','style.css','config.js']){const base=cp.execFileSync('git',['show','HEAD:'+file],{cwd:ROOT,encoding:'utf8'});assert.equal(fs.readFileSync(path.join(ROOT,file),'utf8').replace(/\r\n/g,'\n'),base.replace(/\r\n/g,'\n'),file);}assert.doesNotMatch(fs.readFileSync(path.join(ROOT,'pwa-register.js'),'utf8'),/localStorage|ZoneRPGEngine/);assert.doesNotMatch(source,/localStorage|zonerpg_manual_save|zonerpg_autosave/);
+await test('Visual asset integration does not modify gameplay, saves or PWA registration',()=>{
+ const cp=require('node:child_process');for(const file of ['engine.js','game.js','state.js','save.js','shops.js','config.js']){const base=cp.execFileSync('git',['show','HEAD:'+file],{cwd:ROOT,encoding:'utf8'});assert.equal(fs.readFileSync(path.join(ROOT,file),'utf8').replace(/\r\n/g,'\n'),base.replace(/\r\n/g,'\n'),file);}assert.doesNotMatch(fs.readFileSync(path.join(ROOT,'pwa-register.js'),'utf8'),/localStorage|ZoneRPGEngine/);assert.doesNotMatch(source,/localStorage|zonerpg_manual_save|zonerpg_autosave/);
 });
 console.log(passed+' PWA checks passed.');
 })().catch(error=>{console.error(error);process.exitCode=1;});

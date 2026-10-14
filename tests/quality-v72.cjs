@@ -8,8 +8,8 @@ function win(r){r.ctx.Math.random=()=>0;for(let i=0;i<150&&r.E.getState().combat
 
 test('Pig NPC has separate identity, three-legged local art, interactions, no combat fallback',()=>{
   const r=runtime(),id='npc_threeLeggedPigBandit',s=r.S.fresh('soldier');assert.equal(r.W.people[id].species,'трёхногая свинья');assert.equal(r.W.enemyTypes.bandit.visual,'bandit');
-  assert.ok(fs.existsSync(path.join(__dirname,'../assets/sprites/npc-pig-bandit.svg')));r.load(s);r.E.action('openPanel','people');assert.match(r.root.innerHTML,/npc-pig-bandit.svg/);assert.ok(!r.root.innerHTML.includes('data-value="'+id+':fight"'));
-  r.E.action('npcAction',id+':fight');assert.equal(r.E.getState().combat,null);r.E.action('npcAction',id+':talk');assert.match(r.root.innerHTML,/npc-pig-bandit.svg/);select(r,'Спросить караульного о Бандите');assert.ok(r.E.getState().knowledge.some(x=>x.includes('трёхногая свинья')));finish(r);
+  assert.ok(fs.existsSync(path.join(__dirname,'../assets/sprites/npc-pig-bandit.svg')));r.load(s);r.E.action('openPanel','people');assert.match(r.root.innerHTML,/assets\/art\/portraits\/pig-bandit.png/);assert.ok(!r.root.innerHTML.includes('data-value="'+id+':fight"'));
+  r.E.action('npcAction',id+':fight');assert.equal(r.E.getState().combat,null);r.E.action('npcAction',id+':talk');assert.match(r.root.innerHTML,/assets\/art\/portraits\/pig-bandit.png/);select(r,'Спросить караульного о Бандите');assert.ok(r.E.getState().knowledge.some(x=>x.includes('трёхногая свинья')));finish(r);
 });
 test('Pig care is bounded by world time; food consumed, gift once, memory survives save',()=>{
   const r=runtime(),id='npc_threeLeggedPigBandit',s=r.S.fresh('soldier');r.load(s);const initial=qty(r.E.getState(),'bandage');
