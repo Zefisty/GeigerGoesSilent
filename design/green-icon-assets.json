@@ -1,0 +1,36 @@
+{
+  "source": "design/zonerpg-radiation-green.svg",
+  "sourceSHA256": "f5d6c325dfb106a44ed9925ee39e4ffcdc8bcbf50ab8c76ee9e83291ff69d071",
+  "icons": {
+    "assets/pwa/radiation-green-v2-192.png": {
+      "size": 192,
+      "bytes": 3569,
+      "sha256": "ec8736c280d3fcd846259994ddbc5e645047e7eab4fd68616d52d274ff75531b"
+    },
+    "assets/pwa/radiation-green-v2-512.png": {
+      "size": 512,
+      "bytes": 10071,
+      "sha256": "1551d695f83fbbf1e27dfe06a8a1ca2c08a5cc4b15a2ac8664220a0dbbeacb0a"
+    },
+    "assets/pwa/radiation-green-v2-apple-180.png": {
+      "size": 180,
+      "bytes": 3250,
+      "sha256": "2cdbba80ed817230c017f5a6cb977f1eefd5798c5890b750c90816297dea3337"
+    },
+    "assets/pwa/radiation-green-v2-favicon-32.png": {
+      "size": 32,
+      "bytes": 675,
+      "sha256": "07c4cfdd55375966c3dda7304a7c7e409bb430a318dddc12ddc8ce8a9024660a"
+    },
+    "assets/pwa/radiation-green-v2-favicon-48.png": {
+      "size": 48,
+      "bytes": 959,
+      "sha256": "a9a31e7f149a89cc9f9b42e439a5f948eb07dfd93ab83a0ac31912cba548d5f4"
+    },
+    "assets/pwa/radiation-green-v2-maskable-512.png": {
+      "size": 512,
+      "bytes": 10071,
+      "sha256": "1551d695f83fbbf1e27dfe06a8a1ca2c08a5cc4b15a2ac8664220a0dbbeacb0a"
+    }
+  }
+}

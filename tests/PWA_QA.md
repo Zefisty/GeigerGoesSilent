@@ -1,48 +1,60 @@
-# ZoneRPG PWA wrapper
+# ZoneRPG PWA / final green icon audit
 
-## Files
-Only index.html is changed in the game. Added manifest.webmanifest, service-worker.js, pwa-register.js, pwa-assets.js, tests/pwa.cjs and six technical radiation-icon PNG variants under assets/pwa/ (192, 512, maskable 512, Apple 180, favicons 32/48), rendered from the flat green radiation design in design/zonerpg-radiation-green.svg. The local QA server adds manifest/PNG MIME types. Gameplay, CSS, menus, saves and schema are unchanged.
+## Audit before cleanup
 
-## Manifest and Pages
-Name/short_name: ZoneRPG. id/start_url/scope: `./`. Display: standalone. Background #0e130f; theme #111713. All icon and shell paths are relative. At https://zefisty.github.io/ZoneRPG/ the scope resolves to /ZoneRPG/; localhost root also works. Registration resolves from its own script URL, not the domain root. No install button or in-game splash was added.
+The working tree was clean. Repository-wide searches covered HTML, manifests, JS/CSS, metadata, service worker/registration, precache, PNG/SVG/ICO assets, tests, documentation and asset builders. Found: 0 remaining Z icon files, 0 active Z references, 1 unused yellow master PNG and its obsolete prompt, 6 green unversioned PNGs and 13 active green references (4 HTML, 3 manifest, 6 precache). The letter Z in ui.js is in-game header text, not an app icon resource; UI stays unchanged as required. Historical V63_QA.md contains a retired filename as a past change log, not an active asset source.
 
-## Offline and cache policy
-The shell list contains 276 local resources, approximately 0.94 MB before compression: HTML, CSS, all boot/data/content JS, manifest, app icons and the existing small SVGs. No tests, Git files, remote resources or optional large audio are precached. Music configuration currently has no audio files; procedural audio needs no network.
+## Sole master and reproducible output
 
-Install precaches the complete shell through Cache.addAll. Offline launch is available after this finishes successfully. HTML, JS, CSS and manifest are network-first with cached fallback. SVG/PNG resources are cache-first. Requests outside the whitelist, non-GET, external, unknown navigation and media ranges are untouched. Cache quota errors do not discard healthy online responses.
+Master: design/zonerpg-radiation-green.svg, unchanged. Background #0e130f; symbol #b6c783. design/render-green-icons.py now reads geometry and palette directly from this SVG rather than rewriting it from a second definition. Pillow is needed only at build time. Generated opaque RGB PNGs use 8x sampling and BOX reduction. All six new PNGs were verified byte-for-byte against their approved green predecessors. design/green-icon-assets.json records normalized master SHA-256, PNG SHA-256, dimensions and byte counts. No external resources or runtime image dependency.
 
-Cache version is the `CACHE_VERSION` constant in service-worker.js. Cache names include the app's path. Activation deletes only older caches with this exact app/path prefix, then claims clients. Updates use the browser's waiting lifecycle: no skipWaiting, automatic game reload or forced interruption. Close old game tabs/windows and reopen to activate a waiting update. Registration uses updateViaCache:none.
+## Current URLs
 
-For each release, increment CACHE_VERSION. When adding/removing boot files or lightweight images, update pwa-assets.js as well. Keep large optional tracks out of precache. Existing images refresh with the new cache generation.
+All files below are under ./assets/pwa/:
 
-## Saves
-No save functions, schema, keys or localStorage data were changed. The worker caches static resources only. Existing saves remain in the existing browser storage context; transfer across browsers, profiles or OS-isolated installed-app containers is not implemented or promised.
+- radiation-green-v2-favicon-32.png: browser favicon 32x32
+- radiation-green-v2-favicon-48.png: browser favicon 48x48 and shortcut icon
+- radiation-green-v2-apple-180.png: Apple touch icon 180x180
+- radiation-green-v2-192.png: manifest 192x192, image/png, purpose any
+- radiation-green-v2-512.png: manifest 512x512, image/png, purpose any
+- radiation-green-v2-maskable-512.png: manifest 512x512, image/png, purpose maskable
 
-## Installability checks
-Validated JSON, name, standalone mode, relative start/scope, real PNG dimensions and maskable safe zone. Apple standalone/title/status-bar metadata and apple-touch-icon are present. Viewport is not duplicated. Registration skips unsupported/insecure/file contexts and catches rejection without affecting boot. These are configuration/VM checks, not a browser installability audit.
+The 178px symbol radius fits inside the 204.8px maskable safe radius. Background is opaque and built into the PNG. Only these six files remain in assets/pwa/. The old yellow source/prompt and the six unversioned green derivatives were removed. No icon design changed.
 
-## Automated tests
-All 411 existing game checks passed. The latest PWA suite passed 12 groups: 423 checks combined across 27 suites. All 56 JS/CJS files passed node --check; manifest JSON parsed successfully and git diff --check passed.
+## Cache and app identity
 
-12 dedicated PWA groups cover install, activate, offline root/index/script/image fetch, localhost and /ZoneRPG/ resolution, network freshness, quota errors, disabled CacheStorage, version replacement, unrelated cache preservation, failed update safety, ignored request types and registration failure. Existing gameplay/save/UI sources are compared byte-for-byte with HEAD. Actual PNG bytes and every precache path are validated.
+CACHE_VERSION is v4-green-radiation-final. All six versioned URLs are in pwa-assets.js. Installation precaches them; activate already deletes older caches with this exact app/path prefix, preserving other applications/scopes. Tests seed old Z cache data and legacy versions, then verify deletion, current icon bytes offline and exclusion of retired paths. Caching strategy, registration and waiting lifecycle stay unchanged. Close existing app windows/tabs and reopen to let a waiting worker activate. No forced reload, skipWaiting, OS hacks, storage deletion or UI controls.
 
-## Browser QA / remaining checks
-The local server started, but the in-app browser returned ERR_CONNECTION_TIMED_OUT for http://127.0.0.1:41736/index.html. No actual Chrome/Edge/Android/iOS installation, standalone window, browser offline relaunch, DevTools service-worker audit or shared-storage check was completed. These need a reachable browser/HTTPS deployment. No commit/push or publication was performed.
+Manifest id/start_url/scope remain ./; name, short_name, display and colors are unchanged. URLs work at GitHub Pages /ZoneRPG/ and localhost root. No second app identity was introduced. Fresh installations receive only the approved green manifest resources. Existing Edge metadata/Windows shortcuts/taskbar icons may refresh later or require app reinstallation if OS cache persists. Actual installed Edge/Windows icon refresh has not been verified; project configuration cannot guarantee OS refresh timing.
 
-## References
-Lifecycle/security/update behavior follows [MDN: Using Service Workers](https://developer.mozilla.org/en-US/docs/Web/API/Service_Worker_API/Using_Service_Workers). Relative manifest resolution follows [MDN: start_url](https://developer.mozilla.org/en-US/docs/Web/Progressive_web_apps/Manifest/Reference/start_url).
+## Validation
 
-## Historical radiation icon hotfix (superseded below)
-Source: assets/pwa/zonerpg-radiation-v1.png, RGB PNG 1254x1254, SHA-256 a89d772d1b92044762c95f424e65c12f82cc99ae709c087c8e2ab3b0d0e61529. Source bytes are unchanged. Pillow LANCZOS technical resize only produced radiation-192.png, radiation-512.png, radiation-apple-180.png and radiation-favicon-32/48.png. radiation-maskable-512.png uses the same source resized to 384px, centered with 64px opaque dark padding; yellow radiation pixels are verified inside the central 40% radius. No generation, redraw, color change or crop.
+PWA/icon suites include no-old-z-icons, actual PNG contents/hash/dimensions/opaque background, maskable safe zone, HTML/favicon/Apple, manifest metadata and precache path validation, old-cache removal, offline fetch and unchanged gameplay/UI/registration checks. Full local run: 434 PASS across 28 executable test suites, zero failures (runtime.cjs/server.cjs are helpers; audit-v72.cjs is a report generator). Dedicated icon/PWA checks: 23 PASS (7 radiation, 3 no-old-z-icons, 13 PWA). All 58 JS/CJS files passed syntax checking. All JS/CJS pass node --check; manifest JSON and HTML parse; git diff --check passes. No commit/push or deployment.
 
-All five retired Z-icon files were removed. HTML favicon/shortcut/Apple links, manifest and precache point to radiation variants. Manifest fields other than icons are unchanged. Worker differs only in CACHE_VERSION: v2-radiation-icons. Registration and cache strategy are unchanged. A mention of the retired favicon in the historical V63_QA.md is documentation, not an active resource reference.
+## Exact working-tree file list
 
-Hotfix QA: 7 icon groups + 12 PWA groups + 27 world-logic groups = 46 PASS; all 57 JS/CJS syntax checks, HTML parser, manifest JSON and git diff --check passed. PNGs and maskable image were visually inspected locally. No browser-tab favicon or installed OS icon was verified on a device. After deployment, an already installed app may retain its OS icon and require reinstalling; project assets cannot guarantee immediate OS refresh. See [Chrome manifest update behavior](https://web.dev/articles/manifest-updates). No commit/push.
-
-## Green radiation icon hotfix (current)
-
-The current master is design/zonerpg-radiation-green.svg: flat radiation trefoil, background #0e130f (game background), symbol #b6c783 (former Z-icon green). No text, rust, metal texture or external resources. design/render-green-icons.py reproduces six PNGs using Pillow at 8x resolution with BOX downsampling: radiation-green-192.png, radiation-green-512.png, radiation-green-apple-180.png, radiation-green-favicon-32.png, radiation-green-favicon-48.png and radiation-green-maskable-512.png. All are in assets/pwa/. The 178px outer radius on the 512px design fits inside the maskable 204.8px safe radius without extra padding. The old yellow technical variants were removed; the unreferenced original source remains archived.
-
-HTML favicon/shortcut/Apple, manifest and precache use only green variants. Manifest fields other than icons are unchanged. Service worker changes only CACHE_VERSION to v3-green-radiation-icons; registration and caching strategy are unchanged. New paths bypass old image URLs. Close old tabs/app windows and reopen to allow the normal waiting worker update. An installed OS icon may still need app reinstallation after deployment; no actual installed-device icon refresh was tested.
-
-QA: 7 icon checks, 12 PWA checks and 27 world-logic checks passed. All JS/CJS syntax checks, manifest JSON, HTML parsing and git diff --check passed. Locally inspected 32px/48px favicon and 192px/512px icon renderings: radiation mark remains readable. No gameplay, UI CSS, save or installation logic changed. No commit/push.
+- `D` `assets/pwa/radiation-green-192.png`
+- `D` `assets/pwa/radiation-green-512.png`
+- `D` `assets/pwa/radiation-green-apple-180.png`
+- `D` `assets/pwa/radiation-green-favicon-32.png`
+- `D` `assets/pwa/radiation-green-favicon-48.png`
+- `D` `assets/pwa/radiation-green-maskable-512.png`
+- `D` `assets/pwa/zonerpg-radiation-v1.png`
+- `M` `design/render-green-icons.py`
+- `D` `design/zonerpg-radiation-v1.prompt.txt`
+- `M` `index.html`
+- `M` `manifest.webmanifest`
+- `M` `pwa-assets.js`
+- `M` `service-worker.js`
+- `M` `tests/PWA_QA.md`
+- `M` `tests/pwa.cjs`
+- `M` `tests/radiation-icons.cjs`
+- `M` `tests/world-logic.cjs`
+- `??` `assets/pwa/radiation-green-v2-192.png`
+- `??` `assets/pwa/radiation-green-v2-512.png`
+- `??` `assets/pwa/radiation-green-v2-apple-180.png`
+- `??` `assets/pwa/radiation-green-v2-favicon-32.png`
+- `??` `assets/pwa/radiation-green-v2-favicon-48.png`
+- `??` `assets/pwa/radiation-green-v2-maskable-512.png`
+- `??` `design/green-icon-assets.json`
+- `??` `tests/no-old-z-icons.cjs`

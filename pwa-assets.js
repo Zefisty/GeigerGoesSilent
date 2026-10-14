@@ -1,11 +1,11 @@
 // Lightweight offline shell only; regenerate this list when adding local images/scripts.
 self.ZoneRPGPrecache = [
-  "./assets/pwa/radiation-green-192.png",
-  "./assets/pwa/radiation-green-512.png",
-  "./assets/pwa/radiation-green-apple-180.png",
-  "./assets/pwa/radiation-green-favicon-32.png",
-  "./assets/pwa/radiation-green-favicon-48.png",
-  "./assets/pwa/radiation-green-maskable-512.png",
+  "./assets/pwa/radiation-green-v2-192.png",
+  "./assets/pwa/radiation-green-v2-512.png",
+  "./assets/pwa/radiation-green-v2-apple-180.png",
+  "./assets/pwa/radiation-green-v2-favicon-32.png",
+  "./assets/pwa/radiation-green-v2-favicon-48.png",
+  "./assets/pwa/radiation-green-v2-maskable-512.png",
   "./assets/sprites/background-hunter.svg",
   "./assets/sprites/background-medic.svg",
   "./assets/sprites/background-rookie.svg",
