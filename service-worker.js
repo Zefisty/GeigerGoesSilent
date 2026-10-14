@@ -1,5 +1,5 @@
 // Bump CACHE_VERSION whenever publishing a new release. No forced game reloads.
-const CACHE_VERSION = 'v2-radiation-icons';
+const CACHE_VERSION = 'v3-green-radiation-icons';
 const BASE = new URL('./', self.location.href);
 const CACHE_PREFIX = 'zonerpg-' + encodeURIComponent(BASE.pathname) + '-';
 const CACHE_NAME = CACHE_PREFIX + CACHE_VERSION;

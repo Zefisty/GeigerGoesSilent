@@ -21,7 +21,7 @@ await test('Manifest, HTML and URLs resolve under GitHub Pages and local root',(
  for(const base of ['https://zefisty.github.io/ZoneRPG/','http://localhost:41736/']){const url=new URL('manifest.webmanifest',base);assert.equal(new URL(manifest.start_url,url).href,base);assert.equal(new URL(manifest.scope,url).href,base);for(const icon of manifest.icons){const location=new URL(icon.src,url);assert.ok(location.href.startsWith(base));assert.ok(fs.existsSync(path.join(ROOT,location.pathname.slice(new URL(base).pathname.length))));}}
 });
 await test('Radiation PNG icons have real 192/512/180 dimensions and maskable safe zone',()=>{
- const manifest=JSON.parse(fs.readFileSync(path.join(ROOT,'manifest.webmanifest'),'utf8'));for(const icon of [...manifest.icons,{src:'assets/pwa/radiation-apple-180.png',sizes:'180x180'}]){const png=fs.readFileSync(path.join(ROOT,icon.src)),[width,height]=icon.sizes.split('x').map(Number);assert.equal(png.subarray(0,8).toString('hex'),'89504e470d0a1a0a');assert.equal(png.readUInt32BE(16),width);assert.equal(png.readUInt32BE(20),height);}
+ const manifest=JSON.parse(fs.readFileSync(path.join(ROOT,'manifest.webmanifest'),'utf8'));for(const icon of [...manifest.icons,{src:'assets/pwa/radiation-green-apple-180.png',sizes:'180x180'}]){const png=fs.readFileSync(path.join(ROOT,icon.src)),[width,height]=icon.sizes.split('x').map(Number);assert.equal(png.subarray(0,8).toString('hex'),'89504e470d0a1a0a');assert.equal(png.readUInt32BE(16),width);assert.equal(png.readUInt32BE(20),height);}
  require('./radiation-icons.cjs').checkMaskable();
 });
 await test('Precache covers actual shell scripts and lightweight images only, all paths exist',()=>{
@@ -29,7 +29,7 @@ await test('Precache covers actual shell scripts and lightweight images only, al
  assert.ok(bytes<2*1024*1024);const html=fs.readFileSync(path.join(ROOT,'index.html'),'utf8');for(const [,script]of html.matchAll(/<script[^>]+src="([^"]+)"/g))assert.ok(assets.includes('./'+script));assert.ok(assets.includes('./index.html'));assert.ok(assets.includes('./style.css'));assert.ok(assets.includes('./assets/sprites/item-icons/mutant-parts.svg'));
 });
 await test('Install and activate create a complete offline shell on the first visit',async()=>{
- const w=worker();await w.install();await w.activate();assert.equal(w.ctl.claims,1);w.ctl.online=false;const root=await w.request('./',{mode:'navigate'});assert.match(await root.text(),/ZoneRPG/);for(const file of ['index.html?installed=1','engine.js','shops.js','style.css','assets/pwa/radiation-192.png','assets/sprites/item-icons/mutant-parts.svg'])assert.equal((await w.request(file,{mode:file.startsWith('index')?'navigate':'same-origin'})).status,200);
+ const w=worker();await w.install();await w.activate();assert.equal(w.ctl.claims,1);w.ctl.online=false;const root=await w.request('./',{mode:'navigate'});assert.match(await root.text(),/ZoneRPG/);for(const file of ['index.html?installed=1','engine.js','shops.js','style.css','assets/pwa/radiation-green-192.png','assets/sprites/item-icons/mutant-parts.svg'])assert.equal((await w.request(file,{mode:file.startsWith('index')?'navigate':'same-origin'})).status,200);
 });
 await test('Local localhost installation and offline launch use the same relative paths',async()=>{const w=worker('http://localhost:41736/');await w.install();await w.activate();w.ctl.online=false;assert.equal((await w.request('./',{mode:'navigate'})).status,200);assert.equal((await w.request('game.js')).status,200);});
 await test('HTML and scripts use network first; online responses survive cache quota failure',async()=>{
@@ -45,7 +45,7 @@ await test('External, unrelated, POST and range requests are not intercepted',as
  const w=worker();await w.install();for(const [url,options]of [['https://example.com/game.js',{}],['../another-project/index.html',{mode:'navigate'}],['tests/browser.html',{mode:'navigate'}],['unknown.json',{}],['game.js',{method:'POST'}],['assets/music/song.ogg',{range:true}]])assert.equal(await w.request(url,options),null);
 });
 await test('Blocked CacheStorage never prevents healthy online HTML, JS or images',async()=>{
- const w=worker();w.ctx.caches.open=async()=>{throw Error('storage disabled');};for(const [file,options]of [['./',{mode:'navigate'}],['game.js',{}],['assets/pwa/radiation-192.png',{}]])assert.equal((await w.request(file,options)).status,200);
+ const w=worker();w.ctx.caches.open=async()=>{throw Error('storage disabled');};for(const [file,options]of [['./',{mode:'navigate'}],['game.js',{}],['assets/pwa/radiation-green-192.png',{}]])assert.equal((await w.request(file,options)).status,200);
 });
 await test('Registration handles unsupported, insecure, file and rejected registrations safely',async()=>{
  const code=fs.readFileSync(path.join(ROOT,'pwa-register.js'),'utf8');for(const testCase of [{protocol:'https:',secure:true,supported:true,sync:true},{protocol:'https:',secure:true,supported:true},{protocol:'http:',secure:true,supported:true},{protocol:'file:',secure:false,supported:true},{protocol:'http:',secure:false,supported:true},{protocol:'https:',secure:true,supported:false}]){
