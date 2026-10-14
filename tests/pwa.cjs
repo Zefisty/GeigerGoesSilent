@@ -31,6 +31,16 @@ await test('Precache covers actual shell scripts and lightweight images only, al
 await test('Install and activate create a complete offline shell on the first visit',async()=>{
  const w=worker();await w.install();await w.activate();assert.equal(w.ctl.claims,1);w.ctl.online=false;const root=await w.request('./',{mode:'navigate'});assert.match(await root.text(),/ZoneRPG/);for(const file of ['index.html?installed=1','engine.js','shops.js','style.css','assets/pwa/radiation-green-v2-192.png','assets/sprites/item-icons/mutant-parts.svg'])assert.equal((await w.request(file,{mode:file.startsWith('index')?'navigate':'same-origin'})).status,200);
 });
+await test('Header JS/CSS replace stale cache online and remain current offline after activation',async()=>{
+ const w=worker();await w.install();const cache=await w.ctx.caches.open(w.name());
+ for(const file of ['ui.js','style.css']){
+  await cache.put('https://zefisty.github.io/ZoneRPG/'+file,new Response(file==='ui.js'?'<span class="brand-mark">Z</span>':'.brand-mark::before{content:"Z"}'));
+  const response=await w.request(file),text=await response.text();assert.equal(text,fs.readFileSync(path.join(ROOT,file),'utf8'));
+ }
+ await w.activate();w.ctl.online=false;
+ const ui=await(await w.request('ui.js')).text();assert.match(ui,/<img class="brand-mark"/);assert.doesNotMatch(ui,/<span class="brand-mark">Z<\/span>/);
+ assert.equal(await(await w.request('style.css')).text(),fs.readFileSync(path.join(ROOT,'style.css'),'utf8'));
+});
 await test('Local localhost installation and offline launch use the same relative paths',async()=>{const w=worker('http://localhost:41736/');await w.install();await w.activate();w.ctl.online=false;assert.equal((await w.request('./',{mode:'navigate'})).status,200);assert.equal((await w.request('game.js')).status,200);});
 await test('HTML and scripts use network first; online responses survive cache quota failure',async()=>{
  const w=worker();await w.install();const cache=await w.ctx.caches.open(w.name());await cache.put(new URL('index.html','https://zefisty.github.io/ZoneRPG/').href,new Response('old html'));await cache.put('https://zefisty.github.io/ZoneRPG/game.js',new Response('old js'));assert.match(await(await w.request('./',{mode:'navigate'})).text(),/doctype/);assert.notEqual(await(await w.request('game.js')).text(),'old js');w.ctl.quota=true;assert.equal((await w.request('game.js')).status,200);w.ctl.online=false;assert.equal((await w.request('game.js')).status,200);
@@ -40,8 +50,8 @@ await test('Version replacement cleans only this ZoneRPG scope and leaves active
 });
 await test('Final green cache purges legacy icon caches and stores only approved icon bytes',async()=>{
  const base='https://zefisty.github.io/ZoneRPG/',prefix='zonerpg-%2FZoneRPG%2F-',shared=new Map();
- for(const version of ['v1','v2-radiation-icons','v3-green-radiation-icons','v4-green-radiation-final'])shared.set(prefix+version,new Map([[base+'assets/pwa/icon-512.png',new Response('old Z')]]));
- shared.set('another-app',new Map());const w=worker(base,shared);assert.equal(w.name(),prefix+'v5-green-shortcut-icons');await w.install();await w.activate();
+ for(const version of ['v1','v2-radiation-icons','v3-green-radiation-icons','v4-green-radiation-final','v5-green-shortcut-icons'])shared.set(prefix+version,new Map([[base+'assets/pwa/icon-512.png',new Response('old Z')]]));
+ shared.set('another-app',new Map());const w=worker(base,shared);assert.equal(w.name(),prefix+'v6-header-radiation');await w.install();await w.activate();
  assert.deepEqual([...shared.keys()].sort(),['another-app',w.name()].sort());
  const icons=[...shared.get(w.name()).keys()].filter(url=>url.includes('/assets/pwa/')||url.endsWith('/favicon.ico'));assert.equal(icons.length,8);
  w.ctl.online=false;for(const url of icons){assert.match(url,/radiation-green-v[23]-|\/favicon\.ico$/);assert.deepEqual(Buffer.from(await(await w.request(url)).arrayBuffer()),fs.readFileSync(path.join(ROOT,new URL(url).pathname.slice('/ZoneRPG/'.length))));}
