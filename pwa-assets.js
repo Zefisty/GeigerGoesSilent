@@ -1,10 +1,11 @@
 // Lightweight offline shell only; regenerate this list when adding local images/scripts.
 self.ZoneRPGPrecache = [
-  "./assets/favicon.svg",
-  "./assets/pwa/apple-touch-icon.png",
-  "./assets/pwa/icon-192.png",
-  "./assets/pwa/icon-512.png",
-  "./assets/pwa/icon-maskable-512.png",
+  "./assets/pwa/radiation-192.png",
+  "./assets/pwa/radiation-512.png",
+  "./assets/pwa/radiation-apple-180.png",
+  "./assets/pwa/radiation-favicon-32.png",
+  "./assets/pwa/radiation-favicon-48.png",
+  "./assets/pwa/radiation-maskable-512.png",
   "./assets/sprites/background-hunter.svg",
   "./assets/sprites/background-medic.svg",
   "./assets/sprites/background-rookie.svg",
