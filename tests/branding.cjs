@@ -41,10 +41,17 @@ test('All SVG artwork is preserved apart from public accessible title text',()=>
  for(const f of files){assert.ok(f.endsWith('.svg'),f);const strip=s=>normalize(s).replace(/<title>[\s\S]*?<\/title>/,'<title/>');assert.equal(strip(read(f)),strip(head(f)),f);assert.doesNotMatch(read(f).match(/<title>[\s\S]*?<\/title>/)[0],/ZoneRPG/);}
 });
 test('Brand sizing contracts retain the full title at desktop and mobile widths',()=>{
- const css=read('ui-v11.css');assert.match(css,/#app \.brand-large span \{ margin-left:0;/);
+ const css=read('ui-v11.css');assert.match(css,/#app \.brand-large \.brand-words \{ display:block;color:inherit;/);
  assert.match(css,/font:700 clamp\(16px,3vw,28px\)/);assert.match(css,/font-size:11px;gap:8px/);
  // Conservative monospace upper bound, with the unchanged 25px mobile radiation mark.
  assert.ok(18*11*.65+18*11*.03+25+16<360-20-14-80);
  assert.doesNotMatch(read('ui.js'),/gameNameUpper\.slice\(0,2\)|>GGS</);
+});
+test('Menu brand words share one inline text flow with single ordinary spaces',()=>{
+ const r=runtime();r.ctx.window.ZoneRPGUI.render(r.E.getState());
+ assert.match(r.root.innerHTML,/<div class="brand-large"><span class="brand-words">GEIGER <span>GOES SILENT<\/span><\/span><\/div>/);
+ const css=read('ui-v11.css'),words=css.match(/#app \.brand-large \.brand-words \{([^}]+)\}/)[1];
+ assert.doesNotMatch(words,/display:(?:flex|grid)|gap:|margin|padding|word-spacing/);
+ assert.match(css,/#app \.brand-large \.brand-words>span \{ color:#adc47a;/);
 });
 console.log(passed+' branding checks passed.');

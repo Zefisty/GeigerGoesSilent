@@ -340,7 +340,8 @@ body:before { background:repeating-linear-gradient(0deg,transparent 0 4px,#bdd89
 #app .title-grid { width:min(1080px,100%);grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);gap:64px;align-items:center; }
 #app .brand-large { display:flex;align-items:center;gap:8px;font:700 clamp(16px,3vw,28px)/1.2 var(--pda-mono);letter-spacing:.02em;white-space:nowrap; }
 #app .brand-large:before { content:"";display:block;width:42px;height:42px;flex:0 0 42px;background:url("assets/pwa/radiation-green-v2-favicon-48.png") center/contain no-repeat;image-rendering:pixelated; }
-#app .brand-large span { margin-left:0;color:#adc47a; }
+#app .brand-large .brand-words { display:block;color:inherit; }
+#app .brand-large .brand-words>span { color:#adc47a; }
 #app .title-copy>small { display:block;margin-top:18px;color:#9aae81;font:9px/1.7 var(--pda-mono);letter-spacing:.14em; }
 #app .title-copy h1 { margin:20px 0 14px;font-size:clamp(36px,4.3vw,56px);color:#dce8c6;letter-spacing:-.04em;text-wrap:balance; }
 #app .title-copy>p { color:#a9bc98;font-size:15px;line-height:1.8;max-width:420px; }

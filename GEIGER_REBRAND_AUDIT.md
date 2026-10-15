@@ -1,3 +1,5 @@
+> Historical snapshot of the rebrand before repository/root rename. Deployment and root migration are now complete; see POST_REBRAND_AUDIT.md for the current audit.
+
 # Geiger Goes Silent — rebrand audit
 
 ## Status

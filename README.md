@@ -9,9 +9,9 @@ Geiger Goes Silent by Zefisty — бесплатная браузерная surv
 Публичное название игры — **Geiger Goes Silent**. GitHub-репозиторий переименован и проверен; ссылки выше используют новый адрес.
 
 Адреса после переименования: репозиторий `Zefisty/GeigerGoesSilent` и сайт https://zefisty.github.io/GeigerGoesSilent/.
-Запустите `node tools/finalize-repository-rename.cjs --apply`: инструмент сначала проверит GitHub name и ID, затем переключит URL, тестовые базы и origin. Без `--apply` он только показывает план. Commit/push он не выполняет.
+Переключение URL и origin уже завершено. `node tools/finalize-repository-rename.cjs` позволяет посмотреть конфигурацию без изменений; повторный `--apply` при активной конфигурации ничего не меняет.
 
-Открытую корневую папку проекта затем можно вручную переименовать в `GeigerGoesSilent`.
+Локальная папка проекта: `GeigerGoesSilent`. Переименование завершено.
 
 ## Запуск
 

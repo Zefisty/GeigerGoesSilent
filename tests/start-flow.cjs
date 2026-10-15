@@ -1,8 +1,9 @@
 const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),vm=require('node:vm');
 const {runtime}=require('./runtime.cjs');let passed=0;
 function test(name,fn){fn();passed++;console.log('PASS '+name);}
-function setup(types=[]){
+function setup(types=[],entries=[]){
  const r=runtime(),handlers={},keys={};
+ for(const [key,value]of entries)r.store.set(key,value);
  for(const type of types){const s=r.S.fresh();s.mode='play';s.player.money=type==='auto'?1357:2468;s.player.location=type==='auto'?'garbage':'cordon';r.Save.write(s,type);}
  r.root.addEventListener=(name,fn)=>handlers[name]=fn;r.ctx.window.addEventListener=(name,fn)=>keys[name]=fn;
  vm.runInContext(fs.readFileSync(path.join(__dirname,'../game.js'),'utf8'),r.ctx);
@@ -41,5 +42,21 @@ test('Save picker reuses unchanged slot cards and survival alerts',()=>{
  const cards=s=>s.slice(s.indexOf('  function saveChoices(s){'),s.indexOf('  function death(s)'));
  const alerts=s=>s.slice(s.indexOf('const survivalRules='),s.indexOf('let mapObserver='));assert.equal(cards(current),cards(base));assert.equal(alerts(current),alerts(base));
  const css=fs.readFileSync(path.join(__dirname,'../style.css'),'utf8');assert.match(css,/\.save-card\{[^}]*display:grid[^}]*width:100%/);assert.match(css,/\.save-card button\{[^}]*white-space:normal/);
+});
+for(const type of ['manual','auto'])test('Pre-rebrand '+type+' detects, loads, resaves and survives a fresh runtime',()=>{
+ const cp=require('node:child_process'),ROOT=path.join(__dirname,'..');
+ const old=runtime({readSource:file=>cp.execFileSync('git',['show','629c44f:'+file],{cwd:ROOT,encoding:'utf8'})});
+ assert.equal(old.ctx.window.ZoneRPGConfig.gameName,'Last Cordon');
+ const s=old.S.fresh();s.mode='play';s.player.money=type==='manual'?8765:4321;s.player.health=67;s.player.location='garbage';s.player.radiation=23;s.magazines.pm=3;
+ assert.ok(old.Save.write(s,type).ok);const entries=[...old.store],initial=new Map(entries),r=setup([],entries);
+ assert.ok(r.Save.has());assert.deepEqual(Array.from(r.Save.slots(),slot=>slot.type),[type]);
+ r.click('savePicker');assert.ok(r.root.innerHTML.includes('data-action="load" data-value="'+type+'"'));r.click('load',type);
+ let loaded=r.E.getState();assert.equal(loaded.player.money,s.player.money);assert.equal(loaded.player.health,67);assert.equal(loaded.player.location,'garbage');assert.equal(loaded.player.radiation,23);assert.equal(loaded.magazines.pm,3);
+ assert.equal(JSON.stringify([...r.store]),JSON.stringify([...initial]),'Discovery/load must not overwrite original slots');
+ const snapshot=x=>JSON.stringify({player:x.player,inventory:x.inventory,equipment:x.equipment,quests:x.quests,reputation:x.reputation,magazines:x.magazines});
+ const expected=snapshot(loaded);assert.ok(r.Save.write(loaded,type).ok);
+ const refreshed=setup([],[...r.store]);assert.ok(refreshed.Save.read(type).ok);refreshed.click('savePicker');refreshed.click('load',type);
+ assert.equal(snapshot(refreshed.E.getState()),expected);assert.equal(refreshed.S.VERSION,old.S.VERSION);
+ assert.equal(refreshed.Save.KEYS.manual,old.Save.KEYS.manual);assert.equal(refreshed.Save.KEYS.auto,old.Save.KEYS.auto);
 });
 console.log(passed+' start flow checks passed.');

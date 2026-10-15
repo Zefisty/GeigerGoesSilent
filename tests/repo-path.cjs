@@ -20,7 +20,10 @@ await test('Public HTML, SEO and repository links use the renamed deployment',()
 });
 await test('Manifest identity and relative launch, scope and icons remain unchanged',()=>{
  const manifest=JSON.parse(read('manifest.webmanifest')),url=new URL('manifest.webmanifest',BASE);
- for(const key of ['id','scope','start_url']){assert.equal(manifest[key],'./');assert.equal(new URL(manifest[key],url).href,BASE);}
+ for(const key of ['scope','start_url']){assert.equal(manifest[key],'./');assert.equal(new URL(manifest[key],url).href,BASE);}
+ // Manifest id is resolved against start_url's origin (W3C), not manifest's directory.
+ assert.equal(manifest.id,'./');const start=new URL(manifest.start_url,url);
+ assert.equal(new URL(manifest.id,start.origin+'/').href,start.origin+'/');
  for(const icon of manifest.icons)assert.ok(new URL(icon.src,url).href.startsWith(BASE));
  for(const shortcut of manifest.shortcuts||[])assert.ok(new URL(shortcut.url,url).href.startsWith(BASE));
 });
