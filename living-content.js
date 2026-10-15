@@ -92,8 +92,8 @@
   const newItems={
     v9_fieldJournal:{name:'Полевой журнал смены',type:'quest',price:0,weight:0,stackable:true,rarity:'rare',icon:'quest',description:'Сохранённые наблюдения исчезнувшего дозора. Их история осталась в КПК.'},
     v9_routeLedger:{name:'Маршрутная пластина',type:'quest',price:0,weight:0,stackable:true,rarity:'very_rare',icon:'quest',description:'Три согласованных ориентира. Это память о безопасном пути, а не пропуск.'},
-    v9_markedCharm:{name:'Безтень',type:'artifact',price:5400,weight:.25,stackable:false,rarity:'very_rare',icon:'artifact-shell',description:'Почти прозрачная пластина. Гасит фон, но забирает часть жизненных сил.',effect:{radResist:.12,maxHealth:-4,evasion:.025}},
-    v9_detectorFrame:{name:'Рамка дозора',type:'artifact',price:6200,weight:.4,stackable:false,rarity:'rare',icon:'artifact-gravi',description:'Искажённая рамка измерителя. Помогает искать слабые сигналы, но усиливает фон при переходах.',effect:{artifactFindChance:.025,radPerTrip:1}}
+    v9_markedCharm:{name:'Безтень',type:'artifact',price:5400,weight:.25,stackable:false,rarity:'very_rare',icon:'artifact-shell',description:'Почти прозрачная пластина не отбрасывает тени.',effect:{radResist:.12,maxHealth:-4,evasion:.025}},
+    v9_detectorFrame:{name:'Рамка дозора',type:'artifact',price:6200,weight:.4,stackable:false,rarity:'rare',icon:'artifact-gravi',description:'Искажённая рамка измерителя с неподвижной стрелкой.',effect:{artifactFindChance:.025,radPerTrip:1}}
   };
   // Reuse the established category assets; no remote resources or new icon fallback rules.
   newItems.v9_markedCharm.icon=I.items.shell.icon;newItems.v9_detectorFrame.icon=I.items.gravi.icon;

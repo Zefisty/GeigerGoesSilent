@@ -9,12 +9,12 @@ function renderItems(r){
  UI.render({...s,mode:'inventory'});const inventory=r.root.innerHTML;
  UI.render({...s,mode:'trade'});return {inventory,shop:r.root.innerHTML};
 }
-function descriptions(html,cls){return [...html.matchAll(new RegExp('<article class="'+cls+'"[^>]*>([\\s\\S]*?)</article>','g'))].map(m=>m[1].match(/<p>([\s\S]*?)<\/p>/)[1]);}
+function descriptions(html,cls){return [...html.matchAll(new RegExp('<article class="'+cls+'"[^>]*>([\\s\\S]*?)</article>','g'))].map(m=>[...m[1].matchAll(/<p(?: class="item-effects")?>([\s\S]*?)<\/p>/g)].map(p=>p[1]).join(' '));}
 test('Four goods have distinct meaningful descriptions instead of the shared field-supply fallback',()=>{
  const r=runtime(),items=ids.slice(0,4).map(id=>r.I.items[id]);assert.equal(new Set(items.map(x=>x.description)).size,4);
  for(const item of items)assert.doesNotMatch(item.description,/запас для полевой работы/);
  assert.match(items[0].description,/зондирования аномальных/);assert.match(items[1].description,/элемент питания для рации/);
- assert.match(items[2].description,/жажду.*силы/);assert.match(items[3].description,/радиацию.*здоровье/);assert.doesNotMatch(items[3].description,/яд|отравлен/);
+ assert.match(items[2].description,/раствор солей/);assert.match(items[3].description,/Ампула полевого препарата/);assert.doesNotMatch(items[3].description,/яд|отравлен/);
 });
 test('Definitions retain exactly the original mechanics, costs, weights and effects',()=>{
  const r=runtime(),baseline=runtime();vm.runInContext(cp.execFileSync('git',['show','HEAD:content-v7.js'],{cwd:path.resolve(__dirname,'..'),encoding:'utf8'}),baseline.ctx);
@@ -25,15 +25,15 @@ test('Inventory and shop show identical descriptions and actual energy/stamina a
  const r=runtime();r.load(r.S.fresh());const {inventory,shop}=renderItems(r),inv=descriptions(inventory,'item-row-card'),stock=descriptions(shop,'shop-row');
  assert.deepEqual(inv,stock);assert.equal(inv.length,ids.length);
  for(let i=0;i<ids.length;i++)assert.ok(inv[i].includes(r.I.items[ids[i]].description));
- assert.ok(inv[4].includes('Восстанавливает выносливость: +'+r.I.items.energy.effect.stamina));
- assert.ok(inv[4].includes('Восстанавливает жажду: +15%'));
- assert.ok(inv[2].includes('Восстанавливает выносливость: +14'));
- assert.ok(inv[3].includes('Лечит: +5 HP'));assert.ok(inv[3].includes('Снижает радиацию: 28%'));
+ assert.ok(inv[4].includes('Восстанавливает '+r.I.items.energy.effect.stamina+' выносливости'));
+ assert.ok(inv[4].includes('Снижает жажду на 15%'));
+ assert.ok(inv[2].includes('Восстанавливает 14 выносливости'));
+ assert.ok(inv[3].includes('Восстанавливает 5 здоровья'));assert.ok(inv[3].includes('Снижает радиацию на 28%'));
 });
 test('UI stamina amount follows changed item data in both views without a duplicated constant',()=>{
  const r=runtime();r.load(r.S.fresh());r.I.items.energy.effect.stamina=23;
  const {inventory,shop}=renderItems(r);
- for(const html of [inventory,shop]){assert.ok(html.includes('Восстанавливает выносливость: +23'));assert.ok(!html.includes('Восстанавливает выносливость: +35'));}
+ for(const html of [inventory,shop]){assert.ok(html.includes('Восстанавливает 23 выносливости'));assert.ok(!html.includes('Восстанавливает 35 выносливости'));}
 });
 test('Rendering and save/load preserve consumable state and effects',()=>{
  const r=runtime(),raw=r.S.fresh();raw.inventory.push({id:'energy',qty:1});raw.player.stamina=10;raw.player.thirst=40;r.load(raw);

@@ -61,7 +61,7 @@
  ['mirrorSeed','Зеркальное семя','special',{radResist:.25,maxHealth:-12,accuracy:.03},8200,'artifact-nightstar'],
  ['compass7','Компас поймы','special',{maxStamina:18,maxWeight:2,maxHealth:-8},7600,'artifact-gravi']
  ];
- for(const [id,name,rarity,effect,price,icon]of artifactSpecs)I.items[id]={name,type:'artifact',rarity,effect,price,icon,weight:.45,stackable:false,description:Object.entries(effect).map(([k,v])=>({maxHealth:'Максимум HP',maxStamina:'Выносливость',maxWeight:'Переносимый вес',accuracy:'Точность',evasion:'Уклонение',radResist:'Защита от радиации',protection:'Защита',healthRegen:'Восстановление HP',radPerTrip:'Радиация за переход'})[k]+': '+v).join(' · '),uniqueSource:['mirrorSeed','compass7'].includes(id)};
+ for(const [id,name,rarity,effect,price,icon]of artifactSpecs)I.items[id]={name,type:'artifact',rarity,effect,price,icon,weight:.45,stackable:false,description:{"reed": "Сухая аномальная нить колышется без ветра.", "anchor": "Тяжёлый узел из тёмных переплетённых пластин.", "lens": "Прозрачный осколок преломляет свет под неверным углом.", "dew": "Холодные капли держатся на поверхности пористого камня.", "scar": "Ребристый нарост с багровой полосой вдоль разлома.", "echoHeart": "Полый камень отзывается тихим стуком.", "mirrorSeed": "Зеркальная крупица исчезает при прямом взгляде.", "compass7": "Плоский диск упрямо поворачивается к болотной воде."}[id],uniqueSource:['mirrorSeed','compass7'].includes(id)};
  const goods=[
  ['electrolyte','Солевой раствор','drink',140,.4,{thirst:-30,stamina:14},'water'],
  ['ration7','Экспедиционный паёк','food',210,.6,{hunger:-40,stamina:10},'ration'],
@@ -73,17 +73,21 @@
  ['pumpFuse','Предохранитель насоса','quest',0,.1,{},'electronics']
  ];
  const goodsDescriptions={
+   ration7:'Сухой паёк в прочном пакете для дальних выходов.',
+   sealedSample:'Опечатанный контейнер с образцом для исследователей.',
+   routeReport:'Полевые замеры и ориентиры, сведённые в один отчёт.',
+   pumpFuse:'Керамический предохранитель от старого насосного узла.',
    probe7:'Болты для зондирования аномальных полей. Расходуются в специальных вариантах событий.',
    radioBattery:'Запасной элемент питания для рации. Пригодится для снабжения связных.',
-   electrolyte:'Полевой питьевой раствор. Утоляет жажду и помогает восстановить силы.',
-   fieldSerum:'Полевой препарат снижает радиацию и немного восстанавливает здоровье.'
+   electrolyte:'Питьевой раствор солей в запаянном полевом пакете.',
+   fieldSerum:'Ампула полевого препарата с затёртой инструкцией.'
  };
  for(const [id,name,type,price,weight,effect,icon]of goods)I.items[id]={name,type,price,weight,effect,icon,stackable:true,description:goodsDescriptions[id]||name+' — запас для полевой работы.'};
  I.items.surveyPack={name:'Рюкзак геодезиста',type:'backpack',slot:'backpack',rarity:'uncommon',price:2400,weight:1.8,stackable:false,icon:'backpack',effect:{maxWeight:12,maxStamina:-3},description:'Крепления для образцов и расходников.'};
  I.items.surveyMask={name:'Полевой респиратор',type:'headgear',slot:'head',rarity:'uncommon',price:1800,weight:.8,stackable:false,icon:'gas-mask',effect:{radResist:.18},description:'Фильтр для длительной экспедиции.'};
  for(const [id,name,base,damage,accuracy,price]of [['carbine7','Карабин разведчика','huntingRifle',33,.8,4200],['smg7','ПП патрульный','ppVityaz',25,.7,3600]]){
    I.weapons[id]={...I.weapons[base],name,damage,accuracy,price};
-   I.items[id]={...I.items[base],name,weaponId:id,price,description:'Подготовлен для патрульных выходов.'};
+   I.items[id]={...I.items[base],name,weaponId:id,price,description:id==='carbine7'?'Карабин с затёртым ремнём разведчика.':'Патрульный пистолет-пулемёт с армейским номером.'};
  }
  const enemies=[
  ['quarryDog','Карьерный пёс','dog',54,14,'quarry'],

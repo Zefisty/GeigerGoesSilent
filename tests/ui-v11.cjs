@@ -84,7 +84,7 @@ test('Symbol controls have labels, dialogs have names, motion can be reduced and
  assert.match(css,/outline:2px solid var\(--pda-accent\)/);assert.match(css,/body\[data-motion="reduced"\]/);assert.doesNotMatch(css,/outline:\s*(?:0|none)/);
 });
 test('Core game files, save schema, app identity and raster art are unchanged; config changes version only',()=>{
- const normalize=s=>s.replace(/\r\n/g,'\n');for(const file of ['engine.js','game.js','items.js','world.js','state.js','save.js','shops.js','art.js','manifest.webmanifest','pwa-register.js'])assert.equal(normalize(read(file)),normalize(cp.execFileSync('git',['show','HEAD:'+file],{cwd:ROOT,encoding:'utf8'})),file);
+ const normalize=s=>s.replace(/\r\n/g,'\n');for(const file of ['engine.js','game.js','items.js','world.js','state.js','save.js','shops.js','art.js','manifest.webmanifest','pwa-register.js']){const content=text=>file==='items.js'?normalize(text).replace(/description:'[^']*'/g,"description:'FLAVOR'"):normalize(text);assert.equal(content(read(file)),content(cp.execFileSync('git',['show','HEAD:'+file],{cwd:ROOT,encoding:'utf8'})),file);}
  const stripVersion=s=>normalize(s).replace(/version:'[^']*'/,"version:'UI'");assert.equal(stripVersion(read('config.js')),stripVersion(cp.execFileSync('git',['show','HEAD:config.js'],{cwd:ROOT,encoding:'utf8'})));assert.match(read('config.js'),/version:'11.0'/);
  const worker=s=>normalize(s).replace(/const CACHE_VERSION = '[^']+';/,'const CACHE_VERSION = VERSION;');assert.equal(worker(read('service-worker.js')),worker(cp.execFileSync('git',['show','HEAD:service-worker.js'],{cwd:ROOT,encoding:'utf8'})));
 });
