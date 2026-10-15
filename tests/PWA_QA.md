@@ -8,7 +8,7 @@ The working tree was clean. Repository-wide searches covered HTML, manifests, JS
 
 ## Sole master and reproducible output
 
-Master: design/zonerpg-radiation-green.svg, unchanged. Background #0e130f; symbol #b6c783. design/render-green-icons.py now reads geometry and palette directly from this SVG rather than rewriting it from a second definition. Pillow is needed only at build time. Generated opaque RGB PNGs use 8x sampling and BOX reduction. All six new PNGs were verified byte-for-byte against their approved green predecessors. design/green-icon-assets.json records normalized master SHA-256, PNG SHA-256, dimensions and byte counts. No external resources or runtime image dependency.
+Master: design/lastcordon-radiation-green.svg, unchanged. Background #0e130f; symbol #b6c783. design/render-green-icons.py now reads geometry and palette directly from this SVG rather than rewriting it from a second definition. Pillow is needed only at build time. Generated opaque RGB PNGs use 8x sampling and BOX reduction. All six new PNGs were verified byte-for-byte against their approved green predecessors. design/green-icon-assets.json records normalized master SHA-256, PNG SHA-256, dimensions and byte counts. No external resources or runtime image dependency.
 
 ## Current URLs
 

@@ -18,7 +18,17 @@ function checkMaskable(){
 
 module.exports={decode,checkMaskable};
 if(require.main===module){let passed=0;const test=(name,fn)=>{fn();passed++;console.log('PASS '+name);};
-test('Flat green master uses exact game palette and a radiation trefoil without text',()=>{const svg=read('design/zonerpg-radiation-green.svg').toString();assert.equal((svg.match(/<path /g)||[]).length,3);assert.equal((svg.match(/<circle /g)||[]).length,2);assert.deepEqual([...new Set([...svg.matchAll(/fill="([^"]+)"/g)].map(m=>m[1]))].sort(),['#0e130f','#b6c783']);assert.doesNotMatch(svg,/<text|<image|filter|gradient/i);});
+test('Flat green master uses exact game palette and a radiation trefoil without text',()=>{const svg=read('design/lastcordon-radiation-green.svg').toString();assert.equal((svg.match(/<path /g)||[]).length,3);assert.equal((svg.match(/<circle /g)||[]).length,2);assert.deepEqual([...new Set([...svg.matchAll(/fill="([^"]+)"/g)].map(m=>m[1]))].sort(),['#0e130f','#b6c783']);assert.doesNotMatch(svg,/<text|<image|filter|gradient/i);});
+test('Renamed master is the single existing source for generator and metadata',()=>{
+ const master='design/lastcordon-radiation-green.svg',audit=JSON.parse(read('design/green-icon-assets.json'));
+ assert.equal(audit.source,master);assert.ok(fs.existsSync(path.join(ROOT,master)));
+ assert.ok(read('design/render-green-icons.py').toString().includes("MASTER = '"+master+"'"));
+ const hash=require('node:crypto').createHash('sha256').update(read(master).toString().replace(/\r\n/g,'\n')).digest('hex');assert.equal(audit.sourceSHA256,hash);
+ for(const [file,details]of Object.entries({...audit.icons,...audit.desktopIcons})){
+  assert.ok(fs.existsSync(path.join(ROOT,file)),file);
+  assert.equal(require('node:crypto').createHash('sha256').update(read(file)).digest('hex'),details.sha256,file);
+ }
+});
 test('All six technical variants have exact sizes and a flat green radiation mark',()=>{for(const [name,size]of [['radiation-green-v2-192',192],['radiation-green-v2-512',512],['radiation-green-v2-apple-180',180],['radiation-green-v2-favicon-32',32],['radiation-green-v2-favicon-48',48],['radiation-green-v2-maskable-512',512]]){const im=decode('assets/pwa/'+name+'.png');assert.equal(im.width,size);assert.equal(im.height,size);let green=0,colors=new Set();for(let i=0;i<im.pixels.length;i+=im.channels){const [r,g,b]=im.pixels.subarray(i,i+3);if(g>80&&g>r&&g>b)green++;colors.add(r+','+g+','+b);}assert.ok(green>size*size*.08,name);assert.ok(colors.size<1500,'No textured/rust image: '+name);assert.deepEqual([...im.pixels.subarray(0,3)],[14,19,15]);const center=(Math.floor(size/2)*size+Math.floor(size/2))*im.channels;assert.deepEqual([...im.pixels.subarray(center,center+3)],[182,199,131]);}});
 test('Maskable safe margin preserves the radiation sign inside the 40% radius',checkMaskable);
 test('Website favicon, shortcut and Apple links use existing radiation variants',()=>{const html=read('index.html').toString(),icons=[...html.matchAll(/<link\b[^>]*rel="([^"]*icon[^"]*)"[^>]*>/g)];assert.equal(icons.length,5);for(const [tag]of icons){const file=tag.match(/href="([^"]+)"/)[1];assert.match(file,/\/radiation-green-v[23]-/);assert.ok(fs.existsSync(path.join(ROOT,file)));}assert.match(html,/radiation-green-v2-favicon-32.png/);assert.match(html,/radiation-green-v2-favicon-48.png/);assert.match(html,/radiation-green-v2-apple-180.png/);});
