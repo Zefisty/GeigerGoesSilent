@@ -1,0 +1,13 @@
+{
+  "status": "active",
+  "current": {
+    "repository": "Zefisty/GeigerGoesSilent",
+    "pages": "https://zefisty.github.io/GeigerGoesSilent/"
+  },
+  "expected": {
+    "repository": "Zefisty/GeigerGoesSilent",
+    "pages": "https://zefisty.github.io/GeigerGoesSilent/"
+  },
+  "repositoryId": 1404247760,
+  "verifiedOn": "2026-10-15"
+}

@@ -1,3 +1,5 @@
+> Historical audit of an earlier release/name. Current brand: Geiger Goes Silent. See GEIGER_REBRAND_AUDIT.md for current migration status.
+
 > Historical snapshot before the repository rename. Current deployment: https://zefisty.github.io/LastCordon/. See REPO_RENAME_AUDIT.md for the migration.
 
 # Header badge / public deployment audit

@@ -1,56 +1,35 @@
-# Last Cordon — indexing and social metadata
+# Geiger Goes Silent — indexing and social metadata
 
-Canonical public homepage: https://zefisty.github.io/LastCordon/
+SEO brand: **Geiger Goes Silent by Zefisty**.
 
-## Included in this patch
+## Deployment status
 
-- Russian title/description identifying **Last Cordon by Zefisty**.
-- Explicit `index, follow`, canonical URL and sitemap link.
-- Open Graph and Twitter metadata using the existing 512×512 green radiation
-  icon. Twitter uses `summary`, matching the square artwork; no new image.
-- Minimal schema.org `VideoGame` JSON-LD, without invented reviews, prices or dates.
-- Readable ordinary HTML introduction and a single H1 before JavaScript runs.
-  The normal JS start menu retains the same introduction, rather than serving
-  search-only hidden text. Its actions and in-game branding are unchanged.
-- `robots.txt` allowing crawling and `sitemap.xml` containing only the homepage.
+Repository rename: active. GitHub returned 404 for the expected repository on 2026-10-15; the current repository name was confirmed through the integration. The repository rename was subsequently verified; these URLs now use the destination:
 
-## GitHub Pages root-host limitation
+- Current repository: https://github.com/Zefisty/GeigerGoesSilent
+- Current canonical: https://zefisty.github.io/GeigerGoesSilent/
+- Current sitemap: https://zefisty.github.io/GeigerGoesSilent/sitemap.xml
 
-This project publishes under `/LastCordon/`. Its robots file therefore appears at
-https://zefisty.github.io/LastCordon/robots.txt. Google reads robots rules from the
-host root, https://zefisty.github.io/robots.txt, not a project subdirectory.
-The project file alone cannot control the host-wide policy or guarantee that
-Google discovers its Sitemap directive.
+Prepared destination:
 
-After publishing, submit https://zefisty.github.io/LastCordon/sitemap.xml in the
-verified Search Console URL-prefix property for this project. If you also
-manage the root `zefisty.github.io` repository/site, add the same Sitemap line
-to its root robots.txt and verify that it does not block `/LastCordon/` or assets.
-No changes to that other repository or Search Console were made here.
+- Expected repository: https://github.com/Zefisty/GeigerGoesSilent
+- Expected Pages/canonical: https://zefisty.github.io/GeigerGoesSilent/
+- Expected sitemap: https://zefisty.github.io/GeigerGoesSilent/sitemap.xml
 
-Official reference:
-https://developers.google.com/crawling/docs/robots-txt/robots-txt-spec
+`deployment.json` records the current and expected endpoints. Run `node tools/finalize-repository-rename.cjs --apply` after renaming the GitHub repository. It verifies the expected repository's stable ID, changes active deployment references and origin, and never commits or pushes. Running without --apply is read-only.
 
-## Deployment verification
+## Public metadata
 
-This patch remains local and uncommitted. After the user publishes it, verify
-the homepage, sitemap, host-root robots policy and social image return usable
-responses at their public URLs. Then use Search Console URL inspection and
-sitemap submission. Metadata makes the content understandable; it does not
-guarantee indexing, rankings, the chosen search snippet or refresh timing of
-third-party link-preview caches.
+The title, description, application labels, Open Graph, Twitter, JSON-LD and visible H1 identify Geiger Goes Silent by Zefisty. The Russian introduction matches the game UI. The existing square green radiation asset is retained for social previews; no reviews, price or publication dates are invented.
 
-Public homepage/root-robots reads were attempted during implementation, but
-the web tool could not access them. Their current remote status is unverified.
-Local checks validate files, metadata, JSON-LD and unchanged PWA/game paths.
-XML and HTML parsing are checked separately. No PWA strategy, manifest, icon
-files, saves, game mechanics or navigation architecture changed.
+Manifest id/start_url/scope remain relative `./`. Scripts, CSS, icons and artwork remain relative and work under either deployment prefix. No backend or external runtime service was added.
 
-## Validation results
+## Indexing after deployment
 
-498 PASS across 35 suites, including 7 SEO checks. All 66 JS/CJS files passed node --check. HTML tag nesting, sitemap XML and JSON-LD JSON parsed successfully; git diff --check passed. No commit or push was performed.
+The project robots.txt is below the project prefix. Host-wide robots policy belongs to https://zefisty.github.io/robots.txt and is outside this repository. After publication, inspect the canonical, sitemap, social image and host-root policy, and submit the current sitemap in the appropriate Search Console property. Metadata does not guarantee indexing or cache refresh timing.
 
+Official reference: https://developers.google.com/crawling/docs/robots-txt/robots-txt-spec
 
-## Public brand and search intent
+## Compatibility
 
-Last Cordon by Zefisty is a free browser survival RPG set in an anomalous exclusion zone. Its expeditions, factions, artifacts and living-world encounters provide a stalker-like browser RPG experience. Public branding uses Last Cordon; the repository and deployment path now use LastCordon; JavaScript APIs and storage identifiers deliberately retain their compatible technical names.
+Public labels change; established window.ZoneRPG* APIs, zonerpg storage keys, save schema and migrations stay compatible. Runtime icon bytes and gameplay remain unchanged. Browser and automated QA results are recorded in GEIGER_REBRAND_AUDIT.md.

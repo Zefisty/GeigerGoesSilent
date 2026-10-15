@@ -18,9 +18,9 @@ function checkMaskable(){
 
 module.exports={decode,checkMaskable};
 if(require.main===module){let passed=0;const test=(name,fn)=>{fn();passed++;console.log('PASS '+name);};
-test('Flat green master uses exact game palette and a radiation trefoil without text',()=>{const svg=read('design/lastcordon-radiation-green.svg').toString();assert.equal((svg.match(/<path /g)||[]).length,3);assert.equal((svg.match(/<circle /g)||[]).length,2);assert.deepEqual([...new Set([...svg.matchAll(/fill="([^"]+)"/g)].map(m=>m[1]))].sort(),['#0e130f','#b6c783']);assert.doesNotMatch(svg,/<text|<image|filter|gradient/i);});
+test('Flat green master uses exact game palette and a radiation trefoil without text',()=>{const svg=read('design/geiger-goes-silent-radiation-green.svg').toString();assert.equal((svg.match(/<path /g)||[]).length,3);assert.equal((svg.match(/<circle /g)||[]).length,2);assert.deepEqual([...new Set([...svg.matchAll(/fill="([^"]+)"/g)].map(m=>m[1]))].sort(),['#0e130f','#b6c783']);assert.doesNotMatch(svg,/<text|<image|filter|gradient/i);});
 test('Renamed master is the single existing source for generator and metadata',()=>{
- const master='design/lastcordon-radiation-green.svg',audit=JSON.parse(read('design/green-icon-assets.json'));
+ const master='design/geiger-goes-silent-radiation-green.svg',audit=JSON.parse(read('design/green-icon-assets.json'));
  assert.equal(audit.source,master);assert.ok(fs.existsSync(path.join(ROOT,master)));
  assert.ok(read('design/render-green-icons.py').toString().includes("MASTER = '"+master+"'"));
  const hash=require('node:crypto').createHash('sha256').update(read(master).toString().replace(/\r\n/g,'\n')).digest('hex');assert.equal(audit.sourceSHA256,hash);

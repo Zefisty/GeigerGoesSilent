@@ -18,4 +18,4 @@ function createServer({basePath='/'}={}){
  });
 }
 module.exports={createServer};
-if(require.main===module){const basePath=process.argv.find(a=>a.startsWith('--base='))?.slice(7)||'/';createServer({basePath}).listen(41736,'127.0.0.1',()=>console.log('Last Cordon QA: http://127.0.0.1:41736'+basePath+'tests/browser.html?scenario=polish'));}
+if(require.main===module){const basePath=process.argv.find(a=>a.startsWith('--base='))?.slice(7)||'/';createServer({basePath}).listen(41736,'127.0.0.1',()=>console.log('Geiger Goes Silent QA: http://127.0.0.1:41736'+basePath+'tests/browser.html?scenario=polish'));}

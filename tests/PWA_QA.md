@@ -1,3 +1,5 @@
+> Historical audit of an earlier release/name. Current brand: Geiger Goes Silent. See GEIGER_REBRAND_AUDIT.md for current migration status.
+
 > Historical snapshot before the repository rename. Current deployment: https://zefisty.github.io/LastCordon/. See REPO_RENAME_AUDIT.md for the migration.
 
 # ZoneRPG PWA / final green icon audit
@@ -8,7 +10,7 @@ The working tree was clean. Repository-wide searches covered HTML, manifests, JS
 
 ## Sole master and reproducible output
 
-Master: design/lastcordon-radiation-green.svg, unchanged. Background #0e130f; symbol #b6c783. design/render-green-icons.py now reads geometry and palette directly from this SVG rather than rewriting it from a second definition. Pillow is needed only at build time. Generated opaque RGB PNGs use 8x sampling and BOX reduction. All six new PNGs were verified byte-for-byte against their approved green predecessors. design/green-icon-assets.json records normalized master SHA-256, PNG SHA-256, dimensions and byte counts. No external resources or runtime image dependency.
+Master: design/geiger-goes-silent-radiation-green.svg, unchanged. Background #0e130f; symbol #b6c783. design/render-green-icons.py now reads geometry and palette directly from this SVG rather than rewriting it from a second definition. Pillow is needed only at build time. Generated opaque RGB PNGs use 8x sampling and BOX reduction. All six new PNGs were verified byte-for-byte against their approved green predecessors. design/green-icon-assets.json records normalized master SHA-256, PNG SHA-256, dimensions and byte counts. No external resources or runtime image dependency.
 
 ## Current URLs
 

@@ -8,7 +8,7 @@ import xml.etree.ElementTree as ET
 from PIL import Image, ImageDraw
 
 ROOT = Path(__file__).resolve().parents[1]
-MASTER = 'design/lastcordon-radiation-green.svg'
+MASTER = 'design/geiger-goes-silent-radiation-green.svg'
 svg = ET.fromstring((ROOT / MASTER).read_bytes())
 ns = {'s': 'http://www.w3.org/2000/svg'}
 background = svg.find('s:rect', ns).attrib['fill']

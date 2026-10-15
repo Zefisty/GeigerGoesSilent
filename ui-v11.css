@@ -114,7 +114,7 @@ body:before { background:repeating-linear-gradient(0deg,transparent 0 4px,#bdd89
 /* Header, status telemetry and global navigation. */
 #app .game-shell { width:min(1260px,calc(100% - 48px));padding-bottom:108px; }
 #app .topbar { min-height:82px;gap:24px;border-bottom:1px solid #41513b;box-shadow:0 1px #040a06; }
-#app .brand { gap:10px;font:700 15px/1 var(--pda-mono);letter-spacing:.08em;color:#e3ebd6; }
+#app .brand { gap:10px;font:700 14px/1 var(--pda-mono);letter-spacing:.03em;color:#e3ebd6; }
 #app .brand-mark { box-shadow:0 0 0 1px #5b70412b,0 0 22px #b6c7830a; }
 #app .brand-dim { color:#a2b877; }
 #app .top-location { min-width:0; }
@@ -338,11 +338,11 @@ body:before { background:repeating-linear-gradient(0deg,transparent 0 4px,#bdd89
 /* Start/save/pause/settings/death remain the same flows. */
 #app .title-screen { min-height:100svh;padding:clamp(24px,7vh,72px) 24px;display:grid;place-items:center; }
 #app .title-grid { width:min(1080px,100%);grid-template-columns:minmax(0,1.12fr) minmax(0,.88fr);gap:64px;align-items:center; }
-#app .brand-large { display:flex;align-items:center;gap:10px;font:700 30px/1.2 var(--pda-mono);letter-spacing:.05em; }
+#app .brand-large { display:flex;align-items:center;gap:8px;font:700 clamp(16px,3vw,28px)/1.2 var(--pda-mono);letter-spacing:.02em;white-space:nowrap; }
 #app .brand-large:before { content:"";display:block;width:42px;height:42px;flex:0 0 42px;background:url("assets/pwa/radiation-green-v2-favicon-48.png") center/contain no-repeat;image-rendering:pixelated; }
 #app .brand-large span { margin-left:0;color:#adc47a; }
 #app .title-copy>small { display:block;margin-top:18px;color:#9aae81;font:9px/1.7 var(--pda-mono);letter-spacing:.14em; }
-#app .title-copy h1 { margin:20px 0 14px;font-size:clamp(36px,4.3vw,56px);color:#dce8c6;letter-spacing:-.04em; }
+#app .title-copy h1 { margin:20px 0 14px;font-size:clamp(36px,4.3vw,56px);color:#dce8c6;letter-spacing:-.04em;text-wrap:balance; }
 #app .title-copy>p { color:#a9bc98;font-size:15px;line-height:1.8;max-width:420px; }
 #app .title-actions { display:grid;gap:10px;width:min(340px,100%);margin-top:28px; }
 #app .title-actions>button { width:100%;justify-content:flex-start;min-height:48px;padding:13px 17px;font-size:13px; }
@@ -445,7 +445,7 @@ body:before { background:repeating-linear-gradient(0deg,transparent 0 4px,#bdd89
 @media(max-width:479px) {
   #app .game-shell { width:calc(100% - 20px);padding-bottom:132px; }
   #app .topbar { min-height:68px;gap:14px; }
-  #app .brand { font-size:12px;gap:8px; }
+  #app .brand { font-size:11px;gap:8px; }
   #app .top-location strong { font-size:12px; }
   #app .top-location small { font-size:8px;letter-spacing:.04em; }
   #app .game-main { padding:12px 0;gap:12px; }
@@ -507,7 +507,7 @@ body:before { background:repeating-linear-gradient(0deg,transparent 0 4px,#bdd89
   #app .setting-line select { max-width:100%;font-size:11px; }
   #app .title-screen { padding:26px 18px; }
   #app .title-copy h1 { font-size:36px;margin-top:18px; }
-  #app .brand-large { font-size:25px; }
+  #app .brand-large { font-size:clamp(16px,4.5vw,21px); }
   #app .brand-large:before { width:34px;height:34px;flex-basis:34px; }
   #app .title-grid { gap:26px; }
   #app .title-actions { margin-top:22px; }

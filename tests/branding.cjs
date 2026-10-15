@@ -1,21 +1,21 @@
 const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),cp=require('node:child_process');
-const {runtime}=require('./runtime.cjs');const ROOT=path.resolve(__dirname,'..'),BASE='https://zefisty.github.io/LastCordon/';let passed=0;
+const {runtime}=require('./runtime.cjs');const ROOT=path.resolve(__dirname,'..'),BASE=require('../deployment.json').current.pages;let passed=0;
 const read=f=>fs.readFileSync(path.join(ROOT,f),'utf8'),head=f=>cp.execFileSync('git',['show','HEAD:'+f],{cwd:ROOT,encoding:'utf8'}),normalize=s=>s.replace(/\r\n/g,'\n');
 function test(name,fn){fn();passed++;console.log('PASS '+name);}
-test('Public HTML, app labels and structured data use Last Cordon while keeping the real URL',()=>{
- const html=read('index.html'),m=JSON.parse(read('manifest.webmanifest'));assert.match(html,/<title>Last Cordon by Zefisty/);assert.match(html,/<h1>Last Cordon<\/h1>/);
- assert.match(html,/name="application-name" content="Last Cordon"/);assert.match(html,/name="apple-mobile-web-app-title" content="Last Cordon"/);assert.match(html,/property="og:title" content="Last Cordon"/);
- assert.equal(m.name,'Last Cordon');assert.equal(m.short_name,'Last Cordon');assert.match(m.description,/Last Cordon/);
- const d=JSON.parse(html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1]);assert.equal(d.name,'Last Cordon');assert.equal(d.author.name,'Zefisty');assert.equal(d.url,BASE);
- assert.match(html,/rel="canonical" href="https:\/\/zefisty.github.io\/LastCordon\/"/);assert.doesNotMatch(html,/\/ZoneRPG\//);
- assert.ok(read('README.md').startsWith('# Last Cordon\n'));assert.ok(read('SEO.md').startsWith('# Last Cordon'));
+test('Public HTML, app labels and structured data use Geiger Goes Silent while keeping the real URL',()=>{
+ const html=read('index.html'),m=JSON.parse(read('manifest.webmanifest'));assert.match(html,/<title>Geiger Goes Silent by Zefisty/);assert.match(html,/<h1>Geiger Goes Silent<\/h1>/);
+ assert.match(html,/name="application-name" content="Geiger Goes Silent"/);assert.match(html,/name="apple-mobile-web-app-title" content="Geiger Goes Silent"/);assert.match(html,/property="og:title" content="Geiger Goes Silent"/);
+ assert.equal(m.name,'Geiger Goes Silent');assert.equal(m.short_name,'Geiger Goes Silent');assert.match(m.description,/Geiger Goes Silent/);
+ const d=JSON.parse(html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1]);assert.equal(d.name,'Geiger Goes Silent');assert.equal(d.author.name,'Zefisty');assert.equal(d.url,BASE);
+ assert.equal(html.match(/rel="canonical" href="([^"]+)"/)[1],BASE);assert.doesNotMatch(html,/\/ZoneRPG\//);
+ assert.ok(read('README.md').startsWith('# Geiger Goes Silent\n'));assert.ok(read('SEO.md').startsWith('# Geiger Goes Silent'));
 });
 test('All public render modes use the central brand and keep radiation branding without Z',()=>{
- const r=runtime();r.load(r.S.fresh());const c=r.ctx.window.ZoneRPGConfig;assert.equal(c.gameName,'Last Cordon');assert.equal(c.gameNameUpper,'LAST CORDON');
+ const r=runtime();r.load(r.S.fresh());const c=r.ctx.window.ZoneRPGConfig;assert.equal(c.gameName,'Geiger Goes Silent');assert.equal(c.gameNameUpper,'GEIGER GOES SILENT');
  for(const mode of ['menu','background','play','inventory','quests','character','more','settings','pause','credits','map','trade','encyclopedia','statistics','dead']){
   r.ctx.window.ZoneRPGUI.render({...r.E.getState(),mode});const html=r.root.innerHTML,text=html.replace(/<[^>]+>/g,' ');
-  assert.doesNotMatch(text,/ZONE\s*RPG|ZoneRPG|Zone RPG/,mode);assert.match(text,/LAST\s+CORDON|Last Cordon/,mode);assert.doesNotMatch(html,/>\s*Z\s*</);
-  if(mode==='menu')assert.match(html,/<h1>Last Cordon<\/h1>/);else assert.match(html,/radiation-green-v2-favicon-48.png/);
+  assert.doesNotMatch(text,/ZONE\s*RPG|ZoneRPG|Zone RPG/,mode);assert.match(text,/GEIGER\s+GOES\s+SILENT|Geiger Goes Silent/,mode);assert.doesNotMatch(html,/>\s*Z\s*</);
+  if(mode==='menu')assert.match(html,/<h1>Geiger Goes Silent<\/h1>/);else assert.match(html,/radiation-green-v2-favicon-48.png/);
  }
  c.gameName='Brand fixture';c.gameNameUpper='BRAND FIXTURE';r.ctx.window.ZoneRPGUI.render({...r.E.getState(),mode:'menu'});assert.match(r.root.innerHTML,/<h1>Brand fixture<\/h1>/);assert.match(r.root.innerHTML,/BRAND <span>FIXTURE/);
 });
@@ -34,17 +34,17 @@ test('Manifest preserves install identity, scope, start URL, theme and original 
 });
 test('Worker changes only cache version so the rebranded cached interface updates safely',()=>{
  const worker=s=>normalize(s).replace(/const CACHE_VERSION = '[^']+';/,'const CACHE_VERSION = VERSION;');assert.equal(worker(read('service-worker.js')),worker(head('service-worker.js')));
- assert.match(read('service-worker.js'),/CACHE_VERSION = 'v11-last-cordon-repo'/);assert.match(read('service-worker.js'),/zonerpg-/);
+ assert.match(read('service-worker.js'),/CACHE_VERSION = 'v12-geiger-goes-silent'/);assert.match(read('service-worker.js'),/zonerpg-/);
 });
 test('All SVG artwork is preserved apart from public accessible title text',()=>{
  const files=cp.execFileSync('git',['diff','--name-only','--','assets'],{cwd:ROOT,encoding:'utf8'}).trim().split(/\r?\n/).filter(Boolean);
  for(const f of files){assert.ok(f.endsWith('.svg'),f);const strip=s=>normalize(s).replace(/<title>[\s\S]*?<\/title>/,'<title/>');assert.equal(strip(read(f)),strip(head(f)),f);assert.doesNotMatch(read(f).match(/<title>[\s\S]*?<\/title>/)[0],/ZoneRPG/);}
 });
-test('Brand sizing contracts retain all letters and fit a conservative 360px width budget',()=>{
- const css=read('ui-v11.css');assert.match(css,/#app \.brand-large span \{ margin-left:0;/);assert.match(css,/#app \.brand \{ font-size:12px;gap:8px;/);
- // 11 glyphs at 12px monospace + spacing + 29px badge + two 8px gaps < available mobile width.
- assert.ok(11*12+11*1+29+16<360-24);
- for(const width of [1280,768,480,360])assert.ok(width-24>11*12+11+29+16);
- assert.doesNotMatch(read('ui.js'),/gameNameUpper\.slice\(0,2\)|>LC</);
+test('Brand sizing contracts retain the full title at desktop and mobile widths',()=>{
+ const css=read('ui-v11.css');assert.match(css,/#app \.brand-large span \{ margin-left:0;/);
+ assert.match(css,/font:700 clamp\(16px,3vw,28px\)/);assert.match(css,/font-size:11px;gap:8px/);
+ // Conservative monospace upper bound, with the unchanged 25px mobile radiation mark.
+ assert.ok(18*11*.65+18*11*.03+25+16<360-20-14-80);
+ assert.doesNotMatch(read('ui.js'),/gameNameUpper\.slice\(0,2\)|>GGS</);
 });
 console.log(passed+' branding checks passed.');

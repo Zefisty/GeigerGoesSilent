@@ -1,3 +1,5 @@
+> Historical audit of an earlier release/name. Current brand: Geiger Goes Silent. See GEIGER_REBRAND_AUDIT.md for current migration status.
+
 # Last Cordon: repository rename migration
 
 ## Scope

@@ -1,8 +1,17 @@
-# Last Cordon
+# Geiger Goes Silent
 
-Last Cordon by Zefisty — бесплатная браузерная survival RPG об аномальной зоне отчуждения. Вылазки, группировки, артефакты, радиация и бои сочетаются со слухами, живым миром, личными историями и главным расследованием вокруг «Рубежа-6». Игра работает как статический сайт без серверной части.
+Geiger Goes Silent by Zefisty — бесплатная браузерная survival RPG об аномальной зоне отчуждения. Вылазки, группировки, артефакты, радиация и бои сочетаются со слухами, живым миром, личными историями и главным расследованием вокруг «Рубежа-6». Игра работает как статический сайт без серверной части.
 
-[Играть в Last Cordon](https://zefisty.github.io/LastCordon/) · [Репозиторий GitHub](https://github.com/Zefisty/LastCordon)
+[Играть в Geiger Goes Silent](https://zefisty.github.io/GeigerGoesSilent/) · [Репозиторий GitHub](https://github.com/Zefisty/GeigerGoesSilent)
+
+## Статус переименования репозитория
+
+Публичное название игры — **Geiger Goes Silent**. GitHub-репозиторий переименован и проверен; ссылки выше используют новый адрес.
+
+Адреса после переименования: репозиторий `Zefisty/GeigerGoesSilent` и сайт https://zefisty.github.io/GeigerGoesSilent/.
+Запустите `node tools/finalize-repository-rename.cjs --apply`: инструмент сначала проверит GitHub name и ID, затем переключит URL, тестовые базы и origin. Без `--apply` он только показывает план. Commit/push он не выполняет.
+
+Открытую корневую папку проекта затем можно вручную переименовать в `GeigerGoesSilent`.
 
 ## Запуск
 

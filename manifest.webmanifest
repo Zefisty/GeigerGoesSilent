@@ -1,7 +1,7 @@
 {
   "id": "./",
-  "name": "Last Cordon",
-  "short_name": "Last Cordon",
+  "name": "Geiger Goes Silent",
+  "short_name": "Geiger Goes Silent",
   "lang": "ru",
   "start_url": "./",
   "scope": "./",
@@ -28,5 +28,5 @@
       "purpose": "maskable"
     }
   ],
-  "description": "Last Cordon — бесплатная браузерная RPG о выживании в аномальной Зоне, вылазках, фракциях и артефактах."
+  "description": "Geiger Goes Silent — бесплатная браузерная RPG о выживании в аномальной Зоне, вылазках, фракциях и артефактах."
 }

@@ -1,7 +1,7 @@
 (() => {
   window.ZoneRPGFormat={percent(value){const n=Number(value);return (Number.isFinite(n)?Math.round(n*10)/10:0)+'%';}};
   window.ZoneRPGLog={write(s,text){s.log.push(text);s.log=s.log.slice(-10);}};
-  window.ZoneRPGConfig={version:'11.0',gameName:'Last Cordon',gameNameUpper:'LAST CORDON',credits:{developer:'Zefisty',betaTester:'DOCLIK',music:'Sajen'}};
+  window.ZoneRPGConfig={version:'11.0',gameName:'Geiger Goes Silent',gameNameUpper:'GEIGER GOES SILENT',credits:{developer:'Zefisty',betaTester:'DOCLIK',music:'Sajen'}};
 })();
 
 // UI dictionary only. Narrative content remains in its existing definitions.
