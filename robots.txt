@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://zefisty.github.io/ZoneRPG/sitemap.xml
+Sitemap: https://zefisty.github.io/LastCordon/sitemap.xml

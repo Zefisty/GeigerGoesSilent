@@ -1,5 +1,5 @@
 const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),cp=require('node:child_process');
-const {runtime}=require('./runtime.cjs');const ROOT=path.resolve(__dirname,'..'),BASE='https://zefisty.github.io/ZoneRPG/';let passed=0;
+const {runtime}=require('./runtime.cjs');const ROOT=path.resolve(__dirname,'..'),BASE='https://zefisty.github.io/LastCordon/';let passed=0;
 const read=f=>fs.readFileSync(path.join(ROOT,f),'utf8'),head=f=>cp.execFileSync('git',['show','HEAD:'+f],{cwd:ROOT,encoding:'utf8'}),normalize=s=>s.replace(/\r\n/g,'\n');
 function test(name,fn){fn();passed++;console.log('PASS '+name);}
 test('Public HTML, app labels and structured data use Last Cordon while keeping the real URL',()=>{
@@ -7,7 +7,7 @@ test('Public HTML, app labels and structured data use Last Cordon while keeping 
  assert.match(html,/name="application-name" content="Last Cordon"/);assert.match(html,/name="apple-mobile-web-app-title" content="Last Cordon"/);assert.match(html,/property="og:title" content="Last Cordon"/);
  assert.equal(m.name,'Last Cordon');assert.equal(m.short_name,'Last Cordon');assert.match(m.description,/Last Cordon/);
  const d=JSON.parse(html.match(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/)[1]);assert.equal(d.name,'Last Cordon');assert.equal(d.author.name,'Zefisty');assert.equal(d.url,BASE);
- assert.match(html,/rel="canonical" href="https:\/\/zefisty.github.io\/ZoneRPG\/"/);assert.doesNotMatch(html,/\/LastCordon\//);
+ assert.match(html,/rel="canonical" href="https:\/\/zefisty.github.io\/LastCordon\/"/);assert.doesNotMatch(html,/\/ZoneRPG\//);
  assert.ok(read('README.md').startsWith('# Last Cordon\n'));assert.ok(read('SEO.md').startsWith('# Last Cordon'));
 });
 test('All public render modes use the central brand and keep radiation branding without Z',()=>{
@@ -29,15 +29,15 @@ test('Save schema, migrations, IDs and storage keys are exactly unchanged',()=>{
 });
 test('Manifest preserves install identity, scope, start URL, theme and original icon bytes',()=>{
  const m=JSON.parse(read('manifest.webmanifest')),old=JSON.parse(head('manifest.webmanifest')),identity=({name,short_name,description,...rest})=>rest;
- assert.deepEqual(identity(m),identity(old));for(const f of ['robots.txt','sitemap.xml','pwa-register.js','pwa-assets.js'])assert.equal(normalize(read(f)),normalize(head(f)),f);
+ assert.deepEqual(identity(m),identity(old));for(const f of ['pwa-register.js','pwa-assets.js'])assert.equal(normalize(read(f)),normalize(head(f)),f);
  for(const icon of m.icons){assert.ok(new URL(icon.src,BASE).href.startsWith(BASE));assert.ok(fs.readFileSync(path.join(ROOT,icon.src)).equals(cp.execFileSync('git',['show','HEAD:'+icon.src.replace(/^\.\//,'')],{cwd:ROOT})));}
 });
 test('Worker changes only cache version so the rebranded cached interface updates safely',()=>{
  const worker=s=>normalize(s).replace(/const CACHE_VERSION = '[^']+';/,'const CACHE_VERSION = VERSION;');assert.equal(worker(read('service-worker.js')),worker(head('service-worker.js')));
- assert.match(read('service-worker.js'),/CACHE_VERSION = 'v10-last-cordon'/);assert.match(read('service-worker.js'),/zonerpg-/);
+ assert.match(read('service-worker.js'),/CACHE_VERSION = 'v11-last-cordon-repo'/);assert.match(read('service-worker.js'),/zonerpg-/);
 });
 test('All SVG artwork is preserved apart from public accessible title text',()=>{
- const files=cp.execFileSync('git',['diff','--name-only','--','assets'],{cwd:ROOT,encoding:'utf8'}).trim().split(/\r?\n/).filter(Boolean);assert.ok(files.length>0);
+ const files=cp.execFileSync('git',['diff','--name-only','--','assets'],{cwd:ROOT,encoding:'utf8'}).trim().split(/\r?\n/).filter(Boolean);
  for(const f of files){assert.ok(f.endsWith('.svg'),f);const strip=s=>normalize(s).replace(/<title>[\s\S]*?<\/title>/,'<title/>');assert.equal(strip(read(f)),strip(head(f)),f);assert.doesNotMatch(read(f).match(/<title>[\s\S]*?<\/title>/)[0],/ZoneRPG/);}
 });
 test('Brand sizing contracts retain all letters and fit a conservative 360px width budget',()=>{

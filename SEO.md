@@ -1,6 +1,6 @@
 # Last Cordon — indexing and social metadata
 
-Canonical public homepage: https://zefisty.github.io/ZoneRPG/
+Canonical public homepage: https://zefisty.github.io/LastCordon/
 
 ## Included in this patch
 
@@ -16,16 +16,16 @@ Canonical public homepage: https://zefisty.github.io/ZoneRPG/
 
 ## GitHub Pages root-host limitation
 
-This project publishes under `/ZoneRPG/`. Its robots file therefore appears at
-https://zefisty.github.io/ZoneRPG/robots.txt. Google reads robots rules from the
+This project publishes under `/LastCordon/`. Its robots file therefore appears at
+https://zefisty.github.io/LastCordon/robots.txt. Google reads robots rules from the
 host root, https://zefisty.github.io/robots.txt, not a project subdirectory.
 The project file alone cannot control the host-wide policy or guarantee that
 Google discovers its Sitemap directive.
 
-After publishing, submit https://zefisty.github.io/ZoneRPG/sitemap.xml in the
+After publishing, submit https://zefisty.github.io/LastCordon/sitemap.xml in the
 verified Search Console URL-prefix property for this project. If you also
 manage the root `zefisty.github.io` repository/site, add the same Sitemap line
-to its root robots.txt and verify that it does not block `/ZoneRPG/` or assets.
+to its root robots.txt and verify that it does not block `/LastCordon/` or assets.
 No changes to that other repository or Search Console were made here.
 
 Official reference:
@@ -53,4 +53,4 @@ files, saves, game mechanics or navigation architecture changed.
 
 ## Public brand and search intent
 
-Last Cordon by Zefisty is a free browser survival RPG set in an anomalous exclusion zone. Its expeditions, factions, artifacts and living-world encounters provide a stalker-like browser RPG experience. Public branding uses Last Cordon; the repository, JavaScript APIs and /ZoneRPG/ deployment path deliberately retain their technical names.
+Last Cordon by Zefisty is a free browser survival RPG set in an anomalous exclusion zone. Its expeditions, factions, artifacts and living-world encounters provide a stalker-like browser RPG experience. Public branding uses Last Cordon; the repository and deployment path now use LastCordon; JavaScript APIs and storage identifiers deliberately retain their compatible technical names.

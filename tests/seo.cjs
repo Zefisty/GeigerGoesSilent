@@ -1,5 +1,5 @@
 const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),cp=require('node:child_process');
-const {runtime}=require('./runtime.cjs');const ROOT=path.resolve(__dirname,'..'),BASE='https://zefisty.github.io/ZoneRPG/';
+const {runtime}=require('./runtime.cjs');const ROOT=path.resolve(__dirname,'..'),BASE='https://zefisty.github.io/LastCordon/';
 const read=f=>fs.readFileSync(path.join(ROOT,f),'utf8'),html=read('index.html');let passed=0;
 function test(name,fn){fn();passed++;console.log('PASS '+name);}
 const tags=[...html.matchAll(/<(meta|link)\b([^>]+)>/g)].map(m=>Object.fromEntries([...m[2].matchAll(/([\w:-]+)="([^"]*)"/g)].map(a=>[a[1],a[2]])));
@@ -19,7 +19,7 @@ test('Sitemap lists only the real public homepage, without test/debug routes or 
 test('Open Graph and Twitter use the existing square radiation asset with valid absolute paths',()=>{
  assert.equal(meta('og:title'),'Last Cordon');assert.equal(meta('og:type'),'website');assert.equal(meta('og:url'),BASE);assert.equal(meta('og:description'),meta('description'));
  const image=meta('og:image');assert.ok(image.startsWith(BASE));assert.equal(meta('twitter:image'),image);assert.equal(meta('twitter:card'),'summary');assert.equal(meta('twitter:title'),'Last Cordon by Zefisty');assert.equal(meta('twitter:description'),meta('description'));
- const png=fs.readFileSync(path.join(ROOT,new URL(image).pathname.slice('/ZoneRPG/'.length)));assert.equal(png.readUInt32BE(16),Number(meta('og:image:width')));assert.equal(png.readUInt32BE(20),Number(meta('og:image:height')));assert.equal(png.readUInt32BE(16),512);assert.match(image,/radiation-green-v2-512\.png$/);
+ const png=fs.readFileSync(path.join(ROOT,new URL(image).pathname.slice('/LastCordon/'.length)));assert.equal(png.readUInt32BE(16),Number(meta('og:image:width')));assert.equal(png.readUInt32BE(20),Number(meta('og:image:height')));assert.equal(png.readUInt32BE(16),512);assert.match(image,/radiation-green-v2-512\.png$/);
 });
 test('VideoGame JSON-LD is valid and contains only supported factual identity data',()=>{
  const scripts=[...html.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)];assert.equal(scripts.length,1);const d=JSON.parse(scripts[0][1]);assert.equal(d['@context'],'https://schema.org');assert.equal(d['@type'],'VideoGame');assert.equal(d.name,'Last Cordon');assert.equal(d.alternateName,'Last Cordon by Zefisty');assert.equal(d.url,BASE);assert.equal(d.author.name,'Zefisty');assert.equal(d.operatingSystem,'Web Browser');assert.equal(d.image,meta('og:image'));

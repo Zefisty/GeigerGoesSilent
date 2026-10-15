@@ -1,3 +1,5 @@
+> Historical snapshot before the repository rename. Current deployment: https://zefisty.github.io/LastCordon/. See REPO_RENAME_AUDIT.md for the migration.
+
 # Last Cordon — public rebrand audit
 
 ## Public changes (A)

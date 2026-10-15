@@ -1,7 +1,7 @@
 const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),vm=require('node:vm');
 const ROOT=path.resolve(__dirname,'..'),source=fs.readFileSync(path.join(ROOT,'service-worker.js'),'utf8');let passed=0;
 async function test(name,fn){await fn();passed++;console.log('PASS '+name);}
-function worker(base='https://zefisty.github.io/ZoneRPG/',shared=new Map(),code=source){
+function worker(base='https://zefisty.github.io/LastCordon/',shared=new Map(),code=source){
  const handlers={},ctl={online:true,missing:null,quota:false,claims:0,requests:[]};
  const network=async req=>{const url=new URL(typeof req==='string'?req:req.url);ctl.requests.push(url.href);if(!ctl.online)throw Error('offline');if(url.pathname===ctl.missing)return new Response('missing',{status:404});const relative=decodeURIComponent(url.pathname.slice(new URL(base).pathname.length))||'index.html',file=path.join(ROOT,relative);if(!fs.existsSync(file))return new Response('missing',{status:404});return new Response(fs.readFileSync(file),{status:200});};
  const key=req=>typeof req==='string'?req:req.url;
@@ -18,7 +18,7 @@ function worker(base='https://zefisty.github.io/ZoneRPG/',shared=new Map(),code=
 (async()=>{
 await test('Manifest, HTML and URLs resolve under GitHub Pages and local root',()=>{
  const manifest=JSON.parse(fs.readFileSync(path.join(ROOT,'manifest.webmanifest'),'utf8')),html=fs.readFileSync(path.join(ROOT,'index.html'),'utf8');assert.equal(manifest.name,'Last Cordon');assert.equal(manifest.short_name,'Last Cordon');assert.equal(manifest.display,'standalone');assert.equal((html.match(/name="viewport"/g)||[]).length,1);assert.match(html,/rel="manifest" href="\.\/manifest.webmanifest"/);assert.match(html,/apple-touch-icon/);assert.match(html,/apple-mobile-web-app-capable/);
- for(const base of ['https://zefisty.github.io/ZoneRPG/','http://localhost:41736/']){const url=new URL('manifest.webmanifest',base);assert.equal(new URL(manifest.start_url,url).href,base);assert.equal(new URL(manifest.scope,url).href,base);for(const icon of manifest.icons){const location=new URL(icon.src,url);assert.ok(location.href.startsWith(base));assert.ok(fs.existsSync(path.join(ROOT,location.pathname.slice(new URL(base).pathname.length))));}}
+ for(const base of ['https://zefisty.github.io/LastCordon/','http://localhost:41736/']){const url=new URL('manifest.webmanifest',base);assert.equal(new URL(manifest.start_url,url).href,base);assert.equal(new URL(manifest.scope,url).href,base);for(const icon of manifest.icons){const location=new URL(icon.src,url);assert.ok(location.href.startsWith(base));assert.ok(fs.existsSync(path.join(ROOT,location.pathname.slice(new URL(base).pathname.length))));}}
 });
 await test('Radiation PNG icons have real 192/512/180 dimensions and maskable safe zone',()=>{
  const manifest=JSON.parse(fs.readFileSync(path.join(ROOT,'manifest.webmanifest'),'utf8'));for(const icon of [...manifest.icons,{src:'assets/pwa/radiation-green-v2-apple-180.png',sizes:'180x180'}]){const png=fs.readFileSync(path.join(ROOT,icon.src)),[width,height]=icon.sizes.split('x').map(Number);assert.equal(png.subarray(0,8).toString('hex'),'89504e470d0a1a0a');assert.equal(png.readUInt32BE(16),width);assert.equal(png.readUInt32BE(20),height);}
@@ -29,12 +29,12 @@ await test('Precache covers actual shell scripts and lightweight images only, al
  assert.ok(bytes<5*1024*1024);const html=fs.readFileSync(path.join(ROOT,'index.html'),'utf8');for(const [,script]of html.matchAll(/<script[^>]+src="([^"]+)"/g))assert.ok(assets.includes('./'+script));assert.ok(assets.includes('./index.html'));assert.ok(assets.includes('./style.css'));assert.ok(assets.includes('./assets/sprites/item-icons/mutant-parts.svg'));
 });
 await test('Install and activate create a complete offline shell on the first visit',async()=>{
- const w=worker();await w.install();await w.activate();assert.equal(w.ctl.claims,1);w.ctl.online=false;const root=await w.request('./',{mode:'navigate'});assert.match(await root.text(),/ZoneRPG/);for(const file of ['index.html?installed=1','engine.js','shops.js','style.css','ui-v11.css','assets/ui/map.svg','assets/pwa/radiation-green-v2-192.png','assets/sprites/item-icons/mutant-parts.svg'])assert.equal((await w.request(file,{mode:file.startsWith('index')?'navigate':'same-origin'})).status,200);
+ const w=worker();await w.install();await w.activate();assert.equal(w.ctl.claims,1);w.ctl.online=false;const root=await w.request('./',{mode:'navigate'});assert.match(await root.text(),/LastCordon/);for(const file of ['index.html?installed=1','engine.js','shops.js','style.css','ui-v11.css','assets/ui/map.svg','assets/pwa/radiation-green-v2-192.png','assets/sprites/item-icons/mutant-parts.svg'])assert.equal((await w.request(file,{mode:file.startsWith('index')?'navigate':'same-origin'})).status,200);
 });
 await test('Header JS/CSS replace stale cache online and remain current offline after activation',async()=>{
  const w=worker();await w.install();const cache=await w.ctx.caches.open(w.name());
  for(const file of ['ui.js','style.css','ui-v11.css']){
-  await cache.put('https://zefisty.github.io/ZoneRPG/'+file,new Response(file==='ui.js'?'<span class="brand-mark">Z</span>':'.brand-mark::before{content:"Z"}'));
+  await cache.put('https://zefisty.github.io/LastCordon/'+file,new Response(file==='ui.js'?'<span class="brand-mark">Z</span>':'.brand-mark::before{content:"Z"}'));
   const response=await w.request(file),text=await response.text();assert.equal(text,fs.readFileSync(path.join(ROOT,file),'utf8'));
  }
  await w.activate();w.ctl.online=false;
@@ -43,22 +43,31 @@ await test('Header JS/CSS replace stale cache online and remain current offline 
 });
 await test('Local localhost installation and offline launch use the same relative paths',async()=>{const w=worker('http://localhost:41736/');await w.install();await w.activate();w.ctl.online=false;assert.equal((await w.request('./',{mode:'navigate'})).status,200);assert.equal((await w.request('game.js')).status,200);});
 await test('HTML and scripts use network first; online responses survive cache quota failure',async()=>{
- const w=worker();await w.install();const cache=await w.ctx.caches.open(w.name());await cache.put(new URL('index.html','https://zefisty.github.io/ZoneRPG/').href,new Response('old html'));await cache.put('https://zefisty.github.io/ZoneRPG/game.js',new Response('old js'));assert.match(await(await w.request('./',{mode:'navigate'})).text(),/doctype/);assert.notEqual(await(await w.request('game.js')).text(),'old js');w.ctl.quota=true;assert.equal((await w.request('game.js')).status,200);w.ctl.online=false;assert.equal((await w.request('game.js')).status,200);
+ const w=worker();await w.install();const cache=await w.ctx.caches.open(w.name());await cache.put(new URL('index.html','https://zefisty.github.io/LastCordon/').href,new Response('old html'));await cache.put('https://zefisty.github.io/LastCordon/game.js',new Response('old js'));assert.match(await(await w.request('./',{mode:'navigate'})).text(),/doctype/);assert.notEqual(await(await w.request('game.js')).text(),'old js');w.ctl.quota=true;assert.equal((await w.request('game.js')).status,200);w.ctl.online=false;assert.equal((await w.request('game.js')).status,200);
 });
 await test('Version replacement cleans only this ZoneRPG scope and leaves active games unforced',async()=>{
  const shared=new Map(),old=worker(undefined,shared);await old.install();shared.set('another-app',new Map());shared.set('zonerpg-%2FOther%2F-old',new Map());const next=worker(undefined,shared,source.replace(/const CACHE_VERSION = '[^']+';/,"const CACHE_VERSION = 'qa-next';"));await next.install();assert.ok(shared.has(old.name()));await next.activate();assert.ok(!shared.has(old.name()));assert.ok(shared.has(next.name()));assert.ok(shared.has('another-app'));assert.ok(shared.has('zonerpg-%2FOther%2F-old'));assert.doesNotMatch(source,/skipWaiting\(|location\.reload/);
 });
 await test('Final green cache purges legacy icon caches and stores only approved icon bytes',async()=>{
- const base='https://zefisty.github.io/ZoneRPG/',prefix='zonerpg-%2FZoneRPG%2F-',shared=new Map();
- for(const version of ['v1','v2-radiation-icons','v3-green-radiation-icons','v4-green-radiation-final','v5-green-shortcut-icons','v6-header-radiation','v7-field-art','v8-pda-interface','v9-menu-polish'])shared.set(prefix+version,new Map([[base+'assets/pwa/icon-512.png',new Response('old Z')]]));
- shared.set('another-app',new Map());const w=worker(base,shared);assert.equal(w.name(),prefix+'v10-last-cordon');await w.install();await w.activate();
+ const base='https://zefisty.github.io/LastCordon/',prefix='zonerpg-%2FLastCordon%2F-',shared=new Map();
+ for(const version of ['v1','v2-radiation-icons','v3-green-radiation-icons','v4-green-radiation-final','v5-green-shortcut-icons','v6-header-radiation','v7-field-art','v8-pda-interface','v9-menu-polish','v10-last-cordon'])shared.set(prefix+version,new Map([[base+'assets/pwa/icon-512.png',new Response('old Z')]]));
+ shared.set('another-app',new Map());const w=worker(base,shared);assert.equal(w.name(),prefix+'v11-last-cordon-repo');await w.install();await w.activate();
  assert.deepEqual([...shared.keys()].sort(),['another-app',w.name()].sort());
  const icons=[...shared.get(w.name()).keys()].filter(url=>url.includes('/assets/pwa/')||url.endsWith('/favicon.ico'));assert.equal(icons.length,8);
- w.ctl.online=false;for(const url of icons){assert.match(url,/radiation-green-v[23]-|\/favicon\.ico$/);assert.deepEqual(Buffer.from(await(await w.request(url)).arrayBuffer()),fs.readFileSync(path.join(ROOT,new URL(url).pathname.slice('/ZoneRPG/'.length))));}
+ w.ctl.online=false;for(const url of icons){assert.match(url,/radiation-green-v[23]-|\/favicon\.ico$/);assert.deepEqual(Buffer.from(await(await w.request(url)).arrayBuffer()),fs.readFileSync(path.join(ROOT,new URL(url).pathname.slice('/LastCordon/'.length))));}
  for(const old of ['assets/favicon.svg','assets/pwa/icon-512.png','assets/pwa/radiation-512.png','assets/pwa/radiation-green-512.png'])assert.equal(await w.request(old),null);
 });
+await test('Renamed deployment has its own offline cache and leaves the legacy scope isolated',async()=>{
+ const shared=new Map(),legacy=worker('https://zefisty.github.io/ZoneRPG/',shared); // Historical scope fixture, never a runtime URL.
+ await legacy.install();const current=worker(undefined,shared);await current.install();await current.activate();
+ assert.notEqual(current.name(),legacy.name());assert.ok(shared.has(legacy.name()));
+ for(const url of shared.get(current.name()).keys())assert.ok(url.startsWith('https://zefisty.github.io/LastCordon/'));
+ current.ctl.online=false;assert.equal((await current.request('./',{mode:'navigate'})).status,200);
+ assert.equal((await current.request('assets/ui/map.svg')).status,200);
+ assert.equal(await current.request('https://zefisty.github.io/ZoneRPG/game.js'),null);
+});
 await test('Failed next-version install cannot replace the existing offline shell',async()=>{
- const shared=new Map(),old=worker(undefined,shared);await old.install();const next=worker(undefined,shared,source.replace(/const CACHE_VERSION = '[^']+';/,"const CACHE_VERSION = 'qa-next';"));next.ctl.missing='/ZoneRPG/engine.js';await assert.rejects(next.install());assert.ok(shared.has(old.name()));old.ctl.online=false;assert.equal((await old.request('./',{mode:'navigate'})).status,200);
+ const shared=new Map(),old=worker(undefined,shared);await old.install();const next=worker(undefined,shared,source.replace(/const CACHE_VERSION = '[^']+';/,"const CACHE_VERSION = 'qa-next';"));next.ctl.missing='/LastCordon/engine.js';await assert.rejects(next.install());assert.ok(shared.has(old.name()));old.ctl.online=false;assert.equal((await old.request('./',{mode:'navigate'})).status,200);
 });
 await test('External, unrelated, POST and range requests are not intercepted',async()=>{
  const w=worker();await w.install();for(const [url,options]of [['https://example.com/game.js',{}],['../another-project/index.html',{mode:'navigate'}],['tests/browser.html',{mode:'navigate'}],['unknown.json',{}],['game.js',{method:'POST'}],['assets/music/song.ogg',{range:true}]])assert.equal(await w.request(url,options),null);
@@ -68,7 +77,7 @@ await test('Blocked CacheStorage never prevents healthy online HTML, JS or image
 });
 await test('Registration handles unsupported, insecure, file and rejected registrations safely',async()=>{
  const code=fs.readFileSync(path.join(ROOT,'pwa-register.js'),'utf8');for(const testCase of [{protocol:'https:',secure:true,supported:true,sync:true},{protocol:'https:',secure:true,supported:true},{protocol:'http:',secure:true,supported:true},{protocol:'file:',secure:false,supported:true},{protocol:'http:',secure:false,supported:true},{protocol:'https:',secure:true,supported:false}]){
- const events={},calls=[],warnings=[],base=testCase.protocol==='https:'?'https://zefisty.github.io/ZoneRPG/':'http://localhost:41736/',ctx={URL,location:{protocol:testCase.protocol},document:{currentScript:{src:new URL('pwa-register.js',base).href}},navigator:testCase.supported?{serviceWorker:{register:(url,options)=>{calls.push({url,options});if(testCase.sync)throw Error('blocked synchronously');return Promise.reject(Error('blocked'));}}}:{},window:{isSecureContext:testCase.secure,addEventListener:(name,fn)=>events[name]=fn},console:{warn:(...args)=>warnings.push(args)}};vm.createContext(ctx);vm.runInContext(code,ctx);if(events.load){await events.load();await Promise.resolve();}const allowed=testCase.supported&&testCase.secure;assert.equal(calls.length,allowed?1:0);if(allowed){assert.equal(calls[0].url,new URL('service-worker.js',base).href);assert.equal(calls[0].options.scope,base);assert.equal(calls[0].options.updateViaCache,'none');assert.equal(warnings.length,1);}}
+ const events={},calls=[],warnings=[],base=testCase.protocol==='https:'?'https://zefisty.github.io/LastCordon/':'http://localhost:41736/',ctx={URL,location:{protocol:testCase.protocol},document:{currentScript:{src:new URL('pwa-register.js',base).href}},navigator:testCase.supported?{serviceWorker:{register:(url,options)=>{calls.push({url,options});if(testCase.sync)throw Error('blocked synchronously');return Promise.reject(Error('blocked'));}}}:{},window:{isSecureContext:testCase.secure,addEventListener:(name,fn)=>events[name]=fn},console:{warn:(...args)=>warnings.push(args)}};vm.createContext(ctx);vm.runInContext(code,ctx);if(events.load){await events.load();await Promise.resolve();}const allowed=testCase.supported&&testCase.secure;assert.equal(calls.length,allowed?1:0);if(allowed){assert.equal(calls[0].url,new URL('service-worker.js',base).href);assert.equal(calls[0].options.scope,base);assert.equal(calls[0].options.updateViaCache,'none');assert.equal(warnings.length,1);}}
 });
 await test('Visual asset integration does not modify gameplay, saves or PWA registration',()=>{
  const cp=require('node:child_process');for(const file of ['engine.js','game.js','state.js','save.js','shops.js','config.js']){const base=cp.execFileSync('git',['show','HEAD:'+file],{cwd:ROOT,encoding:'utf8'});const normalize=text=>text.replace(/\r\n/g,'\n').replace(",gameName:'Last Cordon',gameNameUpper:'LAST CORDON'",'').replace(file==='config.js'?/version:'[^']*'/:/(?!)/,"version:'UI'");assert.equal(normalize(fs.readFileSync(path.join(ROOT,file),'utf8')),normalize(base),file);}assert.doesNotMatch(fs.readFileSync(path.join(ROOT,'pwa-register.js'),'utf8'),/localStorage|ZoneRPGEngine/);assert.doesNotMatch(source,/localStorage|zonerpg_manual_save|zonerpg_autosave/);

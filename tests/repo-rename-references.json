@@ -1,0 +1,481 @@
+{
+  "scope": "Tracked tree before repository-path migration; one non-overlapping match per occurrence",
+  "matches": [
+    {
+      "file": "BRANDING_AUDIT.md",
+      "line": 20,
+      "match": "/ZoneRPG/",
+      "class": "B",
+      "reason": "Historical report/audit or technical regex, not an active deployment URL"
+    },
+    {
+      "file": "SEO.md",
+      "line": 3,
+      "match": "https://zefisty.github.io/ZoneRPG/",
+      "class": "A",
+      "reason": "Current public URL or current test deployment base"
+    },
+    {
+      "file": "SEO.md",
+      "line": 19,
+      "match": "/ZoneRPG/",
+      "class": "A",
+      "reason": "Current public URL or current test deployment base"
+    },
+    {
+      "file": "SEO.md",
+      "line": 20,
+      "match": "https://zefisty.github.io/ZoneRPG/robots.txt.",
+      "class": "A",
+      "reason": "Current public URL or current test deployment base"
+    },
+    {
+      "file": "SEO.md",
+      "line": 25,
+      "match": "https://zefisty.github.io/ZoneRPG/sitemap.xml",
+      "class": "A",
+      "reason": "Current public URL or current test deployment base"
+    },
+    {
+      "file": "SEO.md",
+      "line": 28,
+      "match": "/ZoneRPG/",
+      "class": "A",
+      "reason": "Current public URL or current test deployment base"
+    },
+    {
+      "file": "SEO.md",
+      "line": 56,
+      "match": "/ZoneRPG/",
+      "class": "A",
+      "reason": "Current public URL or current test deployment base"
+    },
+    {
+      "file": "index.html",
+      "line": 16,
+      "match": "https://zefisty.github.io/ZoneRPG/",
+      "class": "A",
+      "reason": "Current public URL or current test deployment base"
+    },
+    {
+      "file": "index.html",
+      "line": 17,
+      "match": "https://zefisty.github.io/ZoneRPG/sitemap.xml",
+      "class": "A",
+      "reason": "Current public URL or current test deployment base"
+    },
+    {
+      "file": "index.html",
+      "line": 21,
+      "match": "https://zefisty.github.io/ZoneRPG/",
+      "class": "A",
+      "reason": "Current public URL or current test deployment base"
+    },
+    {
+      "file": "index.html",
+      "line": 24,
+      "match": "https://zefisty.github.io/ZoneRPG/assets/pwa/radiation-green-v2-512.png",
+      "class": "A",
+      "reason": "Current public URL or current test deployment base"
+    },
+    {
+      "file": "index.html",
+      "line": 32,
+      "match": "https://zefisty.github.io/ZoneRPG/assets/pwa/radiation-green-v2-512.png",
+      "class": "A",
+      "reason": "Current public URL or current test deployment base"
+    },
+    {
+      "file": "index.html",
+      "line": 40,
+      "match": "https://zefisty.github.io/ZoneRPG/",
+      "class": "A",
+      "reason": "Current public URL or current test deployment base"
+    },
+    {
+      "file": "index.html",
+      "line": 42,
+      "match": "https://zefisty.github.io/ZoneRPG/assets/pwa/radiation-green-v2-512.png",
+      "class": "A",
+      "reason": "Current public URL or current test deployment base"
+    },
+    {
+      "file": "robots.txt",
+      "line": 4,
+      "match": "https://zefisty.github.io/ZoneRPG/sitemap.xml",
+      "class": "A",
+      "reason": "Current public URL or current test deployment base"
+    },
+    {
+      "file": "sitemap.xml",
+      "line": 3,
+      "match": "https://zefisty.github.io/ZoneRPG/",
+      "class": "A",
+      "reason": "Current public URL or current test deployment base"
+    },
+    {
+      "file": "tests/HEADER_LOGO_QA.md",
+      "line": 5,
+      "match": "https://zefisty.github.io/ZoneRPG/",
+      "class": "B",
+      "reason": "Historical report/audit or technical regex, not an active deployment URL"
+    },
+    {
+      "file": "tests/PWA_QA.md",
+      "line": 28,
+      "match": "/ZoneRPG/",
+      "class": "B",
+      "reason": "Historical report/audit or technical regex, not an active deployment URL"
+    },
+    {
+      "file": "tests/PWA_QA.md",
+      "line": 40,
+      "match": "/ZoneRPG/",
+      "class": "B",
+      "reason": "Historical report/audit or technical regex, not an active deployment URL"
+    },
+    {
+      "file": "tests/PWA_QA.md",
+      "line": 40,
+      "match": "/ZoneRPG/",
+      "class": "B",
+      "reason": "Historical report/audit or technical regex, not an active deployment URL"
+    },
+    {
+      "file": "tests/branding-references.tsv",
+      "line": 109,
+      "match": "https://zefisty.github.io/ZoneRPG/",
+      "class": "B",
+      "reason": "Historical report/audit or technical regex, not an active deployment URL"
+    },
+    {
+      "file": "tests/branding-references.tsv",
+      "line": 110,
+      "match": "https://zefisty.github.io/ZoneRPG/sitemap.xml",
+      "class": "B",
+      "reason": "Historical report/audit or technical regex, not an active deployment URL"
+    },
+    {
+      "file": "tests/branding-references.tsv",
+      "line": 111,
+      "match": "https://zefisty.github.io/ZoneRPG/",
+      "class": "B",
+      "reason": "Historical report/audit or technical regex, not an active deployment URL"
+    },
+    {
+      "file": "tests/branding-references.tsv",
+      "line": 112,
+      "match": "https://zefisty.github.io/ZoneRPG/assets/pwa/radiation-green-v2-512.png",
+      "class": "B",
+      "reason": "Historical report/audit or technical regex, not an active deployment URL"
+    },
+    {
+      "file": "tests/branding-references.tsv",
+      "line": 113,
+      "match": "https://zefisty.github.io/ZoneRPG/assets/pwa/radiation-green-v2-512.png",
+      "class": "B",
+      "reason": "Historical report/audit or technical regex, not an active deployment URL"
+    },
+    {
+      "file": "tests/branding-references.tsv",
+      "line": 114,
+      "match": "https://zefisty.github.io/ZoneRPG/",
+      "class": "B",
+      "reason": "Historical report/audit or technical regex, not an active deployment URL"
+    },
+    {
+      "file": "tests/branding-references.tsv",
+      "line": 115,
+      "match": "https://zefisty.github.io/ZoneRPG/assets/pwa/radiation-green-v2-512.png",
+      "class": "B",
+      "reason": "Historical report/audit or technical regex, not an active deployment URL"
+    },
+    {
+      "file": "tests/branding-references.tsv",
+      "line": 144,
+      "match": "https://zefisty.github.io/ZoneRPG/sitemap.xml",
+      "class": "B",
+      "reason": "Historical report/audit or technical regex, not an active deployment URL"
+    },
+    {
+      "file": "tests/branding-references.tsv",
+      "line": 149,
+      "match": "https://zefisty.github.io/ZoneRPG/",
+      "class": "B",
+      "reason": "Historical report/audit or technical regex, not an active deployment URL"
+    },
+    {
+      "file": "tests/branding-references.tsv",
+      "line": 150,
+      "match": "/ZoneRPG/",
+      "class": "B",
+      "reason": "Historical report/audit or technical regex, not an active deployment URL"
+    },
+    {
+      "file": "tests/branding-references.tsv",
+      "line": 151,
+      "match": "https://zefisty.github.io/ZoneRPG/robots.txt.",
+      "class": "B",
+      "reason": "Historical report/audit or technical regex, not an active deployment URL"
+    },
+    {
+      "file": "tests/branding-references.tsv",
+      "line": 152,
+      "match": "https://zefisty.github.io/ZoneRPG/sitemap.xml",
+      "class": "B",
+      "reason": "Historical report/audit or technical regex, not an active deployment URL"
+    },
+    {
+      "file": "tests/branding-references.tsv",
+      "line": 153,
+      "match": "/ZoneRPG/",
+      "class": "B",
+      "reason": "Historical report/audit or technical regex, not an active deployment URL"
+    },
+    {
+      "file": "tests/branding-references.tsv",
+      "line": 154,
+      "match": "/ZoneRPG/",
+      "class": "B",
+      "reason": "Historical report/audit or technical regex, not an active deployment URL"
+    },
+    {
+      "file": "tests/branding-references.tsv",
+      "line": 155,
+      "match": "https://zefisty.github.io/ZoneRPG/",
+      "class": "B",
+      "reason": "Historical report/audit or technical regex, not an active deployment URL"
+    },
+    {
+      "file": "tests/branding-references.tsv",
+      "line": 269,
+      "match": "https://zefisty.github.io/ZoneRPG/",
+      "class": "B",
+      "reason": "Historical report/audit or technical regex, not an active deployment URL"
+    },
+    {
+      "file": "tests/branding-references.tsv",
+      "line": 277,
+      "match": "https://zefisty.github.io/ZoneRPG/",
+      "class": "B",
+      "reason": "Historical report/audit or technical regex, not an active deployment URL"
+    },
+    {
+      "file": "tests/branding-references.tsv",
+      "line": 291,
+      "match": "/ZoneRPG/",
+      "class": "B",
+      "reason": "Historical report/audit or technical regex, not an active deployment URL"
+    },
+    {
+      "file": "tests/branding-references.tsv",
+      "line": 479,
+      "match": "https://zefisty.github.io/ZoneRPG/",
+      "class": "B",
+      "reason": "Historical report/audit or technical regex, not an active deployment URL"
+    },
+    {
+      "file": "tests/branding-references.tsv",
+      "line": 480,
+      "match": "/ZoneRPG/",
+      "class": "B",
+      "reason": "Historical report/audit or technical regex, not an active deployment URL"
+    },
+    {
+      "file": "tests/branding-references.tsv",
+      "line": 500,
+      "match": "/ZoneRPG/",
+      "class": "B",
+      "reason": "Historical report/audit or technical regex, not an active deployment URL"
+    },
+    {
+      "file": "tests/branding-references.tsv",
+      "line": 501,
+      "match": "/ZoneRPG/",
+      "class": "B",
+      "reason": "Historical report/audit or technical regex, not an active deployment URL"
+    },
+    {
+      "file": "tests/branding-references.tsv",
+      "line": 502,
+      "match": "/ZoneRPG/",
+      "class": "B",
+      "reason": "Historical report/audit or technical regex, not an active deployment URL"
+    },
+    {
+      "file": "tests/branding-references.tsv",
+      "line": 507,
+      "match": "https://zefisty.github.io/ZoneRPG/",
+      "class": "B",
+      "reason": "Historical report/audit or technical regex, not an active deployment URL"
+    },
+    {
+      "file": "tests/branding-references.tsv",
+      "line": 508,
+      "match": "https://zefisty.github.io/ZoneRPG/",
+      "class": "B",
+      "reason": "Historical report/audit or technical regex, not an active deployment URL"
+    },
+    {
+      "file": "tests/branding-references.tsv",
+      "line": 510,
+      "match": "/ZoneRPG/",
+      "class": "B",
+      "reason": "Historical report/audit or technical regex, not an active deployment URL"
+    },
+    {
+      "file": "tests/branding-references.tsv",
+      "line": 511,
+      "match": "https://zefisty.github.io/ZoneRPG/",
+      "class": "B",
+      "reason": "Historical report/audit or technical regex, not an active deployment URL"
+    },
+    {
+      "file": "tests/branding-references.tsv",
+      "line": 512,
+      "match": "https://zefisty.github.io/ZoneRPG/",
+      "class": "B",
+      "reason": "Historical report/audit or technical regex, not an active deployment URL"
+    },
+    {
+      "file": "tests/branding-references.tsv",
+      "line": 513,
+      "match": "https://zefisty.github.io/ZoneRPG/",
+      "class": "B",
+      "reason": "Historical report/audit or technical regex, not an active deployment URL"
+    },
+    {
+      "file": "tests/branding-references.tsv",
+      "line": 515,
+      "match": "https://zefisty.github.io/ZoneRPG/",
+      "class": "B",
+      "reason": "Historical report/audit or technical regex, not an active deployment URL"
+    },
+    {
+      "file": "tests/branding-references.tsv",
+      "line": 516,
+      "match": "https://zefisty.github.io/ZoneRPG/",
+      "class": "B",
+      "reason": "Historical report/audit or technical regex, not an active deployment URL"
+    },
+    {
+      "file": "tests/branding-references.tsv",
+      "line": 517,
+      "match": "/ZoneRPG/",
+      "class": "B",
+      "reason": "Historical report/audit or technical regex, not an active deployment URL"
+    },
+    {
+      "file": "tests/branding-references.tsv",
+      "line": 518,
+      "match": "/ZoneRPG/",
+      "class": "B",
+      "reason": "Historical report/audit or technical regex, not an active deployment URL"
+    },
+    {
+      "file": "tests/branding-references.tsv",
+      "line": 519,
+      "match": "https://zefisty.github.io/ZoneRPG/",
+      "class": "B",
+      "reason": "Historical report/audit or technical regex, not an active deployment URL"
+    },
+    {
+      "file": "tests/branding.cjs",
+      "line": 2,
+      "match": "https://zefisty.github.io/ZoneRPG/",
+      "class": "A",
+      "reason": "Current public URL or current test deployment base"
+    },
+    {
+      "file": "tests/branding.cjs",
+      "line": 41,
+      "match": "/ZoneRPG/",
+      "class": "B",
+      "reason": "Regex checks old public brand in SVG titles; not a URL/path"
+    },
+    {
+      "file": "tests/pwa.cjs",
+      "line": 4,
+      "match": "https://zefisty.github.io/ZoneRPG/",
+      "class": "A",
+      "reason": "Current public URL or current test deployment base"
+    },
+    {
+      "file": "tests/pwa.cjs",
+      "line": 21,
+      "match": "https://zefisty.github.io/ZoneRPG/",
+      "class": "A",
+      "reason": "Current public URL or current test deployment base"
+    },
+    {
+      "file": "tests/pwa.cjs",
+      "line": 32,
+      "match": "/ZoneRPG/",
+      "class": "A",
+      "reason": "Current public URL or current test deployment base"
+    },
+    {
+      "file": "tests/pwa.cjs",
+      "line": 37,
+      "match": "https://zefisty.github.io/ZoneRPG/",
+      "class": "A",
+      "reason": "Current public URL or current test deployment base"
+    },
+    {
+      "file": "tests/pwa.cjs",
+      "line": 46,
+      "match": "https://zefisty.github.io/ZoneRPG/",
+      "class": "A",
+      "reason": "Current public URL or current test deployment base"
+    },
+    {
+      "file": "tests/pwa.cjs",
+      "line": 46,
+      "match": "https://zefisty.github.io/ZoneRPG/game.js",
+      "class": "A",
+      "reason": "Current public URL or current test deployment base"
+    },
+    {
+      "file": "tests/pwa.cjs",
+      "line": 52,
+      "match": "https://zefisty.github.io/ZoneRPG/",
+      "class": "A",
+      "reason": "Current public URL or current test deployment base"
+    },
+    {
+      "file": "tests/pwa.cjs",
+      "line": 57,
+      "match": "/ZoneRPG/",
+      "class": "A",
+      "reason": "Current public URL or current test deployment base"
+    },
+    {
+      "file": "tests/pwa.cjs",
+      "line": 61,
+      "match": "/ZoneRPG/",
+      "class": "A",
+      "reason": "Current public URL or current test deployment base"
+    },
+    {
+      "file": "tests/pwa.cjs",
+      "line": 71,
+      "match": "https://zefisty.github.io/ZoneRPG/",
+      "class": "A",
+      "reason": "Current public URL or current test deployment base"
+    },
+    {
+      "file": "tests/seo.cjs",
+      "line": 2,
+      "match": "https://zefisty.github.io/ZoneRPG/",
+      "class": "A",
+      "reason": "Current public URL or current test deployment base"
+    },
+    {
+      "file": "tests/seo.cjs",
+      "line": 22,
+      "match": "/ZoneRPG/",
+      "class": "A",
+      "reason": "Current public URL or current test deployment base"
+    }
+  ]
+}
