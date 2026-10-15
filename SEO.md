@@ -1,10 +1,10 @@
-# ZoneRPG — indexing and social metadata
+# Last Cordon — indexing and social metadata
 
 Canonical public homepage: https://zefisty.github.io/ZoneRPG/
 
 ## Included in this patch
 
-- Russian title/description identifying **ZoneRPG by Zefisty**.
+- Russian title/description identifying **Last Cordon by Zefisty**.
 - Explicit `index, follow`, canonical URL and sitemap link.
 - Open Graph and Twitter metadata using the existing 512×512 green radiation
   icon. Twitter uses `summary`, matching the square artwork; no new image.
@@ -50,3 +50,7 @@ files, saves, game mechanics or navigation architecture changed.
 
 498 PASS across 35 suites, including 7 SEO checks. All 66 JS/CJS files passed node --check. HTML tag nesting, sitemap XML and JSON-LD JSON parsed successfully; git diff --check passed. No commit or push was performed.
 
+
+## Public brand and search intent
+
+Last Cordon by Zefisty is a free browser survival RPG set in an anomalous exclusion zone. Its expeditions, factions, artifacts and living-world encounters provide a stalker-like browser RPG experience. Public branding uses Last Cordon; the repository, JavaScript APIs and /ZoneRPG/ deployment path deliberately retain their technical names.

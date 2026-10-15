@@ -1,7 +1,7 @@
 {
   "id": "./",
-  "name": "ZoneRPG",
-  "short_name": "ZoneRPG",
+  "name": "Last Cordon",
+  "short_name": "Last Cordon",
   "lang": "ru",
   "start_url": "./",
   "scope": "./",
@@ -9,8 +9,24 @@
   "background_color": "#0e130f",
   "theme_color": "#111713",
   "icons": [
-    { "src": "./assets/pwa/radiation-green-v2-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
-    { "src": "./assets/pwa/radiation-green-v2-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
-    { "src": "./assets/pwa/radiation-green-v2-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
-  ]
+    {
+      "src": "./assets/pwa/radiation-green-v2-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./assets/pwa/radiation-green-v2-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./assets/pwa/radiation-green-v2-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "description": "Last Cordon — бесплатная браузерная RPG о выживании в аномальной Зоне, вылазках, фракциях и артефактах."
 }

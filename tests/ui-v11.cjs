@@ -84,8 +84,8 @@ test('Symbol controls have labels, dialogs have names, motion can be reduced and
  assert.match(css,/outline:2px solid var\(--pda-accent\)/);assert.match(css,/body\[data-motion="reduced"\]/);assert.doesNotMatch(css,/outline:\s*(?:0|none)/);
 });
 test('Core game files, save schema, app identity and raster art are unchanged; config changes version only',()=>{
- const normalize=s=>s.replace(/\r\n/g,'\n');for(const file of ['engine.js','game.js','items.js','world.js','state.js','save.js','shops.js','art.js','manifest.webmanifest','pwa-register.js']){const content=text=>file==='items.js'?normalize(text).replace(/description:'[^']*'/g,"description:'FLAVOR'"):normalize(text);assert.equal(content(read(file)),content(cp.execFileSync('git',['show','HEAD:'+file],{cwd:ROOT,encoding:'utf8'})),file);}
- const stripVersion=s=>normalize(s).replace(/version:'[^']*'/,"version:'UI'");assert.equal(stripVersion(read('config.js')),stripVersion(cp.execFileSync('git',['show','HEAD:config.js'],{cwd:ROOT,encoding:'utf8'})));assert.match(read('config.js'),/version:'11.0'/);
+ const normalize=s=>s.replace(/\r\n/g,'\n');for(const file of ['engine.js','game.js','items.js','world.js','state.js','save.js','shops.js','art.js','manifest.webmanifest','pwa-register.js']){const content=text=>file==='manifest.webmanifest'?JSON.stringify((({name,short_name,description,...identity})=>identity)(JSON.parse(text))):file==='items.js'?normalize(text).replace(/description:'[^']*'/g,"description:'FLAVOR'"):normalize(text);assert.equal(content(read(file)),content(cp.execFileSync('git',['show','HEAD:'+file],{cwd:ROOT,encoding:'utf8'})),file);}
+ const stripVersion=s=>normalize(s).replace(",gameName:'Last Cordon',gameNameUpper:'LAST CORDON'",'').replace(/version:'[^']*'/,"version:'UI'");assert.equal(stripVersion(read('config.js')),stripVersion(cp.execFileSync('git',['show','HEAD:config.js'],{cwd:ROOT,encoding:'utf8'})));assert.match(read('config.js'),/version:'11.0'/);
  const worker=s=>normalize(s).replace(/const CACHE_VERSION = '[^']+';/,'const CACHE_VERSION = VERSION;');assert.equal(worker(read('service-worker.js')),worker(cp.execFileSync('git',['show','HEAD:service-worker.js'],{cwd:ROOT,encoding:'utf8'})));
 });
 test('Main/secondary/disabled text palettes maintain at least WCAG 4.5:1 contrast',()=>{
@@ -193,7 +193,7 @@ test('Quest emblem is square and uses the existing journal glyph without changin
  const state={...s,mode:'quests'},before=JSON.stringify(state);UI.render(state);const html=r.root.innerHTML;
  assert.equal((html.match(/<span class="quest-mark" aria-hidden="true"><\/span>/g)||[]).length,5);assert.doesNotMatch(html,/>⌖<\/span>/);assert.equal(JSON.stringify(state),before);
  vm.runInContext(cp.execFileSync('git',['show','HEAD:ui.js'],{cwd:ROOT,encoding:'utf8'}),r.ctx);r.ctx.window.ZoneRPGUI.render(state);
- assert.equal(html,r.root.innerHTML.replace(/(<span class="quest-mark" aria-hidden="true">)⌖(<\/span>)/g,'$1$2'),'Only the emblem contents may change in quest rendering');
+ const publicBrand=text=>text.replace(/LAST\s*<span class="brand-dim">CORDON/g,'ZONE<span class="brand-dim">RPG').replace(/КПК · LAST CORDON/g,'КПК · ZONE RPG');assert.equal(publicBrand(html),publicBrand(r.root.innerHTML.replace(/(<span class="quest-mark" aria-hidden="true">)⌖(<\/span>)/g,'$1$2')),'Only the emblem contents and public brand may change in quest rendering');
  assert.deepEqual(controls(html),controls(r.root.innerHTML));
  for(const width of [1280,768,480,360]){
   assert.equal(value('#app .quest-mark','width',width),'32px');assert.equal(value('#app .quest-mark','height',width),'32px');

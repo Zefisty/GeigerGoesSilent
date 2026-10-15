@@ -39,11 +39,11 @@ test('HTML explicitly offers ICO for browser and desktop shortcuts alongside PNG
   for (const rel of ['icon','shortcut icon'])assert.ok(links.some(([tag,r])=>r===rel && tag.includes('./'+asset) && tag.includes('image/vnd.microsoft.icon')));
   assert.ok(links.some(([tag,r])=>r==='apple-touch-icon' && tag.includes('radiation-green-v2-apple-180.png') && tag.includes('180x180')));
 });
-test('ICO fallback and versioned shortcut are precached; manifest and app identity unchanged', () => {
+test('ICO fallback and versioned shortcut are precached; manifest install identity unchanged apart from public brand', () => {
   const vm = require('node:vm'), ctx = {self:{}};
   vm.runInNewContext(read('pwa-assets.js').toString(),ctx);
   for(const file of ['favicon.ico',asset])assert.ok(ctx.self.ZoneRPGPrecache.includes('./'+file));
   const head = require('node:child_process').execFileSync('git',['show','HEAD:manifest.webmanifest'],{cwd:ROOT,encoding:'utf8'});
-  assert.deepEqual(JSON.parse(read('manifest.webmanifest')),JSON.parse(head));
+  const identity=({name,short_name,description,...rest})=>rest;assert.deepEqual(identity(JSON.parse(read('manifest.webmanifest'))),identity(JSON.parse(head)));
 });
 console.log(passed+' shortcut icon checks passed.');

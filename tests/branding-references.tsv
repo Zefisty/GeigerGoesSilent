@@ -1,0 +1,520 @@
+file	line	remaining_match	classification	reason	context
+art.js	43	ZoneRPGItems	B	Internal JS namespace/API or technical catalog object	new Map(Object.entries(window.ZoneRPGItems?.items||{}).map(([id,item])=>[item,id]));
+art.js	46	ZoneRPGItems	B	Internal JS namespace/API or technical catalog object	Ids.get(it)]||it.icon||window.ZoneRPGItems?.iconFallback(it);
+art.js	52	ZoneRPGWorld	B	Internal JS namespace/API or technical catalog object	    const def=window.ZoneRPGWorld?.events.find(d=>d.id===e.id),npcId=def?.npcI
+art.js	83	ZoneRPGArt	B	Internal JS namespace/API or technical catalog object	  window.ZoneRPGArt=Object.freeze({location,scene,event,npc,orig
+audio.js	6	ZoneRPGMusic	B	Internal JS namespace/API or technical catalog object	  function unlock(){window.ZoneRPGMusic?.unlock();init();if(!ctx)return;if(ctx.state
+audio.js	9	ZoneRPGMusic	B	Internal JS namespace/API or technical catalog object	e<=0||document.hidden||window.ZoneRPGMusic?.usesLocal())return;const notes=combat?[55,8
+audio.js	10	ZoneRPGMusic	B	Internal JS namespace/API or technical catalog object	e.clear();if(musicOn&&!window.ZoneRPGMusic?.usesLocal()){musicStep();timer=setInterval(
+audio.js	11	ZoneRPGMusic	B	Internal JS namespace/API or technical catalog object	music:false,sfx:false};window.ZoneRPGMusic?.sync(mode,settings,context);const nextAmbie
+audio.js	12	ZoneRPGAudio	B	Internal JS namespace/API or technical catalog object	  window.ZoneRPGAudio={unlock,play,playUISound(kind){play(({forwar
+config.js	2	ZoneRPGFormat	B	Internal JS namespace/API or technical catalog object	  window.ZoneRPGFormat={percent(value){const n=Number(value);return
+config.js	3	ZoneRPGLog	B	Internal JS namespace/API or technical catalog object	  window.ZoneRPGLog={write(s,text){s.log.push(text);s.log=s.log.
+config.js	4	ZoneRPGConfig	B	Internal JS namespace/API or technical catalog object	  window.ZoneRPGConfig={version:'11.0',gameName:'Last Cordon',gameN
+config.js	10	ZoneRPGI18n	B	Internal JS namespace/API or technical catalog object	  window.ZoneRPGI18n={locale:'ru',ui,t:key=>ui[key]||''};
+config.js	26	ZoneRPGOnboarding	B	Internal JS namespace/API or technical catalog object	  window.ZoneRPGOnboarding={hints,fresh,normalize,offer,observe};
+config.js	32	ZoneRPGRank	B	Internal JS namespace/API or technical catalog object	 window.ZoneRPGRank={tiers,calculate};
+content-v7.js	3	ZoneRPGWorld	B	Internal JS namespace/API or technical catalog object	 const W=window.ZoneRPGWorld,I=window.ZoneRPGItems;
+content-v7.js	3	ZoneRPGItems	B	Internal JS namespace/API or technical catalog object	=window.ZoneRPGWorld,I=window.ZoneRPGItems;
+content-v72.js	3	ZoneRPGWorld	B	Internal JS namespace/API or technical catalog object	  const W=window.ZoneRPGWorld;
+content-v72.js	78	ZoneRPGItems	B	Internal JS namespace/API or technical catalog object	apon','ammo'].includes(window.ZoneRPGItems.items[id]?.type));
+design/field-art-direction.md	1	ZoneRPG	B	Historical developer record, source attribution or tooling; not current public branding	# ZoneRPG field art — direction and production prompt 
+design/field-art-direction.md	4	ZoneRPG	B	Historical developer record, source attribution or tooling; not current public branding	ne pixel art for the existing ZoneRPG PDA interface. Charcoal green shadows, desat
+expedition.js	15	ZoneRPGItems	B	Internal JS namespace/API or technical catalog object	(raw.summary.items))if(window.ZoneRPGItems.items[id])e.summary.items[id]=finite(n);
+expedition.js	21	ZoneRPGExpedition	B	Internal JS namespace/API or technical catalog object	 window.ZoneRPGExpedition={empty,normalize,tier,cost,project};
+game.js	2	ZoneRPGEngine	B	Internal JS namespace/API or technical catalog object	  const engine=window.ZoneRPGEngine,root=document.getElementById('app');
+game.js	3	ZoneRPGUI	B	Internal JS namespace/API or technical catalog object	  const render=()=>window.ZoneRPGUI.render(engine.getState());
+game.js	8	ZoneRPGUI	B	Internal JS namespace/API or technical catalog object	      window.ZoneRPGUI.setRestPicker(a==='restPicker');render();ret
+game.js	11	ZoneRPGUI	B	Internal JS namespace/API or technical catalog object	=engine.getState();if(!window.ZoneRPGUI.isRestPickerOpen()||s.mode!=='play'||s.event
+game.js	12	ZoneRPGUI	B	Internal JS namespace/API or technical catalog object	fter=engine.getState();window.ZoneRPGUI.setRestPicker(after.worldClock===s.worldCloc
+game.js	14	ZoneRPGUI	B	Internal JS namespace/API or technical catalog object	    if(a==='close'&&window.ZoneRPGUI.isRestPickerOpen()){window.ZoneRPGUI.setRest
+game.js	14	ZoneRPGUI	B	Internal JS namespace/API or technical catalog object	    if(a==='close'&&window.ZoneRPGUI.isRestPickerOpen()){window.ZoneRPGUI.setRest
+game.js	15	ZoneRPGUI	B	Internal JS namespace/API or technical catalog object	).mode!=='menu')return;window.ZoneRPGUI.setSavePicker(a==='savePicker'&&engine.getSt
+game.js	16	ZoneRPGUI	B	Internal JS namespace/API or technical catalog object	State().mode==='menu'&&window.ZoneRPGUI.isSavePickerOpen()){window.ZoneRPGUI.setSave
+game.js	16	ZoneRPGUI	B	Internal JS namespace/API or technical catalog object	State().mode==='menu'&&window.ZoneRPGUI.isSavePickerOpen()){window.ZoneRPGUI.setSave
+game.js	17	ZoneRPGUI	B	Internal JS namespace/API or technical catalog object	 if(a==='databaseTab'){window.ZoneRPGUI.setDatabaseTab(v);render();return;}
+game.js	29	ZoneRPGAudio	B	Internal JS namespace/API or technical catalog object	urn;e.preventDefault();window.ZoneRPGAudio?.unlock();if(['attack','reload','buy','sell'
+game.js	30	ZoneRPGUI	B	Internal JS namespace/API or technical catalog object	(e.target.value)||1)));window.ZoneRPGUI.setShopQuantity(item,qty);const card=e.targe
+game.js	32	ZoneRPGUI	B	Internal JS namespace/API or technical catalog object	s=engine.getState();if(window.ZoneRPGUI.isRestPickerOpen()){window.ZoneRPGUI.setRest
+game.js	32	ZoneRPGUI	B	Internal JS namespace/API or technical catalog object	s=engine.getState();if(window.ZoneRPGUI.isRestPickerOpen()){window.ZoneRPGUI.setRest
+game.js	32	ZoneRPGUI	B	Internal JS namespace/API or technical catalog object	s=engine.getState();if(window.ZoneRPGUI.isRestPickerOpen()){window.ZoneRPGUI.setRest
+game.js	32	ZoneRPGUI	B	Internal JS namespace/API or technical catalog object	s=engine.getState();if(window.ZoneRPGUI.isRestPickerOpen()){window.ZoneRPGUI.setRest
+engine.js	2	ZoneRPGWorld	B	Internal JS namespace/API or technical catalog object	  const W=window.ZoneRPGWorld,I=window.ZoneRPGItems,S=window.ZoneRPGState,
+engine.js	2	ZoneRPGItems	B	Internal JS namespace/API or technical catalog object	=window.ZoneRPGWorld,I=window.ZoneRPGItems,S=window.ZoneRPGState,X=window.ZoneRPGExpedi
+engine.js	2	ZoneRPGState	B	Internal JS namespace/API or technical catalog object	=window.ZoneRPGItems,S=window.ZoneRPGState,X=window.ZoneRPGExpedition,T=window.ZoneRPGS
+engine.js	2	ZoneRPGExpedition	B	Internal JS namespace/API or technical catalog object	=window.ZoneRPGState,X=window.ZoneRPGExpedition,T=window.ZoneRPGStories,L=window.ZoneRPGLivi
+engine.js	2	ZoneRPGStories	B	Internal JS namespace/API or technical catalog object	ow.ZoneRPGExpedition,T=window.ZoneRPGStories,L=window.ZoneRPGLiving,M=window.ZoneRPGZone;
+engine.js	2	ZoneRPGLiving	B	Internal JS namespace/API or technical catalog object	indow.ZoneRPGStories,L=window.ZoneRPGLiving,M=window.ZoneRPGZone;
+engine.js	2	ZoneRPGZone	B	Internal JS namespace/API or technical catalog object	window.ZoneRPGLiving,M=window.ZoneRPGZone;
+engine.js	5	ZoneRPGOnboarding	B	Internal JS namespace/API or technical catalog object	>{ensureEventActions();window.ZoneRPGOnboarding.observe(state);M.tick(state);autoTurnInReady
+engine.js	6	ZoneRPGLog	B	Internal JS namespace/API or technical catalog object	  function log(text){window.ZoneRPGLog.write(state,text);if(/Получено|Получено опыт
+engine.js	6	ZoneRPGAudio	B	Internal JS namespace/API or technical catalog object	eedback?.serial||0)+1};window.ZoneRPGAudio?.play(text.includes('задание')||text.include
+engine.js	7	ZoneRPGAudio	B	Internal JS namespace/API or technical catalog object	тв|Нельзя/i.test(text))window.ZoneRPGAudio?.play('error');emit();}
+engine.js	30	ZoneRPGOnboarding	B	Internal JS namespace/API or technical catalog object	nt){if(!faction)return;window.ZoneRPGOnboarding.offer(state,'factions');const old=state.repu
+engine.js	53	ZoneRPGNarrative	B	Internal JS namespace/API or technical catalog object	ate(state,state.event);window.ZoneRPGNarrative.contact(state,state.event);if(definition.npc
+engine.js	53	ZoneRPGZoneData	B	Internal JS namespace/API or technical catalog object	)state.event.text+=' '+window.ZoneRPGZoneData.endings[state.zoneStory.ending].text;state.m
+engine.js	54	ZoneRPGAudio	B	Internal JS namespace/API or technical catalog object	des(definition.rarity))window.ZoneRPGAudio?.play('rare');setEventStage(definition,stage
+engine.js	62	ZoneRPG	B	Internal browser-console diagnostic prefix	ng.nextStage)){console.warn('[ZoneRPG] Недопустимое продолжение события',{eventId:
+engine.js	62	ZoneRPG	B	Internal browser-console diagnostic prefix	ng.nextStage)){console.warn('[ZoneRPG] Недопустимое продолжение события',{eventId:
+engine.js	64	ZoneRPGAudio	B	Internal JS namespace/API or technical catalog object	или выпей энергетик.');window.ZoneRPGAudio?.playUISound('forward');const dest=W.locatio
+engine.js	64	ZoneRPGFormat	B	Internal JS namespace/API or technical catalog object	cost} выносливости, +${window.ZoneRPGFormat.percent(5+dest.danger)} голода, +${window.Zo
+engine.js	64	ZoneRPGFormat	B	Internal JS namespace/API or technical catalog object	cost} выносливости, +${window.ZoneRPGFormat.percent(5+dest.danger)} голода, +${window.Zo
+engine.js	69	ZoneRPGShops	B	Internal JS namespace/API or technical catalog object	s;L.tick(state,before);window.ZoneRPGShops.sync(state);}
+engine.js	71	ZoneRPGRank	B	Internal JS namespace/API or technical catalog object	layer.rank>=f.minRank&&window.ZoneRPGRank.calculate(state).index>=f.minimumRank)};}
+engine.js	72	ZoneRPGRank	B	Internal JS namespace/API or technical catalog object	(id);if(!f.canJoin){if(window.ZoneRPGRank.calculate(state).index<f.minimumRank)return 
+engine.js	72	ZoneRPGRank	B	Internal JS namespace/API or technical catalog object	(id);if(!f.canJoin){if(window.ZoneRPGRank.calculate(state).index<f.minimumRank)return 
+engine.js	76	ZoneRPGAudio	B	Internal JS namespace/API or technical catalog object	иск: нужно '+cost+'.');window.ZoneRPGAudio?.playUISound('forward');if(!state.expedition
+engine.js	83	ZoneRPGAudio	B	Internal JS namespace/API or technical catalog object	[id].name;notify(text);window.ZoneRPGAudio?.play('rare');document.body.classList.add('f
+engine.js	83	ZoneRPGFormat	B	Internal JS namespace/API or technical catalog object	говоры удались (шанс ${window.ZoneRPGFormat.percent(chance)}). Бандиты оставили тебе 60 
+engine.js	83	ZoneRPGFormat	B	Internal JS namespace/API or technical catalog object	говоры удались (шанс ${window.ZoneRPGFormat.percent(chance)}). Бандиты оставили тебе 60 
+engine.js	84	ZoneRPGFormat	B	Internal JS namespace/API or technical catalog object	ение сорвалось (шанс ${window.ZoneRPGFormat.percent(chance)}). Получено 9 урона.`);}else
+engine.js	84	ZoneRPGFormat	B	Internal JS namespace/API or technical catalog object	ение сорвалось (шанс ${window.ZoneRPGFormat.percent(chance)}). Получено 9 урона.`);}else
+engine.js	85	ZoneRPGFormat	B	Internal JS namespace/API or technical catalog object	1);notify(`Проверка: ${window.ZoneRPGFormat.percent(chance)} шанс заметить опасность.`);
+engine.js	98	ZoneRPGKnowledge	B	Internal JS namespace/API or technical catalog object	      const pool=window.ZoneRPGKnowledge.pool(loc,state).filter(r=>!state.heardRumors
+engine.js	112	ZoneRPG	B	Internal browser-console diagnostic prefix	myTypes[type]){console.warn('[ZoneRPG] Неизвестный противник',type);notify('Контак
+engine.js	112	ZoneRPGAudio	B	Internal JS namespace/API or technical catalog object	Ь',log:[intro],turn:1};window.ZoneRPGAudio?.play('alert');document.body.classList.add('
+engine.js	114	ZoneRPGFormat	B	Internal JS namespace/API or technical catalog object	активное заражение: +'+window.ZoneRPGFormat.percent(dose)+' фона.');}combatLog(e.name+' 
+engine.js	114	ZoneRPGFormat	B	Internal JS namespace/API or technical catalog object	активное заражение: +'+window.ZoneRPGFormat.percent(dose)+' фона.');}combatLog(e.name+' 
+engine.js	114	ZoneRPGAudio	B	Internal JS namespace/API or technical catalog object	.protection*100)+').');window.ZoneRPGAudio?.play('damage');document.body.classList.add(
+engine.js	115	ZoneRPGAudio	B	Internal JS namespace/API or technical catalog object	ешь оставшиеся вещи.`);window.ZoneRPGAudio?.play('victory');if(drops.length)window.Zone
+engine.js	115	ZoneRPGAudio	B	Internal JS namespace/API or technical catalog object	ешь оставшиеся вещи.`);window.ZoneRPGAudio?.play('victory');if(drops.length)window.Zone
+engine.js	116	ZoneRPGAudio	B	Internal JS namespace/API or technical catalog object	improveMastery(weapon);window.ZoneRPGAudio?.play(ammo?'shot':'melee');document.body.cla
+engine.js	116	ZoneRPGAudio	B	Internal JS namespace/API or technical catalog object	improveMastery(weapon);window.ZoneRPGAudio?.play(ammo?'shot':'melee');document.body.cla
+engine.js	116	ZoneRPGAudio	B	Internal JS namespace/API or technical catalog object	improveMastery(weapon);window.ZoneRPGAudio?.play(ammo?'shot':'melee');document.body.cla
+engine.js	120	ZoneRPGAudio	B	Internal JS namespace/API or technical catalog object	].name+' · '+n+' шт.');window.ZoneRPGAudio?.play('reload');if(state.combat){combatLog('
+engine.js	122	ZoneRPGFormat	B	Internal JS namespace/API or technical catalog object	g(`Уход удался (шанс ${window.ZoneRPGFormat.percent(chance)}).`);state.combat=null;state
+engine.js	122	ZoneRPGFormat	B	Internal JS namespace/API or technical catalog object	g(`Уход удался (шанс ${window.ZoneRPGFormat.percent(chance)}).`);state.combat=null;state
+engine.js	151	ZoneRPGShops	B	Internal JS namespace/API or technical catalog object	ion);for(const item of window.ZoneRPGShops.pools[id]||[])if(!I.items[item]&&!invalidSho
+engine.js	151	ZoneRPG	B	Internal browser-console diagnostic prefix	ion);for(const item of window.ZoneRPGShops.pools[id]||[])if(!I.items[item]&&!inval
+engine.js	152	ZoneRPG	B	Internal browser-console diagnostic prefix	tems.add(item);console.warn('[ZoneRPG] Пропущена недопустимая позиция магазина',it
+engine.js	156	ZoneRPGSave	B	Internal JS namespace/API or technical catalog object	Game(type){const saved=window.ZoneRPGSave.read(type);if(!saved.ok){state.loadError=sav
+engine.js	156	ZoneRPG	B	Internal browser-console diagnostic prefix	Game(type){const saved=window.ZoneRPGSave.read(type);if(!saved.ok){state.loadError
+engine.js	156	ZoneRPGNarrative	B	Internal JS namespace/API or technical catalog object	ate(state,state.event);window.ZoneRPGNarrative.contact(state,state.event);}if(state.travelT
+engine.js	166	ZoneRPGAudio	B	Internal JS namespace/API or technical catalog object	tral':null;if(semantic)window.ZoneRPGAudio?.playUISound(semantic);switch(name){case'zon
+engine.js	166	ZoneRPGZoneData	B	Internal JS namespace/API or technical catalog object	n.active)break;const p=window.ZoneRPGZoneData.pois.find(p=>p.id===value);if(p&&p.location=
+engine.js	166	ZoneRPGZoneData	B	Internal JS namespace/API or technical catalog object	n.active)break;const p=window.ZoneRPGZoneData.pois.find(p=>p.id===value);if(p&&p.location=
+engine.js	166	ZoneRPGAudio	B	Internal JS namespace/API or technical catalog object	tral':null;if(semantic)window.ZoneRPGAudio?.playUISound(semantic);switch(name){case'zon
+engine.js	166	ZoneRPGAudio	B	Internal JS namespace/API or technical catalog object	tral':null;if(semantic)window.ZoneRPGAudio?.playUISound(semantic);switch(name){case'zon
+engine.js	166	ZoneRPGAudio	B	Internal JS namespace/API or technical catalog object	tral':null;if(semantic)window.ZoneRPGAudio?.playUISound(semantic);switch(name){case'zon
+engine.js	166	ZoneRPGSave	B	Internal JS namespace/API or technical catalog object	ak;case'save':{const r=window.ZoneRPGSave.write(state);window.ZoneRPGAudio?.play(r.ok?
+engine.js	166	ZoneRPGAudio	B	Internal JS namespace/API or technical catalog object	tral':null;if(semantic)window.ZoneRPGAudio?.playUISound(semantic);switch(name){case'zon
+engine.js	166	ZoneRPGSave	B	Internal JS namespace/API or technical catalog object	ak;case'save':{const r=window.ZoneRPGSave.write(state);window.ZoneRPGAudio?.play(r.ok?
+engine.js	178	ZoneRPGSave	B	Internal JS namespace/API or technical catalog object	      const result=window.ZoneRPGSave.write(state,'auto');
+engine.js	182	ZoneRPGRank	B	Internal JS namespace/API or technical catalog object	rn {...copy,playerRank:window.ZoneRPGRank.calculate(state),zoneView:M.view(state),zone
+engine.js	182	ZoneRPGZoneData	B	Internal JS namespace/API or technical catalog object	M.view(state),zoneData:window.ZoneRPGZoneData,livingView:living,storyView:T.context(state)
+engine.js	182	ZoneRPGSave	B	Internal JS namespace/API or technical catalog object	mapEdges:edges,hasSave:window.ZoneRPGSave.has(),saveSlots:window.ZoneRPGSave.slots(),w
+engine.js	182	ZoneRPGSave	B	Internal JS namespace/API or technical catalog object	mapEdges:edges,hasSave:window.ZoneRPGSave.has(),saveSlots:window.ZoneRPGSave.slots(),w
+engine.js	183	ZoneRPGEngine	B	Internal JS namespace/API or technical catalog object	  window.ZoneRPGEngine={getState,action,onChange(fn){listeners.add(
+engine.js	183	ZoneRPGSave	B	Internal JS namespace/API or technical catalog object	.add(fn);},hasSave:()=>window.ZoneRPGSave.has(),eventChance,getItemWeight:weight};
+index.html	16	ZoneRPG	B	Preserved repository or GitHub Pages deployment path	ef="https://zefisty.github.io/ZoneRPG/">
+index.html	17	ZoneRPG	B	Preserved repository or GitHub Pages deployment path	ef="https://zefisty.github.io/ZoneRPG/sitemap.xml">
+index.html	21	ZoneRPG	B	Preserved repository or GitHub Pages deployment path	nt="https://zefisty.github.io/ZoneRPG/">
+index.html	24	ZoneRPG	B	Preserved repository or GitHub Pages deployment path	nt="https://zefisty.github.io/ZoneRPG/assets/pwa/radiation-green-v2-512.png">
+index.html	32	ZoneRPG	B	Preserved repository or GitHub Pages deployment path	nt="https://zefisty.github.io/ZoneRPG/assets/pwa/radiation-green-v2-512.png">
+index.html	40	ZoneRPG	B	Preserved repository or GitHub Pages deployment path	": "https://zefisty.github.io/ZoneRPG/",
+index.html	42	ZoneRPG	B	Preserved repository or GitHub Pages deployment path	": "https://zefisty.github.io/ZoneRPG/assets/pwa/radiation-green-v2-512.png",
+items.js	67	ZoneRPGItems	B	Internal JS namespace/API or technical catalog object	  window.ZoneRPGItems={items,weapons,armors,iconFallback};
+knowledge.js	2	ZoneRPGWorld	B	Internal JS namespace/API or technical catalog object	  const W=window.ZoneRPGWorld, I=window.ZoneRPGItems;
+knowledge.js	2	ZoneRPGItems	B	Internal JS namespace/API or technical catalog object	window.ZoneRPGWorld, I=window.ZoneRPGItems;
+knowledge.js	23	ZoneRPGLivingData	B	Internal JS namespace/API or technical catalog object	  for(const site of window.ZoneRPGLivingData.sites)for(const decision of ['help','betray'
+knowledge.js	49	ZoneRPGZoneData	B	Internal JS namespace/API or technical catalog object	id,e]of Object.entries(window.ZoneRPGZoneData.endings)){add('zone_ending_'+id,'После перед
+knowledge.js	51	ZoneRPG	B	Internal browser-console diagnostic prefix	warned.add(id);console.warn('[ZoneRPG] Нет определения записи КПК:',id);}return {t
+knowledge.js	69	ZoneRPGKnowledge	B	Internal JS namespace/API or technical catalog object	  window.ZoneRPGKnowledge={display,record,heard,canonical,pool:(loc,s)
+design/UI_V11_DESIGN_SYSTEM.md	1	ZoneRPG	B	Historical developer record, source attribution or tooling; not current public branding	# ZoneRPG v11 — Field terminal UI
+living-content.js	3	ZoneRPGWorld	B	Internal JS namespace/API or technical catalog object	  const W=window.ZoneRPGWorld,I=window.ZoneRPGItems;
+living-content.js	3	ZoneRPGItems	B	Internal JS namespace/API or technical catalog object	=window.ZoneRPGWorld,I=window.ZoneRPGItems;
+living-content.js	108	ZoneRPGLivingData	B	Internal JS namespace/API or technical catalog object	  window.ZoneRPGLivingData={states,incidents,sites,legends,chains,npcCo
+living-zone.js	3	ZoneRPGWorld	B	Internal JS namespace/API or technical catalog object	  const W=window.ZoneRPGWorld,D=window.ZoneRPGLivingData;
+living-zone.js	3	ZoneRPGLivingData	B	Internal JS namespace/API or technical catalog object	=window.ZoneRPGWorld,D=window.ZoneRPGLivingData;
+living-zone.js	38	ZoneRPGLog	B	Internal JS namespace/API or technical catalog object	enown-before;if(delta){window.ZoneRPGLog.write(s,'Известность: '+(delta>0?'+':'')+del
+living-zone.js	135	ZoneRPGLiving	B	Internal JS namespace/API or technical catalog object	  window.ZoneRPGLiving={fresh,normalize,modifier,stateAt,observe,ar
+music-config.js	4	ZoneRPGMusicConfig	B	Internal JS namespace/API or technical catalog object	window.ZoneRPGMusicConfig={fadeMs:450,tracks:{menu:[],safe:[],explorat
+music-files.js	2	ZoneRPGMusicConfig	B	Internal JS namespace/API or technical catalog object	  const C=window.ZoneRPGMusicConfig,failed=new Set();let current=null,outgoing=n
+music-files.js	10	ZoneRPGAudio	B	Internal JS namespace/API or technical catalog object	going=null;if(wasLocal)window.ZoneRPGAudio?.refresh();}
+music-files.js	11	ZoneRPGAudio	B	Internal JS namespace/API or technical catalog object	volume=0;current=audio;window.ZoneRPGAudio?.refresh();audio.onerror=()=>{if(current!==a
+music-files.js	13	ZoneRPGMusic	B	Internal JS namespace/API or technical catalog object	  window.ZoneRPGMusic={sync,unlock(){if(unlocked)return;unlocked=t
+narrative.js	3	ZoneRPGWorld	B	Internal JS namespace/API or technical catalog object	  const W=window.ZoneRPGWorld,T=window.ZoneRPGStories;
+narrative.js	3	ZoneRPGStories	B	Internal JS namespace/API or technical catalog object	=window.ZoneRPGWorld,T=window.ZoneRPGStories;
+narrative.js	297	ZoneRPGNarrative	B	Internal JS namespace/API or technical catalog object	  window.ZoneRPGNarrative={changed,contact};
+personal-stories.js	3	ZoneRPGWorld	B	Internal JS namespace/API or technical catalog object	  const W=window.ZoneRPGWorld,I=window.ZoneRPGItems;
+personal-stories.js	3	ZoneRPGItems	B	Internal JS namespace/API or technical catalog object	=window.ZoneRPGWorld,I=window.ZoneRPGItems;
+personal-stories.js	131	ZoneRPGStories	B	Internal JS namespace/API or technical catalog object	  window.ZoneRPGStories={arcs,fresh,normalize,current,eligible,conte
+pwa-assets.js	2	ZoneRPGPrecache	B	Internal JS namespace/API or technical catalog object	self.ZoneRPGPrecache = [
+pwa-register.js	12	ZoneRPG	B	Internal browser-console diagnostic prefix	atch (error) { console.warn('[ZoneRPG PWA] Регистрация недоступна:', error); }
+robots.txt	4	ZoneRPG	B	Preserved repository or GitHub Pages deployment path	ap: https://zefisty.github.io/ZoneRPG/sitemap.xml
+save.js	2	ZoneRPGState	B	Internal JS namespace/API or technical catalog object	ON,LEGACY_VERSIONS=[]}=window.ZoneRPGState;
+save.js	45	ZoneRPGRank	B	Internal JS namespace/API or technical catalog object	ta,p=s.player||{},rank=window.ZoneRPGRank.calculate({...s,player:p,attributes:s.attrib
+save.js	49	ZoneRPGSave	B	Internal JS namespace/API or technical catalog object	  window.ZoneRPGSave={KEYS,read,write,remove,slots,migrateLegacy,
+service-worker.js	7	ZoneRPGPrecache	B	Internal JS namespace/API or technical catalog object	const SHELL = self.ZoneRPGPrecache.map(path => new URL(path, BASE).href);
+SEO.md	3	ZoneRPG	B	Preserved repository or GitHub Pages deployment path	ge: https://zefisty.github.io/ZoneRPG/
+SEO.md	19	ZoneRPG	B	Preserved repository or GitHub Pages deployment path	his project publishes under `/ZoneRPG/`. Its robots file therefore appears at
+SEO.md	20	ZoneRPG	B	Preserved repository or GitHub Pages deployment path	https://zefisty.github.io/ZoneRPG/robots.txt. Google reads robots rules from t
+SEO.md	25	ZoneRPG	B	Preserved repository or GitHub Pages deployment path	mit https://zefisty.github.io/ZoneRPG/sitemap.xml in the
+SEO.md	28	ZoneRPG	B	Preserved repository or GitHub Pages deployment path	rify that it does not block `/ZoneRPG/` or assets.
+SEO.md	56	ZoneRPG	B	Preserved repository or GitHub Pages deployment path	ository, JavaScript APIs and /ZoneRPG/ deployment path deliberately retain their t
+sitemap.xml	3	ZoneRPG	B	Preserved repository or GitHub Pages deployment path	loc>https://zefisty.github.io/ZoneRPG/</loc></url>
+shops.js	21	ZoneRPGItems	B	Internal JS namespace/API or technical catalog object	    const item=window.ZoneRPGItems.items[id];if(!item)return null;
+shops.js	31	ZoneRPGWorld	B	Internal JS namespace/API or technical catalog object	 Set([...Object.values(window.ZoneRPGWorld.locations).map(l=>l.trader).filter(Boolean),
+shops.js	32	ZoneRPGItems	B	Internal JS namespace/API or technical catalog object	[id]||[])])].filter(x=>window.ZoneRPGItems.items[x]);}
+shops.js	44	ZoneRPGShops	B	Internal JS namespace/API or technical catalog object	  window.ZoneRPGShops={rules,overrides,pools,rule,day,pool,generat
+state.js	48	ZoneRPGExpedition	B	Internal JS namespace/API or technical catalog object	explores:{},expedition:window.ZoneRPGExpedition.empty(),lastExpedition:null,discoveredEnemie
+state.js	50	ZoneRPGOnboarding	B	Internal JS namespace/API or technical catalog object	heard:false}, tutorial:window.ZoneRPGOnboarding.fresh(), settings:{musicVolume:1,effectsVolu
+state.js	55	ZoneRPGWorld	B	Internal JS namespace/API or technical catalog object	у. Начальный сектор: '+window.ZoneRPGWorld.locations[background.startLocation].name+'.'
+state.js	56	ZoneRPGWorld	B	Internal JS namespace/API or technical catalog object	round.startLocation,...window.ZoneRPGWorld.locations[background.startLocation].neighbor
+state.js	57	ZoneRPGWorld	B	Internal JS namespace/API or technical catalog object	round.startLocation;if(window.ZoneRPGWorld.quests.find(q=>q.id==='first_road').target==
+state.js	60	ZoneRPGItems	B	Internal JS namespace/API or technical catalog object	e state.inventory.push(window.ZoneRPGItems.items[id].stackable?{id,qty}:{id,qty,instanc
+state.js	63	ZoneRPGZone	B	Internal JS namespace/API or technical catalog object	    state.zoneStory=window.ZoneRPGZone.fresh();
+state.js	64	ZoneRPGStories	B	Internal JS namespace/API or technical catalog object	   state.personalStory=window.ZoneRPGStories.fresh(state.backgroundId);
+state.js	65	ZoneRPGLiving	B	Internal JS namespace/API or technical catalog object	    state.worldState=window.ZoneRPGLiving.fresh(state.player.location);window.ZoneRPGS
+state.js	65	ZoneRPGShops	B	Internal JS namespace/API or technical catalog object	state.player.location);window.ZoneRPGShops.sync(state);
+state.js	66	ZoneRPGLiving	B	Internal JS namespace/API or technical catalog object	    window.ZoneRPGLiving.observe(state,state.player.location);
+state.js	169	ZoneRPGItems	B	Internal JS namespace/API or technical catalog object	gazines)){const weapon=window.ZoneRPGItems.weapons[id];if(!weapon)delete base.magazines
+state.js	191	ZoneRPGKnowledge	B	Internal JS namespace/API or technical catalog object	mors)?input.rumors.map(window.ZoneRPGKnowledge.record).filter(Boolean):[];
+state.js	192	ZoneRPGKnowledge	B	Internal JS namespace/API or technical catalog object	    base.heardRumors=window.ZoneRPGKnowledge.heard(input.heardRumors,base.rumors,base.kno
+state.js	200	ZoneRPGStories	B	Internal JS namespace/API or technical catalog object	    base.personalStory=window.ZoneRPGStories.normalize(input.personalStory,base.backgroun
+state.js	207	ZoneRPGExpedition	B	Internal JS namespace/API or technical catalog object	    base.expedition=window.ZoneRPGExpedition.normalize(input.expedition,base,world);
+state.js	208	ZoneRPGExpedition	B	Internal JS namespace/API or technical catalog object	    window.ZoneRPGExpedition.project(base);
+state.js	211	ZoneRPGExpedition	B	Internal JS namespace/API or technical catalog object	tion.originLocationId]?window.ZoneRPGExpedition.normalize({...input.lastExpedition,active:tr
+state.js	219	ZoneRPGLiving	B	Internal JS namespace/API or technical catalog object	    base.worldState=window.ZoneRPGLiving.normalize(input.worldState,base);base.trader
+state.js	219	ZoneRPGShops	B	Internal JS namespace/API or technical catalog object	ase);base.traderStocks=window.ZoneRPGShops.normalize(input.traderStocks,base);
+state.js	220	ZoneRPGZone	B	Internal JS namespace/API or technical catalog object	    base.zoneStory=window.ZoneRPGZone.normalize(input.zoneStory);
+state.js	221	ZoneRPGZone	B	Internal JS namespace/API or technical catalog object	    window.ZoneRPGZone.quest(base);
+state.js	222	ZoneRPGLiving	B	Internal JS namespace/API or technical catalog object	[base.player.location])window.ZoneRPGLiving.observe(base,base.player.location);
+state.js	227	ZoneRPGItems	B	Internal JS namespace/API or technical catalog object	e)?rawCombat.distance:(window.ZoneRPGItems.weapons[enemy.weapon]?.ammoType?'far':'close
+state.js	232	ZoneRPGOnboarding	B	Internal JS namespace/API or technical catalog object	    base.tutorial=window.ZoneRPGOnboarding.normalize(input.tutorial,base.worldState.sta
+state.js	239	ZoneRPGExpedition	B	Internal JS namespace/API or technical catalog object	o=null;base.expedition=window.ZoneRPGExpedition.empty();window.ZoneRPGExpedition.project(bas
+state.js	239	ZoneRPGExpedition	B	Internal JS namespace/API or technical catalog object	o=null;base.expedition=window.ZoneRPGExpedition.empty();window.ZoneRPGExpedition.project(bas
+state.js	243	ZoneRPGState	B	Internal JS namespace/API or technical catalog object	  window.ZoneRPGState={VERSION,LEGACY_VERSIONS,KEY,BACKGROUNDS,ATT
+ui-v11.css	1	ZoneRPG	B	Internal source comment/version attribution	/* ZoneRPG v11 · Field terminal design system. Presenta
+zone-ui.js	2	ZoneRPGArt	B	Internal JS namespace/API or technical catalog object	  const Art=window.ZoneRPGArt;
+zone-ui.js	4	ZoneRPGWorld	B	Internal JS namespace/API or technical catalog object	nst d=D.steps[n],event=window.ZoneRPGWorld.events.find(e=>e.id===d.eventId),choices=eve
+zone-ui.js	11	ZoneRPGUI	B	Internal JS namespace/API or technical catalog object	=2?(kind==='artifacts'?window.ZoneRPGUI.describeItem(d).text:d.description):kind==='
+zone-ui.js	11	ZoneRPGUI	B	Internal JS namespace/API or technical catalog object	=2?(kind==='artifacts'?window.ZoneRPGUI.describeItem(d).text:d.description):kind==='
+zone-ui.js	12	ZoneRPGZoneUI	B	Internal JS namespace/API or technical catalog object	  window.ZoneRPGZoneUI={panel,knowledge};
+zone-story.js	3	ZoneRPGZoneData	B	Internal JS namespace/API or technical catalog object	  const D=window.ZoneRPGZoneData,W=window.ZoneRPGWorld,I=window.ZoneRPGItems;
+zone-story.js	3	ZoneRPGWorld	B	Internal JS namespace/API or technical catalog object	ndow.ZoneRPGZoneData,W=window.ZoneRPGWorld,I=window.ZoneRPGItems;
+zone-story.js	3	ZoneRPGItems	B	Internal JS namespace/API or technical catalog object	=window.ZoneRPGWorld,I=window.ZoneRPGItems;
+zone-story.js	18	ZoneRPGLog	B	Internal JS namespace/API or technical catalog object	  const log=(s,text)=>window.ZoneRPGLog.write(s,text);
+zone-story.js	67	ZoneRPGZone	B	Internal JS namespace/API or technical catalog object	  window.ZoneRPGZone={fresh,normalize,npcVisible,unlock,openRoute
+zone-story-data.js	1	ZoneRPG	B	Internal source comment/version attribution	/* Original ZoneRPG content. Story identifiers never depend on d
+zone-story-data.js	3	ZoneRPGWorld	B	Internal JS namespace/API or technical catalog object	  const W=window.ZoneRPGWorld,I=window.ZoneRPGItems;
+zone-story-data.js	3	ZoneRPGItems	B	Internal JS namespace/API or technical catalog object	=window.ZoneRPGWorld,I=window.ZoneRPGItems;
+zone-story-data.js	102	ZoneRPGZoneData	B	Internal JS namespace/API or technical catalog object	  window.ZoneRPGZoneData={group,chapters,steps,hooks,routes,pois,npcs
+world.js	302	ZoneRPGWorld	B	Internal JS namespace/API or technical catalog object	  window.ZoneRPGWorld={locations,people,factions,enemyTypes,quests
+tools/audit-branding.cjs	4	ZoneRPG	B	Historical developer record, source attribution or tooling; not current public branding	--hidden','--no-ignore','-e','ZoneRPG[A-Za-z0-9_]*|ZONE RPG|Zone RPG','--glob','!.
+tools/audit-branding.cjs	4	ZONE RPG	B	Historical developer record, source attribution or tooling; not current public branding	e','-e','ZoneRPG[A-Za-z0-9_]*|ZONE RPG|Zone RPG','--glob','!.git/**','--glob','!BRA
+tools/audit-branding.cjs	4	Zone RPG	B	Historical developer record, source attribution or tooling; not current public branding	ZoneRPG[A-Za-z0-9_]*|ZONE RPG|Zone RPG','--glob','!.git/**','--glob','!BRANDING_AUD
+tools/audit-branding.cjs	11	ZoneRPG	B	Historical developer record, source attribution or tooling; not current public branding	  if(/^ZoneRPG\w+$/.test(token))reason='Internal JS namespa
+tools/audit-branding.cjs	14	ZoneRPG	B	Historical developer record, source attribution or tooling; not current public branding	  else if(/\/ZoneRPG\//.test(source)||/ZoneRPG\.git/.test(source)
+tools/audit-branding.cjs	14	ZoneRPG	B	Historical developer record, source attribution or tooling; not current public branding	  else if(/\/ZoneRPG\//.test(source)||/ZoneRPG\.git/.test(source)
+tools/audit-branding.cjs	15	ZoneRPG	B	Historical developer record, source attribution or tooling; not current public branding	e\.(?:warn|error|log)\(['"`]\[ZoneRPG/.test(source))reason='Internal browser-conso
+ui.js	2	ZoneRPGArt	B	Internal JS namespace/API or technical catalog object	ElementById('app'),Art=window.ZoneRPGArt;
+ui.js	4	ZoneRPGFormat	B	Internal JS namespace/API or technical catalog object	  const pct=window.ZoneRPGFormat.percent,masteryTier=n=>n<20?'Новичок':n<40?'
+ui.js	11	ZoneRPGWorld	B	Internal JS namespace/API or technical catalog object	eventLook(e){const def=window.ZoneRPGWorld.events.find(d=>d.id===e.id)||e;if(def.person
+ui.js	14	ZoneRPGItems	B	Internal JS namespace/API or technical catalog object	    const I=window.ZoneRPGItems,e=item.effect||{},facts=[],add=(key,text)=>f
+ui.js	47	ZoneRPGConfig	B	Internal JS namespace/API or technical catalog object	ia-hidden="true">${esc(window.ZoneRPGConfig.gameNameUpper.split(" ")[0])} <span class="b
+ui.js	47	ZoneRPGConfig	B	Internal JS namespace/API or technical catalog object	ia-hidden="true">${esc(window.ZoneRPGConfig.gameNameUpper.split(" ")[0])} <span class="b
+ui.js	48	ZoneRPGI18n	B	Internal JS namespace/API or technical catalog object	ация">${button('panel',window.ZoneRPGI18n.t('map'),'dock-button','map','⌖')}${busy?'<b
+ui.js	48	ZoneRPGI18n	B	Internal JS namespace/API or technical catalog object	ация">${button('panel',window.ZoneRPGI18n.t('map'),'dock-button','map','⌖')}${busy?'<b
+ui.js	48	ZoneRPGI18n	B	Internal JS namespace/API or technical catalog object	ация">${button('panel',window.ZoneRPGI18n.t('map'),'dock-button','map','⌖')}${busy?'<b
+ui.js	48	ZoneRPGI18n	B	Internal JS namespace/API or technical catalog object	ация">${button('panel',window.ZoneRPGI18n.t('map'),'dock-button','map','⌖')}${busy?'<b
+ui.js	48	ZoneRPGI18n	B	Internal JS namespace/API or technical catalog object	ация">${button('panel',window.ZoneRPGI18n.t('map'),'dock-button','map','⌖')}${busy?'<b
+ui.js	50	ZoneRPGWorld	B	Internal JS namespace/API or technical catalog object	ncounterCue(e){const d=window.ZoneRPGWorld.events.find(x=>x.id===e.id)||e;if(['rare','v
+ui.js	51	ZoneRPGWorld	B	Internal JS namespace/API or technical catalog object	tion.active,art=e.art||window.ZoneRPGWorld.events.find(d=>d.id===e.id)?.art||eventArtFo
+ui.js	51	ZoneRPGWorld	B	Internal JS namespace/API or technical catalog object	tion.active,art=e.art||window.ZoneRPGWorld.events.find(d=>d.id===e.id)?.art||eventArtFo
+ui.js	51	ZoneRPGWorld	B	Internal JS namespace/API or technical catalog object	tion.active,art=e.art||window.ZoneRPGWorld.events.find(d=>d.id===e.id)?.art||eventArtFo
+ui.js	51	ZoneRPGWorld	B	Internal JS namespace/API or technical catalog object	tion.active,art=e.art||window.ZoneRPGWorld.events.find(d=>d.id===e.id)?.art||eventArtFo
+ui.js	51	ZoneRPGWorld	B	Internal JS namespace/API or technical catalog object	tion.active,art=e.art||window.ZoneRPGWorld.events.find(d=>d.id===e.id)?.art||eventArtFo
+ui.js	51	ZoneRPGWorld	B	Internal JS namespace/API or technical catalog object	tion.active,art=e.art||window.ZoneRPGWorld.events.find(d=>d.id===e.id)?.art||eventArtFo
+ui.js	52	ZoneRPGI18n	B	Internal JS namespace/API or technical catalog object	:''}${button('explore',window.ZoneRPGI18n.t('explore'),'primary-button main-explore','
+ui.js	58	ZoneRPGItems	B	Internal JS namespace/API or technical catalog object	ышает шанс попадания.':window.ZoneRPGItems.weapons[e.weapon]?.ammoType?'Вооружённая цел
+ui.js	58	ZoneRPGI18n	B	Internal JS namespace/API or technical catalog object	||0)>0?button('attack',window.ZoneRPGI18n.t(weapon.ammoType?'fire':'melee'),'primary-b
+ui.js	59	ZoneRPGConfig	B	Internal JS namespace/API or technical catalog object	lose=true,sub='КПК · '+window.ZoneRPGConfig.gameNameUpper){const kind=['Продолжить игру'
+ui.js	61	ZoneRPGLiving	B	Internal JS namespace/API or technical catalog object	ocations[id].rad,extra=window.ZoneRPGLiving.modifier(s,'radiation',id);
+ui.js	83	ZoneRPGZone	B	Internal JS namespace/API or technical catalog object	ation].npcs.filter(id=>window.ZoneRPGZone.npcVisible(s,id)&&(!s.people[id].requiresBac
+ui.js	110	ZoneRPGConfig	B	Internal JS namespace/API or technical catalog object	ss="brand-large">'+esc(window.ZoneRPGConfig.gameNameUpper.split(" ")[0])+' <span>'+esc(w
+ui.js	110	ZoneRPGConfig	B	Internal JS namespace/API or technical catalog object	ss="brand-large">'+esc(window.ZoneRPGConfig.gameNameUpper.split(" ")[0])+' <span>'+esc(w
+ui.js	110	ZoneRPGConfig	B	Internal JS namespace/API or technical catalog object	ss="brand-large">'+esc(window.ZoneRPGConfig.gameNameUpper.split(" ")[0])+' <span>'+esc(w
+ui.js	110	ZoneRPGConfig	B	Internal JS namespace/API or technical catalog object	ss="brand-large">'+esc(window.ZoneRPGConfig.gameNameUpper.split(" ")[0])+' <span>'+esc(w
+ui.js	110	ZoneRPGConfig	B	Internal JS namespace/API or technical catalog object	ss="brand-large">'+esc(window.ZoneRPGConfig.gameNameUpper.split(" ")[0])+' <span>'+esc(w
+ui.js	110	ZoneRPGConfig	B	Internal JS namespace/API or technical catalog object	ss="brand-large">'+esc(window.ZoneRPGConfig.gameNameUpper.split(" ")[0])+' <span>'+esc(w
+ui.js	111	ZoneRPGKnowledge	B	Internal JS namespace/API or technical catalog object	erse().map(r=>{const d=window.ZoneRPGKnowledge.display(r),loc=window.ZoneRPGWorld.locations
+ui.js	111	ZoneRPGWorld	B	Internal JS namespace/API or technical catalog object	owledge.display(r),loc=window.ZoneRPGWorld.locations[r.location]?.name||(typeof r.locat
+ui.js	115	ZoneRPGRank	B	Internal JS namespace/API or technical catalog object	вступления: ранг '+esc(window.ZoneRPGRank.tiers[f.minimumRank][0])+' · уровень '+f.min
+ui.js	115	ZoneRPGRank	B	Internal JS namespace/API or technical catalog object	вступления: ранг '+esc(window.ZoneRPGRank.tiers[f.minimumRank][0])+' · уровень '+f.min
+ui.js	116	ZoneRPGZoneUI	B	Internal JS namespace/API or technical catalog object	y('Полевой справочник',window.ZoneRPGZoneUI.knowledge(s,esc,button)+'<h3>Обнаруженные се
+ui.js	116	ZoneRPGKnowledge	B	Internal JS namespace/API or technical catalog object	wledge.map(x=>{const d=window.ZoneRPGKnowledge.display(x);return '<article class="journal-e
+ui.js	116	ZoneRPGKnowledge	B	Internal JS namespace/API or technical catalog object	wledge.map(x=>{const d=window.ZoneRPGKnowledge.display(x);return '<article class="journal-e
+ui.js	132	ZoneRPGZoneUI	B	Internal JS namespace/API or technical catalog object	   case'bestiary':body=window.ZoneRPGZoneUI.knowledge(s,esc,button,'mutants')+databaseSe
+ui.js	133	ZoneRPGZoneUI	B	Internal JS namespace/API or technical catalog object	  case'artifacts':body=window.ZoneRPGZoneUI.knowledge(s,esc,button,'artifacts')+database
+ui.js	134	ZoneRPGZoneUI	B	Internal JS namespace/API or technical catalog object	  case'locations':body=window.ZoneRPGZoneUI.knowledge(s,esc,button,'locations')+database
+ui.js	138	ZoneRPGZoneUI	B	Internal JS namespace/API or technical catalog object	istory':body=panelBody(window.ZoneRPGZoneUI.panel({...s,mode:'zoneStory'},esc,button,ove
+ui.js	139	ZoneRPGZoneUI	B	Internal JS namespace/API or technical catalog object	places':body=panelBody(window.ZoneRPGZoneUI.panel({...s,mode:'zonePlaces'},esc,button,ov
+ui.js	147	ZoneRPGZoneUI	B	Internal JS namespace/API or technical catalog object	ижения</h3>'+panelBody(window.ZoneRPGZoneUI.panel({...s,mode:'achievements'},esc,button,
+ui.js	151	ZoneRPGConfig	B	Internal JS namespace/API or technical catalog object	creditsPanel(){const c=window.ZoneRPGConfig;return overlay('Авторы','<section class="cre
+ui.js	156	ZoneRPGZoneUI	B	Internal JS namespace/API or technical catalog object	For(s){const zonePanel=window.ZoneRPGZoneUI.panel(s,esc,button,overlay);if(zonePanel)ret
+ui.js	158	ZoneRPGOnboarding	B	Internal JS namespace/API or technical catalog object	tutorial.queue[0],hint=window.ZoneRPGOnboarding.hints[id];if(!hint)return '';return '<aside 
+ui.js	265	ZoneRPGAudio	B	Internal JS namespace/API or technical catalog object	rarity)?'true':'false';window.ZoneRPGAudio?.sync(s.mode,s.settings,{combat:Boolean(s.co
+ui.js	266	ZoneRPGUI	B	Internal JS namespace/API or technical catalog object	  window.ZoneRPGUI={describeItem,render,updateMapLines,centerMa
+tests/NAVIGATION_QA.md	1	ZoneRPG	B	Internal test fixture, compatibility assertion or historical QA record	# ZoneRPG v7 navigation patch QA
+tests/hotfix-v1022.cjs	15	ZoneRPGUI	B	Internal JS namespace/API or technical catalog object	ss="save-card"/);r.ctx.window.ZoneRPGUI.setSavePicker(true);r.ctx.window.ZoneRPGUI.r
+tests/hotfix-v1022.cjs	15	ZoneRPGUI	B	Internal JS namespace/API or technical catalog object	ss="save-card"/);r.ctx.window.ZoneRPGUI.setSavePicker(true);r.ctx.window.ZoneRPGUI.r
+tests/hotfix-v1022.cjs	37	ZoneRPGUI	B	Internal JS namespace/API or technical catalog object	on('closePanel');r.ctx.window.ZoneRPGUI.render(r.E.getState());}assert.equal(writes,
+tests/hotfix-v1022.cjs	69	ZoneRPGUI	B	Internal JS namespace/API or technical catalog object	 const center=r.ctx.window.ZoneRPGUI.centerMapGraph;center(map);const first=trans
+tests/hotfix-v1022.cjs	92	ZoneRPGUI	B	Internal JS namespace/API or technical catalog object	 r.ctx.window.ZoneRPGUI.centerMapGraph(map);r.ctx.window.ZoneRPGUI.u
+tests/hotfix-v1022.cjs	92	ZoneRPGUI	B	Internal JS namespace/API or technical catalog object	 r.ctx.window.ZoneRPGUI.centerMapGraph(map);r.ctx.window.ZoneRPGUI.u
+tests/hotfix-v1022.cjs	98	ZoneRPGUI	B	Internal JS namespace/API or technical catalog object	 first=transform;r.ctx.window.ZoneRPGUI.centerMapGraph(map);assert.equal(transform,f
+tests/ITEM_CATALOG_AUDIT.md	1	ZoneRPG	B	Internal test fixture, compatibility assertion or historical QA record	# Аудит описаний предметов ZoneRPG
+tests/ITEM_CATALOG_AUDIT.md	11	ZoneRPGUI	B	Internal JS namespace/API or technical catalog object	ьный абзац параметров. Общий `ZoneRPGUI.describeItem()` используется инвентарём, маг
+tests/HEADER_LOGO_QA.md	5	ZoneRPG	B	Internal test fixture, compatibility assertion or historical QA record	lic https://zefisty.github.io/ZoneRPG/ was opened in a real browser on 2026-10-14.
+tests/HEADER_LOGO_QA.md	11	ZoneRPGUI	B	Internal JS namespace/API or technical catalog object	ads ui.js once; game.js calls ZoneRPGUI.render(engine.getState()). render -> gameScr
+tests/item-descriptions.cjs	8	ZoneRPGUI	B	Internal JS namespace/API or technical catalog object	 const UI=r.ctx.window.ZoneRPGUI;
+tests/item-descriptions.cjs	40	ZoneRPGUI	B	Internal JS namespace/API or technical catalog object	tringify(before);r.ctx.window.ZoneRPGUI.render({...before,mode:'inventory'});r.ctx.w
+tests/item-descriptions.cjs	40	ZoneRPGUI	B	Internal JS namespace/API or technical catalog object	tringify(before);r.ctx.window.ZoneRPGUI.render({...before,mode:'inventory'});r.ctx.w
+tests/enemies.html	1	ZoneRPG	B	Internal test fixture, compatibility assertion or historical QA record	width,initial-scale=1"><title>ZoneRPG · проверка противников</title><style>body{ba
+tests/enemies.html	1	ZoneRPGWorld	B	Internal JS namespace/API or technical catalog object	ry').innerHTML=Object.entries(ZoneRPGWorld.enemyTypes).map(([id,e])=>'<figure><img src=
+tests/enemies.html	1	ZoneRPGArt	B	Internal JS namespace/API or technical catalog object	,e])=>'<figure><img src="../'+ZoneRPGArt.enemy(e.visual||id)+'" alt="'+e.name+'"><fig
+tests/branding.cjs	2	ZoneRPG	B	Internal test fixture, compatibility assertion or historical QA record	SE='https://zefisty.github.io/ZoneRPG/';let passed=0;
+tests/branding.cjs	10	ZoneRPG	B	Internal test fixture, compatibility assertion or historical QA record	"https:\/\/zefisty.github.io\/ZoneRPG\/"/);assert.doesNotMatch(html,/\/LastCordon\
+tests/branding.cjs	14	ZoneRPGConfig	B	Internal JS namespace/API or technical catalog object	fresh());const c=r.ctx.window.ZoneRPGConfig;assert.equal(c.gameName,'Last Cordon');asser
+tests/branding.cjs	16	ZoneRPGUI	B	Internal JS namespace/API or technical catalog object	  r.ctx.window.ZoneRPGUI.render({...r.E.getState(),mode});const html=
+tests/branding.cjs	17	ZoneRPG	B	Internal test fixture, compatibility assertion or historical QA record	doesNotMatch(text,/ZONE\s*RPG|ZoneRPG|Zone RPG/,mode);assert.match(text,/LAST\s+CO
+tests/branding.cjs	17	Zone RPG	B	Internal test fixture, compatibility assertion or historical QA record	atch(text,/ZONE\s*RPG|ZoneRPG|Zone RPG/,mode);assert.match(text,/LAST\s+CORDON|Last
+tests/branding.cjs	20	ZoneRPGUI	B	Internal JS namespace/API or technical catalog object	='BRAND FIXTURE';r.ctx.window.ZoneRPGUI.render({...r.E.getState(),mode:'menu'});asse
+tests/branding.cjs	28	ZoneRPGWorld	B	Internal JS namespace/API or technical catalog object	 for(const api of ['ZoneRPGWorld','ZoneRPGState','ZoneRPGItems','ZoneRPGConfi
+tests/branding.cjs	28	ZoneRPGState	B	Internal JS namespace/API or technical catalog object	const api of ['ZoneRPGWorld','ZoneRPGState','ZoneRPGItems','ZoneRPGConfig','ZoneRPGSave
+tests/branding.cjs	28	ZoneRPGItems	B	Internal JS namespace/API or technical catalog object	ZoneRPGWorld','ZoneRPGState','ZoneRPGItems','ZoneRPGConfig','ZoneRPGSave','ZoneRPGExped
+tests/branding.cjs	28	ZoneRPGConfig	B	Internal JS namespace/API or technical catalog object	ZoneRPGState','ZoneRPGItems','ZoneRPGConfig','ZoneRPGSave','ZoneRPGExpedition','ZoneRPGU
+tests/branding.cjs	28	ZoneRPGSave	B	Internal JS namespace/API or technical catalog object	oneRPGItems','ZoneRPGConfig','ZoneRPGSave','ZoneRPGExpedition','ZoneRPGUI'])assert.ok(
+tests/branding.cjs	28	ZoneRPGExpedition	B	Internal JS namespace/API or technical catalog object	ZoneRPGConfig','ZoneRPGSave','ZoneRPGExpedition','ZoneRPGUI'])assert.ok(r.ctx.window[api],ap
+tests/branding.cjs	28	ZoneRPGUI	B	Internal JS namespace/API or technical catalog object	RPGSave','ZoneRPGExpedition','ZoneRPGUI'])assert.ok(r.ctx.window[api],api);
+tests/branding.cjs	41	ZoneRPG	B	Internal test fixture, compatibility assertion or historical QA record	title>[\s\S]*?<\/title>/)[0],/ZoneRPG/);}
+tests/narrative-v92.cjs	7	ZoneRPGWorld	B	Internal JS namespace/API or technical catalog object	ext);const old=context.window.ZoneRPGWorld;assert.equal(JSON.stringify(strip(r.W.events
+tests/narrative-v92.cjs	7	ZoneRPGItems	B	Internal JS namespace/API or technical catalog object	JSON.stringify(context.window.ZoneRPGItems.items));});
+tests/narrative-v92.cjs	9	ZoneRPGStories	B	Internal JS namespace/API or technical catalog object	f Object.entries(r.ctx.window.ZoneRPGStories.arcs)){assert.equal(a.quests.length,6);for(l
+tests/narrative-v92.cjs	10	ZoneRPGStories	B	Internal JS namespace/API or technical catalog object	;s.personalStory=r.ctx.window.ZoneRPGStories.fresh(bg);s.player.location=r.W.people[id].h
+tests/narrative-v92.cjs	14	ZoneRPGConfig	B	Internal JS namespace/API or technical catalog object	'DOCLIK','Sajen',r.ctx.window.ZoneRPGConfig.version])assert.ok(r.root.innerHTML.includes
+tests/narrative-v92.cjs	23	ZoneRPGStories	B	Internal JS namespace/API or technical catalog object	;s.personalStory=r.ctx.window.ZoneRPGStories.fresh('soldier');s.event.text='Старое описан
+tests/header-logo.cjs	47	ZoneRPGUI	B	Internal JS namespace/API or technical catalog object	 r.ctx.window.ZoneRPGUI.render({...r.E.getState(),mode:'dead'});chec
+tests/header-logo.cjs	48	ZoneRPGUI	B	Internal JS namespace/API or technical catalog object	 r.ctx.window.ZoneRPGUI.render({...r.E.getState(),mode:'menu'});
+tests/header-logo.cjs	58	ZoneRPGUI	B	Internal JS namespace/API or technical catalog object	assert.match(read('game.js'),/ZoneRPGUI\.render\(engine\.getState\(\)\)/);
+tests/item-catalog.cjs	4	ZoneRPGUI	B	Internal JS namespace/API or technical catalog object	const UI=r.ctx.window.ZoneRPGUI,items=r.I.items;
+tests/item-catalog.cjs	48	ZoneRPGZoneUI	B	Internal JS namespace/API or technical catalog object	 const html=r.ctx.window.ZoneRPGZoneUI.knowledge(s,x=>String(x),()=>'', 'artifacts'
+tests/item-catalog.cjs	49	ZoneRPGZoneUI	B	Internal JS namespace/API or technical catalog object	=1;const unknown=r.ctx.window.ZoneRPGZoneUI.knowledge(s,x=>String(x),()=>'', 'artifacts'
+tests/audit-v72.cjs	6	ZoneRPG	B	Internal test fixture, compatibility assertion or historical QA record	 '# Аудит квестов ZoneRPG v7.2','',
+tests/browser.html	1	ZoneRPG	B	Internal test fixture, compatibility assertion or historical QA record	le=1"><base href="../"><title>ZoneRPG — изолированная проверка багов</title><link 
+tests/expedition.cjs	18	ZoneRPGExpedition	B	Internal JS namespace/API or technical catalog object	15);assert.equal(r.ctx.window.ZoneRPGExpedition.tier(50000),3);assert.ok(r.E.getState().expe
+tests/narrative-audit.cjs	22	ZoneRPGKnowledge	B	Internal JS namespace/API or technical catalog object	r(const rumor of r.ctx.window.ZoneRPGKnowledge.pool(loc))check(rumor.id,rumor.text);
+tests/narrative-audit.cjs	23	ZoneRPGNarrative	B	Internal JS namespace/API or technical catalog object	s.length,changed:r.ctx.window.ZoneRPGNarrative.changed().length,issues};
+tests/hotfix-v91.cjs	6	ZoneRPGStories	B	Internal JS namespace/API or technical catalog object	.player.location=r.ctx.window.ZoneRPGStories.arcs[bg].chapters[0][1];r.load(s);assert.mat
+tests/audio.cjs	5	ZoneRPGAudio	B	Internal JS namespace/API or technical catalog object	const a=ctx.window.ZoneRPGAudio;a.unlock();
+tests/map-radiation.cjs	3	ZoneRPGUI	B	Internal JS namespace/API or technical catalog object	t r=runtime(),UI=r.ctx.window.ZoneRPGUI,L=r.ctx.window.ZoneRPGLiving;
+tests/map-radiation.cjs	3	ZoneRPGLiving	B	Internal JS namespace/API or technical catalog object	ndow.ZoneRPGUI,L=r.ctx.window.ZoneRPGLiving;
+tests/hotfix-v1024.cjs	5	ZoneRPGUI	B	Internal JS namespace/API or technical catalog object	resh());const UI=r.ctx.window.ZoneRPGUI,s=r.E.getState();const baseline=s.player[key
+tests/hotfix-v1024.cjs	13	ZoneRPGUI	B	Internal JS namespace/API or technical catalog object	 const text=r.ctx.window.ZoneRPGUI.updateSurvivalAlerts(s,10);assert.match(text
+tests/hotfix-v1024.cjs	18	ZoneRPGUI	B	Internal JS namespace/API or technical catalog object	(r.E.getState());r.ctx.window.ZoneRPGUI.render(r.E.getState());assert.equal(JSON.str
+tests/hotfix-v1024.cjs	22	ZoneRPGUI	B	Internal JS namespace/API or technical catalog object	let i=0;i<10;i++)r.ctx.window.ZoneRPGUI.render(r.E.getState());assert.ok(!r.root.inn
+tests/hotfix-v1024.cjs	29	ZoneRPGUI	B	Internal JS namespace/API or technical catalog object	let i=0;i<10;i++)r.ctx.window.ZoneRPGUI.render(r.E.getState());assert.equal(timers.s
+tests/hotfix-v1024.cjs	33	ZoneRPGUI	B	Internal JS namespace/API or technical catalog object	ode;assert.equal(r.ctx.window.ZoneRPGUI.updateSurvivalAlerts(s,0),'');}
+tests/hotfix-v1024.cjs	39	ZoneRPGUI	B	Internal JS namespace/API or technical catalog object	.stringify(view);r.ctx.window.ZoneRPGUI.render(view);assert.match(r.root.innerHTML,/
+tests/hotfix-v1024.cjs	44	ZoneRPGUI	B	Internal JS namespace/API or technical catalog object	));const current=r.ctx.window.ZoneRPGUI;vm.runInContext(base,r.ctx);const stable=r.c
+tests/hotfix-v1024.cjs	44	ZoneRPGUI	B	Internal JS namespace/API or technical catalog object	));const current=r.ctx.window.ZoneRPGUI;vm.runInContext(base,r.ctx);const stable=r.c
+tests/browser-fixture.js	4	ZoneRPGTest	B	Internal JS namespace/API or technical catalog object	  window.ZoneRPGTest={scenario,errors,warnings};
+tests/browser-fixture.js	5	ZoneRPGEngine	B	Internal JS namespace/API or technical catalog object	t state={};try{const s=window.ZoneRPGEngine?.getState();if(s)state={location:s.player.lo
+tests/browser-fixture.js	9	ZoneRPGSave	B	Internal JS namespace/API or technical catalog object	  window.ZoneRPGSave={read(type='manual'){const raw=sessionStorag
+tests/browser-fixture.js	9	ZoneRPGState	B	Internal JS namespace/API or technical catalog object	,JSON.stringify({...s,version:ZoneRPGState.VERSION}));return{ok:true}},remove(){session
+tests/browser-fixture.js	9	ZoneRPGRank	B	Internal JS namespace/API or technical catalog object	vel:s.player.rank,rank:window.ZoneRPGRank.calculate({...s,attributes:s.attributes||{},
+tests/browser-fixture.js	11	ZoneRPGWorld	B	Internal JS namespace/API or technical catalog object	    for(const event of ZoneRPGWorld.events)if(['both','travel'].includes(event.k
+tests/browser-fixture.js	12	ZoneRPGEngine	B	Internal JS namespace/API or technical catalog object	    Math.random=()=>window.ZoneRPGEngine?.getState().player.location==='wild'?0:.99;
+tests/browser-fixture.js	17	ZoneRPGSave	B	Internal JS namespace/API or technical catalog object	    if(!ZoneRPGSave.has()){
+tests/browser-fixture.js	18	ZoneRPGState	B	Internal JS namespace/API or technical catalog object	      const s=ZoneRPGState.fresh();
+tests/browser-fixture.js	20	ZoneRPGLiving	B	Internal JS namespace/API or technical catalog object	garbage'];s.worldState=window.ZoneRPGLiving.fresh('garbage');s.worldClock=4;
+tests/browser-fixture.js	25	ZoneRPGWorld	B	Internal JS namespace/API or technical catalog object	m=()=>.99;s.known=Object.keys(ZoneRPGWorld.locations);s.knowledge=['rumor:cordon','camp
+tests/browser-fixture.js	27	ZoneRPGState	B	Internal JS namespace/API or technical catalog object	t('-').at(-1);Object.assign(s,ZoneRPGState.fresh(ZoneRPGState.BACKGROUNDS[bg]?bg:'soldi
+tests/browser-fixture.js	27	ZoneRPGState	B	Internal JS namespace/API or technical catalog object	t('-').at(-1);Object.assign(s,ZoneRPGState.fresh(ZoneRPGState.BACKGROUNDS[bg]?bg:'soldi
+tests/browser-fixture.js	27	ZoneRPGWorld	B	Internal JS namespace/API or technical catalog object	oldier'));s.known=Object.keys(ZoneRPGWorld.locations);
+tests/browser-fixture.js	29	ZoneRPGStories	B	Internal JS namespace/API or technical catalog object	        else{const a=window.ZoneRPGStories.arcs[s.backgroundId];if(scenario.includes('m
+tests/browser-fixture.js	31	ZoneRPGWorld	B	Internal JS namespace/API or technical catalog object	        s.known=Object.keys(ZoneRPGWorld.locations);
+tests/browser-fixture.js	32	ZoneRPGState	B	Internal JS namespace/API or technical catalog object	==='v72-pig'){Object.assign(s,ZoneRPGState.fresh('soldier'));s.player.stamina=40;}
+tests/browser-fixture.js	35	ZoneRPGWorld	B	Internal JS namespace/API or technical catalog object	combat={type:'boar',enemy:{...ZoneRPGWorld.enemyTypes.boar,hp:25,maxHp:ZoneRPGWorld.ene
+tests/browser-fixture.js	35	ZoneRPGWorld	B	Internal JS namespace/API or technical catalog object	combat={type:'boar',enemy:{...ZoneRPGWorld.enemyTypes.boar,hp:25,maxHp:ZoneRPGWorld.ene
+tests/browser-fixture.js	36	ZoneRPGWorld	B	Internal JS namespace/API or technical catalog object	{id:'tools',qty:1});const def=ZoneRPGWorld.events.find(e=>e.id==='v61_yard_mechanic'),s
+tests/browser-fixture.js	39	ZoneRPGWorld	B	Internal JS namespace/API or technical catalog object	ogists=20;s.known=Object.keys(ZoneRPGWorld.locations);
+tests/browser-fixture.js	43	ZoneRPGWorld	B	Internal JS namespace/API or technical catalog object	='atlas'){s.known=Object.keys(ZoneRPGWorld.locations);s.visited=[...s.known];}
+tests/browser-fixture.js	46	ZoneRPGState	B	Internal JS namespace/API or technical catalog object	ackground63'){Object.assign(s,ZoneRPGState.fresh('soldier'));const def=ZoneRPGWorld.eve
+tests/browser-fixture.js	46	ZoneRPGWorld	B	Internal JS namespace/API or technical catalog object	e.fresh('soldier'));const def=ZoneRPGWorld.events.find(e=>e.id==='npc_story_military'),
+tests/browser-fixture.js	48	ZoneRPGWorld	B	Internal JS namespace/API or technical catalog object	=='quests63'){s.quests.active=ZoneRPGWorld.quests.map(q=>({id:q.id,step:0,progress:0}))
+tests/browser-fixture.js	51	ZoneRPGWorld	B	Internal JS namespace/API or technical catalog object	.combat={type:'dog',enemy:{...ZoneRPGWorld.enemyTypes.dog,visual:'stalker',name:'Wrong 
+tests/browser-fixture.js	53	ZoneRPGWorld	B	Internal JS namespace/API or technical catalog object	ite_railway_2'}[scenario],def=ZoneRPGWorld.events.find(x=>x.id===id),stages=def.stages|
+tests/browser-fixture.js	56	ZoneRPGSave	B	Internal JS namespace/API or technical catalog object	m(key,JSON.stringify(s));else ZoneRPGSave.write(s);
+tests/browser-fixture.js	60	ZoneRPGTest	B	Internal JS namespace/API or technical catalog object	  window.ZoneRPGTest.update=update;
+tests/browser-fixture.js	61	ZoneRPGEngine	B	Internal JS namespace/API or technical catalog object	tener('DOMContentLoaded',()=>{ZoneRPGEngine.onChange(update);update();document.getElemen
+tests/hotfix-v1023.cjs	12	ZoneRPGUI	B	Internal JS namespace/API or technical catalog object	pedia');const UI=r.ctx.window.ZoneRPGUI;
+tests/hotfix-v1023.cjs	20	ZoneRPGUI	B	Internal JS namespace/API or technical catalog object	pedia');const UI=r.ctx.window.ZoneRPGUI;
+tests/hotfix-v1023.cjs	30	ZoneRPGUI	B	Internal JS namespace/API or technical catalog object	 const UI=r.ctx.window.ZoneRPGUI;for(const id of ['bestiary','artifacts','his
+tests/hotfix-v1023.cjs	38	ZoneRPGUI	B	Internal JS namespace/API or technical catalog object	ew.worldClock+2};r.ctx.window.ZoneRPGUI.render(view);
+tests/ART_POLISH_QA.md	1	ZoneRPG	B	Internal test fixture, compatibility assertion or historical QA record	# ZoneRPG — Field Art / visual polish
+tests/map-anchors.cjs	3	ZoneRPGUI	B	Internal JS namespace/API or technical catalog object	runtime(),update=r.ctx.window.ZoneRPGUI.updateMapLines;
+tests/living-zone.cjs	5	ZoneRPGLiving	B	Internal JS namespace/API or technical catalog object	const L=r=>r.ctx.window.ZoneRPGLiving,D=r=>r.ctx.window.ZoneRPGLivingData;
+tests/living-zone.cjs	5	ZoneRPGLivingData	B	Internal JS namespace/API or technical catalog object	neRPGLiving,D=r=>r.ctx.window.ZoneRPGLivingData;
+tests/living-zone.cjs	31	ZoneRPGExpedition	B	Internal JS namespace/API or technical catalog object	s.expedition={...r.ctx.window.ZoneRPGExpedition.empty(),active:true,originLocationId:'radioH
+tests/living-zone.cjs	36	ZoneRPGShops	B	Internal JS namespace/API or technical catalog object	боз»');assert.ok(r.ctx.window.ZoneRPGShops.pool('v9_caravan').includes('surveyMask'));r
+tests/living-zone.cjs	52	ZoneRPGState	B	Internal JS namespace/API or technical catalog object	  r.ctx.ZoneRPGState=r.S;r.ctx.ZoneRPGWorld=r.W;Object.defineProp
+tests/living-zone.cjs	52	ZoneRPGWorld	B	Internal JS namespace/API or technical catalog object	 r.ctx.ZoneRPGState=r.S;r.ctx.ZoneRPGWorld=r.W;Object.defineProperty(r.ctx,'ZoneRPGSave
+tests/living-zone.cjs	52	ZoneRPGSave	B	Internal JS namespace/API or technical catalog object	;Object.defineProperty(r.ctx,'ZoneRPGSave',{get:()=>r.ctx.window.ZoneRPGSave});r.ctx.c
+tests/living-zone.cjs	52	ZoneRPGSave	B	Internal JS namespace/API or technical catalog object	;Object.defineProperty(r.ctx,'ZoneRPGSave',{get:()=>r.ctx.window.ZoneRPGSave});r.ctx.c
+tests/living-zone.cjs	54	ZoneRPGSave	B	Internal JS namespace/API or technical catalog object	  const saved=r.ctx.window.ZoneRPGSave.read().data,out=r.load(saved);assert.equal(o
+tests/art-pack.cjs	8	ZoneRPGArt	B	Internal JS namespace/API or technical catalog object	st r=runtime(),A=r.ctx.window.ZoneRPGArt,C=JSON.parse(read('assets/art/catalog.json')
+tests/art-pack.cjs	14	ZoneRPGArt	B	Internal JS namespace/API or technical catalog object	st r=runtime(),A=r.ctx.window.ZoneRPGArt,used=new Set();for(const id of Object.keys(r
+tests/art-pack.cjs	17	ZoneRPGArt	B	Internal JS namespace/API or technical catalog object	st r=runtime(),A=r.ctx.window.ZoneRPGArt;for(const [id,e]of Object.entries(r.W.enemyT
+tests/art-pack.cjs	21	ZoneRPGArt	B	Internal JS namespace/API or technical catalog object	st r=runtime(),A=r.ctx.window.ZoneRPGArt;assert.equal(new Set(Object.keys(r.S.BACKGRO
+tests/art-pack.cjs	27	ZoneRPGArt	B	Internal JS namespace/API or technical catalog object	st r=runtime(),A=r.ctx.window.ZoneRPGArt;for(const it of Object.values(r.I.items))ass
+tests/art-pack.cjs	32	ZoneRPGArt	B	Internal JS namespace/API or technical catalog object	r.E.getState(),A=r.ctx.window.ZoneRPGArt;for(const e of r.W.events)for(const stage of
+tests/art-pack.cjs	41	ZoneRPGArt	B	Internal JS namespace/API or technical catalog object	 const A=r.ctx.window.ZoneRPGArt;for(const id of Object.keys(s.locations))A.l
+tests/art-pack.cjs	46	ZoneRPGArt	B	Internal JS namespace/API or technical catalog object	or(const file of r.ctx.window.ZoneRPGArt.allPaths)assert.ok(assets.includes('./'+file
+tests/art-pack.cjs	56	ZoneRPGEngine	B	Internal JS namespace/API or technical catalog object	ра'));assert.equal(ctx.window.ZoneRPGEngine.getState().mode,'menu');
+tests/art-gallery.html	1	ZoneRPG	B	Internal test fixture, compatibility assertion or historical QA record	le=1"><base href="../"><title>ZoneRPG — Art pack QA</title><style>body{margin:24px
+tests/art-gallery.html	1	ZoneRPG	B	Internal test fixture, compatibility assertion or historical QA record	le=1"><base href="../"><title>ZoneRPG — Art pack QA</title><style>body{margin:24px
+tests/art-gallery.html	1	ZoneRPGArt	B	Internal JS namespace/API or technical catalog object	const groups={},assets=window.ZoneRPGArt.allPaths;let loaded=0,broken=0;for(const src
+tests/zone-v10.cjs	8	ZoneRPGZoneData	B	Internal JS namespace/API or technical catalog object	s=raw(r);const d=r.ctx.window.ZoneRPGZoneData.steps[n];s.player.location=d.location;s.play
+tests/zone-v10.cjs	8	ZoneRPGExpedition	B	Internal JS namespace/API or technical catalog object	ull;s.expedition=r.ctx.window.ZoneRPGExpedition.empty();r.load(s);r.E.action('zoneAction');a
+tests/zone-v10.cjs	9	ZoneRPGZoneData	B	Internal JS namespace/API or technical catalog object	st r=runtime(),D=r.ctx.window.ZoneRPGZoneData;assert.equal(D.steps.length,20);assert.equal
+tests/zone-v10.cjs	11	ZoneRPGZoneData	B	Internal JS namespace/API or technical catalog object	.player.location=r.ctx.window.ZoneRPGZoneData.hooks[n][0];r.load(v);r.E.action('zoneAction
+tests/zone-v10.cjs	13	ZoneRPGZone	B	Internal JS namespace/API or technical catalog object	==1)assert.equal(r.ctx.window.ZoneRPGZone.npcVisible(r.E.getState(),'zone_npc_dron'),f
+tests/zone-v10.cjs	14	ZoneRPGZone	B	Internal JS namespace/API or technical catalog object	,3);assert.equal(r.ctx.window.ZoneRPGZone.endingAvailable(r.E.getState(),'channel'),fa
+tests/zone-v10.cjs	16	ZoneRPGZone	B	Internal JS namespace/API or technical catalog object	m=0;assert.equal(r.ctx.window.ZoneRPGZone.view(invalid).prepared.find(x=>x.name.starts
+tests/zone-v10.cjs	17	ZoneRPGZone	B	Internal JS namespace/API or technical catalog object	me(),s=seed(r),M=r.ctx.window.ZoneRPGZone;assert.equal(M.openRoutes(s).length,0);for(c
+tests/zone-v10.cjs	17	ZoneRPGZoneData	B	Internal JS namespace/API or technical catalog object	);for(const d of r.ctx.window.ZoneRPGZoneData.routes)M.unlock(s,d.id);r.load(s);r.E.action
+tests/zone-v10.cjs	17	ZoneRPGZoneData	B	Internal JS namespace/API or technical catalog object	);for(const d of r.ctx.window.ZoneRPGZoneData.routes)M.unlock(s,d.id);r.load(s);r.E.action
+tests/zone-v10.cjs	19	ZoneRPGZoneData	B	Internal JS namespace/API or technical catalog object	chain of runtime().ctx.window.ZoneRPGZoneData.secrets){const r=runtime(),s=seed(r),initial
+tests/zone-v10.cjs	22	ZoneRPGUI	B	Internal JS namespace/API or technical catalog object	,'encyclopedia');r.ctx.window.ZoneRPGUI.setDatabaseTab('bestiary');r.ctx.window.Zone
+tests/zone-v10.cjs	22	ZoneRPGUI	B	Internal JS namespace/API or technical catalog object	,'encyclopedia');r.ctx.window.ZoneRPGUI.setDatabaseTab('bestiary');r.ctx.window.Zone
+tests/zone-v10.cjs	25	ZoneRPGMusic	B	Internal JS namespace/API or technical catalog object	),'utf8'),c);const M=c.window.ZoneRPGMusic;assert.equal(Object.keys(c.window.ZoneRPGMus
+tests/zone-v10.cjs	25	ZoneRPGMusicConfig	B	Internal JS namespace/API or technical catalog object	rt.equal(Object.keys(c.window.ZoneRPGMusicConfig.tracks).length,8);assert.equal(M.state('menu
+tests/zone-v10.cjs	25	ZoneRPGAudio	B	Internal JS namespace/API or technical catalog object	alse);let fallback=0;c.window.ZoneRPGAudio={refresh:()=>fallback++};c.window.Audio=func
+tests/zone-v10.cjs	25	ZoneRPGMusicConfig	B	Internal JS namespace/API or technical catalog object	rt.equal(Object.keys(c.window.ZoneRPGMusicConfig.tracks).length,8);assert.equal(M.state('menu
+tests/zone-v10.cjs	27	ZoneRPGZoneData	B	Internal JS namespace/API or technical catalog object	dAt=1;const post=r.ctx.window.ZoneRPGZoneData.after.find(p=>p.ending===ending);s.player.lo
+tests/zone-longplay.cjs	3	ZoneRPGZone	B	Internal JS namespace/API or technical catalog object	st r=runtime(),M=r.ctx.window.ZoneRPGZone,D=r.ctx.window.ZoneRPGZoneData;let travels=0
+tests/zone-longplay.cjs	3	ZoneRPGZoneData	B	Internal JS namespace/API or technical catalog object	ow.ZoneRPGZone,D=r.ctx.window.ZoneRPGZoneData;let travels=0,searches=0;
+tests/V9_QA.md	1	ZoneRPG	B	Internal test fixture, compatibility assertion or historical QA record	# ZoneRPG v9 — Living Zone QA
+tests/V92_QA.md	1	ZoneRPG	B	Internal test fixture, compatibility assertion or historical QA record	# ZoneRPG v9.2 — Narrative & Credits Polish
+tests/V92_QA.md	5	ZoneRPGConfig	B	Internal JS namespace/API or technical catalog object	 в одном месте: `config.js`, `ZoneRPGConfig.credits.developer`, `.betaTester`, `.music`.
+tests/V92_QA.md	5	ZoneRPGConfig	B	Internal JS namespace/API or technical catalog object	 в одном месте: `config.js`, `ZoneRPGConfig.credits.developer`, `.betaTester`, `.music`.
+tests/V92_QA.md	28	ZoneRPGLog	B	Internal JS namespace/API or technical catalog object	Общий журнал `ZoneRPGLog.write` используется движком и известностью. 
+tests/V91_QA.md	1	ZoneRPG	B	Internal test fixture, compatibility assertion or historical QA record	# ZoneRPG v9.1 — Story, Rewards & Faction Clarity
+tests/V8_QA.md	1	ZoneRPG	B	Internal test fixture, compatibility assertion or historical QA record	# ZoneRPG v8 — Personal Stories Update
+tests/V81_QA.md	1	ZoneRPG	B	Internal test fixture, compatibility assertion or historical QA record	# ZoneRPG v8.1 — слухи и записи КПК
+tests/V7_QA.md	1	ZoneRPG	B	Internal test fixture, compatibility assertion or historical QA record	# ZoneRPG v7 — implementation and QA status
+tests/V7_QA.md	78	ZoneRPG	B	Internal test fixture, compatibility assertion or historical QA record	0-04\https-openai-com\outputs\ZoneRPG'
+tests/V72_QA.md	1	ZoneRPG	B	Internal test fixture, compatibility assertion or historical QA record	# ZoneRPG v7.2 — проверки и состояние работы
+tests/V63_QA.md	1	ZoneRPG	B	Internal test fixture, compatibility assertion or historical QA record	# ZoneRPG v6.3 — QA, 7 октября 2026
+tests/V63_QA.md	55	ZoneRPG	B	Internal test fixture, compatibility assertion or historical QA record	хранены рядом с проектом в ../ZoneRPG-QA/v63-map.jpg и v63-mutants.jpg.
+tests/V10_QA.md	1	ZoneRPG	B	Internal test fixture, compatibility assertion or historical QA record	# ZoneRPG v10 — Secrets of the Zone
+tests/V103_QA.md	1	ZoneRPG	B	Internal test fixture, compatibility assertion or historical QA record	# ZoneRPG v10.3 QA
+tests/V103_QA.md	20	ZoneRPGFormat	B	Internal JS namespace/API or technical catalog object	ee explicitly needs no ammo. `ZoneRPGFormat.percent` rounds to at most one decimal and i
+tests/v103.cjs	4	ZoneRPGShops	B	Internal JS namespace/API or technical catalog object	3;s.traderStocks=r.ctx.window.ZoneRPGShops.normalize(null,s);return s;}
+tests/v103.cjs	42	ZoneRPGUI	B	Internal JS namespace/API or technical catalog object	on('closePanel');r.ctx.window.ZoneRPGUI.render(r.E.getState());}assert.equal(JSON.st
+tests/v103.cjs	46	ZoneRPGShops	B	Internal JS namespace/API or technical catalog object	t r=runtime(),Sh=r.ctx.window.ZoneRPGShops,s=seed(r);let water=0,canned=0,rare=0;for(le
+tests/v103.cjs	60	ZoneRPGFormat	B	Internal JS namespace/API or technical catalog object	e();assert.equal(r.ctx.window.ZoneRPGFormat.percent(60.800000000000004),'60.8%');assert.
+tests/v103.cjs	60	ZoneRPGFormat	B	Internal JS namespace/API or technical catalog object	e();assert.equal(r.ctx.window.ZoneRPGFormat.percent(60.800000000000004),'60.8%');assert.
+tests/v103.cjs	65	ZoneRPGShops	B	Internal JS namespace/API or technical catalog object	e(),s=seed(r),Sh=r.ctx.window.ZoneRPGShops;s.player.location='agro';for(let n=0;n<1000;
+tests/v103.cjs	70	ZoneRPGShops	B	Internal JS namespace/API or technical catalog object	0;s.traderStocks=r.ctx.window.ZoneRPGShops.normalize(null,s);r.load(s);assert.equal(r.E
+tests/V102_QA.md	1	ZoneRPG	B	Internal test fixture, compatibility assertion or historical QA record	# ZoneRPG v10.2 — UX, Audio & Rank
+tests/V1024_QA.md	1	ZoneRPG	B	Internal test fixture, compatibility assertion or historical QA record	# ZoneRPG: header and More controls hotfix
+tests/V1023_QA.md	1	ZoneRPG	B	Internal test fixture, compatibility assertion or historical QA record	# ZoneRPG v10.2.3 QA
+tests/V1022_QA.md	1	ZoneRPG	B	Internal test fixture, compatibility assertion or historical QA record	# ZoneRPG v10.2.2 QA
+tests/rest-flow.cjs	14	ZoneRPGUI	B	Internal JS namespace/API or technical catalog object	y);}assert.equal(r.ctx.window.ZoneRPGUI.isRestPickerOpen(),false);assert.equal(r.E.g
+tests/rest-flow.cjs	21	ZoneRPGUI	B	Internal JS namespace/API or technical catalog object	ck);assert.equal(r.ctx.window.ZoneRPGUI.isRestPickerOpen(),true);assert.match(r.root
+tests/rest-flow.cjs	24	ZoneRPGUI	B	Internal JS namespace/API or technical catalog object	ey);assert.equal(r.ctx.window.ZoneRPGUI.isRestPickerOpen(),true);
+tests/rest-flow.cjs	27	ZoneRPGUI	B	Internal JS namespace/API or technical catalog object	on);assert.equal(r.ctx.window.ZoneRPGUI.isRestPickerOpen(),false);assert.equal(JSON.
+tests/rest-flow.cjs	30	ZoneRPGUI	B	Internal JS namespace/API or technical catalog object	re);assert.equal(r.ctx.window.ZoneRPGUI.isRestPickerOpen(),false);
+tests/rest-flow.cjs	31	ZoneRPGUI	B	Internal JS namespace/API or technical catalog object	at);assert.equal(c.ctx.window.ZoneRPGUI.isRestPickerOpen(),false);
+tests/ux-v102.cjs	6	ZoneRPGRank	B	Internal JS namespace/API or technical catalog object	r.S.fresh(),calc=r.ctx.window.ZoneRPGRank.calculate,a=calc(s);assert.equal(a.name,'Нов
+tests/ux-v102.cjs	7	ZoneRPGRank	B	Internal JS namespace/API or technical catalog object	r=runtime(),calc=r.ctx.window.ZoneRPGRank.calculate;for(const kind of ['attribute','ma
+tests/ux-v102.cjs	8	ZoneRPGRank	B	Internal JS namespace/API or technical catalog object	r=runtime(),calc=r.ctx.window.ZoneRPGRank.calculate,tiers=r.ctx.window.ZoneRPGRank.tie
+tests/ux-v102.cjs	8	ZoneRPGRank	B	Internal JS namespace/API or technical catalog object	r=runtime(),calc=r.ctx.window.ZoneRPGRank.calculate,tiers=r.ctx.window.ZoneRPGRank.tie
+tests/ux-v102.cjs	14	ZoneRPGAudio	B	Internal JS namespace/API or technical catalog object	time(),sounds=[];r.ctx.window.ZoneRPGAudio={sync(){},playUISound:k=>sounds.push(k),play
+tests/ux-v102.cjs	15	ZoneRPGAudio	B	Internal JS namespace/API or technical catalog object	tf8'),ctx);const a=ctx.window.ZoneRPGAudio;a.sync('play',{volume:1,musicVolume:.4,effec
+tests/ux-v102.cjs	16	ZoneRPGMusicConfig	B	Internal JS namespace/API or technical catalog object	(){}}const ctx={window:{Audio,ZoneRPGMusicConfig:{fadeMs:0,tracks:{safe:['assets/music/test.o
+tests/ux-v102.cjs	16	ZoneRPGAudio	B	Internal JS namespace/API or technical catalog object	e:['assets/music/test.ogg']}},ZoneRPGAudio:{refresh(){refreshes++;}},addEventListener()
+tests/ux-v102.cjs	16	ZoneRPGMusic	B	Internal JS namespace/API or technical catalog object	(){}}const ctx={window:{Audio,ZoneRPGMusicConfig:{fadeMs:0,tracks:{safe:['assets/music/
+tests/regressions.cjs	8	ZoneRPGState	B	Internal JS namespace/API or technical catalog object	  const {ZoneRPGState:S,ZoneRPGEngine:E,ZoneRPGWorld:W,ZoneRPGItem
+tests/regressions.cjs	8	ZoneRPGEngine	B	Internal JS namespace/API or technical catalog object	  const {ZoneRPGState:S,ZoneRPGEngine:E,ZoneRPGWorld:W,ZoneRPGItems:I,ZoneRPGSave:
+tests/regressions.cjs	8	ZoneRPGWorld	B	Internal JS namespace/API or technical catalog object	oneRPGState:S,ZoneRPGEngine:E,ZoneRPGWorld:W,ZoneRPGItems:I,ZoneRPGSave:Save,ZoneRPGUI:
+tests/regressions.cjs	8	ZoneRPGItems	B	Internal JS namespace/API or technical catalog object	oneRPGEngine:E,ZoneRPGWorld:W,ZoneRPGItems:I,ZoneRPGSave:Save,ZoneRPGUI:UI}=ctx.window;
+tests/regressions.cjs	8	ZoneRPGSave	B	Internal JS namespace/API or technical catalog object	ZoneRPGWorld:W,ZoneRPGItems:I,ZoneRPGSave:Save,ZoneRPGUI:UI}=ctx.window;
+tests/regressions.cjs	8	ZoneRPGUI	B	Internal JS namespace/API or technical catalog object	neRPGItems:I,ZoneRPGSave:Save,ZoneRPGUI:UI}=ctx.window;
+tests/UI_V11_QA.md	1	ZoneRPG	B	Internal test fixture, compatibility assertion or historical QA record	# ZoneRPG v11 — implementation and QA report
+tests/README.md	1	ZoneRPG	B	Internal test fixture, compatibility assertion or historical QA record	# Проверки ZoneRPG
+tests/shortcut-icons.cjs	45	ZoneRPGPrecache	B	Internal JS namespace/API or technical catalog object	co',asset])assert.ok(ctx.self.ZoneRPGPrecache.includes('./'+file));
+tests/UI_V11_POLISH_QA.md	1	ZoneRPG	B	Internal test fixture, compatibility assertion or historical QA record	# ZoneRPG v11 — menu and character polish
+tests/radiation-icons.cjs	25	ZoneRPGPrecache	B	Internal JS namespace/API or technical catalog object	een-v2-'));assert.ok(ctx.self.ZoneRPGPrecache.includes(icon.src));}assert.ok(manifest.icon
+tests/runtime.cjs	8	ZoneRPGState	B	Internal JS namespace/API or technical catalog object	  const {ZoneRPGState:S,ZoneRPGEngine:E,ZoneRPGWorld:W,ZoneRPGItem
+tests/runtime.cjs	8	ZoneRPGEngine	B	Internal JS namespace/API or technical catalog object	  const {ZoneRPGState:S,ZoneRPGEngine:E,ZoneRPGWorld:W,ZoneRPGItems:I,ZoneRPGSave:
+tests/runtime.cjs	8	ZoneRPGWorld	B	Internal JS namespace/API or technical catalog object	oneRPGState:S,ZoneRPGEngine:E,ZoneRPGWorld:W,ZoneRPGItems:I,ZoneRPGSave:Save,ZoneRPGUI:
+tests/runtime.cjs	8	ZoneRPGItems	B	Internal JS namespace/API or technical catalog object	oneRPGEngine:E,ZoneRPGWorld:W,ZoneRPGItems:I,ZoneRPGSave:Save,ZoneRPGUI:UI}=ctx.window;
+tests/runtime.cjs	8	ZoneRPGSave	B	Internal JS namespace/API or technical catalog object	ZoneRPGWorld:W,ZoneRPGItems:I,ZoneRPGSave:Save,ZoneRPGUI:UI}=ctx.window;
+tests/runtime.cjs	8	ZoneRPGUI	B	Internal JS namespace/API or technical catalog object	neRPGItems:I,ZoneRPGSave:Save,ZoneRPGUI:UI}=ctx.window;
+tests/server.cjs	1	ZoneRPG	B	Internal test fixture, compatibility assertion or historical QA record	,'127.0.0.1',()=>console.log('ZoneRPG QA: http://127.0.0.1:41736/tests/browser.htm
+tests/PRESENTATION_QA.md	41	ZoneRPGI18n	B	Internal JS namespace/API or technical catalog object	ZoneRPGI18n.ui/t содержит RU-словарь основных навигацион
+tests/ui-v11.cjs	47	ZoneRPGUI	B	Internal JS namespace/API or technical catalog object	));const current=r.ctx.window.ZoneRPGUI;
+tests/ui-v11.cjs	48	ZoneRPGUI	B	Internal JS namespace/API or technical catalog object	r.ctx);const old=r.ctx.window.ZoneRPGUI;
+tests/ui-v11.cjs	61	ZoneRPGUI	B	Internal JS namespace/API or technical catalog object	stringify(state);r.ctx.window.ZoneRPGUI.render(state);assert.equal(JSON.stringify(st
+tests/ui-v11.cjs	78	ZoneRPGUI	B	Internal JS namespace/API or technical catalog object	onst r=runtime();r.ctx.window.ZoneRPGUI.render(r.E.getState());assert.deepEqual(cont
+tests/ui-v11.cjs	98	ZoneRPGUI	B	Internal JS namespace/API or technical catalog object	SON.stringify(s);r.ctx.window.ZoneRPGUI.render(s);
+tests/ui-v11.cjs	108	ZoneRPGUI	B	Internal JS namespace/API or technical catalog object	resh());const UI=r.ctx.window.ZoneRPGUI;
+tests/ui-v11.cjs	143	ZoneRPGUI	B	Internal JS namespace/API or technical catalog object	характеристики'};r.ctx.window.ZoneRPGUI.render({...s,mode:'character'});assert.ok(r.
+tests/ui-v11.cjs	150	ZoneRPGUI	B	Internal JS namespace/API or technical catalog object	SON.stringify(s);r.ctx.window.ZoneRPGUI.render({...s,mode:'quests'});assert.equal(JS
+tests/ui-v11.cjs	190	ZoneRPGUI	B	Internal JS namespace/API or technical catalog object	resh());const UI=r.ctx.window.ZoneRPGUI,s=r.E.getState();
+tests/ui-v11.cjs	195	ZoneRPGUI	B	Internal JS namespace/API or technical catalog object	:'utf8'}),r.ctx);r.ctx.window.ZoneRPGUI.render(state);
+tests/ui-v11.cjs	196	ZONE RPG	B	Internal test fixture, compatibility assertion or historical QA record	e(/КПК · LAST CORDON/g,'КПК · ZONE RPG');assert.equal(publicBrand(html),publicBrand
+tests/ui-v11.cjs	206	ZoneRPGUI	B	Internal JS namespace/API or technical catalog object	()=>100;const UI=r.ctx.window.ZoneRPGUI;
+tests/rumors-v81.cjs	18	ZoneRPGKnowledge	B	Internal JS namespace/API or technical catalog object	();s.heardRumors=r.ctx.window.ZoneRPGKnowledge.pool('cordon').map(d=>d.id);r.load(s);for(le
+tests/rumors-v81.cjs	19	ZoneRPGKnowledge	B	Internal JS namespace/API or technical catalog object	h());const count=r.ctx.window.ZoneRPGKnowledge.pool('cordon').length;for(let n=0;n<count+2;
+tests/rumors-v81.cjs	20	ZoneRPGKnowledge	B	Internal JS namespace/API or technical catalog object	,s=r.S.fresh(),K=r.ctx.window.ZoneRPGKnowledge,def=K.pool('cordon')[0];s.version=11;delete 
+tests/rumors-v81.cjs	22	ZoneRPGKnowledge	B	Internal JS namespace/API or technical catalog object	st r=runtime(),K=r.ctx.window.ZoneRPGKnowledge;let count=0;for(const event of r.W.events)fo
+tests/rumors-v81.cjs	23	ZoneRPGUI	B	Internal JS namespace/API or technical catalog object	ors','records']){r.ctx.window.ZoneRPGUI.setDatabaseTab(tab);r.ctx.window.ZoneRPGUI.r
+tests/rumors-v81.cjs	23	ZoneRPGUI	B	Internal JS namespace/API or technical catalog object	ors','records']){r.ctx.window.ZoneRPGUI.setDatabaseTab(tab);r.ctx.window.ZoneRPGUI.r
+tests/QUEST_AUDIT_V72.md	1	ZoneRPG	B	Internal test fixture, compatibility assertion or historical QA record	# Аудит квестов ZoneRPG v7.2
+tests/seo.cjs	2	ZoneRPG	B	Internal test fixture, compatibility assertion or historical QA record	SE='https://zefisty.github.io/ZoneRPG/';
+tests/seo.cjs	22	ZoneRPG	B	Internal test fixture, compatibility assertion or historical QA record	w URL(image).pathname.slice('/ZoneRPG/'.length)));assert.equal(png.readUInt32BE(16
+tests/seo.cjs	30	ZoneRPGUI	B	Internal JS namespace/API or technical catalog object	onst r=runtime();r.ctx.window.ZoneRPGUI.render(r.E.getState());assert.match(r.root.i
+tests/quality-v72.cjs	46	ZoneRPGState	B	Internal JS namespace/API or technical catalog object	tem:k=>store.delete(k)};r.ctx.ZoneRPGState=r.S;r.ctx.ZoneRPGWorld=r.W;Object.defineProp
+tests/quality-v72.cjs	46	ZoneRPGWorld	B	Internal JS namespace/API or technical catalog object	;r.ctx.ZoneRPGState=r.S;r.ctx.ZoneRPGWorld=r.W;Object.defineProperty(r.ctx,'ZoneRPGSave
+tests/quality-v72.cjs	46	ZoneRPGSave	B	Internal JS namespace/API or technical catalog object	;Object.defineProperty(r.ctx,'ZoneRPGSave',{get:()=>r.ctx.window.ZoneRPGSave});r.ctx.c
+tests/quality-v72.cjs	46	ZoneRPGSave	B	Internal JS namespace/API or technical catalog object	;Object.defineProperty(r.ctx,'ZoneRPGSave',{get:()=>r.ctx.window.ZoneRPGSave});r.ctx.c
+tests/quality-v72.cjs	46	ZoneRPGSave	B	Internal JS namespace/API or technical catalog object	;Object.defineProperty(r.ctx,'ZoneRPGSave',{get:()=>r.ctx.window.ZoneRPGSave});r.ctx.c
+tests/stories.cjs	12	ZoneRPGStories	B	Internal JS namespace/API or technical catalog object	st r=runtime(),T=r.ctx.window.ZoneRPGStories;assert.equal(r.W.quests.filter(q=>q.personal
+tests/stories.cjs	17	ZoneRPGStories	B	Internal JS namespace/API or technical catalog object	r'))assert.equal(r.ctx.window.ZoneRPGStories.eligible(e,r.E.getState(),e.locations[0]),fa
+tests/stories.cjs	24	ZoneRPGStories	B	Internal JS namespace/API or technical catalog object	;s.personalStory=r.ctx.window.ZoneRPGStories.fresh(s.backgroundId);s.personalStory.comple
+tests/stories.cjs	24	ZoneRPGStories	B	Internal JS namespace/API or technical catalog object	;s.personalStory=r.ctx.window.ZoneRPGStories.fresh(s.backgroundId);s.personalStory.comple
+tests/stories.cjs	24	ZoneRPGStories	B	Internal JS namespace/API or technical catalog object	;s.personalStory=r.ctx.window.ZoneRPGStories.fresh(s.backgroundId);s.personalStory.comple
+tests/stories.cjs	24	ZoneRPGArt	B	Internal JS namespace/API or technical catalog object	nerHTML.includes(r.ctx.window.ZoneRPGArt.npc(p,id)));select(r,'Поблагодарить и уйти')
+tests/stories.cjs	25	ZoneRPGState	B	Internal JS namespace/API or technical catalog object	tem:k=>store.delete(k)};r.ctx.ZoneRPGState=r.S;r.ctx.ZoneRPGWorld=r.W;Object.defineProp
+tests/stories.cjs	25	ZoneRPGWorld	B	Internal JS namespace/API or technical catalog object	;r.ctx.ZoneRPGState=r.S;r.ctx.ZoneRPGWorld=r.W;Object.defineProperty(r.ctx,'ZoneRPGSave
+tests/stories.cjs	25	ZoneRPGSave	B	Internal JS namespace/API or technical catalog object	;Object.defineProperty(r.ctx,'ZoneRPGSave',{get:()=>r.ctx.window.ZoneRPGSave});r.ctx.c
+tests/stories.cjs	25	ZoneRPGSave	B	Internal JS namespace/API or technical catalog object	;Object.defineProperty(r.ctx,'ZoneRPGSave',{get:()=>r.ctx.window.ZoneRPGSave});r.ctx.c
+tests/stories.cjs	25	ZoneRPGSave	B	Internal JS namespace/API or technical catalog object	;Object.defineProperty(r.ctx,'ZoneRPGSave',{get:()=>r.ctx.window.ZoneRPGSave});r.ctx.c
+tests/presentation.cjs	29	ZoneRPGUI	B	Internal JS namespace/API or technical catalog object	const s of cases)r.ctx.window.ZoneRPGUI.render(s);const ms=(performance.now()-t)/400
+tests/PWA_QA.md	1	ZoneRPG	B	Internal test fixture, compatibility assertion or historical QA record	# ZoneRPG PWA / final green icon audit
+tests/PWA_QA.md	28	ZoneRPG	B	Internal test fixture, compatibility assertion or historical QA record	d. URLs work at GitHub Pages /ZoneRPG/ and localhost root. No second app identity 
+tests/PWA_QA.md	40	ZoneRPG	B	Internal test fixture, compatibility assertion or historical QA record	s, project fallback lives at /ZoneRPG/favicon.ico and explicit HTML links resolve 
+tests/PWA_QA.md	40	ZoneRPG	B	Internal test fixture, compatibility assertion or historical QA record	s, project fallback lives at /ZoneRPG/favicon.ico and explicit HTML links resolve 
+tests/start-flow.cjs	18	ZoneRPGUI	B	Internal JS namespace/API or technical catalog object	 assert.equal(r.ctx.window.ZoneRPGUI.isSavePickerOpen(),Boolean(types.length));
+tests/start-flow.cjs	27	ZoneRPGUI	B	Internal JS namespace/API or technical catalog object	 assert.equal(r.ctx.window.ZoneRPGUI.isSavePickerOpen(),false);assert.notEqual(r.
+tests/start-flow.cjs	32	ZoneRPGUI	B	Internal JS namespace/API or technical catalog object	u');assert.equal(r.ctx.window.ZoneRPGUI.isSavePickerOpen(),false);assert.doesNotMatc
+tests/POLISH_QA.md	1	ZoneRPG	B	Internal test fixture, compatibility assertion or historical QA record	# ZoneRPG 6.1.1 — bugfix/polish QA
+tests/pwa.cjs	4	ZoneRPG	B	Internal test fixture, compatibility assertion or historical QA record	se='https://zefisty.github.io/ZoneRPG/',shared=new Map(),code=source){
+tests/pwa.cjs	21	ZoneRPG	B	Internal test fixture, compatibility assertion or historical QA record	f ['https://zefisty.github.io/ZoneRPG/','http://localhost:41736/']){const url=new 
+tests/pwa.cjs	28	ZoneRPGPrecache	B	Internal JS namespace/API or technical catalog object	,assets=Array.from(w.ctx.self.ZoneRPGPrecache);let bytes=0;for(const file of assets){asser
+tests/pwa.cjs	32	ZoneRPG	B	Internal test fixture, compatibility assertion or historical QA record	sert.match(await root.text(),/ZoneRPG/);for(const file of ['index.html?installed=1
+tests/pwa.cjs	37	ZoneRPG	B	Internal test fixture, compatibility assertion or historical QA record	ut('https://zefisty.github.io/ZoneRPG/'+file,new Response(file==='ui.js'?'<span cl
+tests/pwa.cjs	46	ZoneRPG	B	Internal test fixture, compatibility assertion or historical QA record	l','https://zefisty.github.io/ZoneRPG/').href,new Response('old html'));await cach
+tests/pwa.cjs	46	ZoneRPG	B	Internal test fixture, compatibility assertion or historical QA record	l','https://zefisty.github.io/ZoneRPG/').href,new Response('old html'));await cach
+tests/pwa.cjs	48	ZoneRPG	B	Internal test fixture, compatibility assertion or historical QA record	 replacement cleans only this ZoneRPG scope and leaves active games unforced',asyn
+tests/pwa.cjs	52	ZoneRPG	B	Internal test fixture, compatibility assertion or historical QA record	se='https://zefisty.github.io/ZoneRPG/',prefix='zonerpg-%2FZoneRPG%2F-',shared=new
+tests/pwa.cjs	52	ZoneRPG	B	Internal test fixture, compatibility assertion or historical QA record	se='https://zefisty.github.io/ZoneRPG/',prefix='zonerpg-%2FZoneRPG%2F-',shared=new
+tests/pwa.cjs	57	ZoneRPG	B	Internal test fixture, compatibility assertion or historical QA record	new URL(url).pathname.slice('/ZoneRPG/'.length))));}
+tests/pwa.cjs	61	ZoneRPG	B	Internal test fixture, compatibility assertion or historical QA record	-next';"));next.ctl.missing='/ZoneRPG/engine.js';await assert.rejects(next.install
+tests/pwa.cjs	71	ZoneRPG	B	Internal test fixture, compatibility assertion or historical QA record	:'?'https://zefisty.github.io/ZoneRPG/':'http://localhost:41736/',ctx={URL,locatio
+tests/pwa.cjs	74	ZoneRPGEngine	B	Internal JS namespace/API or technical catalog object	er.js'),'utf8'),/localStorage|ZoneRPGEngine/);assert.doesNotMatch(source,/localStorage|z

@@ -5,11 +5,11 @@ const read = file => fs.readFileSync(path.join(ROOT,file),'utf8');
 const asset = './assets/pwa/radiation-green-v2-favicon-48.png';
 let passed=0;
 function test(name,fn){fn();passed++;console.log('PASS '+name);}
-test('Game header renders approved image beside unchanged ZONE RPG text and home action',()=>{
+test('Game header renders approved image beside LAST CORDON text and home action',()=>{
  const r=runtime();r.load(r.S.fresh());
  const header=r.root.innerHTML.match(/<header class="topbar">[\s\S]*?<\/header>/)[0];
  assert.match(header,/<a class="brand" href="#" data-action="home">/);
- assert.match(header,/<img class="brand-mark" src="\.\/assets\/pwa\/radiation-green-v2-favicon-48.png" width="29" height="29" alt="" aria-hidden="true">ZONE<span class="brand-dim">RPG<\/span>/);
+ assert.match(header,/<img class="brand-mark" src="\.\/assets\/pwa\/radiation-green-v2-favicon-48.png" width="29" height="29" alt="" aria-hidden="true">LAST\s*<span class="brand-dim">CORDON<\/span>/);
  assert.equal((header.match(/class="brand-mark"/g)||[]).length,1);
  assert.doesNotMatch(read('ui.js'),/<span class="brand-mark">Z<\/span>/);
  assert.equal(r.errors.length,0);
@@ -35,7 +35,7 @@ test('All final screen renders have exactly one image badge and no text Z badge'
   const headers=r.root.innerHTML.match(/<header class="topbar">[\s\S]*?<\/header>/g)||[];
   assert.equal(headers.length,1);
   const brand=headers[0].match(/<a class="brand"[^>]*>([\s\S]*?)<\/a>/)[1];
-  assert.equal(brand.replace(/<[^>]+>/g,'').replace(/\s/g,''),'ZONERPG');
+  assert.equal(brand.replace(/<[^>]+>/g,'').replace(/\s/g,''),'LASTCORDON');
   assert.equal((brand.match(/<img class="brand-mark"/g)||[]).length,1);
   assert.doesNotMatch(brand,/<(?:span|div|svg)[^>]*brand-mark|>\s*(?:Z|&#(?:90|x0*5a);)\s*</i);
   assert.ok(brand.includes(asset));
