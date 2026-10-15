@@ -202,4 +202,26 @@ test('Quest emblem is square and uses the existing journal glyph without changin
  assert.equal(value('#app .quest-mark:before','mask',360),'url("assets/ui/quests.svg") center/contain no-repeat');
  assert.ok(fs.existsSync(path.join(ROOT,'assets/ui/quests.svg')));assert.ok(read('pwa-assets.js').includes('./assets/ui/quests.svg'));
 });
+test('System messages render a separate toast, never a panel/modal or backdrop',()=>{
+ const r=runtime();r.load(r.S.fresh());r.ctx.performance.now=()=>100;const UI=r.ctx.window.ZoneRPGUI;
+ for(const [i,text]of ['Событие завершено.','Получено опыта: +8','Предмет получен.','Задание принято.','Задание завершено.','Ошибка: недостаточно денег.'].entries()){
+  const s={...r.E.getState(),mode:'play',feedback:{serial:100+i,text}},before=JSON.stringify(s);UI.render(s);
+  const toast=r.root.innerHTML.match(/<div class="reward-toast([^\"]*)" role="status">([\s\S]*?)<\/div>/);assert.ok(toast,text);assert.ok(toast[2].includes(text));
+  assert.doesNotMatch(toast[0],/overlay-shade|panel-window|scene-card|event-card|role="dialog"/);assert.equal(JSON.stringify(s),before);
+  assert.equal((r.root.innerHTML.match(/class="reward-toast/g)||[]).length,1);
+ }
+ const s={...r.E.getState(),mode:'play',feedback:{serial:200,text:'Предмет получен.'},player:{...r.E.getState().player,health:20,radiation:80,thirst:90}};UI.render(s);
+ assert.match(r.root.innerHTML,/class="reward-toast survival-warning"/);assert.equal((r.root.innerHTML.match(/class="reward-toast/g)||[]).length,1);assert.match(r.root.innerHTML,/<small>Предмет получен\.<\/small>/);
+});
+test('Toast cannot stretch between top and bottom, including mobile and reduced motion',()=>{
+ for(const width of [1280,768,480,360]){
+  for(const [property,expected]of Object.entries({position:'fixed',bottom:'auto',right:'auto',height:'auto','min-height':'0',width:'max-content','max-width':'min(480px,calc(100vw - 24px))','max-height':'min(160px,calc(100dvh - 24px))',margin:'0',flex:'none','align-self':'start'}))assert.equal(value('#app .reward-toast',property,width),expected,property+' @ '+width);
+  assert.equal(value('#app .reward-toast','overflow-wrap',width),'anywhere');assert.equal(value('#app .reward-toast:not(.survival-warning)','-webkit-line-clamp',width),'3');
+  assert.equal(value('#app .reward-toast.survival-warning','pointer-events',width),'auto');
+  assert.ok(Math.min(480,width-24)<width);
+ }
+ // A single geometry rule also overrides legacy position:static in reduced-motion mode.
+ for(const rule of rules.filter(r=>r.selector.includes('.reward-toast')&&r.condition.includes('prefers-reduced-motion')))for(const property of ['position','height','min-height','bottom','width'])assert.ok(!(property in rule.declarations));
+ assert.ok(value('#app .reward-toast','top',360).includes('safe-area-inset-top'));
+});
 console.log(passed+' v11 UI design checks passed.');

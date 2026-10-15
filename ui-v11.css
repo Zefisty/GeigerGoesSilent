@@ -372,8 +372,13 @@ body:before { background:repeating-linear-gradient(0deg,transparent 0 4px,#bdd89
 #app .death-stats { gap:6px; }
 #app .death-stats span { background:#111d14;border:1px solid #4f5138;color:#aeb897;font-size:9px; }
 #app .death-stats b { color:#d8ddbd;font-size:13px; }
-#app .reward-toast { z-index:50;bottom:94px;max-width:calc(100% - 28px);padding:12px 16px;
-  border:1px solid #8ca668;background:#15271af5;box-shadow:var(--pda-edge),0 10px 24px #0008;color:#d8e9bc;line-height:1.6; }
+#app .reward-toast { position:fixed;z-index:50;top:max(12px,env(safe-area-inset-top));right:auto;bottom:auto;left:50%;
+  transform:translateX(-50%);display:block;box-sizing:border-box;width:max-content;max-width:min(480px,calc(100vw - 24px));
+  height:auto;min-height:0;max-height:min(160px,calc(100dvh - 24px));margin:0;padding:10px 14px;flex:none;align-self:start;
+  overflow:auto;overflow-wrap:anywhere;white-space:normal;border-radius:4px;
+  border:1px solid #8ca668;background:#15271af5;box-shadow:var(--pda-edge),0 10px 24px #0008;color:#d8e9bc;line-height:1.5; }
+#app .reward-toast:not(.survival-warning) { display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3;overflow:hidden; }
+#app .reward-toast.survival-warning { pointer-events:auto; }
 #app .survival-warning { border-color:#c2a16c;background:#332a18f5;color:#efdbb4; }
 
 /* Map skin only. Coordinates, transforms, dimensions and line anchors are untouched. */
@@ -509,7 +514,7 @@ body:before { background:repeating-linear-gradient(0deg,transparent 0 4px,#bdd89
   #app .title-brief p { font-size:15px; }
   #app .action-dock { width:calc(100% - 12px);grid-template-columns:repeat(3,minmax(0,1fr));gap:5px;padding:6px;bottom:max(6px,env(safe-area-inset-bottom)); }
   #app .action-dock .dock-button { flex-direction:row;gap:7px;min-height:40px;padding:8px 5px;font-size:11px; }
-  #app .reward-toast { bottom:114px;font-size:12px; }
+  #app .reward-toast { font-size:12px; }
   #app .death-panel { padding:20px 14px; }
   #app .death-stats { grid-template-columns:repeat(2,minmax(0,1fr)); }
 }
