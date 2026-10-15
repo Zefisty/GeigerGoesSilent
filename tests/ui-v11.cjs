@@ -47,7 +47,7 @@ test('Every PDA screen preserves the stable action/data/disabled/label matrix',(
  const r=runtime();r.load(r.S.fresh());const current=r.ctx.window.ZoneRPGUI;
  vm.runInContext(cp.execFileSync('git',['show','HEAD:ui.js'],{cwd:ROOT,encoding:'utf8'}),r.ctx);const old=r.ctx.window.ZoneRPGUI;
  for(const mode of ['play','inventory','trade','character','quests','map','people','more','encyclopedia','statistics','settings','pause','factions','zoneStory','zonePlaces','achievements','notebook','worldStatus','zoneLegends','background']){
-  const state={...r.E.getState(),mode,feedback:null};current.render(state);const rendered=r.root.innerHTML;checkPaths(rendered);old.render(state);assert.deepEqual(controls(rendered),controls(r.root.innerHTML),mode);
+  const state={...r.E.getState(),mode,feedback:null};current.render(state);const rendered=r.root.innerHTML;checkPaths(rendered);old.render(state);if(mode==='settings'){const currentActions=controls(rendered),oldActions=controls(r.root.innerHTML);assert.deepEqual(currentActions.filter(c=>c[0]!=='resetTutorial'),oldActions.filter(c=>c[0]!=='resetTutorial'),mode);assert.deepEqual(currentActions.filter(c=>c[0]==='resetTutorial'),oldActions.filter(c=>c[0]==='resetTutorial'));}else assert.deepEqual(controls(rendered),controls(r.root.innerHTML),mode);
  }
  for(const raw of [eventSave(r,'first_visit_cache'),eventSave(r,'v63_ratSwarm')]){r.load(raw);const state=r.E.getState();current.render(state);const actions=controls(r.root.innerHTML);old.render(state);assert.deepEqual(actions,controls(r.root.innerHTML));}
  const combat=r.S.fresh();combat.combat={type:'boar',enemy:{hp:80,maxHp:80},turn:1,log:[],aimed:false};r.load(combat);const state=r.E.getState();current.render(state);const actions=controls(r.root.innerHTML);old.render(state);assert.deepEqual(actions,controls(r.root.innerHTML));
@@ -123,7 +123,7 @@ test('Attribute cells use bounded grids at all four target widths',()=>{
   assert.equal(value('#app .attribute-row','display',width),'grid');
   assert.equal(value('#app .attribute-row .stat-info','padding',width),'0');
   assert.equal(value('#app .attribute-row .stat-info','margin',width),'0');
-  for(const size of ['width','height','min-width','min-height'])assert.equal(value('#app .attribute-row .stat-icon-button',size,width),'36px');
+  for(const size of ['width','height','min-width','min-height'])assert.equal(value('#app .attribute-row .stat-square-button',size,width),'36px');
  }
  // At 360px: 16px overlay inset + 24px panel padding + 2px border leave 318px.
  assert.ok(240<=360-16-24-2);assert.match(css,/\.attribute-row strong[^{}]*\{[^}]*overflow-wrap:anywhere/);
@@ -156,22 +156,33 @@ test('Quest cards use one bottom action slot for short/long, available/active/re
   assert.equal(value('#app .quest-list','grid-template-columns',width),width<=600?'minmax(0,1fr)':'repeat(2,minmax(0,1fr))');
  }
 });
-test('Reset hints is a bounded neutral compact utility control at desktop/480/360',()=>{
- const r=runtime();r.load(r.S.fresh());r.E.action('openPanel','settings');
- assert.match(r.root.innerHTML,/<button class="secondary-button utility-button"[^>]*data-action="resetTutorial"[^>]*>Сбросить подсказки<\/button>/);
- for(const width of [1280,480,360]){
-  assert.equal(value('#app .settings-section .utility-button','width',width),'fit-content');assert.equal(value('#app .settings-section .utility-button','max-width',width),'100%');
-  assert.equal(value('#app .settings-section .utility-button','min-height',width),'36px');assert.equal(value('#app .settings-section .utility-button','margin-top',width),'var(--pda-s2)');
+test('Reset hints and delete save share one responsive system block without duplicates',()=>{
+ const r=runtime();r.load(r.S.fresh());r.E.action('openPanel','settings');const html=r.root.innerHTML;
+ const group=html.match(/<div class="settings-system-actions" role="group" aria-label="Системные действия">([\s\S]*?)<\/div>/)?.[1];assert.ok(group);
+ assert.equal((html.match(/data-action="resetTutorial"/g)||[]).length,1);
+ assert.equal((html.match(/data-action="deletePrompt"/g)||[]).length,1);
+ assert.match(group,/<button class="danger-button system-action-button"[^>]*data-action="deletePrompt"/);
+ assert.match(group,/<button class="secondary-button system-action-button"[^>]*data-action="resetTutorial"/);
+ assert.equal(controls(group).length,2);assert.doesNotMatch(html,/utility-button/);
+ const gameSection=html.match(/<fieldset class="settings-section"><legend>Игра<\/legend>([\s\S]*?)<\/fieldset>/)[1];assert.doesNotMatch(gameSection,/data-action="resetTutorial"/);
+ for(const width of [1280,768,480,360]){
+  assert.equal(value('#app .settings-system-actions','grid-template-columns',width),width<=600?'minmax(0,1fr)':'repeat(2,minmax(0,1fr))');
+  assert.equal(value('#app .settings-system-actions','gap',width),'var(--pda-s2)');
+  assert.equal(value('#app .settings-system-actions .system-action-button','width',width),'100%');
+  assert.equal(value('#app .settings-system-actions .system-action-button','max-width',width),'100%');
+  assert.equal(value('#app .settings-system-actions .system-action-button','min-width',width),'0');
+  assert.equal(value('#app .settings-system-actions .system-action-button','min-height',width),'44px');
+  assert.equal(value('#app .settings-system-actions .system-action-button','padding',width),'10px 15px');
  }
 });
-test('Plus and stat help share fixed circles in every interaction state, with a 360px width budget',()=>{
+test('Plus and stat help share fixed squares in every interaction state, with a 360px width budget',()=>{
  const r=runtime(),raw=r.S.fresh();raw.attributePoints=0;r.load(raw);r.E.action('openPanel','character');
- assert.match(r.root.innerHTML,/<summary class="stat-icon-button"/);assert.match(r.root.innerHTML,/<button disabled class="tiny-button attribute-plus stat-icon-button"/);
+ assert.match(r.root.innerHTML,/<summary class="stat-square-button"/);assert.match(r.root.innerHTML,/<button disabled class="tiny-button attribute-plus stat-square-button"/);
  for(const width of [1280,768,480,360]){
-  for(const prop of ['width','height','min-width','max-width','min-height','max-height'])assert.equal(value('#app .attribute-row .stat-icon-button',prop,width),'36px');
-  assert.equal(value('#app .attribute-row .stat-icon-button','border-radius',width),'50%');assert.equal(value('#app .attribute-row .stat-icon-button','place-items',width),'center');
+  for(const prop of ['width','height','min-width','max-width','min-height','max-height'])assert.equal(value('#app .attribute-row .stat-square-button',prop,width),'36px');
+  assert.equal(value('#app .attribute-row .stat-square-button','border-radius',width),'4px');assert.equal(value('#app .attribute-row .stat-square-button','place-items',width),'center');
  }
- // Shared hover/active/disabled/focus rules change paint only; they never change circle geometry.
+ // Shared hover/active/disabled/focus rules change paint only; they never change square geometry.
  for(const rule of rules.filter(r=>/hover|active|disabled|focus/.test(r.selector)))for(const prop of ['width','height','min-width','min-height','max-width','max-height','border-radius'])assert.ok(!(prop in rule.declarations),rule.selector+' changes '+prop);
  assert.ok(36*2+18+18+30+50<=240);assert.ok(240<360-16-24-2);
 });
