@@ -588,7 +588,7 @@ body[data-motion="reduced"] #app :is(button,.panel-window,.reward-toast) { anima
 #app .attribute-row .stat-info { margin:0;padding:0;border:0;background:none; }
 #app .attribute-row .stat-info summary { font-size:11px; }
 #app .attribute-row .attribute-plus { font:600 19px/1 var(--pda-mono); }
-#app .attribute-row .stat-square-button { display:inline-grid;place-items:center;box-sizing:border-box;
+#app .attribute-row .stat-square-button,#app .player-name-row .stat-square-button { display:inline-grid;place-items:center;box-sizing:border-box;
   width:36px;height:36px;min-width:36px;max-width:36px;min-height:36px;max-height:36px;
   padding:0;margin:0;flex:0 0 36px;border-radius:4px;line-height:1; }
 #app .attribute-row .stat-info p { top:calc(100% + 4px);font-size:12px;line-height:1.6; }
@@ -636,3 +636,12 @@ body[data-motion="reduced"] #app :is(button,.panel-window,.reward-toast) { anima
   #app .settings-section { padding:4px var(--pda-s2) var(--pda-s2); }
   #app .menu-actions.more-actions>button { padding:9px 8px; }
 }
+
+/* Optional, per-save character callsign; the existing profile remains the edit surface. */
+#app .player-name-row { display:flex;align-items:center;gap:6px;min-height:36px;min-width:0;margin-bottom:8px; }
+#app .player-name-display { appearance:none;max-width:100%;min-height:36px;padding:4px 0;background:none;border:0;color:#dce8c6;font:600 17px/1.3 var(--pda-font);text-align:left;overflow-wrap:anywhere;cursor:text; }
+#app .player-name-display:hover { color:#c6dc9a;text-decoration:underline;text-underline-offset:4px; }
+#app .player-name-display:focus-visible { outline:2px solid #adc47a;outline-offset:3px; }
+#app .player-name-input { box-sizing:border-box;width:100%;min-width:0;flex:1;height:36px;padding:6px 8px;border:1px solid #657d4f;border-radius:4px;background:#111a13;color:#e3ebd6;font:600 16px/1.3 var(--pda-font); }
+#app .player-name-input:focus { outline:2px solid #adc47a;outline-offset:1px; }
+#app .player-name-hint { display:block;min-height:30px;margin:-3px 0 8px;color:#b6c78c;font:10px/1.5 var(--pda-mono);overflow-wrap:anywhere; }

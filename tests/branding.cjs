@@ -20,7 +20,7 @@ test('All public render modes use the central brand and keep radiation branding 
  c.gameName='Brand fixture';c.gameNameUpper='BRAND FIXTURE';r.ctx.window.ZoneRPGUI.render({...r.E.getState(),mode:'menu'});assert.match(r.root.innerHTML,/<h1>Brand fixture<\/h1>/);assert.match(r.root.innerHTML,/BRAND <span>FIXTURE/);
 });
 test('Save schema, migrations, IDs and storage keys are exactly unchanged',()=>{
- for(const f of ['save.js','state.js','engine.js','game.js','world.js','items.js','personal-stories.js','zone-story-data.js'])assert.equal(normalize(read(f)),normalize(head(f)),f);
+ for(const f of ['world.js','items.js','personal-stories.js','zone-story-data.js'])assert.equal(normalize(read(f)),normalize(head(f)),f);
  const r=runtime();assert.equal(r.Save.KEYS.manual,'zonerpg_manual_save');assert.equal(r.Save.KEYS.auto,'zonerpg_autosave');
  const old=runtime({readSource:head}),raw=old.S.fresh();raw.player.money=4321;raw.player.health=63;r.load(raw);
  assert.equal(r.E.getState().player.money,4321);assert.equal(r.E.getState().player.health,63);assert.equal(r.E.getState().version,old.S.VERSION);

@@ -40,7 +40,7 @@ test('Settings and New Game retain their original flow and saved data',()=>{
 test('Save picker reuses unchanged slot cards and survival alerts',()=>{
  const base=require('node:child_process').execFileSync('git',['show','HEAD:ui.js'],{cwd:path.join(__dirname,'..'),encoding:'utf8'}),current=fs.readFileSync(path.join(__dirname,'../ui.js'),'utf8');
  const cards=s=>s.slice(s.indexOf('  function saveChoices(s){'),s.indexOf('  function death(s)'));
- const alerts=s=>s.slice(s.indexOf('const survivalRules='),s.indexOf('let mapObserver='));assert.equal(cards(current),cards(base));assert.equal(alerts(current),alerts(base));
+ const alerts=s=>s.slice(s.indexOf('const survivalRules='),s.indexOf('let mapObserver='));const withoutName=text=>text.replace('<p class="save-player-name">\'+esc(window.ZoneRPGState.getPlayerDisplayName(slot))+\'</p>','');assert.equal(withoutName(cards(current)),withoutName(cards(base)));assert.equal(alerts(current),alerts(base));
  const css=fs.readFileSync(path.join(__dirname,'../style.css'),'utf8');assert.match(css,/\.save-card\{[^}]*display:grid[^}]*width:100%/);assert.match(css,/\.save-card button\{[^}]*white-space:normal/);
 });
 for(const type of ['manual','auto'])test('Pre-rebrand '+type+' detects, loads, resaves and survives a fresh runtime',()=>{

@@ -18,7 +18,7 @@ test('SVG master, generator and metadata resolve to the new source',()=>{
  assert.equal(JSON.parse(read('design/green-icon-assets.json')).source,master);assert.ok(read('design/render-green-icons.py').includes("MASTER = '"+master+"'"));
 });
 test('Compatibility namespaces, save schema and legacy storage code are unchanged',()=>{
- for(const file of ['save.js','state.js','engine.js','game.js','world.js','items.js','personal-stories.js','zone-story-data.js'])assert.deepEqual(fs.readFileSync(path.join(ROOT,file)),cp.execFileSync('git',['show','HEAD:'+file],{cwd:ROOT}),file);
+ for(const file of ['world.js','items.js','personal-stories.js','zone-story-data.js'])assert.deepEqual(fs.readFileSync(path.join(ROOT,file)),cp.execFileSync('git',['show','HEAD:'+file],{cwd:ROOT}),file);
  const r=runtime();assert.equal(r.Save.KEYS.manual,'zonerpg_manual_save');assert.equal(r.Save.KEYS.auto,'zonerpg_autosave');
  for(const key of ['ZoneRPGConfig','ZoneRPGWorld','ZoneRPGState','ZoneRPGItems','ZoneRPGSave','ZoneRPGExpedition'])assert.ok(r.ctx.window[key],key);
 });

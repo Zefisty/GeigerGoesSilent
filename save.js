@@ -43,7 +43,7 @@
     return Object.keys(KEYS).flatMap(type=>{
       const result=read(type);if(!result.ok)return [];
       const s=result.data,p=s.player||{},rank=window.ZoneRPGRank.calculate({...s,player:p,attributes:s.attributes||{},weaponMastery:s.weaponMastery||{}});
-      return [{type,savedAt:s.savedAt||null,location:p.location,level:p.rank||1,rank:rank.name,background:s.backgroundId||'rookie'}];
+      return [{type,playerName:window.ZoneRPGState.getPlayerDisplayName(s),savedAt:s.savedAt||null,location:p.location,level:p.rank||1,rank:rank.name,background:s.backgroundId||'rookie'}];
     });
   }
   window.ZoneRPGSave={KEYS,read,write,remove,slots,migrateLegacy,has:()=>slots().length>0};

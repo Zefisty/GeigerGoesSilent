@@ -6,7 +6,7 @@
   addEventListener('error',e=>{errors.push(e.message||'Resource error: '+(e.target?.src||e.target?.href||'unknown'));update();},true);
   addEventListener('unhandledrejection',e=>{errors.push(String(e.reason));update();});
   const warn=console.warn.bind(console);console.warn=(...args)=>{warnings.push(args.map(x=>typeof x==='object'?JSON.stringify(x):String(x)).join(' '));warn(...args);update();};
-  window.ZoneRPGSave={read(type='manual'){const raw=sessionStorage.getItem(type==='auto'?key+'_auto':key);if(!raw)return{ok:false,reason:'empty'};try{return{ok:true,data:JSON.parse(raw)}}catch{return{ok:false,reason:'corrupt'}}},write(s,type='manual'){sessionStorage.setItem(type==='auto'?key+'_auto':key,JSON.stringify({...s,version:ZoneRPGState.VERSION}));return{ok:true}},remove(){sessionStorage.removeItem(key);return true},slots(){return ['auto','manual'].flatMap(type=>{const r=this.read(type);if(!r.ok)return [];const s=r.data;return [{type,savedAt:s.savedAt||null,location:s.player.location,level:s.player.rank,rank:window.ZoneRPGRank.calculate({...s,attributes:s.attributes||{},weaponMastery:s.weaponMastery||{}}).name,background:s.backgroundId}];});},has(){return this.slots().length>0}};
+  window.ZoneRPGSave={read(type='manual'){const raw=sessionStorage.getItem(type==='auto'?key+'_auto':key);if(!raw)return{ok:false,reason:'empty'};try{return{ok:true,data:JSON.parse(raw)}}catch{return{ok:false,reason:'corrupt'}}},write(s,type='manual'){sessionStorage.setItem(type==='auto'?key+'_auto':key,JSON.stringify({...s,version:ZoneRPGState.VERSION}));return{ok:true}},remove(){sessionStorage.removeItem(key);return true},slots(){return ['auto','manual'].flatMap(type=>{const r=this.read(type);if(!r.ok)return [];const s=r.data;return [{type,playerName:window.ZoneRPGState.getPlayerDisplayName(s),savedAt:s.savedAt||null,location:s.player.location,level:s.player.rank,rank:window.ZoneRPGRank.calculate({...s,attributes:s.attributes||{},weaponMastery:s.weaponMastery||{}}).name,background:s.backgroundId}];});},has(){return this.slots().length>0}};
   if(scenario==='route'){
     for(const event of ZoneRPGWorld.events)if(['both','travel'].includes(event.kind)&&event.id!=='chain_strange_signal')event.kind='explore';
     Math.random=()=>window.ZoneRPGEngine?.getState().player.location==='wild'?0:.99;
@@ -16,7 +16,9 @@
     Math.random=()=>.4;
     if(!ZoneRPGSave.has()){
       const s=ZoneRPGState.fresh();
-      if(scenario.startsWith('v9-')){
+      if(scenario==='player-name'){
+        s.playerName='Слава';s.mode='event';s.event={id:'arrival_player_name_qa',category:'Связной',text:'Рад тебя видеть, {playerName}.',choices:[{label:'Уйти',finish:true}]};
+      }else if(scenario.startsWith('v9-')){
         s.known=['cordon','garbage','agro'];s.player.location='garbage';s.visited=['cordon','garbage'];s.worldState=window.ZoneRPGLiving.fresh('garbage');s.worldClock=4;
         if(scenario==='v9-return'){s.worldState.locations.garbage={visits:2,decision:'help',decidedAt:0,decisionVisit:1,state:'caravan',callbackDone:false};s.worldState.npcMemory.makar={trust:1,helped:true,betrayed:false,lastSeen:0};s.worldState.claims=['decision:garbage'];}
         if(scenario==='v9-world')s.worldEvents=[{id:'v9_medShortage',endsAt:10}];

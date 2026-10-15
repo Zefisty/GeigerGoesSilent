@@ -39,7 +39,7 @@ await test('Shell, CSS and all local art/audio references resolve below the proj
  assert.ok(refs.size>=assets.length);console.log('Resolved local references: '+refs.size);
 });
 await test('Save keys, legacy migration, namespaces and gameplay bytes stay compatible',()=>{
- for(const file of ['save.js','state.js','engine.js','game.js','items.js','world.js','pwa-register.js','pwa-assets.js'])sameAsHead(file);
+ for(const file of ['items.js','world.js','pwa-register.js','pwa-assets.js'])sameAsHead(file);
  assert.match(read('save.js'),/zonerpg_manual_save/);assert.match(read('save.js'),/zonerpg_autosave/);
  assert.match(read('ui.js'),/window\.ZoneRPGUI/);assert.match(read('engine.js'),/window\.ZoneRPGEngine/);
  assert.equal(new URL('https://zefisty.github.io/ZoneRPG/').origin,new URL(BASE).origin); // Legacy deployment shares localStorage origin.

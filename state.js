@@ -2,6 +2,18 @@
   const VERSION = 16;
   const LEGACY_VERSIONS = [2,3,4,5,6,7,8,9,10,11,12,13,14,15];
   const KEY = 'zonerpg-pda-save';
+  const DEFAULT_PLAYER_NAME = 'Сталкер', MAX_PLAYER_NAME_LENGTH = 24;
+  function validatePlayerName(value){
+    if(typeof value!=='string')return {ok:false,error:'Введите имя.'};
+    const name=value.trim();
+    if(!name)return {ok:false,error:'Введите имя.'};
+    if([...name].length>MAX_PLAYER_NAME_LENGTH)return {ok:false,error:'Не более 24 символов.'};
+    if(/[\u0000-\u001f\u007f-\u009f]/u.test(name))return {ok:false,error:'Уберите управляющие символы из имени.'};
+    return {ok:true,value:name};
+  }
+  function getPlayerDisplayName(state){const result=validatePlayerName(state?.playerName);return result.ok?result.value:DEFAULT_PLAYER_NAME;}
+  function formatPlayerText(text,state){return String(text??'').replace(/\{playerName\}/g,()=>getPlayerDisplayName(state));}
+
   const clamp = (value, min, max, fallback = 0) => Number.isFinite(Number(value))
     ? Math.max(min, Math.min(max, Number(value))) : fallback;
   const unique = values => [...new Set(values)];
@@ -31,7 +43,7 @@
   function fresh(backgroundId='rookie') {
     const state = {
       version: VERSION, backgroundId:BACKGROUNDS[backgroundId]?backgroundId:'rookie',
-      mode: 'menu',
+      mode: 'menu', playerName: DEFAULT_PLAYER_NAME,
       player: {health:100,maxHealth:100,stamina:100,maxStamina:100,hunger:14,thirst:12,radiation:0,money:620,rank:1,xp:0,kills:0,trips:0,artifacts:0,location:'cordon',time:8},
       attributes:{strength:2,agility:2,endurance:2,perception:2,intelligence:2},attributePoints:0,weaponMastery:{pistols:0,smg:0,rifles:0,shotguns:0,melee:0},
       baseStats:{maxHealth:100,maxStamina:100,maxCarryWeight:25},temporaryModifiers:{},
@@ -109,6 +121,7 @@
     const base = fresh();
     if (!input || typeof input !== 'object' || ![...LEGACY_VERSIONS,VERSION].includes(input.version)) return base;
     base.backgroundId=BACKGROUNDS[input.backgroundId]?input.backgroundId:'rookie';
+    base.playerName=getPlayerDisplayName(input);
     const p = input.player && typeof input.player === 'object' ? input.player : {};
     const defaults = base.player;
     base.player = {...defaults,...p};
@@ -240,5 +253,5 @@
     return base;
   }
 
-  window.ZoneRPGState={VERSION,LEGACY_VERSIONS,KEY,BACKGROUNDS,ATTRIBUTE_INFO,MASTERY_NAMES,fresh,sanitize};
+  window.ZoneRPGState={DEFAULT_PLAYER_NAME,MAX_PLAYER_NAME_LENGTH,validatePlayerName,getPlayerDisplayName,formatPlayerText,VERSION,LEGACY_VERSIONS,KEY,BACKGROUNDS,ATTRIBUTE_INFO,MASTERY_NAMES,fresh,sanitize};
 })();
