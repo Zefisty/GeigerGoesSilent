@@ -186,4 +186,20 @@ test('Plus and stat help share fixed squares in every interaction state, with a 
  for(const rule of rules.filter(r=>/hover|active|disabled|focus/.test(r.selector)))for(const prop of ['width','height','min-width','min-height','max-width','max-height','border-radius'])assert.ok(!(prop in rule.declarations),rule.selector+' changes '+prop);
  assert.ok(36*2+18+18+30+50<=240);assert.ok(240<360-16-24-2);
 });
+test('Quest emblem is square and uses the existing journal glyph without changing any quest controls',()=>{
+ const r=runtime();r.load(r.S.fresh());const UI=r.ctx.window.ZoneRPGUI,s=r.E.getState();
+ const q={id:'icon-test',title:'Задание',text:'Описание',status:'Активно',type:'visit',target:'cordon',giver:'sidor',acceptedAtLocation:'cordon',turnInLocations:['cordon'],reward:100};
+ s.quests={active:[q,{...q,id:'ready',ready:true,canTurnIn:true},{...q,id:'blocked',ready:true,canTurnIn:false}],available:[{...q,id:'available'}],completed:[{...q,id:'complete',status:'Выполнено'}]};
+ const state={...s,mode:'quests'},before=JSON.stringify(state);UI.render(state);const html=r.root.innerHTML;
+ assert.equal((html.match(/<span class="quest-mark" aria-hidden="true"><\/span>/g)||[]).length,5);assert.doesNotMatch(html,/>⌖<\/span>/);assert.equal(JSON.stringify(state),before);
+ vm.runInContext(cp.execFileSync('git',['show','HEAD:ui.js'],{cwd:ROOT,encoding:'utf8'}),r.ctx);r.ctx.window.ZoneRPGUI.render(state);
+ assert.equal(html,r.root.innerHTML.replace(/(<span class="quest-mark" aria-hidden="true">)⌖(<\/span>)/g,'$1$2'),'Only the emblem contents may change in quest rendering');
+ assert.deepEqual(controls(html),controls(r.root.innerHTML));
+ for(const width of [1280,768,480,360]){
+  assert.equal(value('#app .quest-mark','width',width),'32px');assert.equal(value('#app .quest-mark','height',width),'32px');
+  assert.equal(value('#app .quest-mark','border-radius',width),'4px');assert.equal(value('#app .quest-mark','place-items',width),'center');
+ }
+ assert.equal(value('#app .quest-mark:before','mask',360),'url("assets/ui/quests.svg") center/contain no-repeat');
+ assert.ok(fs.existsSync(path.join(ROOT,'assets/ui/quests.svg')));assert.ok(read('pwa-assets.js').includes('./assets/ui/quests.svg'));
+});
 console.log(passed+' v11 UI design checks passed.');

@@ -606,7 +606,11 @@ body[data-motion="reduced"] #app :is(button,.panel-window,.reward-toast) { anima
 #app .quest-content { flex:1 1 auto;min-width:0; }
 #app .quest-heading { display:flex;align-items:flex-start;gap:var(--pda-s2); }
 #app .quest-heading strong { min-width:0;overflow-wrap:anywhere; }
-#app .quest-mark { flex:0 0 24px; }
+#app .quest-mark { display:grid;place-items:center;flex:0 0 32px;width:32px;height:32px;
+  min-width:32px;box-sizing:border-box;padding:0;border-radius:4px;line-height:1; }
+#app .quest-mark:before { content:"";display:block;width:20px;height:20px;background:currentColor;
+  -webkit-mask:url("assets/ui/quests.svg") center/contain no-repeat;
+  mask:url("assets/ui/quests.svg") center/contain no-repeat; }
 #app .quest-actions { display:flex;justify-content:flex-end;align-items:flex-end;margin-top:auto;
   padding-top:var(--pda-s2);border-top:1px solid var(--pda-line);min-width:0; }
 #app .quest-actions>button { min-height:36px;max-width:100%;overflow-wrap:anywhere; }

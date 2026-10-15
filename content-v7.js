@@ -72,7 +72,13 @@
  ['routeReport','Маршрутный отчёт','quest',0,0,{},'quest-document'],
  ['pumpFuse','Предохранитель насоса','quest',0,.1,{},'electronics']
  ];
- for(const [id,name,type,price,weight,effect,icon]of goods)I.items[id]={name,type,price,weight,effect,icon,stackable:true,description:name+' — запас для полевой работы.'};
+ const goodsDescriptions={
+   probe7:'Болты для зондирования аномальных полей. Расходуются в специальных вариантах событий.',
+   radioBattery:'Запасной элемент питания для рации. Пригодится для снабжения связных.',
+   electrolyte:'Полевой питьевой раствор. Утоляет жажду и помогает восстановить силы.',
+   fieldSerum:'Полевой препарат снижает радиацию и немного восстанавливает здоровье.'
+ };
+ for(const [id,name,type,price,weight,effect,icon]of goods)I.items[id]={name,type,price,weight,effect,icon,stackable:true,description:goodsDescriptions[id]||name+' — запас для полевой работы.'};
  I.items.surveyPack={name:'Рюкзак геодезиста',type:'backpack',slot:'backpack',rarity:'uncommon',price:2400,weight:1.8,stackable:false,icon:'backpack',effect:{maxWeight:12,maxStamina:-3},description:'Крепления для образцов и расходников.'};
  I.items.surveyMask={name:'Полевой респиратор',type:'headgear',slot:'head',rarity:'uncommon',price:1800,weight:.8,stackable:false,icon:'gas-mask',effect:{radResist:.18},description:'Фильтр для длительной экспедиции.'};
  for(const [id,name,base,damage,accuracy,price]of [['carbine7','Карабин разведчика','huntingRifle',33,.8,4200],['smg7','ПП патрульный','ppVityaz',25,.7,3600]]){
