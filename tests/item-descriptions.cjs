@@ -25,15 +25,15 @@ test('Inventory and shop show identical descriptions and actual energy/stamina a
  const r=runtime();r.load(r.S.fresh());const {inventory,shop}=renderItems(r),inv=descriptions(inventory,'item-row-card'),stock=descriptions(shop,'shop-row');
  assert.deepEqual(inv,stock);assert.equal(inv.length,ids.length);
  for(let i=0;i<ids.length;i++)assert.ok(inv[i].includes(r.I.items[ids[i]].description));
- assert.ok(inv[4].includes('Восстанавливает '+r.I.items.energy.effect.stamina+' выносливости'));
+ assert.ok(inv[4].includes('Восстанавливает выносливость на '+r.I.items.energy.effect.stamina));
  assert.ok(inv[4].includes('Снижает жажду на 15%'));
- assert.ok(inv[2].includes('Восстанавливает 14 выносливости'));
- assert.ok(inv[3].includes('Восстанавливает 5 здоровья'));assert.ok(inv[3].includes('Снижает радиацию на 28%'));
+ assert.ok(inv[2].includes('Восстанавливает выносливость на 14'));
+ assert.ok(inv[3].includes('Восстанавливает здоровье на 5'));assert.ok(inv[3].includes('Снижает радиацию на 28%'));
 });
 test('UI stamina amount follows changed item data in both views without a duplicated constant',()=>{
  const r=runtime();r.load(r.S.fresh());r.I.items.energy.effect.stamina=23;
  const {inventory,shop}=renderItems(r);
- for(const html of [inventory,shop]){assert.ok(html.includes('Восстанавливает 23 выносливости'));assert.ok(!html.includes('Восстанавливает 35 выносливости'));}
+ for(const html of [inventory,shop]){assert.ok(html.includes('Восстанавливает выносливость на 23'));assert.ok(!html.includes('Восстанавливает выносливость на 35'));}
 });
 test('Rendering and save/load preserve consumable state and effects',()=>{
  const r=runtime(),raw=r.S.fresh();raw.inventory.push({id:'energy',qty:1});raw.player.stamina=10;raw.player.thirst=40;r.load(raw);

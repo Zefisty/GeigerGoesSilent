@@ -15,7 +15,7 @@
     const consumable=['medicine','food','drink'].includes(item.type);
     if(consumable){
       for(const [key,label]of [['hunger','голод'],['thirst','жажду'],['radiation','радиацию']])if(e[key])add(key,(e[key]<0?'Снижает ':'Повышает ')+label+' на '+pct(Math.abs(e[key])));
-      for(const [key,label]of [['health','здоровья'],['stamina','выносливости']])if(e[key])add(key,(e[key]>0?'Восстанавливает ':'Отнимает ')+num(Math.abs(e[key]))+' '+label);
+      for(const [key,label]of [['health','здоровье'],['stamina','выносливость']])if(e[key])add(key,(e[key]>0?'Восстанавливает ':'Снижает ')+label+' на '+num(Math.abs(e[key])));
     }else if(item.slot||item.type==='artifact'||item.type==='weapon'){
       for(const [key,label]of Object.entries({protection:'Защита',radResist:'Сопротивление радиации',accuracy:'Бонус точности',evasion:'Шанс уклонения',critChance:'Шанс критического удара',artifactFindChance:'Шанс найти артефакт',ammoSave:'Экономия патронов'}))if(e[key])add(key,label+': '+(e[key]>0?'+':'−')+pct(Math.abs(e[key])*100));
       for(const [key,label,unit]of [['maxHealth','Максимум здоровья',''],['maxStamina','Максимум выносливости',''],['maxWeight','Переносимый вес',' кг'],['damage','Бонус урона','']])if(e[key])add(key,label+': '+signed(e[key])+unit);

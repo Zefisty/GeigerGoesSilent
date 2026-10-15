@@ -27,7 +27,7 @@ test('Formatter covers every real effect combination once and never mutates defi
 });
 test('Consumable phrasing follows every effect sign without hunger/thirst inversion',()=>{
  const d=UI.describeItem({type:'food',description:'Тестовый набор.',effect:{hunger:-25,thirst:7,radiation:-12,health:9,stamina:-3}});
- assert.deepEqual(Array.from(d.facts,f=>f.text),['Снижает голод на 25%','Повышает жажду на 7%','Снижает радиацию на 12%','Восстанавливает 9 здоровья','Отнимает 3 выносливости']);
+ assert.deepEqual(Array.from(d.facts,f=>f.text),['Снижает голод на 25%','Повышает жажду на 7%','Снижает радиацию на 12%','Восстанавливает здоровье на 9','Снижает выносливость на 3']);
  assert.equal(UI.describeItem({type:'drink',description:'Без эффектов.',effect:{thirst:0,stamina:0}}).facts.length,0);
 });
 test('All items show identical flavor and facts in inventory and shop, including every weapon',()=>{
@@ -47,6 +47,34 @@ test('Encyclopedia artifact knowledge uses the same facts and respects unknown o
  r.load(r.S.fresh());const s=r.E.getState();s.zoneView.knowledge.artifacts={jellyfish:2};s.zoneStory.claims=[];
  const html=r.ctx.window.ZoneRPGZoneUI.knowledge(s,x=>String(x),()=>'', 'artifacts');assert.ok(html.includes(UI.describeItem(items.jellyfish).text));
  s.zoneView.knowledge.artifacts.jellyfish=1;const unknown=r.ctx.window.ZoneRPGZoneUI.knowledge(s,x=>String(x),()=>'', 'artifacts');assert.ok(!unknown.includes('Сопротивление радиации:'));
+});
+test('Each bad-state meter uses the correct sign and percent unit, including zero and decimals',()=>{
+ for(const [key,label]of [['hunger','голод'],['thirst','жажду'],['radiation','радиацию']])for(const value of [-42,-12.5,0,12.5,42]){
+  const d=UI.describeItem({type:'medicine',description:'Проверка знака.',effect:{[key]:value}});
+  assert.equal(d.facts.length,value?1:0);
+  if(value)assert.equal(d.facts[0].text,(value<0?'Снижает ':'Повышает ')+label+' на '+Math.abs(value)+'%');
+  assert.doesNotMatch(d.text,/Восстанавливает (голод|жажду|радиацию)|\+\d+ (голода|жажды)/);
+ }
+});
+test('Health and stamina use resource wording and absolute units for either sign',()=>{
+ for(const [key,label]of [['health','здоровье'],['stamina','выносливость']])for(const value of [-20,-2.5,0,2.5,20]){
+  const d=UI.describeItem({type:'drink',description:'Проверка ресурса.',effect:{[key]:value}});assert.equal(d.facts.length,value?1:0);
+  if(value){assert.equal(d.facts[0].text,(value>0?'Восстанавливает ':'Снижает ')+label+' на '+Math.abs(value));assert.ok(!d.facts[0].text.includes('%'));}
+ }
+});
+test('All actual meter effects and common supplies have unambiguous text, with data-driven values',()=>{
+ for(const [id,item]of Object.entries(items)){
+  const d=UI.describeItem(item);assert.doesNotMatch(d.text,/Восстанавливает (голод|жажду|радиацию)|\+\d+ (голода|жажды)/,id);
+  if(!['medicine','food','drink'].includes(item.type))continue;
+  for(const [key,label]of [['hunger','голод'],['thirst','жажду'],['radiation','радиацию']])if(item.effect?.[key])assert.equal(d.facts.find(f=>f.key===key).text,(item.effect[key]<0?'Снижает ':'Повышает ')+label+' на '+Math.abs(item.effect[key])+'%');
+ }
+ for(const id of ['canned','bread','water','energy','medkit','bandage','antirad','fieldSerum','electrolyte','ration7']){
+  const d=UI.describeItem(items[id]);assert.ok(d.facts.length,id);
+  for(const f of d.facts)assert.equal(d.facts.filter(x=>x.key===f.key).length,1);
+ }
+ assert.ok(UI.describeItem(items.antirad).text.includes('Снижает радиацию на 35%'));
+ const changed={...items.medkit,effect:{health:27}};assert.ok(UI.describeItem(changed).text.includes('Восстанавливает здоровье на 27'));
+ const permanent=UI.describeItem(items.motherBeads);assert.ok(permanent.text.includes('Максимум здоровья: -18'));assert.ok(!permanent.text.includes('Снижает здоровье на 18'));
 });
 const groups=new Map();for(const [id,item]of Object.entries(old.I.items))groups.set(item.description,[...(groups.get(item.description)||[]),id]);
 const duplicates=[...groups.values()].filter(ids=>ids.length>1);
