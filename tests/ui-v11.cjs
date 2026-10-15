@@ -123,7 +123,7 @@ test('Attribute cells use bounded grids at all four target widths',()=>{
   assert.equal(value('#app .attribute-row','display',width),'grid');
   assert.equal(value('#app .attribute-row .stat-info','padding',width),'0');
   assert.equal(value('#app .attribute-row .stat-info','margin',width),'0');
-  for(const size of ['width','height','min-width','min-height'])assert.equal(value('#app .attribute-row .attribute-plus',size,width),'36px');
+  for(const size of ['width','height','min-width','min-height'])assert.equal(value('#app .attribute-row .stat-icon-button',size,width),'36px');
  }
  // At 360px: 16px overlay inset + 24px panel padding + 2px border leave 318px.
  assert.ok(240<=360-16-24-2);assert.match(css,/\.attribute-row strong[^{}]*\{[^}]*overflow-wrap:anywhere/);
@@ -142,5 +142,37 @@ test('Capped attributes disable only their Plus and long text remains wrappable'
  const plus=controls(r.root.innerHTML).filter(c=>c[0]==='investAttribute');assert.ok(plus.find(c=>c[1]==='strength')[3]);assert.ok(plus.some(c=>!c[3]));
  const s=r.E.getState();s.attributeInfo.strength={...s.attributeInfo.strength,name:'Очень длинное название характеристики'};r.ctx.window.ZoneRPGUI.render({...s,mode:'character'});assert.ok(r.root.innerHTML.includes('Очень длинное название характеристики'));
  assert.equal(value('#app .attribute-row>span','overflow-wrap',360),'anywhere');assert.equal(value('#app .panel-window-body','min-width',360),'0');
+});
+test('Quest cards use one bottom action slot for short/long, available/active/ready/completed states',()=>{
+ const r=runtime();r.load(r.S.fresh());const s=r.E.getState();
+ const q={id:'ui-quest',title:'Поручение',text:'Короткое описание',status:'В пути',type:'visit',target:'cordon',giver:'sidor',acceptedAtLocation:'cordon',turnInLocations:['cordon'],reward:100,progress:0};
+ s.quests={active:[q,{...q,id:'long',text:'Длинное описание '.repeat(80),ready:true,canTurnIn:true},{...q,id:'remote',ready:true,canTurnIn:false}],available:[{...q,id:'offer'}],completed:[{...q,id:'done',status:'Выполнено'}]};
+ const before=JSON.stringify(s);r.ctx.window.ZoneRPGUI.render({...s,mode:'quests'});assert.equal(JSON.stringify(s),before);
+ const cards=[...r.root.innerHTML.matchAll(/<article class="quest-card[^\"]*">([\s\S]*?)<\/article>/g)].map(m=>m[1]);assert.equal(cards.length,5);
+ for(const card of cards){assert.equal((card.match(/class="quest-actions"/g)||[]).length,1);assert.match(card,/<div class="quest-content">[\s\S]*<\/div><div class="quest-actions"><button[\s\S]*<\/button><\/div>$/);}
+ assert.match(cards[1],/data-action="turnIn"/);assert.match(cards[3],/data-action="acceptQuest"/);assert.match(cards[4],/<button[^>]*disabled[\s\S]*Выполнено/);
+ for(const width of [1280,768,480,360]){
+  assert.equal(value('#app .quest-card','flex-direction',width),'column');assert.equal(value('#app .quest-content','flex',width),'1 1 auto');assert.equal(value('#app .quest-actions','margin-top',width),'auto');
+  assert.equal(value('#app .quest-list','grid-template-columns',width),width<=600?'minmax(0,1fr)':'repeat(2,minmax(0,1fr))');
+ }
+});
+test('Reset hints is a bounded neutral compact utility control at desktop/480/360',()=>{
+ const r=runtime();r.load(r.S.fresh());r.E.action('openPanel','settings');
+ assert.match(r.root.innerHTML,/<button class="secondary-button utility-button"[^>]*data-action="resetTutorial"[^>]*>Сбросить подсказки<\/button>/);
+ for(const width of [1280,480,360]){
+  assert.equal(value('#app .settings-section .utility-button','width',width),'fit-content');assert.equal(value('#app .settings-section .utility-button','max-width',width),'100%');
+  assert.equal(value('#app .settings-section .utility-button','min-height',width),'36px');assert.equal(value('#app .settings-section .utility-button','margin-top',width),'var(--pda-s2)');
+ }
+});
+test('Plus and stat help share fixed circles in every interaction state, with a 360px width budget',()=>{
+ const r=runtime(),raw=r.S.fresh();raw.attributePoints=0;r.load(raw);r.E.action('openPanel','character');
+ assert.match(r.root.innerHTML,/<summary class="stat-icon-button"/);assert.match(r.root.innerHTML,/<button disabled class="tiny-button attribute-plus stat-icon-button"/);
+ for(const width of [1280,768,480,360]){
+  for(const prop of ['width','height','min-width','max-width','min-height','max-height'])assert.equal(value('#app .attribute-row .stat-icon-button',prop,width),'36px');
+  assert.equal(value('#app .attribute-row .stat-icon-button','border-radius',width),'50%');assert.equal(value('#app .attribute-row .stat-icon-button','place-items',width),'center');
+ }
+ // Shared hover/active/disabled/focus rules change paint only; they never change circle geometry.
+ for(const rule of rules.filter(r=>/hover|active|disabled|focus/.test(r.selector)))for(const prop of ['width','height','min-width','min-height','max-width','max-height','border-radius'])assert.ok(!(prop in rule.declarations),rule.selector+' changes '+prop);
+ assert.ok(36*2+18+18+30+50<=240);assert.ok(240<360-16-24-2);
 });
 console.log(passed+' v11 UI design checks passed.');
