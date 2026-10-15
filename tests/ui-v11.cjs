@@ -92,4 +92,55 @@ test('Main/secondary/disabled text palettes maintain at least WCAG 4.5:1 contras
  const lum=hex=>{const rgb=hex.match(/\w\w/g).map(c=>parseInt(c,16)/255).map(c=>c<=.04045?c/12.92:((c+.055)/1.055)**2.4);return rgb[0]*.2126+rgb[1]*.7152+rgb[2]*.0722;};
  for(const [a,b]of [['e2e9d6','141e17'],['a2ae98','141e17'],['152011','9eaf6c'],['899681','1b251c'],['efb6a7','34201e'],['9db18a','111e14']]){const l=[lum(a),lum(b)].sort((x,y)=>y-x);assert.ok((l[0]+.05)/(l[1]+.05)>=4.5,a+'/'+b);}
 });
+test('Polished menus share a compact body/header and preserve six More actions',()=>{
+ const r=runtime();r.load(r.S.fresh());
+ for(const mode of ['settings','pause','more','encyclopedia','statistics','deleteConfirm','character']){
+  const s={...r.E.getState(),mode},before=JSON.stringify(s);r.ctx.window.ZoneRPGUI.render(s);
+  assert.match(r.root.innerHTML,/class="panel-window-body"/);assert.equal(JSON.stringify(s),before);
+  if(['pause','more','deleteConfirm'].includes(mode))assert.match(r.root.innerHTML,/data-panel-kind="compact"/);
+  if(mode==='settings')assert.match(r.root.innerHTML,/data-panel-kind="settings"/);
+ }
+ assert.equal(value('#app .panel-window[data-panel-kind="compact"]','width',1280),'min(560px,100%)');
+ assert.equal(value('#app .menu-actions','gap',360),'var(--menu-small)');
+ assert.equal(value('#app .menu-actions>button','min-height',360),'44px');
+});
+test('Save/rest picker cards and Back have explicit consistent separation',()=>{
+ const r=runtime();r.load(r.S.fresh());const UI=r.ctx.window.ZoneRPGUI;
+ for(const type of ['auto','manual'])r.Save.write(r.E.getState(),type);
+ UI.setSavePicker(true);UI.render({...r.E.getState(),mode:'menu'});
+ assert.match(r.root.innerHTML,/data-panel-kind="compact"/);assert.equal((r.root.innerHTML.match(/class="save-card"/g)||[]).length,2);
+ assert.match(r.root.innerHTML,/data-action="savePickerBack"/);
+ UI.setRestPicker(true);UI.render({...r.E.getState(),mode:'play'});assert.match(r.root.innerHTML,/data-action="restPickerBack"/);
+ assert.equal(value('#app .panel-window-body>.save-card','margin',360),'0 0 var(--menu-medium)');
+ assert.equal(value('#app .panel-window-body>.save-card+button','margin-top',360),'var(--menu-small)');
+ assert.equal(value('#app .save-card button','margin',360),'0');
+});
+test('Attribute cells use bounded grids at all four target widths',()=>{
+ for(const width of [1280,768,480,360]){
+  assert.equal(value('#app .attribute-grid','grid-template-columns',width),width<480?'minmax(0,240px)':width<=768?'repeat(2,minmax(0,240px))':'repeat(3,minmax(0,240px))');
+  assert.equal(value('#app .attribute-row','max-width',width),'240px');
+  assert.equal(value('#app .attribute-row','min-height',width),'50px');
+  assert.equal(value('#app .attribute-row','display',width),'grid');
+  assert.equal(value('#app .attribute-row .stat-info','padding',width),'0');
+  assert.equal(value('#app .attribute-row .stat-info','margin',width),'0');
+  for(const size of ['width','height','min-width','min-height'])assert.equal(value('#app .attribute-row .attribute-plus',size,width),'36px');
+ }
+ // At 360px: 16px overlay inset + 24px panel padding + 2px border leave 318px.
+ assert.ok(240<=360-16-24-2);assert.match(css,/\.attribute-row strong[^{}]*\{[^}]*overflow-wrap:anywhere/);
+});
+test('Zero points keep every Plus visible and disabled; real investment is unchanged',()=>{
+ const r=runtime(),raw=r.S.fresh();raw.attributePoints=0;r.load(raw);r.E.action('openPanel','character');
+ const n=Object.keys(r.E.getState().attributes).length;const actions=controls(r.root.innerHTML).filter(c=>c[0]==='investAttribute');
+ assert.equal(actions.length,n);assert.ok(actions.every(c=>c[3]&&c[4]==='+'));
+ const before=JSON.stringify(r.E.getState().attributes);r.E.action('investAttribute','strength');assert.equal(JSON.stringify(r.E.getState().attributes),before);
+ const ready=r.S.fresh();ready.attributePoints=1;r.load(ready);r.E.action('openPanel','character');
+ assert.ok(controls(r.root.innerHTML).filter(c=>c[0]==='investAttribute').every(c=>!c[3]));
+ const old=r.E.getState().attributes.strength;r.E.action('investAttribute','strength');assert.equal(r.E.getState().attributes.strength,old+1);assert.equal(r.E.getState().attributePoints,0);
+});
+test('Capped attributes disable only their Plus and long text remains wrappable',()=>{
+ const r=runtime(),raw=r.S.fresh();raw.attributePoints=2;raw.attributes.strength=20;r.load(raw);r.E.action('openPanel','character');
+ const plus=controls(r.root.innerHTML).filter(c=>c[0]==='investAttribute');assert.ok(plus.find(c=>c[1]==='strength')[3]);assert.ok(plus.some(c=>!c[3]));
+ const s=r.E.getState();s.attributeInfo.strength={...s.attributeInfo.strength,name:'Очень длинное название характеристики'};r.ctx.window.ZoneRPGUI.render({...s,mode:'character'});assert.ok(r.root.innerHTML.includes('Очень длинное название характеристики'));
+ assert.equal(value('#app .attribute-row>span','overflow-wrap',360),'anywhere');assert.equal(value('#app .panel-window-body','min-width',360),'0');
+});
 console.log(passed+' v11 UI design checks passed.');

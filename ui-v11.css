@@ -541,3 +541,66 @@ body[data-motion="reduced"] #app :is(button,.panel-window,.reward-toast) { anima
  #app .shop-total{grid-column:2;max-width:88px}
  #app .shop-actions>.tiny-button{grid-column:3}
 }
+
+/* v11 polish: shared compact windows and predictable sibling spacing. */
+#app .panel-window {
+  --menu-small:var(--pda-s2);--menu-medium:var(--pda-s3);--menu-section:var(--pda-s4);
+  padding:0 var(--menu-section) var(--menu-section);
+  border:1px solid var(--pda-line-light);border-top-color:#829465;border-radius:2px;
+  background:linear-gradient(135deg,#1c2b1e55,transparent 65%),var(--pda-panel);
+}
+#app .panel-window[data-panel-kind="compact"] { width:min(560px,100%); }
+#app .panel-window[data-panel-kind="settings"] { width:min(660px,100%); }
+#app .panel-window-head { padding:var(--menu-section) 0 var(--menu-medium);margin:0 0 var(--menu-medium);gap:var(--menu-medium); }
+#app .panel-window-head h2 { margin:4px 0 0;font-size:clamp(20px,2vw,24px); }
+#app .panel-window-body { display:flow-root;min-width:0; }
+#app .panel-window-body>:first-child { margin-top:0; }
+#app .panel-window-body>:last-child { margin-bottom:0; }
+#app .panel-window-body>.save-card { margin:0 0 var(--menu-medium); }
+#app .panel-window-body>.save-card+button { margin-top:var(--menu-small); }
+#app .panel-window-body>.text-button { min-width:100px; }
+#app .save-card { padding:var(--pda-s3);gap:var(--pda-s2);border-color:var(--pda-line);background:var(--pda-recess); }
+#app .save-card>p,#app .save-card>small { margin:0; }
+#app .save-card button { margin:0;min-height:44px; }
+#app .menu-actions { gap:var(--menu-small);margin-top:var(--menu-medium); }
+#app .menu-actions>button { min-height:44px;padding:10px 12px; }
+#app .menu-actions.more-actions [data-action="save"],#app .menu-actions.more-actions [data-value="pause"] { margin-top:0; }
+#app .panel-window .scene-actions { gap:var(--menu-small);margin-top:var(--menu-medium); }
+#app .panel-window .panel-intro { margin:0 0 var(--menu-medium);line-height:1.6; }
+#app .panel-window h3 { margin:var(--menu-section) 0 var(--menu-small); }
+#app .settings-section { margin:0 0 var(--menu-medium);padding:4px var(--menu-medium) var(--menu-medium);background:var(--pda-recess);border-color:var(--pda-line); }
+#app .setting-line { gap:var(--menu-small);padding:10px 0;min-width:0; }
+#app .setting-line>span { min-width:0;overflow-wrap:anywhere; }
+#app .setting-line :is(select,input) { min-width:0;max-width:45%;flex-shrink:0; }
+
+/* Small stat cells: name + help + value + square touch control, no flex wrapping. */
+#app .attribute-grid { grid-template-columns:repeat(3,minmax(0,240px));gap:var(--pda-s2);margin:var(--pda-s2) 0 var(--pda-s3); }
+#app .attribute-row { display:grid;grid-template-columns:minmax(0,1fr) 24px auto 36px;align-items:center;gap:6px;
+  width:100%;max-width:240px;min-width:0;min-height:50px;padding:6px 8px; }
+#app .attribute-row strong { min-width:0;font-size:11px;line-height:1.3;overflow-wrap:anywhere; }
+#app .attribute-row>span { font-size:11px;white-space:normal;overflow-wrap:anywhere; }
+#app .attribute-row .stat-info { margin:0;padding:0;border:0;background:none; }
+#app .attribute-row .stat-info summary { display:grid;place-items:center;width:24px;height:28px;font-size:11px; }
+#app .attribute-row .attribute-plus { width:36px;height:36px;min-width:36px;min-height:36px;padding:0;flex:none;font:600 19px/1 var(--pda-mono); }
+#app .attribute-row .stat-info p { top:calc(100% + 4px);font-size:12px;line-height:1.6; }
+#app .mastery-grid { gap:var(--pda-s2);margin:var(--pda-s2) 0 var(--pda-s3); }
+#app .mastery-grid span { padding:8px 10px; }
+#app .gear-select-list { gap:var(--pda-s2); }
+#app .gear-select { padding:8px 10px;gap:var(--pda-s2); }
+#app .character-summary { padding:var(--pda-s3);gap:var(--pda-s3); }
+#app .character-summary p { margin:3px 0;line-height:1.5; }
+#app .character-summary h3 { margin:0 0 6px; }
+#app .character-summary details { margin:6px 0;padding:6px 8px; }
+#app .two-columns>div { padding:var(--pda-s3); }
+#app .faction-row { padding:6px 0;margin:4px 0; }
+@media(max-width:768px) {
+  #app .attribute-grid { grid-template-columns:repeat(2,minmax(0,240px)); }
+}
+@media(max-width:479px) {
+  #app .panel-window { padding:0 var(--pda-s3) var(--pda-s3); }
+  #app .panel-window-head { padding:var(--pda-s3) 0; }
+  #app .attribute-grid { grid-template-columns:minmax(0,240px); }
+  #app .attribute-row { padding:6px 8px; }
+  #app .settings-section { padding:4px var(--pda-s2) var(--pda-s2); }
+  #app .menu-actions.more-actions>button { padding:9px 8px; }
+}
