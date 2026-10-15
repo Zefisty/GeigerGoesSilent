@@ -29,11 +29,11 @@ await test('Precache covers actual shell scripts and lightweight images only, al
  assert.ok(bytes<5*1024*1024);const html=fs.readFileSync(path.join(ROOT,'index.html'),'utf8');for(const [,script]of html.matchAll(/<script[^>]+src="([^"]+)"/g))assert.ok(assets.includes('./'+script));assert.ok(assets.includes('./index.html'));assert.ok(assets.includes('./style.css'));assert.ok(assets.includes('./assets/sprites/item-icons/mutant-parts.svg'));
 });
 await test('Install and activate create a complete offline shell on the first visit',async()=>{
- const w=worker();await w.install();await w.activate();assert.equal(w.ctl.claims,1);w.ctl.online=false;const root=await w.request('./',{mode:'navigate'});assert.match(await root.text(),/ZoneRPG/);for(const file of ['index.html?installed=1','engine.js','shops.js','style.css','assets/pwa/radiation-green-v2-192.png','assets/sprites/item-icons/mutant-parts.svg'])assert.equal((await w.request(file,{mode:file.startsWith('index')?'navigate':'same-origin'})).status,200);
+ const w=worker();await w.install();await w.activate();assert.equal(w.ctl.claims,1);w.ctl.online=false;const root=await w.request('./',{mode:'navigate'});assert.match(await root.text(),/ZoneRPG/);for(const file of ['index.html?installed=1','engine.js','shops.js','style.css','ui-v11.css','assets/ui/map.svg','assets/pwa/radiation-green-v2-192.png','assets/sprites/item-icons/mutant-parts.svg'])assert.equal((await w.request(file,{mode:file.startsWith('index')?'navigate':'same-origin'})).status,200);
 });
 await test('Header JS/CSS replace stale cache online and remain current offline after activation',async()=>{
  const w=worker();await w.install();const cache=await w.ctx.caches.open(w.name());
- for(const file of ['ui.js','style.css']){
+ for(const file of ['ui.js','style.css','ui-v11.css']){
   await cache.put('https://zefisty.github.io/ZoneRPG/'+file,new Response(file==='ui.js'?'<span class="brand-mark">Z</span>':'.brand-mark::before{content:"Z"}'));
   const response=await w.request(file),text=await response.text();assert.equal(text,fs.readFileSync(path.join(ROOT,file),'utf8'));
  }
@@ -50,8 +50,8 @@ await test('Version replacement cleans only this ZoneRPG scope and leaves active
 });
 await test('Final green cache purges legacy icon caches and stores only approved icon bytes',async()=>{
  const base='https://zefisty.github.io/ZoneRPG/',prefix='zonerpg-%2FZoneRPG%2F-',shared=new Map();
- for(const version of ['v1','v2-radiation-icons','v3-green-radiation-icons','v4-green-radiation-final','v5-green-shortcut-icons','v6-header-radiation'])shared.set(prefix+version,new Map([[base+'assets/pwa/icon-512.png',new Response('old Z')]]));
- shared.set('another-app',new Map());const w=worker(base,shared);assert.equal(w.name(),prefix+'v7-field-art');await w.install();await w.activate();
+ for(const version of ['v1','v2-radiation-icons','v3-green-radiation-icons','v4-green-radiation-final','v5-green-shortcut-icons','v6-header-radiation','v7-field-art'])shared.set(prefix+version,new Map([[base+'assets/pwa/icon-512.png',new Response('old Z')]]));
+ shared.set('another-app',new Map());const w=worker(base,shared);assert.equal(w.name(),prefix+'v8-pda-interface');await w.install();await w.activate();
  assert.deepEqual([...shared.keys()].sort(),['another-app',w.name()].sort());
  const icons=[...shared.get(w.name()).keys()].filter(url=>url.includes('/assets/pwa/')||url.endsWith('/favicon.ico'));assert.equal(icons.length,8);
  w.ctl.online=false;for(const url of icons){assert.match(url,/radiation-green-v[23]-|\/favicon\.ico$/);assert.deepEqual(Buffer.from(await(await w.request(url)).arrayBuffer()),fs.readFileSync(path.join(ROOT,new URL(url).pathname.slice('/ZoneRPG/'.length))));}
@@ -71,7 +71,7 @@ await test('Registration handles unsupported, insecure, file and rejected regist
  const events={},calls=[],warnings=[],base=testCase.protocol==='https:'?'https://zefisty.github.io/ZoneRPG/':'http://localhost:41736/',ctx={URL,location:{protocol:testCase.protocol},document:{currentScript:{src:new URL('pwa-register.js',base).href}},navigator:testCase.supported?{serviceWorker:{register:(url,options)=>{calls.push({url,options});if(testCase.sync)throw Error('blocked synchronously');return Promise.reject(Error('blocked'));}}}:{},window:{isSecureContext:testCase.secure,addEventListener:(name,fn)=>events[name]=fn},console:{warn:(...args)=>warnings.push(args)}};vm.createContext(ctx);vm.runInContext(code,ctx);if(events.load){await events.load();await Promise.resolve();}const allowed=testCase.supported&&testCase.secure;assert.equal(calls.length,allowed?1:0);if(allowed){assert.equal(calls[0].url,new URL('service-worker.js',base).href);assert.equal(calls[0].options.scope,base);assert.equal(calls[0].options.updateViaCache,'none');assert.equal(warnings.length,1);}}
 });
 await test('Visual asset integration does not modify gameplay, saves or PWA registration',()=>{
- const cp=require('node:child_process');for(const file of ['engine.js','game.js','state.js','save.js','shops.js','config.js']){const base=cp.execFileSync('git',['show','HEAD:'+file],{cwd:ROOT,encoding:'utf8'});assert.equal(fs.readFileSync(path.join(ROOT,file),'utf8').replace(/\r\n/g,'\n'),base.replace(/\r\n/g,'\n'),file);}assert.doesNotMatch(fs.readFileSync(path.join(ROOT,'pwa-register.js'),'utf8'),/localStorage|ZoneRPGEngine/);assert.doesNotMatch(source,/localStorage|zonerpg_manual_save|zonerpg_autosave/);
+ const cp=require('node:child_process');for(const file of ['engine.js','game.js','state.js','save.js','shops.js','config.js']){const base=cp.execFileSync('git',['show','HEAD:'+file],{cwd:ROOT,encoding:'utf8'});const normalize=text=>text.replace(/\r\n/g,'\n').replace(file==='config.js'?/version:'[^']*'/:/(?!)/,"version:'UI'");assert.equal(normalize(fs.readFileSync(path.join(ROOT,file),'utf8')),normalize(base),file);}assert.doesNotMatch(fs.readFileSync(path.join(ROOT,'pwa-register.js'),'utf8'),/localStorage|ZoneRPGEngine/);assert.doesNotMatch(source,/localStorage|zonerpg_manual_save|zonerpg_autosave/);
 });
 console.log(passed+' PWA checks passed.');
 })().catch(error=>{console.error(error);process.exitCode=1;});

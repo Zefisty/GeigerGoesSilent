@@ -1,0 +1,27 @@
+"""Reproduce the original 24px PDA glyph set; no third-party artwork."""
+from pathlib import Path
+ROOT=Path(__file__).resolve().parents[1]/'assets/ui'
+GLYPHS={
+'explore':'M4 20 8 8 20 4 16 16 4 20ZM8 8 16 16M12 12H12.1',
+'map':'M3 5 9 3 15 6 21 4V19L15 21 9 18 3 20V5ZM9 3V18M15 6V21',
+'inventory':'M6 7V5L9 3H15L18 5V7M4 7H20V21H4V7ZM8 11H16V16H8V11M4 17H7M17 17H20',
+'person':'M8 4H16V12H8V4ZM5 21V17L9 14H15L19 17V21H5Z',
+'quests':'M7 3H20V21H7V3ZM3 7H10M3 12H10M3 17H10M13 7H17M13 12H17M13 17H17.1',
+'more':'M4 5H8V9H4V5ZM16 5H20V9H16V5ZM4 15H8V19H4V15ZM16 15H20V19H16V15Z',
+'save':'M4 3H17L21 7V21H3V3H4ZM7 3V10H16V3M7 21V14H17V21M13 5V8',
+'pause':'M5 4H9V20H5V4ZM15 4H19V20H15V4Z',
+'fire':'M8 3H16V6H8V3ZM7 9H17V20H7V9ZM10 6V9M14 6V9M7 15H17',
+'reload':'M19 9 20 5 16 5M20 5 17 3H8L4 7V13M4 15 3 19 7 19M3 19 6 21H15L19 17V11',
+'back':'M11 4 3 12 11 20M3 12H21',
+'settings':'M8 3H16L17 7 21 8V16L17 17 16 21H8L7 17 3 16V8L7 7 8 3ZM9 9H15V15H9V9Z',
+'coin':'M8 3H16L21 8V16L16 21H8L3 16V8L8 3ZM14 7H9V12H15V17H9M12 5V7M12 17V19',
+'check':'M3 12 9 18 21 5',
+'alert':'M12 3 22 21H2L12 3ZM12 8V14M12 17V18',
+'radio':'M4 9H20V21H4V9ZM8 9 17 2M8 13H12V17H8V13M16 13H17M16 17H17',
+'gear':'M3 6H21V19H3V6ZM7 6V3H17V6M3 11H21M10 11V14H14V11',
+'shield':'M4 4 12 2 20 4V13L12 22 4 13V4ZM8 10 11 13 16 7'
+}
+ROOT.mkdir(parents=True,exist_ok=True)
+for name,path in GLYPHS.items():
+ (ROOT/f'{name}.svg').write_text(f'<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="{path}" fill="none" stroke="#ffffff" stroke-width="1.7" stroke-linecap="square" stroke-linejoin="miter"/></svg>\n',encoding='utf-8')
+print(f'{len(GLYPHS)} original UI glyphs')

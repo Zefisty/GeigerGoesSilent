@@ -1,0 +1,95 @@
+const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),vm=require('node:vm'),cp=require('node:child_process');
+const {runtime,eventSave}=require('./runtime.cjs'),ROOT=path.resolve(__dirname,'..');
+const read=file=>fs.readFileSync(path.join(ROOT,file),'utf8'),css=read('ui-v11.css');
+let passed=0;function test(name,fn){fn();passed++;console.log('PASS '+name);}
+// A lightweight stylesheet contract parser, not a browser layout engine.
+function parseSheet(source,condition=''){
+ source=source.replace(/\/\*[\s\S]*?\*\//g,'');const rules=[];let at=0;
+ while(at<source.length){const open=source.indexOf('{',at);if(open<0){assert.equal(source.slice(at).trim(),'');break;}const selector=source.slice(at,open).trim();let depth=1,i=open+1,quote='';
+  for(;i<source.length&&depth;i++){const c=source[i];if(quote){if(c===quote&&source[i-1]!=='\\')quote='';}else if(c==='"'||c==="'")quote=c;else if(c==='{')depth++;else if(c==='}')depth--;}
+  assert.equal(depth,0,'Unbalanced CSS block: '+selector);const content=source.slice(open+1,i-1);
+  if(selector.startsWith('@media'))rules.push(...parseSheet(content,condition+' '+selector));
+  else{const declarations={};for(const part of content.split(';')){if(!part.trim())continue;const colon=part.indexOf(':');assert.ok(colon>0,'Bad declaration '+part);const property=part.slice(0,colon).trim(),value=part.slice(colon+1).trim();assert.match(property,/^(?:--)?[a-z0-9-]+$/i);assert.ok(value,property);declarations[property]=value;}rules.push({selector,condition,declarations});}
+  at=i;
+ }
+ return rules;
+}
+const rules=parseSheet(css);
+function active(condition,width){if(/prefers-reduced-motion|forced-colors/.test(condition))return false;return [...condition.matchAll(/max-width:\s*(\d+)px/g)].every(m=>width<=+m[1]);}
+function value(selector,property,width){return rules.filter(r=>active(r.condition,width)&&r.selector.split(',').map(s=>s.trim()).includes(selector)&&r.declarations[property]).at(-1)?.declarations[property];}
+function controls(html){return [...html.matchAll(/<button\b([^>]*)>([\s\S]*?)<\/button>/g)].map(([,attrs,label])=>{
+ const get=k=>attrs.match(new RegExp('(?:^|\\s)'+k+'="([^"]*)"'))?.[1]||'';
+ return [get('data-action'),get('data-value'),get('data-extra'),/\sdisabled(?:\s|$)/.test(attrs),label.replace(/<[^>]+>/g,'').replace(/\s+/g,' ').trim()];
+});}
+function checkPaths(html){for(const [,src]of html.matchAll(/src="([^"]+)"/g))assert.ok(fs.existsSync(path.join(ROOT,src)),src);}
+test('Design tokens, readable type and a single button family parse without structural CSS errors',()=>{
+ assert.ok(rules.length>200);for(const token of ['ink','panel','raised','line','accent','warning','danger','font','mono','s1','s7','shadow'])assert.match(css,new RegExp('--pda-'+token+':'));
+ assert.match(css,/:hover:not\(:disabled\)/);assert.match(css,/:active:not\(:disabled\)/);assert.match(css,/:focus-visible/);assert.match(css,/button:disabled/);assert.match(css,/transform:none/);
+ for(const name of ['primary-button','secondary-button','danger-button','text-button','choice-button','tiny-button','dock-button','close-button'])assert.ok(css.includes('.'+name));
+});
+test('Breakpoints 1280, 768, 480 and 360 keep readable navigation and bounded panel/card grids',()=>{
+ for(const width of [1280,768,480,360]){
+  assert.equal(value('#app .action-dock','grid-template-columns',width),width<480?'repeat(3,minmax(0,1fr))':'repeat(6,minmax(0,1fr))');
+  assert.equal(value('#app .action-dock .dock-button','min-height',width),width<480?'40px':width<=768?'54px':'44px');
+  assert.ok(value('#app .panel-window','max-height',width).includes('100dvh'));
+  assert.equal(value('#app .game-main','grid-template-columns',width),width<=1000?'minmax(0,1fr)':'minmax(0,1fr) 270px');
+ }
+ assert.match(css,/#app \.shop-actions[^{}]*\{[^}]*grid-column:2/);
+ assert.match(css,/prefers-reduced-motion:reduce/);assert.match(css,/forced-colors:active/);
+});
+test('All 18 original SVG glyphs and CSS image resources exist and are precached',()=>{
+ const files=fs.readdirSync(path.join(ROOT,'assets/ui')).filter(f=>f.endsWith('.svg'));assert.equal(files.length,18);
+ for(const file of files){const source=read('assets/ui/'+file);assert.match(source,/viewBox="0 0 24 24"/);assert.doesNotMatch(source,/<script|<image|http[s]?:\/\/(?!www\.w3\.org)/);assert.ok(Buffer.byteLength(source)<1200);assert.ok(read('pwa-assets.js').includes('./assets/ui/'+file));}
+ for(const [,asset]of css.matchAll(/url\("([^"]+)"\)/g))assert.ok(fs.existsSync(path.join(ROOT,asset)),asset);
+ assert.doesNotMatch(css,/@import|https?:/);assert.ok(read('index.html').indexOf('href="ui-v11.css"')>read('index.html').indexOf('href="style.css"'));
+});
+test('Every PDA screen preserves the stable action/data/disabled/label matrix',()=>{
+ const r=runtime();r.load(r.S.fresh());const current=r.ctx.window.ZoneRPGUI;
+ vm.runInContext(cp.execFileSync('git',['show','HEAD:ui.js'],{cwd:ROOT,encoding:'utf8'}),r.ctx);const old=r.ctx.window.ZoneRPGUI;
+ for(const mode of ['play','inventory','trade','character','quests','map','people','more','encyclopedia','statistics','settings','pause','factions','zoneStory','zonePlaces','achievements','notebook','worldStatus','zoneLegends','background']){
+  const state={...r.E.getState(),mode,feedback:null};current.render(state);const rendered=r.root.innerHTML;checkPaths(rendered);old.render(state);assert.deepEqual(controls(rendered),controls(r.root.innerHTML),mode);
+ }
+ for(const raw of [eventSave(r,'first_visit_cache'),eventSave(r,'v63_ratSwarm')]){r.load(raw);const state=r.E.getState();current.render(state);const actions=controls(r.root.innerHTML);old.render(state);assert.deepEqual(actions,controls(r.root.innerHTML));}
+ const combat=r.S.fresh();combat.combat={type:'boar',enemy:{hp:80,maxHp:80},turn:1,log:[],aimed:false};r.load(combat);const state=r.E.getState();current.render(state);const actions=controls(r.root.innerHTML);old.render(state);assert.deepEqual(actions,controls(r.root.innerHTML));
+});
+test('Location dossier contains one title, existing art, risk/radiation and known faction names',()=>{
+ const r=runtime();r.load(r.S.fresh());const s=r.E.getState(),html=r.root.innerHTML;
+ assert.match(html,/class="location-art-frame"/);assert.match(html,/class="location-identity"/);assert.match(html,/class="location-factions"/);
+ assert.equal((html.match(/<h1>/g)||[]).length,1);assert.ok(html.includes(s.locations[s.player.location].name));assert.ok(html.includes('ФОН'));assert.ok(html.includes('РИСК'));
+});
+test('Event badges distinguish common, rare, story and danger without changing choices or state',()=>{
+ const r=runtime();r.load(eventSave(r,'first_visit_cache'));const base=r.E.getState(),look=(event)=>{const state={...base,event:{...base.event,...event}};const before=JSON.stringify(state);r.ctx.window.ZoneRPGUI.render(state);assert.equal(JSON.stringify(state),before);return r.root.innerHTML;};
+ assert.match(look({id:'ui_common',rarity:'common',choices:[]}),/data-event-tone="common"/);
+ assert.match(look({id:'ui_rare',rarity:'rare',choices:[]}),/data-event-tone="rare"/);
+ assert.match(look({id:'zone_main_visual_fixture',rarity:'common',choices:[]}),/data-event-tone="story"/);
+ assert.match(look({id:'ui_danger',rarity:'common',choices:[{label:'Сражаться',combat:'boar'}]}),/data-event-tone="danger"/);
+ assert.match(look({}),/class="event-badge"/);
+});
+test('Inventory/shop expose readable category and rarity while all quantity/action controls remain',()=>{
+ const r=runtime();r.load(r.S.fresh());r.E.action('openPanel','inventory');assert.match(r.root.innerHTML,/class="item-badges"/);assert.ok(r.root.innerHTML.includes('Оружие'));assert.match(r.root.innerHTML,/data-rarity=/);
+ r.E.action('openPanel','trade');assert.match(r.root.innerHTML,/data-action="buy"/);assert.match(r.root.innerHTML,/data-shop-quantity=/);assert.match(r.root.innerHTML,/class="shop-total"/);assert.match(r.root.innerHTML,/class="trader-art"/);
+});
+test('Profile keeps all equipment slots, actual portraits, progression and existing invest/equip actions',()=>{
+ const r=runtime();r.load(r.S.fresh());r.E.action('openPanel','character');const html=r.root.innerHTML;
+ for(const text of ['Основное оружие','Пистолет','Ближний бой','Броня','Голова','Рюкзак','Детектор','АРТЕФАКТЫ','ВЛАДЕНИЕ ОРУЖИЕМ','РЕПУТАЦИЯ'])assert.ok(html.includes(text),text);
+ assert.match(html,/class="profile-sprite"/);assert.match(html,/class="xp-meter"/);assert.match(html,/class="item-symbol /);
+});
+test('Menu, save picker, More and rest retain their established controls and manual save slot',()=>{
+ const r=runtime();r.ctx.window.ZoneRPGUI.render(r.E.getState());assert.deepEqual(controls(r.root.innerHTML).slice(0,3).map(c=>c[0]),['newGame','savePicker','panel']);
+ r.load(r.S.fresh());r.E.action('openPanel','more');const buttons=controls(r.root.innerHTML).filter(c=>['encyclopedia','statistics','settings','credits','pause'].includes(c[1])||c[0]==='save');assert.equal(buttons.length,6);assert.equal(buttons.at(-2)[0],'save');assert.equal(buttons.at(-1)[1],'pause');
+ const auto=r.store.get(r.Save.KEYS.auto);r.E.action('save');assert.ok(r.store.get(r.Save.KEYS.manual));assert.equal(r.store.get(r.Save.KEYS.auto),auto);
+});
+test('Symbol controls have labels, dialogs have names, motion can be reduced and focus is explicit',()=>{
+ const r=runtime();r.load(r.S.fresh());r.E.action('openPanel','settings');assert.match(r.root.innerHTML,/role="dialog" aria-modal="false" aria-label="Настройки"/);assert.match(r.root.innerHTML,/aria-label="Закрыть"/);
+ assert.match(css,/outline:2px solid var\(--pda-accent\)/);assert.match(css,/body\[data-motion="reduced"\]/);assert.doesNotMatch(css,/outline:\s*(?:0|none)/);
+});
+test('Core game files, save schema, app identity and raster art are unchanged; config changes version only',()=>{
+ const normalize=s=>s.replace(/\r\n/g,'\n');for(const file of ['engine.js','game.js','items.js','world.js','state.js','save.js','shops.js','art.js','manifest.webmanifest','pwa-register.js'])assert.equal(normalize(read(file)),normalize(cp.execFileSync('git',['show','HEAD:'+file],{cwd:ROOT,encoding:'utf8'})),file);
+ const stripVersion=s=>normalize(s).replace(/version:'[^']*'/,"version:'UI'");assert.equal(stripVersion(read('config.js')),stripVersion(cp.execFileSync('git',['show','HEAD:config.js'],{cwd:ROOT,encoding:'utf8'})));assert.match(read('config.js'),/version:'11.0'/);
+ const worker=s=>normalize(s).replace(/const CACHE_VERSION = '[^']+';/,'const CACHE_VERSION = VERSION;');assert.equal(worker(read('service-worker.js')),worker(cp.execFileSync('git',['show','HEAD:service-worker.js'],{cwd:ROOT,encoding:'utf8'})));
+});
+test('Main/secondary/disabled text palettes maintain at least WCAG 4.5:1 contrast',()=>{
+ const lum=hex=>{const rgb=hex.match(/\w\w/g).map(c=>parseInt(c,16)/255).map(c=>c<=.04045?c/12.92:((c+.055)/1.055)**2.4);return rgb[0]*.2126+rgb[1]*.7152+rgb[2]*.0722;};
+ for(const [a,b]of [['e2e9d6','141e17'],['a2ae98','141e17'],['152011','9eaf6c'],['899681','1b251c'],['efb6a7','34201e'],['9db18a','111e14']]){const l=[lum(a),lum(b)].sort((x,y)=>y-x);assert.ok((l[0]+.05)/(l[1]+.05)>=4.5,a+'/'+b);}
+});
+console.log(passed+' v11 UI design checks passed.');
