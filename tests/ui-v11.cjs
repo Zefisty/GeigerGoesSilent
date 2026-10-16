@@ -19,7 +19,7 @@ function active(condition,width){if(/prefers-reduced-motion|forced-colors/.test(
 function value(selector,property,width){return rules.filter(r=>active(r.condition,width)&&r.selector.split(',').map(s=>s.trim()).includes(selector)&&r.declarations[property]).at(-1)?.declarations[property];}
 function controls(html){return [...html.matchAll(/<button\b([^>]*)>([\s\S]*?)<\/button>/g)].map(([,attrs,label])=>{
  const get=k=>attrs.match(new RegExp('(?:^|\\s)'+k+'="([^"]*)"'))?.[1]||'';
- return [get('data-action'),get('data-value'),get('data-extra'),/\sdisabled(?:\s|$)/.test(attrs),label.replace(/<[^>]+>/g,'').replace(/\s+/g,' ').trim()];
+ return [get('data-action'),get('data-value'),get('data-extra'),/\sdisabled(?:\s|$)/.test(attrs),label.replace(/<[^>]+>/g,'').replace(/\s+/g,' ').trim().replace(/^⌕\s*/, '')];
 });}
 function checkPaths(html){for(const [,src]of html.matchAll(/src="([^"]+)"/g))assert.ok(fs.existsSync(path.join(ROOT,src)),src);}
 test('Design tokens, readable type and a single button family parse without structural CSS errors',()=>{

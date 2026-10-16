@@ -63,7 +63,7 @@ body:before { background:repeating-linear-gradient(0deg,transparent 0 4px,#bdd89
 #app .primary-button[data-action="startGame"] { color:var(--pda-accent-ink); }
 
 /* Original glyphs: CSS decoration keeps action names and hit areas intact. */
-#app :is(.primary-button,.secondary-button,.danger-button,.tiny-button,.dock-button):before {
+#app :is(.primary-button,.secondary-button,.danger-button,.text-button,.tiny-button,.dock-button):before {
   content:"";display:none;width:15px;height:15px;flex:0 0 15px;margin:0;
   background:currentColor;-webkit-mask:var(--pda-icon) center/contain no-repeat;mask:var(--pda-icon) center/contain no-repeat;
 }
@@ -145,7 +145,6 @@ body:before { background:repeating-linear-gradient(0deg,transparent 0 4px,#bdd89
 #app .action-dock .dock-button { flex-direction:row;min-height:44px;padding:8px 6px;
   font:600 11px/1.2 var(--pda-font);border-color:#344a31;background:#1b2a1d;gap:7px; }
 #app .action-dock .dock-button:before { width:17px;height:17px;flex-basis:17px; }
-#app .action-dock [data-action="explore"] { background:#314728;border-color:#718750;color:#dce9c3; }
 #app .action-dock .dock-button:disabled { background:#18221a;color:#899681;border-color:#303d2d; }
 
 /* Locations: the image and identity form a single compact field dossier. */
@@ -664,3 +663,40 @@ body[data-motion="reduced"] #app :is(button,.panel-window,.reward-toast) { anima
 #app .field-timeline li{padding:8px 0;border-bottom:1px solid var(--pda-line)}
 #app .field-copy-text{box-sizing:border-box;width:100%;max-width:100%;min-height:160px;color:var(--pda-ink);background:var(--pda-panel);border:1px solid var(--pda-line);padding:8px;resize:vertical}
 @media(max-width:480px){#app .field-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}#app .field-actions>button{flex-basis:100%}}
+
+/* Button consistency: shared spacing and existing local PDA glyphs. */
+:root { --pda-control-gap:8px;--pda-control-height:44px;--pda-control-icon:16px; }
+#app .background-grid { gap:var(--pda-s3);align-items:stretch;grid-auto-rows:1fr; }
+#app .background-card { display:flex;flex-direction:column;gap:var(--pda-s3);height:100%;box-sizing:border-box;min-width:0; }
+#app .background-card>:is(h3,p,small) { margin:0;min-height:0; }
+#app .background-card>.background-portrait { flex:0 0 auto;margin:0; }
+/* Specificity must exceed the shared button margin reset above. */
+#app .background-card>button { margin-top:auto;flex-shrink:0;min-height:var(--pda-control-height); }
+#app :is(.scene-actions,.event-choices,.item-row-actions,.field-actions,.menu-actions,.database-tabs,.settings-system-actions) { gap:var(--pda-control-gap); }
+#app :is(.primary-button,.secondary-button,.text-button,.tiny-button) { gap:var(--pda-control-gap); }
+#app :is(.primary-button,.secondary-button,.text-button,.tiny-button):before { width:var(--pda-control-icon);height:var(--pda-control-icon);flex-basis:var(--pda-control-icon); }
+#app :is([data-action="newGame"],[data-value="credits"]) { --pda-icon:url("assets/ui/person.svg"); }
+#app :is([data-action="savePicker"],[data-action="load"]) { --pda-icon:url("assets/ui/back.svg"); }
+#app :is([data-action="resetTutorial"],[data-action="settings"]) { --pda-icon:url("assets/ui/settings.svg"); }
+#app :is([data-value="encyclopedia"],[data-value="chronicle"],[data-value="archive"],[data-value="personalStory"]) { --pda-icon:url("assets/ui/quests.svg"); }
+#app :is([data-value="statistics"],[data-value="achievements"]) { --pda-icon:url("assets/ui/person.svg"); }
+#app [data-value="factions"] { --pda-icon:url("assets/ui/shield.svg"); }
+#app [data-action="deletePrompt"] { --pda-icon:url("assets/ui/alert.svg"); }
+#app :is([data-value="notebook"],[data-value="rumors"]) { --pda-icon:url("assets/ui/radio.svg"); }
+#app :is([data-value="expeditionHistory"],[data-value="expeditionReport"],[data-action="copyExpeditionSummary"],[data-ui-icon="explore"]) { --pda-icon:url("assets/ui/explore.svg"); }
+#app .database-tab { --pda-icon:url("assets/ui/quests.svg");min-width:0;max-width:100%;min-height:40px; }
+#app .database-tab[data-value="overview"] { --pda-icon:url("assets/ui/more.svg"); }
+#app .database-tab[data-value="locations"] { --pda-icon:url("assets/ui/map.svg"); }
+#app .database-tab[data-value="factions"] { --pda-icon:url("assets/ui/shield.svg"); }
+#app .database-tab[data-value="rumors"] { --pda-icon:url("assets/ui/radio.svg"); }
+#app .database-tab[data-value="expeditions"] { --pda-icon:url("assets/ui/explore.svg"); }
+#app :is([data-action="newGame"],[data-action="savePicker"],[data-action="load"],[data-action="resetTutorial"],
+  [data-action="settings"],[data-value="encyclopedia"],[data-value="statistics"],[data-value="credits"],
+  [data-value="chronicle"],[data-value="archive"],[data-value="personalStory"],[data-value="achievements"],
+  [data-value="factions"],[data-value="notebook"],[data-value="rumors"],[data-action="deletePrompt"],
+  [data-value="expeditionHistory"],[data-value="expeditionReport"],[data-action="copyExpeditionSummary"],
+  [data-ui-icon="explore"],.database-tab):before { display:block; }
+#app .more-actions { grid-auto-rows:1fr; }
+#app .more-actions>button { display:grid;grid-template-columns:var(--pda-control-icon) minmax(0,1fr);
+  align-items:center;justify-content:stretch;gap:var(--pda-control-gap);text-align:left;min-height:56px; }
+#app .more-actions>button:before { width:var(--pda-control-icon);height:var(--pda-control-icon); }
