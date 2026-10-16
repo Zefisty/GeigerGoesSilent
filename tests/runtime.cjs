@@ -1,10 +1,16 @@
 const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),vm=require('node:vm');
 const ROOT=path.resolve(__dirname,'..');
+// Browser lifecycle/audio integrations have their own fixtures. Load the game
+// modules in the order declared by this source revision, including historical
+// revisions which may predate field-journal.js entirely.
+const BROWSER_INTEGRATIONS=new Set(['music-config.js','music-files.js','audio.js','game.js','pwa-register.js']);
 function runtime({readSource}={}){
+  const read=readSource|| (file=>fs.readFileSync(path.join(ROOT,file),'utf8'));
+  const scripts=[...read('index.html').matchAll(/<script\b[^>]*\bsrc="([^"]+)"[^>]*>/g)].map(match=>match[1]).filter(file=>!BROWSER_INTEGRATIONS.has(file));
   const store=new Map(),warnings=[],errors=[],root={innerHTML:'',dataset:{}},body={dataset:{},classList:{add(){},remove(){}}};let clock=0;
   const math=Object.create(Math);math.random=()=>.4;
   const ctx={window:{},document:{getElementById:()=>root,body,documentElement:{style:{setProperty(){}}}},localStorage:{getItem:k=>store.get(k)||null,setItem:(k,v)=>store.set(k,v),removeItem:k=>store.delete(k)},Math:math,performance:{now:()=>clock+=250},setTimeout:()=>1,clearTimeout(){},console:{warn:(...x)=>warnings.push(x),error:(...x)=>errors.push(x),log(){}}};
-  vm.createContext(ctx);for(const file of ['config.js','items.js','world.js','content-v7.js','content-v72.js','personal-stories.js','living-content.js','field-journal.js','living-zone.js','expedition.js','narrative.js','zone-story-data.js','zone-story.js','knowledge.js','shops.js','state.js','save.js','engine.js','art.js','zone-ui.js','field-journal-ui.js','ui.js']){if(readSource&&['field-journal.js','field-journal-ui.js'].includes(file))continue;vm.runInContext(readSource?readSource(file):fs.readFileSync(path.join(ROOT,file),'utf8'),ctx,{filename:file});}
+  vm.createContext(ctx);for(const file of scripts)vm.runInContext(read(file),ctx,{filename:file});
   const {ZoneRPGState:S,ZoneRPGEngine:E,ZoneRPGWorld:W,ZoneRPGItems:I,ZoneRPGSave:Save,ZoneRPGUI:UI}=ctx.window;
   E.onChange(()=>UI.render(E.getState()));
   return{ctx,S,E,W,I,Save,root,store,warnings,errors,load(s){store.set(Save.KEYS.manual,JSON.stringify(s));E.action('load');return E.getState();}};

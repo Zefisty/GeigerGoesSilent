@@ -1,0 +1,454 @@
+{
+  "version": 16,
+  "backgroundId": "rookie",
+  "mode": "menu",
+  "player": {
+    "health": 63,
+    "maxHealth": 100,
+    "stamina": 100,
+    "maxStamina": 100,
+    "hunger": 14,
+    "thirst": 12,
+    "radiation": 0,
+    "money": 9876,
+    "rank": 1,
+    "xp": 0,
+    "kills": 0,
+    "trips": 0,
+    "artifacts": 0,
+    "location": "cordon",
+    "time": 8
+  },
+  "attributes": {
+    "strength": 2,
+    "agility": 2,
+    "endurance": 2,
+    "perception": 2,
+    "intelligence": 2
+  },
+  "attributePoints": 2,
+  "weaponMastery": {
+    "pistols": 0,
+    "smg": 0,
+    "rifles": 0,
+    "shotguns": 0,
+    "melee": 0
+  },
+  "baseStats": {
+    "maxHealth": 100,
+    "maxStamina": 100,
+    "maxCarryWeight": 25
+  },
+  "temporaryModifiers": {},
+  "inventory": [
+    {
+      "id": "knife",
+      "qty": 1,
+      "instanceId": "item-1"
+    },
+    {
+      "id": "pm",
+      "qty": 1,
+      "instanceId": "item-2"
+    },
+    {
+      "id": "jacket",
+      "qty": 1,
+      "instanceId": "item-3"
+    },
+    {
+      "id": "fieldPack",
+      "qty": 1,
+      "instanceId": "item-4"
+    },
+    {
+      "id": "ammo918",
+      "qty": 28
+    },
+    {
+      "id": "medkit",
+      "qty": 1
+    },
+    {
+      "id": "bandage",
+      "qty": 2
+    },
+    {
+      "id": "canned",
+      "qty": 2
+    },
+    {
+      "id": "water",
+      "qty": 2
+    },
+    {
+      "id": "antirad",
+      "qty": 1
+    }
+  ],
+  "nextItemInstance": 5,
+  "equipment": {
+    "primary": null,
+    "sidearm": "item-2",
+    "melee": "item-1",
+    "armor": "item-3",
+    "head": null,
+    "backpack": "item-4",
+    "detector": null,
+    "activeWeaponSlot": "sidearm",
+    "weapon": "pm",
+    "artifacts": []
+  },
+  "magazines": {
+    "pm": 8
+  },
+  "reputation": {
+    "loners": 0,
+    "bandits": 0,
+    "duty": 0,
+    "freedom": 0,
+    "military": 0,
+    "ecologists": 0,
+    "mercs": 0,
+    "mutants": -10,
+    "monolith": -25
+  },
+  "quests": {
+    "active": [
+      {
+        "id": "first_road",
+        "step": 0,
+        "progress": 0,
+        "searchAttempts": 2,
+        "acceptedAtLocation": "cordon"
+      }
+    ],
+    "completed": []
+  },
+  "known": [
+    "cordon",
+    "garbage",
+    "rookie",
+    "checkpoint",
+    "railway",
+    "southTunnel",
+    "deadVillage"
+  ],
+  "visited": [
+    "cordon"
+  ],
+  "seenEvents": [],
+  "recentEvents": [],
+  "takenCaches": [],
+  "explores": {},
+  "expedition": {
+    "active": false,
+    "originLocationId": null,
+    "depth": 0,
+    "currentEncounterId": null,
+    "flags": {},
+    "history": [],
+    "summary": {
+      "xp": 0,
+      "money": 0,
+      "kills": 0,
+      "hours": 0,
+      "items": {}
+    }
+  },
+  "lastExpedition": null,
+  "discoveredEnemies": [],
+  "discoveredArtifacts": [],
+  "npcMemory": {},
+  "factionMembership": null,
+  "worldClock": 0,
+  "worldEvents": [],
+  "explorationCount": 0,
+  "explorationActive": false,
+  "explorationOriginLocationId": null,
+  "explorationSessionDepth": 0,
+  "eventXPClaims": [],
+  "backgroundInteractions": [],
+  "knowledge": [],
+  "worldFlags": {
+    "quietWellMedicalCrateFound": false,
+    "documentsFound": false,
+    "stationOpen": false,
+    "hatchOpened": false,
+    "pigGiftClaimed": false
+  },
+  "travelTo": null,
+  "event": null,
+  "combat": null,
+  "log": [
+    "Ты входишь в Зону. Начальный сектор: Кордон."
+  ],
+  "rumors": [],
+  "heardRumors": [],
+  "rumorVisit": {
+    "location": "cordon",
+    "heard": false
+  },
+  "tutorial": {
+    "seen": [],
+    "queue": [],
+    "battles": 0
+  },
+  "settings": {
+    "musicVolume": 1,
+    "effectsVolume": 1,
+    "tutorialHints": true,
+    "muted": false,
+    "scale": 1,
+    "reduceMotion": false,
+    "music": true,
+    "sfx": true,
+    "volume": 0.35,
+    "autoTurnInQuests": false
+  },
+  "statistics": {
+    "earnings": 0,
+    "artifacts": 0,
+    "kills": 0,
+    "quests": 0
+  },
+  "startingLocation": "cordon",
+  "initialReputationModifiers": {},
+  "zoneStory": {
+    "stage": 0,
+    "hooks": [],
+    "clues": [],
+    "choices": {},
+    "trust": {},
+    "routes": {},
+    "pois": [],
+    "secrets": {},
+    "claims": [],
+    "readyAt": 0,
+    "ending": null,
+    "completedAt": null,
+    "achievements": [],
+    "knowledge": {
+      "mutants": {},
+      "artifacts": {},
+      "locations": {}
+    }
+  },
+  "personalStory": {
+    "backgroundId": "rookie",
+    "currentChapter": 0,
+    "currentQuest": "personal_rookie_1",
+    "completedSteps": [],
+    "importantChoices": {},
+    "relatedNPCs": [
+      "personal_npc_rookie_1",
+      "personal_npc_rookie_2",
+      "personal_npc_rookie_3"
+    ],
+    "unlockedEvents": [
+      "personal_event_rookie_1"
+    ],
+    "endings": [],
+    "rewards": [],
+    "pendingRewards": [],
+    "relationships": {},
+    "sideEvents": [],
+    "log": [],
+    "cooldownUntil": 0,
+    "missedEncounters": 0,
+    "adapted": false
+  },
+  "worldState": {
+    "seed": 400000,
+    "locations": {
+      "cordon": {
+        "visits": 1
+      }
+    },
+    "npcMemory": {},
+    "claims": [],
+    "cooldowns": {},
+    "legendaryEvents": {},
+    "chains": {},
+    "observations": {
+      "cordon": {
+        "state": "calm",
+        "time": 0,
+        "source": "visit"
+      }
+    },
+    "news": [],
+    "renown": 0,
+    "visitSerial": 1,
+    "visitActions": [],
+    "statistics": {
+      "expeditions": 0,
+      "encounters": 0,
+      "battles": 0,
+      "maxDepth": 0
+    }
+  },
+  "traderStocks": {
+    "sidorovich": {
+      "day": 0,
+      "stock": {
+        "water": 3,
+        "bandage": 4,
+        "medkit": 3,
+        "ammo918": 18,
+        "electrolyte": 4,
+        "probe7": 3,
+        "radioBattery": 2,
+        "ammo919": 54,
+        "ammo545": 53,
+        "ammo1270": 25,
+        "ammo9x39": 44,
+        "huntingRifle": 1,
+        "jacket": 1,
+        "sawedoff": 1,
+        "gasmask": 1
+      }
+    },
+    "bar": {
+      "day": 0,
+      "stock": {
+        "water": 6,
+        "canned": 6,
+        "bandage": 5,
+        "medkit": 1,
+        "ration7": 1,
+        "probe7": 4,
+        "radioBattery": 1,
+        "antirad": 4,
+        "ammo545": 35,
+        "ammo762": 56,
+        "ammo1270": 19,
+        "ammo9x39": 56
+      }
+    },
+    "technician": {
+      "day": 0,
+      "stock": {
+        "water": 3,
+        "canned": 4,
+        "bandage": 8,
+        "medkit": 2,
+        "ammo918": 32,
+        "electrolyte": 2,
+        "ration7": 2,
+        "fieldSerum": 4,
+        "radioBattery": 4,
+        "energy": 4,
+        "ammo919": 56,
+        "ammo545": 23,
+        "ammo762": 41,
+        "ammo1270": 47,
+        "ammo9x39": 41,
+        "parts": 4,
+        "moonlight": 1
+      }
+    },
+    "freedomTrader": {
+      "day": 0,
+      "stock": {
+        "water": 3,
+        "canned": 5,
+        "bandage": 8,
+        "medkit": 1,
+        "ammo918": 24,
+        "electrolyte": 4,
+        "fieldSerum": 2,
+        "probe7": 3,
+        "antirad": 1,
+        "energy": 2,
+        "ammo919": 49,
+        "ammo545": 39,
+        "ammo762": 47,
+        "ammo1270": 46,
+        "ammo9x39": 25,
+        "milPack": 1,
+        "gravi": 1
+      }
+    },
+    "labShop7": {
+      "day": 0,
+      "stock": {
+        "water": 5,
+        "canned": 5,
+        "bandage": 6,
+        "medkit": 3,
+        "ammo918": 38,
+        "ration7": 4,
+        "fieldSerum": 2,
+        "probe7": 3,
+        "antirad": 1,
+        "energy": 2,
+        "ammo919": 56,
+        "ammo545": 50,
+        "ammo1270": 59,
+        "ammo9x39": 40
+      }
+    },
+    "quarter7": {
+      "day": 0,
+      "stock": {
+        "water": 6,
+        "canned": 4,
+        "bandage": 3,
+        "medkit": 2,
+        "ammo918": 48,
+        "ration7": 3,
+        "energy": 3,
+        "ammo919": 20,
+        "ammo545": 60,
+        "ammo762": 37,
+        "ammo1270": 24,
+        "ammo9x39": 29,
+        "carbine7": 1,
+        "smg7": 1,
+        "surveyPack": 1,
+        "surveyMask": 1
+      }
+    },
+    "dealer7": {
+      "day": 0,
+      "stock": {
+        "water": 3,
+        "canned": 4,
+        "bandage": 6,
+        "medkit": 3,
+        "ammo918": 51,
+        "electrolyte": 4,
+        "ration7": 4,
+        "fieldSerum": 2,
+        "antirad": 1,
+        "energy": 2,
+        "ammo919": 26,
+        "ammo545": 47,
+        "ammo762": 60,
+        "ammo1270": 46,
+        "ammo9x39": 27,
+        "surveyPack": 1
+      }
+    },
+    "v9_caravan": {
+      "day": 0,
+      "stock": {
+        "water": 3,
+        "canned": 5,
+        "bandage": 4,
+        "medkit": 3,
+        "ammo918": 41,
+        "ration7": 4,
+        "fieldSerum": 2,
+        "probe7": 3,
+        "radioBattery": 2,
+        "ammo919": 39,
+        "ammo545": 19,
+        "ammo762": 46,
+        "ammo1270": 43,
+        "ammo9x39": 40
+      }
+    }
+  }
+}

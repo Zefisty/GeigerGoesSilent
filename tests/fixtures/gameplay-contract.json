@@ -1,0 +1,6241 @@
+{
+  "provenance": "Reviewed current production contract: 520dcb4. Explicit fixture, never regenerated during tests.",
+  "version": 16,
+  "keys": {
+    "legacy": "zonerpg-pda-save",
+    "auto": "zonerpg_autosave",
+    "manual": "zonerpg_manual_save",
+    "migrated": "zonerpg_dual_save_initialized"
+  },
+  "items": {
+    "mutantParts": {
+      "name": "Ткани мутанта",
+      "type": "loot",
+      "price": 65,
+      "weight": 0.35,
+      "stackable": true,
+      "effect": null,
+      "icon": "mutant-parts"
+    },
+    "knife": {
+      "name": "Охотничий нож",
+      "type": "weapon",
+      "slot": "melee",
+      "price": 150,
+      "weight": 0.4,
+      "stackable": false,
+      "effect": null,
+      "weaponId": "knife",
+      "icon": "knife"
+    },
+    "pm": {
+      "name": "ПМ",
+      "type": "weapon",
+      "slot": "sidearm",
+      "price": 900,
+      "weight": 0.9,
+      "stackable": false,
+      "effect": null,
+      "weaponId": "pm",
+      "icon": "pistol"
+    },
+    "pistol19": {
+      "name": "Форт-12",
+      "type": "weapon",
+      "slot": "sidearm",
+      "price": 1400,
+      "weight": 1.1,
+      "stackable": false,
+      "effect": null,
+      "weaponId": "pistol19",
+      "icon": "pistol"
+    },
+    "sawedoff": {
+      "name": "Обрез",
+      "type": "weapon",
+      "slot": "primary",
+      "price": 1600,
+      "weight": 2.4,
+      "stackable": false,
+      "effect": null,
+      "weaponId": "sawedoff",
+      "icon": "shotgun"
+    },
+    "shotgun": {
+      "name": "ТОЗ-34",
+      "type": "weapon",
+      "slot": "primary",
+      "price": 2600,
+      "weight": 3.2,
+      "stackable": false,
+      "effect": null,
+      "weaponId": "shotgun",
+      "icon": "shotgun"
+    },
+    "aksu": {
+      "name": "АКС-74У",
+      "type": "weapon",
+      "slot": "primary",
+      "price": 4200,
+      "weight": 3.1,
+      "stackable": false,
+      "effect": null,
+      "weaponId": "aksu",
+      "icon": "rifle"
+    },
+    "ak": {
+      "name": "АКМ",
+      "type": "weapon",
+      "slot": "primary",
+      "price": 5600,
+      "weight": 3.8,
+      "stackable": false,
+      "effect": null,
+      "weaponId": "ak",
+      "icon": "rifle"
+    },
+    "vintar": {
+      "name": "Винтарь-ВС",
+      "type": "weapon",
+      "slot": "primary",
+      "price": 12500,
+      "weight": 3.7,
+      "stackable": false,
+      "effect": null,
+      "weaponId": "vintar",
+      "icon": "sniper"
+    },
+    "aps": {
+      "name": "АПС",
+      "type": "weapon",
+      "slot": "sidearm",
+      "price": 2300,
+      "weight": 1.2,
+      "stackable": false,
+      "effect": null,
+      "weaponId": "aps",
+      "icon": "pistol-heavy"
+    },
+    "ppVityaz": {
+      "name": "ПП-19 «Витязь»",
+      "type": "weapon",
+      "slot": "primary",
+      "price": 5200,
+      "weight": 3,
+      "stackable": false,
+      "effect": null,
+      "weaponId": "ppVityaz",
+      "icon": "smg"
+    },
+    "huntingRifle": {
+      "name": "Охотничья винтовка",
+      "type": "weapon",
+      "slot": "primary",
+      "price": 3900,
+      "weight": 3.5,
+      "stackable": false,
+      "effect": null,
+      "weaponId": "huntingRifle",
+      "icon": "sniper"
+    },
+    "ammo918": {
+      "name": "Патроны 9×18",
+      "type": "ammo",
+      "price": 8,
+      "weight": 0.018,
+      "stackable": true,
+      "effect": {
+        "ammo": "pm",
+        "amount": 8
+      },
+      "icon": "ammo-pistol"
+    },
+    "ammo919": {
+      "name": "Патроны 9×19",
+      "type": "ammo",
+      "price": 12,
+      "weight": 0.02,
+      "stackable": true,
+      "effect": {
+        "ammo": "pistol19",
+        "amount": 8
+      },
+      "icon": "ammo-pistol"
+    },
+    "ammo545": {
+      "name": "Патроны 5.45×39",
+      "type": "ammo",
+      "price": 16,
+      "weight": 0.025,
+      "stackable": true,
+      "effect": {
+        "ammo": "aksu",
+        "amount": 10
+      },
+      "icon": "ammo-rifle"
+    },
+    "ammo762": {
+      "name": "Патроны 7.62×39",
+      "type": "ammo",
+      "price": 20,
+      "weight": 0.03,
+      "stackable": true,
+      "effect": {
+        "ammo": "ak",
+        "amount": 10
+      },
+      "icon": "ammo-rifle"
+    },
+    "ammo1270": {
+      "name": "Патроны 12×70",
+      "type": "ammo",
+      "price": 14,
+      "weight": 0.045,
+      "stackable": true,
+      "effect": {
+        "ammo": "shotgun",
+        "amount": 6
+      },
+      "icon": "ammo-shells"
+    },
+    "ammo9x39": {
+      "name": "Патроны 9×39",
+      "type": "ammo",
+      "price": 30,
+      "weight": 0.035,
+      "stackable": true,
+      "effect": {
+        "ammo": "vintar",
+        "amount": 5
+      },
+      "icon": "ammo-rifle"
+    },
+    "jacket": {
+      "name": "Куртка новичка",
+      "type": "armor",
+      "slot": "armor",
+      "price": 250,
+      "weight": 2,
+      "effect": {
+        "protection": 0.05,
+        "radResist": 0.02,
+        "maxWeight": 0
+      },
+      "icon": "armor-light"
+    },
+    "leather": {
+      "name": "Кожаная куртка",
+      "type": "armor",
+      "slot": "armor",
+      "price": 950,
+      "weight": 4,
+      "effect": {
+        "protection": 0.13,
+        "radResist": 0.04,
+        "maxWeight": 1
+      },
+      "icon": "armor-light"
+    },
+    "vest": {
+      "name": "Бронежилет",
+      "type": "armor",
+      "slot": "armor",
+      "price": 3200,
+      "weight": 8,
+      "effect": {
+        "protection": 0.34,
+        "radResist": 0.02,
+        "maxWeight": -2
+      },
+      "icon": "armor-vest"
+    },
+    "stalkerSuit": {
+      "name": "Костюм сталкера",
+      "type": "armor",
+      "slot": "armor",
+      "price": 5800,
+      "weight": 7,
+      "effect": {
+        "protection": 0.22,
+        "radResist": 0.18,
+        "maxWeight": 0
+      },
+      "icon": "armor-suit"
+    },
+    "armySuit": {
+      "name": "Армейский костюм",
+      "type": "armor",
+      "slot": "armor",
+      "price": 9200,
+      "weight": 10,
+      "effect": {
+        "protection": 0.39,
+        "radResist": 0.21,
+        "maxWeight": 1
+      },
+      "icon": "armor-suit"
+    },
+    "exoskeleton": {
+      "name": "Экзоскелет",
+      "type": "armor",
+      "slot": "armor",
+      "price": 24000,
+      "weight": 16,
+      "effect": {
+        "protection": 0.62,
+        "radResist": 0.12,
+        "maxWeight": 20
+      },
+      "icon": "armor-exo"
+    },
+    "fieldPack": {
+      "name": "Полевой рюкзак",
+      "type": "backpack",
+      "slot": "backpack",
+      "price": 1100,
+      "weight": 1.8,
+      "stackable": false,
+      "effect": {
+        "maxWeight": 10
+      },
+      "icon": "backpack"
+    },
+    "milPack": {
+      "name": "Военный рюкзак",
+      "type": "backpack",
+      "slot": "backpack",
+      "price": 4200,
+      "weight": 3.2,
+      "stackable": false,
+      "effect": {
+        "maxWeight": 17
+      },
+      "icon": "backpack"
+    },
+    "gasmask": {
+      "name": "Противогаз ПМК",
+      "type": "headgear",
+      "slot": "head",
+      "price": 1800,
+      "weight": 1.4,
+      "stackable": false,
+      "effect": {
+        "radResist": 0.08
+      },
+      "icon": "gas-mask"
+    },
+    "sealedHelmet": {
+      "name": "Герметичный шлем",
+      "type": "headgear",
+      "slot": "head",
+      "price": 6800,
+      "weight": 3.1,
+      "stackable": false,
+      "effect": {
+        "radResist": 0.16,
+        "protection": 0.04,
+        "maxStamina": -4
+      },
+      "icon": "helmet"
+    },
+    "medkit": {
+      "name": "Аптечка",
+      "type": "medicine",
+      "price": 180,
+      "weight": 0.4,
+      "stackable": true,
+      "effect": {
+        "health": 42
+      },
+      "icon": "medkit"
+    },
+    "bandage": {
+      "name": "Бинт",
+      "type": "medicine",
+      "price": 75,
+      "weight": 0.1,
+      "stackable": true,
+      "effect": {
+        "health": 18
+      },
+      "icon": "bandage"
+    },
+    "antirad": {
+      "name": "Антирад",
+      "type": "medicine",
+      "price": 240,
+      "weight": 0.2,
+      "stackable": true,
+      "effect": {
+        "radiation": -35
+      },
+      "icon": "antirad"
+    },
+    "canned": {
+      "name": "Консервы",
+      "type": "food",
+      "price": 90,
+      "weight": 0.45,
+      "stackable": true,
+      "effect": {
+        "hunger": -38
+      },
+      "icon": "canned"
+    },
+    "bread": {
+      "name": "Хлеб",
+      "type": "food",
+      "price": 35,
+      "weight": 0.3,
+      "stackable": true,
+      "effect": {
+        "hunger": -22
+      },
+      "icon": "ration"
+    },
+    "water": {
+      "name": "Вода",
+      "type": "drink",
+      "price": 45,
+      "weight": 0.5,
+      "stackable": true,
+      "effect": {
+        "thirst": -42
+      },
+      "icon": "water"
+    },
+    "energy": {
+      "name": "Энергетик",
+      "type": "drink",
+      "price": 80,
+      "weight": 0.25,
+      "stackable": true,
+      "effect": {
+        "stamina": 35,
+        "thirst": -15
+      },
+      "icon": "energy-drink"
+    },
+    "wires": {
+      "name": "Старые провода",
+      "type": "loot",
+      "price": 45,
+      "weight": 0.8,
+      "stackable": true,
+      "effect": null,
+      "icon": "wires"
+    },
+    "electronics": {
+      "name": "Электроника",
+      "type": "loot",
+      "price": 135,
+      "weight": 1.1,
+      "stackable": true,
+      "effect": null,
+      "icon": "electronics"
+    },
+    "parts": {
+      "name": "Детали",
+      "type": "loot",
+      "price": 90,
+      "weight": 1.4,
+      "stackable": true,
+      "effect": null,
+      "icon": "parts"
+    },
+    "tools": {
+      "name": "Набор инструментов",
+      "type": "loot",
+      "price": 420,
+      "weight": 2.2,
+      "stackable": false,
+      "effect": {
+        "repair": 1
+      },
+      "icon": "tools"
+    },
+    "documents": {
+      "name": "Документы",
+      "type": "quest",
+      "price": 0,
+      "weight": 0.2,
+      "stackable": false,
+      "effect": {
+        "quest": "documents"
+      },
+      "icon": "quest-document"
+    },
+    "valuables": {
+      "name": "Довоенные ценности",
+      "type": "loot",
+      "price": 260,
+      "weight": 0.3,
+      "stackable": true,
+      "effect": null,
+      "icon": "valuables"
+    },
+    "jellyfish": {
+      "name": "Медуза",
+      "type": "artifact",
+      "rarity": "common",
+      "price": 850,
+      "weight": 0.4,
+      "stackable": false,
+      "effect": {
+        "radResist": 0.15,
+        "maxHealth": -5
+      },
+      "icon": "artifact-medusa"
+    },
+    "stoneflower": {
+      "name": "Каменный цветок",
+      "type": "artifact",
+      "rarity": "uncommon",
+      "price": 1500,
+      "weight": 0.8,
+      "stackable": false,
+      "effect": {
+        "protection": 0.12,
+        "radPerTrip": 3
+      },
+      "icon": "artifact-stoneflower"
+    },
+    "meatchunk": {
+      "name": "Ломоть мяса",
+      "type": "artifact",
+      "rarity": "uncommon",
+      "price": 1250,
+      "weight": 0.7,
+      "stackable": false,
+      "effect": {
+        "maxStamina": 15,
+        "radPerTrip": 2
+      },
+      "icon": "artifact-meatchunk"
+    },
+    "flash": {
+      "name": "Вспышка",
+      "type": "artifact",
+      "rarity": "rare",
+      "price": 2200,
+      "weight": 0.5,
+      "stackable": false,
+      "effect": {
+        "radResist": 0.24,
+        "maxStamina": -8
+      },
+      "icon": "artifact-flash"
+    },
+    "gravi": {
+      "name": "Грави",
+      "type": "artifact",
+      "rarity": "rare",
+      "price": 2800,
+      "weight": 1.3,
+      "stackable": false,
+      "effect": {
+        "maxWeight": 20,
+        "radPerTrip": 5
+      },
+      "icon": "artifact-gravi"
+    },
+    "spark": {
+      "name": "Искра",
+      "type": "artifact",
+      "rarity": "uncommon",
+      "price": 1900,
+      "weight": 0.4,
+      "stackable": false,
+      "effect": {
+        "maxStamina": 8,
+        "radPerTrip": 1
+      },
+      "icon": "artifact-spark"
+    },
+    "nightstar": {
+      "name": "Ночная звезда",
+      "type": "artifact",
+      "rarity": "very_rare",
+      "price": 6200,
+      "weight": 0.6,
+      "stackable": false,
+      "effect": {
+        "radResist": 0.3,
+        "maxHealth": -8
+      },
+      "icon": "artifact-nightstar"
+    },
+    "shell": {
+      "name": "Ракушка",
+      "type": "artifact",
+      "rarity": "rare",
+      "price": 3600,
+      "weight": 1.1,
+      "stackable": false,
+      "effect": {
+        "protection": 0.18,
+        "maxStamina": -5
+      },
+      "icon": "artifact-shell"
+    },
+    "fireball": {
+      "name": "Огненный шар",
+      "type": "artifact",
+      "rarity": "rare",
+      "price": 4100,
+      "weight": 0.7,
+      "stackable": false,
+      "effect": {
+        "healthRegen": 1,
+        "maxHealth": 8
+      },
+      "icon": "artifact-fireball"
+    },
+    "moonlight": {
+      "name": "Лунный свет",
+      "type": "artifact",
+      "rarity": "uncommon",
+      "price": 2300,
+      "weight": 0.4,
+      "stackable": false,
+      "effect": {
+        "evasion": 0.08,
+        "radResist": 0.05
+      },
+      "icon": "artifact-moonlight"
+    },
+    "battery": {
+      "name": "Батарейка",
+      "type": "artifact",
+      "rarity": "rare",
+      "price": 3900,
+      "weight": 0.5,
+      "stackable": false,
+      "effect": {
+        "accuracy": 0.08,
+        "maxStamina": -4
+      },
+      "icon": "artifact-battery"
+    },
+    "goldfish": {
+      "name": "Золотая рыбка",
+      "type": "artifact",
+      "rarity": "very_rare",
+      "price": 7500,
+      "weight": 1.4,
+      "stackable": false,
+      "effect": {
+        "maxWeight": 25,
+        "radPerTrip": 4
+      },
+      "icon": "artifact-goldfish"
+    },
+    "soul": {
+      "name": "Душа",
+      "type": "artifact",
+      "rarity": "very_rare",
+      "price": 9200,
+      "weight": 0.6,
+      "stackable": false,
+      "effect": {
+        "maxHealth": 12,
+        "radResist": 0.12
+      },
+      "icon": "artifact-soul"
+    },
+    "needle": {
+      "name": "Игла",
+      "type": "artifact",
+      "rarity": "rare",
+      "price": 4400,
+      "weight": 0.3,
+      "stackable": false,
+      "effect": {
+        "critChance": 0.08,
+        "protection": -0.04
+      },
+      "icon": "artifact-needle"
+    },
+    "bubble": {
+      "name": "Пузырь",
+      "type": "artifact",
+      "rarity": "uncommon",
+      "price": 2100,
+      "weight": 0.7,
+      "stackable": false,
+      "effect": {
+        "radResist": 0.2,
+        "radPerTrip": -1
+      },
+      "icon": "artifact-bubble"
+    },
+    "motherBeads": {
+      "name": "Бусы Бабки",
+      "type": "artifact",
+      "rarity": "anomalous",
+      "price": 18000,
+      "weight": 0.2,
+      "stackable": false,
+      "effect": {
+        "healthRegen": 2,
+        "maxHealth": -18,
+        "radResist": 0.25
+      },
+      "icon": "artifact-beads"
+    },
+    "echoDetector": {
+      "name": "Детектор «Отклик»",
+      "type": "detector",
+      "slot": "detector",
+      "rarity": "common",
+      "price": 1800,
+      "weight": 0.8,
+      "stackable": false,
+      "effect": {
+        "artifactFindChance": 0.12
+      },
+      "icon": "detector"
+    },
+    "svarog": {
+      "name": "Детектор «Сварог»",
+      "type": "detector",
+      "slot": "detector",
+      "rarity": "rare",
+      "price": 7200,
+      "weight": 1.2,
+      "stackable": false,
+      "effect": {
+        "artifactFindChance": 0.23,
+        "radResist": 0.04
+      },
+      "icon": "detector-pro"
+    },
+    "reed": {
+      "name": "Тростник",
+      "type": "artifact",
+      "rarity": "common",
+      "effect": {
+        "maxStamina": 8,
+        "radResist": -0.03
+      },
+      "price": 700,
+      "icon": "artifact-medusa",
+      "weight": 0.45,
+      "stackable": false,
+      "uniqueSource": false
+    },
+    "anchor": {
+      "name": "Якорь",
+      "type": "artifact",
+      "rarity": "uncommon",
+      "effect": {
+        "maxWeight": 4,
+        "maxStamina": -8
+      },
+      "price": 1500,
+      "icon": "artifact-gravi",
+      "weight": 0.45,
+      "stackable": false,
+      "uniqueSource": false
+    },
+    "lens": {
+      "name": "Линза",
+      "type": "artifact",
+      "rarity": "rare",
+      "effect": {
+        "accuracy": 0.06,
+        "maxHealth": -8
+      },
+      "price": 2600,
+      "icon": "artifact-flash",
+      "weight": 0.45,
+      "stackable": false,
+      "uniqueSource": false
+    },
+    "dew": {
+      "name": "Роса",
+      "type": "artifact",
+      "rarity": "uncommon",
+      "effect": {
+        "healthRegen": 1,
+        "maxWeight": -2
+      },
+      "price": 1800,
+      "icon": "artifact-soul",
+      "weight": 0.45,
+      "stackable": false,
+      "uniqueSource": false
+    },
+    "scar": {
+      "name": "Рубец",
+      "type": "artifact",
+      "rarity": "rare",
+      "effect": {
+        "protection": 0.07,
+        "radPerTrip": 1
+      },
+      "price": 3200,
+      "icon": "artifact-shell",
+      "weight": 0.45,
+      "stackable": false,
+      "uniqueSource": false
+    },
+    "echoHeart": {
+      "name": "Сердце эха",
+      "type": "artifact",
+      "rarity": "very_rare",
+      "effect": {
+        "maxHealth": 14,
+        "evasion": -0.025
+      },
+      "price": 5400,
+      "icon": "artifact-soul",
+      "weight": 0.45,
+      "stackable": false,
+      "uniqueSource": false
+    },
+    "mirrorSeed": {
+      "name": "Зеркальное семя",
+      "type": "artifact",
+      "rarity": "special",
+      "effect": {
+        "radResist": 0.25,
+        "maxHealth": -12,
+        "accuracy": 0.03
+      },
+      "price": 8200,
+      "icon": "artifact-nightstar",
+      "weight": 0.45,
+      "stackable": false,
+      "uniqueSource": true
+    },
+    "compass7": {
+      "name": "Компас поймы",
+      "type": "artifact",
+      "rarity": "special",
+      "effect": {
+        "maxStamina": 18,
+        "maxWeight": 2,
+        "maxHealth": -8
+      },
+      "price": 7600,
+      "icon": "artifact-gravi",
+      "weight": 0.45,
+      "stackable": false,
+      "uniqueSource": true
+    },
+    "electrolyte": {
+      "name": "Солевой раствор",
+      "type": "drink",
+      "price": 140,
+      "weight": 0.4,
+      "effect": {
+        "thirst": -30,
+        "stamina": 14
+      },
+      "icon": "water",
+      "stackable": true
+    },
+    "ration7": {
+      "name": "Экспедиционный паёк",
+      "type": "food",
+      "price": 210,
+      "weight": 0.6,
+      "effect": {
+        "hunger": -40,
+        "stamina": 10
+      },
+      "icon": "ration",
+      "stackable": true
+    },
+    "fieldSerum": {
+      "name": "Полевой антидот",
+      "type": "medicine",
+      "price": 350,
+      "weight": 0.2,
+      "effect": {
+        "radiation": -28,
+        "health": 5
+      },
+      "icon": "antirad",
+      "stackable": true
+    },
+    "probe7": {
+      "name": "Пакет болтов",
+      "type": "loot",
+      "price": 80,
+      "weight": 0.2,
+      "effect": {},
+      "icon": "parts",
+      "stackable": true
+    },
+    "sealedSample": {
+      "name": "Опечатанная проба",
+      "type": "quest",
+      "price": 180,
+      "weight": 0.3,
+      "effect": {},
+      "icon": "quest-document",
+      "stackable": true
+    },
+    "radioBattery": {
+      "name": "Батарея рации",
+      "type": "loot",
+      "price": 120,
+      "weight": 0.3,
+      "effect": {},
+      "icon": "electronics",
+      "stackable": true
+    },
+    "routeReport": {
+      "name": "Маршрутный отчёт",
+      "type": "quest",
+      "price": 0,
+      "weight": 0,
+      "effect": {},
+      "icon": "quest-document",
+      "stackable": true
+    },
+    "pumpFuse": {
+      "name": "Предохранитель насоса",
+      "type": "quest",
+      "price": 0,
+      "weight": 0.1,
+      "effect": {},
+      "icon": "electronics",
+      "stackable": true
+    },
+    "surveyPack": {
+      "name": "Рюкзак геодезиста",
+      "type": "backpack",
+      "slot": "backpack",
+      "rarity": "uncommon",
+      "price": 2400,
+      "weight": 1.8,
+      "stackable": false,
+      "icon": "backpack",
+      "effect": {
+        "maxWeight": 12,
+        "maxStamina": -3
+      }
+    },
+    "surveyMask": {
+      "name": "Полевой респиратор",
+      "type": "headgear",
+      "slot": "head",
+      "rarity": "uncommon",
+      "price": 1800,
+      "weight": 0.8,
+      "stackable": false,
+      "icon": "gas-mask",
+      "effect": {
+        "radResist": 0.18
+      }
+    },
+    "carbine7": {
+      "name": "Карабин разведчика",
+      "type": "weapon",
+      "slot": "primary",
+      "price": 4200,
+      "weight": 3.5,
+      "stackable": false,
+      "effect": null,
+      "weaponId": "carbine7",
+      "icon": "sniper"
+    },
+    "smg7": {
+      "name": "ПП патрульный",
+      "type": "weapon",
+      "slot": "primary",
+      "price": 3600,
+      "weight": 3,
+      "stackable": false,
+      "effect": null,
+      "weaponId": "smg7",
+      "icon": "smg"
+    },
+    "personal_rookie_memo": {
+      "name": "Карта Тихона",
+      "type": "quest",
+      "rarity": "uncommon",
+      "price": 0,
+      "weight": 0,
+      "stackable": true,
+      "icon": "quest-document"
+    },
+    "personal_rookie_reward": {
+      "name": "Пояс проводника",
+      "type": "backpack",
+      "slot": "backpack",
+      "effect": {
+        "maxWeight": 9,
+        "evasion": 0.008
+      },
+      "rarity": "rare",
+      "price": 1500,
+      "weight": 1.1,
+      "stackable": false,
+      "icon": "backpack"
+    },
+    "personal_soldier_memo": {
+      "name": "Старый жетон",
+      "type": "quest",
+      "rarity": "uncommon",
+      "price": 0,
+      "weight": 0,
+      "stackable": true,
+      "icon": "quest-document"
+    },
+    "personal_soldier_reward": {
+      "name": "Памятный ПМ",
+      "type": "weapon",
+      "slot": "sidearm",
+      "effect": {
+        "accuracy": 0.008
+      },
+      "rarity": "rare",
+      "price": 1500,
+      "weight": 0.73,
+      "stackable": false,
+      "icon": "pistol",
+      "weaponId": "personal_soldier_reward"
+    },
+    "personal_technician_memo": {
+      "name": "Схема силового узла",
+      "type": "quest",
+      "rarity": "uncommon",
+      "price": 0,
+      "weight": 0,
+      "stackable": true,
+      "icon": "quest-document"
+    },
+    "personal_technician_reward": {
+      "name": "Диагностический датчик",
+      "type": "detector",
+      "slot": "detector",
+      "effect": {
+        "artifactFindChance": 0.025,
+        "radResist": 0.015
+      },
+      "rarity": "rare",
+      "price": 1500,
+      "weight": 0.45,
+      "stackable": false,
+      "icon": "detector"
+    },
+    "personal_hunter_memo": {
+      "name": "Карточка следов",
+      "type": "quest",
+      "rarity": "uncommon",
+      "price": 0,
+      "weight": 0,
+      "stackable": true,
+      "icon": "quest-document"
+    },
+    "personal_hunter_reward": {
+      "name": "Нож следопыта",
+      "type": "weapon",
+      "slot": "melee",
+      "effect": {
+        "evasion": 0.008
+      },
+      "rarity": "rare",
+      "price": 1500,
+      "weight": 0.45,
+      "stackable": false,
+      "icon": "knife",
+      "weaponId": "personal_hunter_reward"
+    },
+    "personal_scavenger_memo": {
+      "name": "Чистая накладная",
+      "type": "quest",
+      "rarity": "uncommon",
+      "price": 0,
+      "weight": 0,
+      "stackable": true,
+      "icon": "quest-document"
+    },
+    "personal_scavenger_reward": {
+      "name": "Рюкзак с двойным дном",
+      "type": "backpack",
+      "slot": "backpack",
+      "effect": {
+        "maxWeight": 12,
+        "maxStamina": -2
+      },
+      "rarity": "rare",
+      "price": 1500,
+      "weight": 1.5,
+      "stackable": false,
+      "icon": "backpack"
+    },
+    "personal_medic_memo": {
+      "name": "Карточка пациента",
+      "type": "quest",
+      "rarity": "uncommon",
+      "price": 0,
+      "weight": 0,
+      "stackable": true,
+      "icon": "quest-document"
+    },
+    "personal_medic_reward": {
+      "name": "Контрольный препарат",
+      "type": "medicine",
+      "slot": null,
+      "effect": {
+        "health": 32,
+        "radiation": -10
+      },
+      "rarity": "rare",
+      "price": 450,
+      "weight": 0.25,
+      "stackable": true,
+      "icon": "antirad"
+    },
+    "v9_fieldJournal": {
+      "name": "Полевой журнал смены",
+      "type": "quest",
+      "price": 0,
+      "weight": 0,
+      "stackable": true,
+      "rarity": "rare",
+      "icon": "quest-document"
+    },
+    "v9_routeLedger": {
+      "name": "Маршрутная пластина",
+      "type": "quest",
+      "price": 0,
+      "weight": 0,
+      "stackable": true,
+      "rarity": "very_rare",
+      "icon": "quest-document"
+    },
+    "v9_markedCharm": {
+      "name": "Безтень",
+      "type": "artifact",
+      "price": 5400,
+      "weight": 0.25,
+      "stackable": false,
+      "rarity": "very_rare",
+      "icon": "artifact-shell",
+      "effect": {
+        "radResist": 0.12,
+        "maxHealth": -4,
+        "evasion": 0.025
+      }
+    },
+    "v9_detectorFrame": {
+      "name": "Рамка дозора",
+      "type": "artifact",
+      "price": 6200,
+      "weight": 0.4,
+      "stackable": false,
+      "rarity": "rare",
+      "icon": "artifact-gravi",
+      "effect": {
+        "artifactFindChance": 0.025,
+        "radPerTrip": 1
+      }
+    },
+    "field_needle": {
+      "name": "Дозиметр «Ласточка»",
+      "type": "detector",
+      "slot": "detector",
+      "rarity": "rare",
+      "price": 2300,
+      "weight": 0.8,
+      "stackable": false,
+      "effect": {
+        "artifactFindChance": 0.14,
+        "radResist": 0.01
+      },
+      "icon": "detector",
+      "id": "field_needle",
+      "named": true,
+      "unique": true
+    },
+    "field_ember": {
+      "name": "Остывшее сердце",
+      "type": "artifact",
+      "rarity": "rare",
+      "price": 2400,
+      "weight": 0.4,
+      "stackable": false,
+      "effect": {
+        "maxStamina": 6,
+        "accuracy": 0.008,
+        "radPerTrip": 1
+      },
+      "icon": "artifact-spark",
+      "id": "field_ember",
+      "named": true,
+      "unique": true
+    },
+    "field_filter": {
+      "name": "ПМК «Вторая смена»",
+      "type": "headgear",
+      "slot": "head",
+      "price": 1850,
+      "weight": 1.4,
+      "stackable": false,
+      "effect": {
+        "radResist": 0.09,
+        "protection": 0.005,
+        "maxStamina": -1
+      },
+      "icon": "gas-mask",
+      "rarity": "rare",
+      "id": "field_filter",
+      "named": true,
+      "unique": true
+    },
+    "field_letter": {
+      "name": "Письмо связиста",
+      "type": "quest",
+      "rarity": "rare",
+      "price": 40,
+      "weight": 0.02,
+      "stackable": false,
+      "icon": "quest-document",
+      "id": "field_letter",
+      "named": true,
+      "unique": false
+    },
+    "zone_pistol": {
+      "name": "ПМ «Дежурный»",
+      "type": "weapon",
+      "slot": "sidearm",
+      "price": 1170,
+      "weight": 0.9,
+      "stackable": false,
+      "effect": null,
+      "weaponId": "zone_pistol",
+      "icon": "pistol",
+      "rarity": "very_rare",
+      "unique": true
+    },
+    "zone_rifle": {
+      "name": "АКС «Просека»",
+      "type": "weapon",
+      "slot": "primary",
+      "price": 5460,
+      "weight": 3.1,
+      "stackable": false,
+      "effect": null,
+      "weaponId": "zone_rifle",
+      "icon": "rifle",
+      "rarity": "very_rare",
+      "unique": true
+    },
+    "zone_shotgun": {
+      "name": "ТОЗ «Сухая тропа»",
+      "type": "weapon",
+      "slot": "primary",
+      "price": 3380,
+      "weight": 3.2,
+      "stackable": false,
+      "effect": null,
+      "weaponId": "zone_shotgun",
+      "icon": "shotgun",
+      "rarity": "very_rare",
+      "unique": true
+    },
+    "zone_smg": {
+      "name": "ПП «Тихий пост»",
+      "type": "weapon",
+      "slot": "primary",
+      "price": 6760,
+      "weight": 3,
+      "stackable": false,
+      "effect": null,
+      "weaponId": "zone_smg",
+      "icon": "smg",
+      "rarity": "very_rare",
+      "unique": true
+    },
+    "zone_tools": {
+      "id": "zone_tools",
+      "name": "Инструменты Верес",
+      "type": "detector",
+      "slot": "detector",
+      "weight": 1.2,
+      "price": 1800,
+      "stackable": false,
+      "effect": {
+        "artifactFindChance": 0.025
+      },
+      "rarity": "very_rare",
+      "icon": "detector",
+      "unique": true
+    },
+    "zone_pack": {
+      "id": "zone_pack",
+      "name": "Рюкзак «Резерв»",
+      "type": "backpack",
+      "slot": "backpack",
+      "weight": 1.2,
+      "price": 1800,
+      "stackable": false,
+      "effect": {
+        "maxWeight": 9,
+        "maxStamina": -3
+      },
+      "rarity": "very_rare",
+      "icon": "backpack",
+      "unique": true
+    },
+    "zone_mask": {
+      "id": "zone_mask",
+      "name": "Маска «Канал»",
+      "type": "headgear",
+      "slot": "head",
+      "weight": 1.2,
+      "price": 1800,
+      "stackable": false,
+      "effect": {
+        "radResist": 0.27,
+        "accuracy": -0.01
+      },
+      "rarity": "very_rare",
+      "icon": "gas-mask",
+      "unique": true
+    },
+    "zone_vest": {
+      "id": "zone_vest",
+      "name": "Жилет «Смена»",
+      "type": "armor",
+      "slot": "armor",
+      "weight": 4,
+      "price": 1800,
+      "stackable": false,
+      "effect": {
+        "protection": 0.24,
+        "maxStamina": -4
+      },
+      "rarity": "very_rare",
+      "icon": "armor-suit",
+      "unique": true
+    },
+    "zone_stone": {
+      "id": "zone_stone",
+      "name": "«Уровень воды»",
+      "type": "artifact",
+      "slot": null,
+      "weight": 0.4,
+      "price": 2200,
+      "stackable": false,
+      "effect": {
+        "radResist": 0.12,
+        "maxHealth": -4
+      },
+      "rarity": "very_rare",
+      "icon": "artifact-rare",
+      "unique": true
+    },
+    "zone_receiver": {
+      "id": "zone_receiver",
+      "name": "Приёмник «Шесть»",
+      "type": "detector",
+      "slot": "detector",
+      "weight": 1.2,
+      "price": 1800,
+      "stackable": false,
+      "effect": {
+        "artifactFindChance": 0.035
+      },
+      "rarity": "very_rare",
+      "icon": "detector",
+      "unique": true
+    },
+    "zone_coat": {
+      "id": "zone_coat",
+      "name": "Куртка картографа",
+      "type": "armor",
+      "slot": "armor",
+      "weight": 4,
+      "price": 1800,
+      "stackable": false,
+      "effect": {
+        "protection": 0.14,
+        "radResist": 0.1
+      },
+      "rarity": "very_rare",
+      "icon": "armor-suit",
+      "unique": true
+    },
+    "zone_lens": {
+      "id": "zone_lens",
+      "name": "«Сухой свет»",
+      "type": "artifact",
+      "slot": null,
+      "weight": 0.4,
+      "price": 2200,
+      "stackable": false,
+      "effect": {
+        "accuracy": 0.04,
+        "radPerTrip": 2
+      },
+      "rarity": "very_rare",
+      "icon": "artifact-rare",
+      "unique": true
+    }
+  },
+  "weapons": {
+    "knife": {
+      "name": "Охотничий нож",
+      "damage": 16,
+      "accuracy": 0.76,
+      "magazine": 0,
+      "ammoType": null,
+      "reloadTime": 0,
+      "fireRate": 1,
+      "critChance": 0.08,
+      "weaponClass": "melee",
+      "price": 150,
+      "weight": 0.4,
+      "range": "ближний бой"
+    },
+    "pm": {
+      "name": "ПМ",
+      "damage": 24,
+      "accuracy": 0.72,
+      "magazine": 8,
+      "ammoType": "ammo918",
+      "reloadTime": 1.2,
+      "fireRate": 0.7,
+      "critChance": 0.1,
+      "weaponClass": "pistol",
+      "price": 900,
+      "weight": 0.9,
+      "range": "короткая"
+    },
+    "pistol19": {
+      "name": "Форт-12",
+      "damage": 28,
+      "accuracy": 0.78,
+      "magazine": 12,
+      "ammoType": "ammo919",
+      "reloadTime": 1.4,
+      "fireRate": 0.65,
+      "critChance": 0.12,
+      "weaponClass": "pistol",
+      "price": 1400,
+      "weight": 1.1,
+      "range": "короткая"
+    },
+    "sawedoff": {
+      "name": "Обрез",
+      "damage": 48,
+      "accuracy": 0.57,
+      "magazine": 2,
+      "ammoType": "ammo1270",
+      "reloadTime": 1.8,
+      "fireRate": 0.45,
+      "critChance": 0.18,
+      "weaponClass": "shotgun",
+      "price": 1600,
+      "weight": 2.4,
+      "range": "короткая"
+    },
+    "shotgun": {
+      "name": "ТОЗ-34",
+      "damage": 56,
+      "accuracy": 0.61,
+      "magazine": 2,
+      "ammoType": "ammo1270",
+      "reloadTime": 2,
+      "fireRate": 0.42,
+      "critChance": 0.2,
+      "weaponClass": "shotgun",
+      "price": 2600,
+      "weight": 3.2,
+      "range": "короткая",
+      "traits": {
+        "mutantBonus": 0.12,
+        "noise": 0.12
+      }
+    },
+    "aksu": {
+      "name": "АКС-74У",
+      "damage": 35,
+      "accuracy": 0.69,
+      "magazine": 30,
+      "ammoType": "ammo545",
+      "reloadTime": 1.8,
+      "fireRate": 0.9,
+      "critChance": 0.1,
+      "weaponClass": "rifle",
+      "price": 4200,
+      "weight": 3.1,
+      "range": "средняя"
+    },
+    "ak": {
+      "name": "АКМ",
+      "damage": 37,
+      "accuracy": 0.67,
+      "magazine": 30,
+      "ammoType": "ammo762",
+      "reloadTime": 2,
+      "fireRate": 0.78,
+      "critChance": 0.12,
+      "weaponClass": "rifle",
+      "price": 5600,
+      "weight": 3.8,
+      "range": "средняя"
+    },
+    "vintar": {
+      "name": "Винтарь-ВС",
+      "damage": 64,
+      "accuracy": 0.9,
+      "magazine": 10,
+      "ammoType": "ammo9x39",
+      "reloadTime": 2.2,
+      "fireRate": 0.48,
+      "critChance": 0.22,
+      "weaponClass": "sniper",
+      "price": 12500,
+      "weight": 3.7,
+      "range": "дальняя",
+      "traits": {
+        "penetration": 0.06,
+        "noise": 0
+      }
+    },
+    "aps": {
+      "name": "АПС",
+      "damage": 31,
+      "accuracy": 0.7,
+      "magazine": 20,
+      "ammoType": "ammo918",
+      "reloadTime": 1.5,
+      "fireRate": 0.88,
+      "critChance": 0.11,
+      "weaponClass": "pistol",
+      "price": 2300,
+      "weight": 1.2,
+      "range": "короткая"
+    },
+    "ppVityaz": {
+      "name": "ПП-19 «Витязь»",
+      "damage": 25,
+      "accuracy": 0.74,
+      "magazine": 30,
+      "ammoType": "ammo919",
+      "reloadTime": 1.7,
+      "fireRate": 0.95,
+      "critChance": 0.09,
+      "weaponClass": "smg",
+      "price": 5200,
+      "weight": 3,
+      "range": "средняя",
+      "traits": {
+        "handling": 0.02,
+        "noise": 0.05
+      }
+    },
+    "huntingRifle": {
+      "name": "Охотничья винтовка",
+      "damage": 46,
+      "accuracy": 0.8,
+      "magazine": 5,
+      "ammoType": "ammo762",
+      "reloadTime": 2,
+      "fireRate": 0.55,
+      "critChance": 0.16,
+      "weaponClass": "rifle",
+      "price": 3900,
+      "weight": 3.5,
+      "range": "средняя",
+      "traits": {
+        "mutantBonus": 0.1,
+        "noise": 0.1
+      }
+    },
+    "carbine7": {
+      "name": "Карабин разведчика",
+      "damage": 33,
+      "accuracy": 0.8,
+      "magazine": 5,
+      "ammoType": "ammo762",
+      "reloadTime": 2,
+      "fireRate": 0.55,
+      "critChance": 0.16,
+      "weaponClass": "rifle",
+      "price": 4200,
+      "weight": 3.5,
+      "range": "средняя"
+    },
+    "smg7": {
+      "name": "ПП патрульный",
+      "damage": 25,
+      "accuracy": 0.7,
+      "magazine": 30,
+      "ammoType": "ammo919",
+      "reloadTime": 1.7,
+      "fireRate": 0.95,
+      "critChance": 0.09,
+      "weaponClass": "smg",
+      "price": 3600,
+      "weight": 3,
+      "range": "средняя"
+    },
+    "personal_soldier_reward": {
+      "name": "Памятный ПМ",
+      "damage": 24,
+      "accuracy": 0.72,
+      "magazine": 8,
+      "ammoType": "ammo918",
+      "reloadTime": 1.05,
+      "fireRate": 0.7,
+      "critChance": 0.1,
+      "weaponClass": "pistol",
+      "price": 900,
+      "weight": 0.9,
+      "range": "короткая"
+    },
+    "personal_hunter_reward": {
+      "name": "Нож следопыта",
+      "damage": 17,
+      "accuracy": 0.78,
+      "magazine": 0,
+      "ammoType": null,
+      "reloadTime": 0,
+      "fireRate": 1,
+      "critChance": 0.08,
+      "weaponClass": "melee",
+      "price": 150,
+      "weight": 0.4,
+      "range": "ближний бой"
+    },
+    "zone_pistol": {
+      "name": "ПМ «Дежурный»",
+      "damage": 24,
+      "accuracy": 0.72,
+      "magazine": 8,
+      "ammoType": "ammo918",
+      "reloadTime": 1.2,
+      "fireRate": 0.7,
+      "critChance": 0.1,
+      "weaponClass": "pistol",
+      "price": 900,
+      "weight": 0.9,
+      "range": "короткая",
+      "traits": {
+        "handling": 0.045
+      }
+    },
+    "zone_rifle": {
+      "name": "АКС «Просека»",
+      "damage": 35,
+      "accuracy": 0.69,
+      "magazine": 30,
+      "ammoType": "ammo545",
+      "reloadTime": 1.8,
+      "fireRate": 0.9,
+      "critChance": 0.1,
+      "weaponClass": "rifle",
+      "price": 4200,
+      "weight": 3.1,
+      "range": "средняя",
+      "traits": {
+        "penetration": 0.08
+      }
+    },
+    "zone_shotgun": {
+      "name": "ТОЗ «Сухая тропа»",
+      "damage": 56,
+      "accuracy": 0.61,
+      "magazine": 2,
+      "ammoType": "ammo1270",
+      "reloadTime": 2,
+      "fireRate": 0.42,
+      "critChance": 0.2,
+      "weaponClass": "shotgun",
+      "price": 2600,
+      "weight": 3.2,
+      "range": "короткая",
+      "traits": {
+        "mutantBonus": 0.12
+      }
+    },
+    "zone_smg": {
+      "name": "ПП «Тихий пост»",
+      "damage": 25,
+      "accuracy": 0.74,
+      "magazine": 30,
+      "ammoType": "ammo919",
+      "reloadTime": 1.7,
+      "fireRate": 0.95,
+      "critChance": 0.09,
+      "weaponClass": "smg",
+      "price": 5200,
+      "weight": 3,
+      "range": "средняя",
+      "traits": {
+        "noise": -0.15
+      }
+    }
+  },
+  "quests": [
+    {
+      "id": "first_road",
+      "text": "Маршрут нужно проверить прежде, чем по нему отправят людей с грузом. Дойди до Свалки, затем вернись на Кордон.",
+      "type": "route",
+      "target": "garbage",
+      "returnTo": "cordon",
+      "reward": 450,
+      "rep": "loners",
+      "repGain": 8,
+      "giver": "sidorovich",
+      "giverLocations": [
+        "cordon"
+      ],
+      "turnInLocations": [
+        "cordon"
+      ],
+      "autoTurnInEligible": true,
+      "rewardTrigger": "turnIn"
+    },
+    {
+      "id": "parts_run",
+      "text": "На посту берегут оставшийся запас и ждут пополнения из дороги. Найди 3 набора деталей и доставь их технику.",
+      "type": "deliver",
+      "item": "parts",
+      "count": 3,
+      "reward": 600,
+      "rep": "loners",
+      "repGain": 6,
+      "giver": "technician",
+      "giverLocations": [
+        "agro",
+        "yantar"
+      ],
+      "turnInLocations": [
+        "agro",
+        "yantar"
+      ],
+      "autoTurnInEligible": false,
+      "rewardTrigger": "turnIn"
+    },
+    {
+      "id": "field_notes",
+      "text": "На посту берегут оставшийся запас и ждут пополнения из дороги. Исследуй Янтарь и принеси учёным документы.",
+      "type": "deliver",
+      "item": "documents",
+      "count": 1,
+      "reward": 900,
+      "rep": "ecologists",
+      "repGain": 12,
+      "giver": "ecologist",
+      "giverLocations": [
+        "swamp",
+        "yantar",
+        "redforest",
+        "pripyat"
+      ],
+      "turnInLocations": [
+        "swamp",
+        "yantar",
+        "redforest",
+        "pripyat"
+      ],
+      "autoTurnInEligible": false,
+      "rewardTrigger": "turnIn",
+      "searchLocation": "yantar"
+    },
+    {
+      "id": "mutant_cull",
+      "objectiveLocations": [
+        "swamp",
+        "darkvalley"
+      ],
+      "text": "Пока угроза остаётся рядом, дозор не может пользоваться этой дорогой. Одолей двух мутантов на болотах или в Тёмной долине.",
+      "type": "kill",
+      "target": "mutants",
+      "count": 2,
+      "reward": 800,
+      "rep": "duty",
+      "repGain": 10,
+      "giver": "duty",
+      "giverLocations": [
+        "agro"
+      ],
+      "turnInLocations": [
+        "agro"
+      ],
+      "autoTurnInEligible": false,
+      "rewardTrigger": "turnIn"
+    },
+    {
+      "id": "bandit_problem",
+      "text": "Пока угроза остаётся рядом, дозор не может пользоваться этой дорогой. Победи двух бандитов или наёмников.",
+      "type": "kill",
+      "target": "hostiles",
+      "count": 2,
+      "reward": 750,
+      "rep": "loners",
+      "repGain": 7,
+      "giver": "sidorovich",
+      "giverLocations": [
+        "cordon"
+      ],
+      "turnInLocations": [
+        "cordon"
+      ],
+      "autoTurnInEligible": false,
+      "rewardTrigger": "turnIn"
+    },
+    {
+      "id": "artifact_sample",
+      "text": "Заказчик сравнивает полевые находки; ему нужен настоящий образец, а не рассказ о нём. Найди любой артефакт и доставь учёным.",
+      "type": "deliverType",
+      "itemType": "artifact",
+      "count": 1,
+      "reward": 700,
+      "rep": "ecologists",
+      "repGain": 8,
+      "giver": "ecologist",
+      "giverLocations": [
+        "swamp",
+        "yantar",
+        "redforest",
+        "pripyat"
+      ],
+      "turnInLocations": [
+        "swamp",
+        "yantar",
+        "redforest",
+        "pripyat"
+      ],
+      "autoTurnInEligible": false,
+      "rewardTrigger": "turnIn"
+    },
+    {
+      "id": "scout_pripyat",
+      "text": "Маршрут нужно проверить прежде, чем по нему отправят людей с грузом. Доберись до Припяти и вернись на Свалку.",
+      "type": "route",
+      "target": "pripyat",
+      "returnTo": "garbage",
+      "reward": 1600,
+      "rep": "loners",
+      "repGain": 12,
+      "giver": "bar",
+      "giverLocations": [
+        "garbage",
+        "yantar"
+      ],
+      "turnInLocations": [
+        "garbage"
+      ],
+      "autoTurnInEligible": true,
+      "rewardTrigger": "turnIn"
+    },
+    {
+      "id": "station",
+      "text": "Открой путь к ЧАЭС и достигни Саркофага.",
+      "type": "visit",
+      "target": "chNpp",
+      "reward": 3000,
+      "rep": "ecologists",
+      "repGain": 15,
+      "giver": "ecologist",
+      "giverLocations": [
+        "swamp",
+        "yantar",
+        "redforest",
+        "pripyat"
+      ],
+      "turnInLocations": [
+        "swamp",
+        "yantar",
+        "redforest",
+        "pripyat"
+      ],
+      "autoTurnInEligible": true,
+      "rewardTrigger": "turnIn"
+    },
+    {
+      "id": "depot_marks",
+      "text": "Заказчику нужны свежие наблюдения: старая карта не показывает, кто занимает участок сейчас. Осмотри Свалку трижды и вернись к Макару.",
+      "type": "explore",
+      "target": "garbage",
+      "count": 3,
+      "reward": 520,
+      "rep": "loners",
+      "repGain": 5,
+      "giver": "makar",
+      "giverLocations": [
+        "garbage"
+      ],
+      "turnInLocations": [
+        "garbage"
+      ],
+      "autoTurnInEligible": false,
+      "rewardTrigger": "turnIn"
+    },
+    {
+      "id": "field_samples",
+      "text": "Старые показания расходятся с местностью; контрольный след поможет уточнить границу. Найди следы аномалии в Янтаре и вернись к Вере.",
+      "type": "anomaly",
+      "target": "yantar",
+      "count": 2,
+      "reward": 850,
+      "rep": "ecologists",
+      "repGain": 9,
+      "giver": "vera",
+      "giverLocations": [
+        "yantar"
+      ],
+      "turnInLocations": [
+        "yantar"
+      ],
+      "autoTurnInEligible": false,
+      "rewardTrigger": "turnIn"
+    },
+    {
+      "id": "forest_hunt",
+      "text": "Пока угроза остаётся рядом, дозор не может пользоваться этой дорогой. Одолей двух мутантов и доложи Грому.",
+      "type": "kill",
+      "target": "mutants",
+      "count": 2,
+      "reward": 1100,
+      "rep": "duty",
+      "repGain": 8,
+      "giver": "hunter",
+      "giverLocations": [
+        "redforest"
+      ],
+      "turnInLocations": [
+        "redforest"
+      ],
+      "autoTurnInEligible": false,
+      "rewardTrigger": "turnIn"
+    },
+    {
+      "id": "radio_parts",
+      "text": "На посту берегут оставшийся запас и ждут пополнения из дороги. Принеси радисту два набора деталей.",
+      "type": "deliver",
+      "item": "parts",
+      "count": 2,
+      "reward": 680,
+      "rep": "loners",
+      "repGain": 5,
+      "giver": "radio",
+      "giverLocations": [
+        "warehouses"
+      ],
+      "turnInLocations": [
+        "warehouses"
+      ],
+      "autoTurnInEligible": false,
+      "rewardTrigger": "turnIn"
+    },
+    {
+      "id": "mara_bandages",
+      "text": "На посту берегут оставшийся запас и ждут пополнения из дороги. Принеси Маре аптечку для дозорных.",
+      "type": "deliver",
+      "item": "medkit",
+      "count": 1,
+      "reward": 320,
+      "rep": "loners",
+      "repGain": 4,
+      "giver": "mara",
+      "giverLocations": [
+        "cordon"
+      ],
+      "turnInLocations": [
+        "cordon"
+      ],
+      "autoTurnInEligible": false,
+      "rewardTrigger": "turnIn"
+    },
+    {
+      "id": "grey_parts",
+      "text": "На посту берегут оставшийся запас и ждут пополнения из дороги. Семён ждёт две связки деталей со Свалки.",
+      "type": "deliver",
+      "item": "parts",
+      "count": 2,
+      "reward": 560,
+      "rep": "duty",
+      "repGain": 5,
+      "giver": "sergei",
+      "giverLocations": [
+        "garbage"
+      ],
+      "turnInLocations": [
+        "garbage"
+      ],
+      "autoTurnInEligible": false,
+      "rewardTrigger": "turnIn"
+    },
+    {
+      "id": "mira_sample",
+      "text": "Заказчик сравнивает полевые находки; ему нужен настоящий образец, а не рассказ о нём. Передай Мире любой артефакт для анализа.",
+      "type": "deliverType",
+      "itemType": "artifact",
+      "count": 1,
+      "reward": 780,
+      "rep": "ecologists",
+      "repGain": 7,
+      "giver": "mira",
+      "giverLocations": [
+        "yantar"
+      ],
+      "turnInLocations": [
+        "yantar"
+      ],
+      "autoTurnInEligible": false,
+      "rewardTrigger": "turnIn"
+    },
+    {
+      "id": "railway_cache",
+      "text": "Заказчику нужны свежие наблюдения: старая карта не показывает, кто занимает участок сейчас. Дважды исследуй Старую железную дорогу, затем доложи Юре «Шпале» в этом же секторе.",
+      "type": "explore",
+      "target": "railway",
+      "count": 2,
+      "reward": 430,
+      "rep": "loners",
+      "repGain": 5,
+      "giver": "yura",
+      "giverLocations": [
+        "railway"
+      ],
+      "turnInLocations": [
+        "railway"
+      ],
+      "autoTurnInEligible": false,
+      "rewardTrigger": "turnIn"
+    },
+    {
+      "id": "village_medic",
+      "text": "Заказчику нужны свежие наблюдения: старая карта не показывает, кто занимает участок сейчас. Найди аптечный ящик у Тихого колодца в мёртвой деревне и доложи Анике. Только осмотр самого ящика подтверждает находку.",
+      "type": "explore",
+      "target": "deadVillage",
+      "count": 1,
+      "reward": 520,
+      "rep": "loners",
+      "repGain": 4,
+      "giver": "anika",
+      "giverLocations": [
+        "deadVillage"
+      ],
+      "turnInLocations": [
+        "deadVillage"
+      ],
+      "autoTurnInEligible": false,
+      "rewardTrigger": "turnIn"
+    },
+    {
+      "id": "machine_parts",
+      "text": "На посту берегут оставшийся запас и ждут пополнения из дороги. Принеси Ржавому три детали с машинного двора.",
+      "type": "deliver",
+      "item": "parts",
+      "count": 3,
+      "reward": 690,
+      "rep": "loners",
+      "repGain": 5,
+      "giver": "rusty",
+      "giverLocations": [
+        "machineYard"
+      ],
+      "turnInLocations": [
+        "machineYard"
+      ],
+      "autoTurnInEligible": false,
+      "rewardTrigger": "turnIn"
+    },
+    {
+      "id": "collector_signal",
+      "text": "На посту берегут оставшийся запас и ждут пополнения из дороги. Исследуй коллектор и принеси Льву электронику.",
+      "type": "deliver",
+      "item": "electronics",
+      "count": 1,
+      "reward": 760,
+      "rep": "ecologists",
+      "repGain": 6,
+      "giver": "lev",
+      "giverLocations": [
+        "underground"
+      ],
+      "turnInLocations": [
+        "underground"
+      ],
+      "autoTurnInEligible": false,
+      "rewardTrigger": "turnIn"
+    },
+    {
+      "id": "arsenal_patrol",
+      "objectiveLocation": "militaryDepot",
+      "text": "Пока угроза остаётся рядом, дозор не может пользоваться этой дорогой. Одолей двух противников у заброшенного арсенала.",
+      "type": "kill",
+      "target": "hostiles",
+      "count": 2,
+      "reward": 920,
+      "rep": "military",
+      "repGain": 6,
+      "giver": "kapral",
+      "giverLocations": [
+        "militaryDepot"
+      ],
+      "turnInLocations": [
+        "militaryDepot"
+      ],
+      "autoTurnInEligible": false,
+      "rewardTrigger": "turnIn"
+    },
+    {
+      "id": "ridge_reading",
+      "text": "Старые показания расходятся с местностью; контрольный след поможет уточнить границу. Собери два замера аномального поля для Савы.",
+      "type": "anomaly",
+      "target": "anomalyRidge",
+      "count": 2,
+      "reward": 820,
+      "rep": "loners",
+      "repGain": 6,
+      "giver": "sava",
+      "giverLocations": [
+        "anomalyRidge"
+      ],
+      "turnInLocations": [
+        "anomalyRidge"
+      ],
+      "autoTurnInEligible": false,
+      "rewardTrigger": "turnIn"
+    },
+    {
+      "id": "tunnel_patrol",
+      "text": "Пока угроза остаётся рядом, дозор не может пользоваться этой дорогой. Одолей одного мутанта в Южном тоннеле и доложи Феде в этом же секторе.",
+      "type": "kill",
+      "target": "mutants",
+      "count": 1,
+      "reward": 480,
+      "rep": "loners",
+      "repGain": 4,
+      "giver": "fedya",
+      "objectiveLocation": "southTunnel",
+      "giverLocations": [
+        "southTunnel"
+      ],
+      "turnInLocations": [
+        "southTunnel"
+      ],
+      "autoTurnInEligible": false,
+      "rewardTrigger": "turnIn"
+    },
+    {
+      "id": "mast_repair",
+      "text": "На посту берегут оставшийся запас и ждут пополнения из дороги. Передай Инессе набор деталей для радиомачты.",
+      "type": "deliver",
+      "item": "parts",
+      "count": 1,
+      "reward": 640,
+      "rep": "ecologists",
+      "repGain": 5,
+      "giver": "ines",
+      "giverLocations": [
+        "northOutpost"
+      ],
+      "turnInLocations": [
+        "northOutpost"
+      ],
+      "autoTurnInEligible": false,
+      "rewardTrigger": "turnIn"
+    },
+    {
+      "id": "v7_job_guide7",
+      "text": "Серия замеров нужна, чтобы отличить местную помеху от постоянной опасности. В секторе Радиовысота запусти полевое исследование из журнала, затем сдай отчёт.",
+      "type": "research",
+      "target": "radioHill",
+      "objectiveLocation": "radioHill",
+      "count": 3,
+      "reward": 435,
+      "rep": "loners",
+      "repGain": 4,
+      "giver": "guide7",
+      "giverLocations": [
+        "radioHill"
+      ],
+      "turnInLocations": [
+        "radioHill"
+      ],
+      "autoTurnInEligible": false,
+      "rewardTrigger": "turnIn"
+    },
+    {
+      "id": "v7_job_damMedic",
+      "text": "Серия замеров нужна, чтобы отличить местную помеху от постоянной опасности. В секторе Затопленная пойма запусти полевое исследование из журнала, затем сдай отчёт.",
+      "type": "research",
+      "target": "floodplain",
+      "objectiveLocation": "floodplain",
+      "count": 3,
+      "reward": 435,
+      "rep": "loners",
+      "repGain": 4,
+      "giver": "damMedic",
+      "giverLocations": [
+        "floodplain"
+      ],
+      "turnInLocations": [
+        "floodplain"
+      ],
+      "autoTurnInEligible": false,
+      "rewardTrigger": "turnIn"
+    },
+    {
+      "id": "v7_job_quarryTech",
+      "text": "Серия замеров нужна, чтобы отличить местную помеху от постоянной опасности. В секторе Каменоломня запусти полевое исследование из журнала, затем сдай отчёт.",
+      "type": "research",
+      "target": "quarry",
+      "objectiveLocation": "quarry",
+      "count": 3,
+      "reward": 480,
+      "rep": "loners",
+      "repGain": 4,
+      "giver": "quarryTech",
+      "giverLocations": [
+        "quarry"
+      ],
+      "turnInLocations": [
+        "quarry"
+      ],
+      "autoTurnInEligible": false,
+      "rewardTrigger": "turnIn"
+    },
+    {
+      "id": "v7_job_glassHunter",
+      "text": "Пока угроза остаётся рядом, дозор не может пользоваться этой дорогой. Уничтожь двух мутантов у теплиц и вернись к Мху.",
+      "type": "kill",
+      "target": "mutants",
+      "objectiveLocation": "greenhouse",
+      "count": 2,
+      "reward": 435,
+      "rep": "loners",
+      "repGain": 4,
+      "giver": "glassHunter",
+      "giverLocations": [
+        "greenhouse"
+      ],
+      "turnInLocations": [
+        "greenhouse"
+      ],
+      "autoTurnInEligible": false,
+      "rewardTrigger": "turnIn"
+    },
+    {
+      "id": "v7_job_prof7",
+      "text": "Серия замеров нужна, чтобы отличить местную помеху от постоянной опасности. В секторе Полевой институт запусти полевое исследование из журнала, затем сдай отчёт.",
+      "type": "research",
+      "target": "researchCamp",
+      "objectiveLocation": "researchCamp",
+      "count": 3,
+      "reward": 480,
+      "rep": "ecologists",
+      "repGain": 4,
+      "giver": "prof7",
+      "giverLocations": [
+        "researchCamp"
+      ],
+      "turnInLocations": [
+        "researchCamp"
+      ],
+      "autoTurnInEligible": false,
+      "rewardTrigger": "turnIn"
+    },
+    {
+      "id": "v7_job_guard7",
+      "text": "Заказчику нужны свежие наблюдения: старая карта не показывает, кто занимает участок сейчас. Проверь сектор Форт Долга трижды и вернись к заказчику.",
+      "type": "explore",
+      "target": "dutyFort",
+      "objectiveLocation": "dutyFort",
+      "count": 3,
+      "reward": 525,
+      "rep": "duty",
+      "repGain": 4,
+      "giver": "guard7",
+      "giverLocations": [
+        "dutyFort"
+      ],
+      "turnInLocations": [
+        "dutyFort"
+      ],
+      "autoTurnInEligible": false,
+      "rewardTrigger": "turnIn"
+    },
+    {
+      "id": "v7_job_freedom7",
+      "text": "Заказчику нужны свежие наблюдения: старая карта не показывает, кто занимает участок сейчас. Проверь сектор Вольный лагерь трижды и вернись к заказчику.",
+      "type": "explore",
+      "target": "freeCamp",
+      "objectiveLocation": "freeCamp",
+      "count": 3,
+      "reward": 525,
+      "rep": "freedom",
+      "repGain": 4,
+      "giver": "freedom7",
+      "giverLocations": [
+        "freeCamp"
+      ],
+      "turnInLocations": [
+        "freeCamp"
+      ],
+      "autoTurnInEligible": false,
+      "rewardTrigger": "turnIn"
+    },
+    {
+      "id": "v7_job_mirror7",
+      "text": "Заказчик сравнивает полевые находки; ему нужен настоящий образец, а не рассказ о нём. Принеси любой артефакт Немому у Зеркального озера.",
+      "type": "deliverType",
+      "target": "mirrorLake",
+      "objectiveLocation": "mirrorLake",
+      "count": 1,
+      "reward": 660,
+      "rep": "loners",
+      "repGain": 4,
+      "giver": "mirror7",
+      "giverLocations": [
+        "mirrorLake"
+      ],
+      "itemType": "artifact",
+      "turnInLocations": [
+        "mirrorLake"
+      ],
+      "autoTurnInEligible": false,
+      "rewardTrigger": "turnIn"
+    },
+    {
+      "id": "v7_job_quarter7",
+      "text": "На посту берегут оставшийся запас и ждут пополнения из дороги. Принеси Складову 20 патронов 5,45.",
+      "type": "deliver",
+      "target": "dutyFort",
+      "objectiveLocation": "dutyFort",
+      "count": 20,
+      "reward": 525,
+      "rep": "duty",
+      "repGain": 4,
+      "giver": "quarter7",
+      "giverLocations": [
+        "dutyFort"
+      ],
+      "item": "ammo545",
+      "turnInLocations": [
+        "dutyFort"
+      ],
+      "autoTurnInEligible": false,
+      "rewardTrigger": "turnIn"
+    },
+    {
+      "id": "v7_job_dealer7",
+      "text": "На посту берегут оставшийся запас и ждут пополнения из дороги. Липе нужны два набора деталей для радиостанции.",
+      "type": "deliver",
+      "target": "freeCamp",
+      "objectiveLocation": "freeCamp",
+      "count": 2,
+      "reward": 525,
+      "rep": "freedom",
+      "repGain": 4,
+      "giver": "dealer7",
+      "giverLocations": [
+        "freeCamp"
+      ],
+      "item": "parts",
+      "turnInLocations": [
+        "freeCamp"
+      ],
+      "autoTurnInEligible": false,
+      "rewardTrigger": "turnIn"
+    },
+    {
+      "id": "v7_job_labShop7",
+      "text": "На посту берегут оставшийся запас и ждут пополнения из дороги. Принеси Нине три фляги чистой воды.",
+      "type": "deliver",
+      "target": "researchCamp",
+      "objectiveLocation": "researchCamp",
+      "count": 3,
+      "reward": 480,
+      "rep": "ecologists",
+      "repGain": 4,
+      "giver": "labShop7",
+      "giverLocations": [
+        "researchCamp"
+      ],
+      "item": "water",
+      "turnInLocations": [
+        "researchCamp"
+      ],
+      "autoTurnInEligible": false,
+      "rewardTrigger": "turnIn"
+    },
+    {
+      "id": "v7_job_rookie7",
+      "text": "Маршрут нужно проверить прежде, чем по нему отправят людей с грузом. Проведи маршрут к Радиовысоте, затем вернись в деревню новичков.",
+      "type": "route",
+      "target": "radioHill",
+      "objectiveLocation": "rookie",
+      "count": 3,
+      "reward": 345,
+      "rep": "loners",
+      "repGain": 4,
+      "giver": "rookie7",
+      "giverLocations": [
+        "rookie"
+      ],
+      "returnTo": "rookie",
+      "turnInLocations": [
+        "rookie"
+      ],
+      "autoTurnInEligible": true,
+      "rewardTrigger": "turnIn"
+    },
+    {
+      "id": "v7_job_bandit7",
+      "text": "На посту берегут оставшийся запас и ждут пополнения из дороги. Крюк ждёт две батареи рации в Тёмной Долине.",
+      "type": "deliver",
+      "target": "darkvalley",
+      "objectiveLocation": "darkvalley",
+      "count": 2,
+      "reward": 480,
+      "rep": "bandits",
+      "repGain": 4,
+      "giver": "bandit7",
+      "giverLocations": [
+        "darkvalley"
+      ],
+      "item": "radioBattery",
+      "turnInLocations": [
+        "darkvalley"
+      ],
+      "autoTurnInEligible": false,
+      "rewardTrigger": "turnIn"
+    },
+    {
+      "id": "v7_job_army7",
+      "text": "Маршрут нужно проверить прежде, чем по нему отправят людей с грузом. Проверь дорогу к Каменоломне, затем вернись на блокпост.",
+      "type": "route",
+      "target": "quarry",
+      "objectiveLocation": "checkpoint",
+      "count": 3,
+      "reward": 390,
+      "rep": "military",
+      "repGain": 4,
+      "giver": "army7",
+      "giverLocations": [
+        "checkpoint"
+      ],
+      "returnTo": "checkpoint",
+      "turnInLocations": [
+        "checkpoint"
+      ],
+      "autoTurnInEligible": true,
+      "rewardTrigger": "turnIn"
+    },
+    {
+      "id": "v7_job_merc7",
+      "text": "Пока угроза остаётся рядом, дозор не может пользоваться этой дорогой. Устрани два враждебных контакта на Дикой территории.",
+      "type": "kill",
+      "target": "hostiles",
+      "objectiveLocation": "wild",
+      "count": 2,
+      "reward": 525,
+      "rep": "mercs",
+      "repGain": 4,
+      "giver": "merc7",
+      "giverLocations": [
+        "wild"
+      ],
+      "turnInLocations": [
+        "wild"
+      ],
+      "autoTurnInEligible": false,
+      "rewardTrigger": "turnIn"
+    },
+    {
+      "id": "v7_job_tracker7",
+      "text": "Пока угроза остаётся рядом, дозор не может пользоваться этой дорогой. Седому нужны две победы над мутантами в Рыжем лесу.",
+      "type": "kill",
+      "target": "mutants",
+      "objectiveLocation": "redforest",
+      "count": 2,
+      "reward": 570,
+      "rep": "loners",
+      "repGain": 4,
+      "giver": "tracker7",
+      "giverLocations": [
+        "redforest"
+      ],
+      "turnInLocations": [
+        "redforest"
+      ],
+      "autoTurnInEligible": false,
+      "rewardTrigger": "turnIn"
+    },
+    {
+      "id": "v7_loners_line_1",
+      "text": "Заказчику нужны свежие наблюдения: старая карта не показывает, кто занимает участок сейчас. Исследуй Радиовысота 2 раз. Отчёт сдаётся представителю базы.",
+      "type": "explore",
+      "target": "radioHill",
+      "objectiveLocation": "radioHill",
+      "count": 2,
+      "reward": 630,
+      "rep": "loners",
+      "repGain": 6,
+      "giver": "guide7",
+      "giverLocations": [
+        "radioHill"
+      ],
+      "requiredFaction": "loners",
+      "requiredCompletedQuest": null,
+      "turnInLocations": [
+        "radioHill"
+      ],
+      "autoTurnInEligible": false,
+      "rewardTrigger": "turnIn"
+    },
+    {
+      "id": "v7_loners_line_2",
+      "text": "На посту берегут оставшийся запас и ждут пополнения из дороги. Доставь Батарея рации ×2 представителю базы.",
+      "type": "deliver",
+      "target": "railway",
+      "objectiveLocation": "railway",
+      "count": 2,
+      "reward": 810,
+      "rep": "loners",
+      "repGain": 7,
+      "giver": "guide7",
+      "giverLocations": [
+        "radioHill"
+      ],
+      "requiredFaction": "loners",
+      "requiredCompletedQuest": "v7_loners_line_1",
+      "item": "radioBattery",
+      "turnInLocations": [
+        "radioHill"
+      ],
+      "autoTurnInEligible": false,
+      "rewardTrigger": "turnIn"
+    },
+    {
+      "id": "v7_loners_line_3",
+      "text": "Пока угроза остаётся рядом, дозор не может пользоваться этой дорогой. Уничтожь двух мутантов в секторе Кордон.",
+      "type": "kill",
+      "target": "mutants",
+      "objectiveLocation": "cordon",
+      "count": 2,
+      "reward": 990,
+      "rep": "loners",
+      "repGain": 8,
+      "giver": "guide7",
+      "giverLocations": [
+        "radioHill"
+      ],
+      "requiredFaction": "loners",
+      "requiredCompletedQuest": "v7_loners_line_2",
+      "turnInLocations": [
+        "radioHill"
+      ],
+      "autoTurnInEligible": false,
+      "rewardTrigger": "turnIn"
+    },
+    {
+      "id": "v7_loners_line_4",
+      "text": "Заказчику нужны свежие наблюдения: старая карта не показывает, кто занимает участок сейчас. Исследуй Старая железная дорога 5 раз. Отчёт сдаётся представителю базы.",
+      "type": "explore",
+      "target": "railway",
+      "objectiveLocation": "railway",
+      "count": 6,
+      "reward": 1170,
+      "rep": "loners",
+      "repGain": 9,
+      "giver": "guide7",
+      "giverLocations": [
+        "radioHill"
+      ],
+      "requiredFaction": "loners",
+      "requiredCompletedQuest": "v7_loners_line_3",
+      "turnInLocations": [
+        "radioHill"
+      ],
+      "autoTurnInEligible": false,
+      "rewardTrigger": "turnIn"
+    },
+    {
+      "id": "v7_duty_line_1",
+      "text": "Заказчику нужны свежие наблюдения: старая карта не показывает, кто занимает участок сейчас. Исследуй Форт Долга 2 раз. Отчёт сдаётся представителю базы.",
+      "type": "explore",
+      "target": "dutyFort",
+      "objectiveLocation": "dutyFort",
+      "count": 2,
+      "reward": 630,
+      "rep": "duty",
+      "repGain": 6,
+      "giver": "guard7",
+      "giverLocations": [
+        "dutyFort"
+      ],
+      "requiredFaction": "duty",
+      "requiredCompletedQuest": null,
+      "turnInLocations": [
+        "dutyFort"
+      ],
+      "autoTurnInEligible": false,
+      "rewardTrigger": "turnIn"
+    },
+    {
+      "id": "v7_duty_line_2",
+      "text": "На посту берегут оставшийся запас и ждут пополнения из дороги. Доставь Батарея рации ×2 представителю базы.",
+      "type": "deliver",
+      "target": "militaryDepot",
+      "objectiveLocation": "militaryDepot",
+      "count": 2,
+      "reward": 810,
+      "rep": "duty",
+      "repGain": 7,
+      "giver": "guard7",
+      "giverLocations": [
+        "dutyFort"
+      ],
+      "requiredFaction": "duty",
+      "requiredCompletedQuest": "v7_duty_line_1",
+      "item": "radioBattery",
+      "turnInLocations": [
+        "dutyFort"
+      ],
+      "autoTurnInEligible": false,
+      "rewardTrigger": "turnIn"
+    },
+    {
+      "id": "v7_duty_line_3",
+      "text": "Пока угроза остаётся рядом, дозор не может пользоваться этой дорогой. Уничтожь двух мутантов в секторе Форт Долга.",
+      "type": "kill",
+      "target": "mutants",
+      "objectiveLocation": "dutyFort",
+      "count": 2,
+      "reward": 990,
+      "rep": "duty",
+      "repGain": 8,
+      "giver": "guard7",
+      "giverLocations": [
+        "dutyFort"
+      ],
+      "requiredFaction": "duty",
+      "requiredCompletedQuest": "v7_duty_line_2",
+      "turnInLocations": [
+        "dutyFort"
+      ],
+      "autoTurnInEligible": false,
+      "rewardTrigger": "turnIn"
+    },
+    {
+      "id": "v7_duty_line_4",
+      "text": "Заказчику нужны свежие наблюдения: старая карта не показывает, кто занимает участок сейчас. Исследуй Заброшенный арсенал 5 раз. Отчёт сдаётся представителю базы.",
+      "type": "explore",
+      "target": "militaryDepot",
+      "objectiveLocation": "militaryDepot",
+      "count": 6,
+      "reward": 1170,
+      "rep": "duty",
+      "repGain": 9,
+      "giver": "guard7",
+      "giverLocations": [
+        "dutyFort"
+      ],
+      "requiredFaction": "duty",
+      "requiredCompletedQuest": "v7_duty_line_3",
+      "turnInLocations": [
+        "dutyFort"
+      ],
+      "autoTurnInEligible": false,
+      "rewardTrigger": "turnIn"
+    },
+    {
+      "id": "v7_freedom_line_1",
+      "text": "Заказчику нужны свежие наблюдения: старая карта не показывает, кто занимает участок сейчас. Исследуй Вольный лагерь 2 раз. Отчёт сдаётся представителю базы.",
+      "type": "explore",
+      "target": "freeCamp",
+      "objectiveLocation": "freeCamp",
+      "count": 2,
+      "reward": 630,
+      "rep": "freedom",
+      "repGain": 6,
+      "giver": "freedom7",
+      "giverLocations": [
+        "freeCamp"
+      ],
+      "requiredFaction": "freedom",
+      "requiredCompletedQuest": null,
+      "turnInLocations": [
+        "freeCamp"
+      ],
+      "autoTurnInEligible": false,
+      "rewardTrigger": "turnIn"
+    },
+    {
+      "id": "v7_freedom_line_2",
+      "text": "На посту берегут оставшийся запас и ждут пополнения из дороги. Доставь Батарея рации ×2 представителю базы.",
+      "type": "deliver",
+      "target": "warehouses",
+      "objectiveLocation": "warehouses",
+      "count": 2,
+      "reward": 810,
+      "rep": "freedom",
+      "repGain": 7,
+      "giver": "freedom7",
+      "giverLocations": [
+        "freeCamp"
+      ],
+      "requiredFaction": "freedom",
+      "requiredCompletedQuest": "v7_freedom_line_1",
+      "item": "radioBattery",
+      "turnInLocations": [
+        "freeCamp"
+      ],
+      "autoTurnInEligible": false,
+      "rewardTrigger": "turnIn"
+    },
+    {
+      "id": "v7_freedom_line_3",
+      "text": "Пока угроза остаётся рядом, дозор не может пользоваться этой дорогой. Уничтожь двух мутантов в секторе Вольный лагерь.",
+      "type": "kill",
+      "target": "mutants",
+      "objectiveLocation": "freeCamp",
+      "count": 2,
+      "reward": 990,
+      "rep": "freedom",
+      "repGain": 8,
+      "giver": "freedom7",
+      "giverLocations": [
+        "freeCamp"
+      ],
+      "requiredFaction": "freedom",
+      "requiredCompletedQuest": "v7_freedom_line_2",
+      "turnInLocations": [
+        "freeCamp"
+      ],
+      "autoTurnInEligible": false,
+      "rewardTrigger": "turnIn"
+    },
+    {
+      "id": "v7_freedom_line_4",
+      "text": "Заказчику нужны свежие наблюдения: старая карта не показывает, кто занимает участок сейчас. Исследуй Военные склады 5 раз. Отчёт сдаётся представителю базы.",
+      "type": "explore",
+      "target": "warehouses",
+      "objectiveLocation": "warehouses",
+      "count": 6,
+      "reward": 1170,
+      "rep": "freedom",
+      "repGain": 9,
+      "giver": "freedom7",
+      "giverLocations": [
+        "freeCamp"
+      ],
+      "requiredFaction": "freedom",
+      "requiredCompletedQuest": "v7_freedom_line_3",
+      "turnInLocations": [
+        "freeCamp"
+      ],
+      "autoTurnInEligible": false,
+      "rewardTrigger": "turnIn"
+    },
+    {
+      "id": "v7_ecologists_line_1",
+      "text": "Заказчику нужны свежие наблюдения: старая карта не показывает, кто занимает участок сейчас. Исследуй Полевой институт 2 раз. Отчёт сдаётся представителю базы.",
+      "type": "explore",
+      "target": "researchCamp",
+      "objectiveLocation": "researchCamp",
+      "count": 2,
+      "reward": 630,
+      "rep": "ecologists",
+      "repGain": 6,
+      "giver": "prof7",
+      "giverLocations": [
+        "researchCamp"
+      ],
+      "requiredFaction": "ecologists",
+      "requiredCompletedQuest": null,
+      "turnInLocations": [
+        "researchCamp"
+      ],
+      "autoTurnInEligible": false,
+      "rewardTrigger": "turnIn"
+    },
+    {
+      "id": "v7_ecologists_line_2",
+      "text": "На посту берегут оставшийся запас и ждут пополнения из дороги. Доставь Опечатанная проба ×2 представителю базы.",
+      "type": "deliver",
+      "target": "yantar",
+      "objectiveLocation": "yantar",
+      "count": 2,
+      "reward": 810,
+      "rep": "ecologists",
+      "repGain": 7,
+      "giver": "prof7",
+      "giverLocations": [
+        "researchCamp"
+      ],
+      "requiredFaction": "ecologists",
+      "requiredCompletedQuest": "v7_ecologists_line_1",
+      "item": "sealedSample",
+      "turnInLocations": [
+        "researchCamp"
+      ],
+      "autoTurnInEligible": false,
+      "rewardTrigger": "turnIn"
+    },
+    {
+      "id": "v7_ecologists_line_3",
+      "text": "Пока угроза остаётся рядом, дозор не может пользоваться этой дорогой. Уничтожь двух мутантов в секторе Полевой институт.",
+      "type": "kill",
+      "target": "mutants",
+      "objectiveLocation": "researchCamp",
+      "count": 2,
+      "reward": 990,
+      "rep": "ecologists",
+      "repGain": 8,
+      "giver": "prof7",
+      "giverLocations": [
+        "researchCamp"
+      ],
+      "requiredFaction": "ecologists",
+      "requiredCompletedQuest": "v7_ecologists_line_2",
+      "turnInLocations": [
+        "researchCamp"
+      ],
+      "autoTurnInEligible": false,
+      "rewardTrigger": "turnIn"
+    },
+    {
+      "id": "v7_ecologists_line_4",
+      "text": "Заказчику нужны свежие наблюдения: старая карта не показывает, кто занимает участок сейчас. Исследуй Янтарь 5 раз. Отчёт сдаётся представителю базы.",
+      "type": "explore",
+      "target": "yantar",
+      "objectiveLocation": "yantar",
+      "count": 6,
+      "reward": 1170,
+      "rep": "ecologists",
+      "repGain": 9,
+      "giver": "prof7",
+      "giverLocations": [
+        "researchCamp"
+      ],
+      "requiredFaction": "ecologists",
+      "requiredCompletedQuest": "v7_ecologists_line_3",
+      "turnInLocations": [
+        "researchCamp"
+      ],
+      "autoTurnInEligible": false,
+      "rewardTrigger": "turnIn"
+    },
+    {
+      "id": "personal_rookie_1",
+      "text": "Тихон сушит у костра чужие перчатки. «В первый день легче всего потерять себя. Пройдём тропу вместе?» Цель: Поговорить с наставником. Место: Деревня новичков. Отчёт принимает Тихон — Деревня новичков.",
+      "type": "personal",
+      "personalStory": true,
+      "backgroundId": "rookie",
+      "storyChapter": 0,
+      "target": "rookie",
+      "count": 1,
+      "giver": "personal_npc_rookie_1",
+      "giverNpcId": "personal_npc_rookie_1",
+      "turnInNpcId": "personal_npc_rookie_1",
+      "rep": "loners",
+      "repGain": 2,
+      "reward": 90,
+      "giverLocations": [
+        "rookie"
+      ],
+      "turnInLocations": [
+        "rookie"
+      ],
+      "requiresDialogue": true,
+      "autoTurnInEligible": false,
+      "rewardTrigger": "turnIn",
+      "requiredCompletedQuest": null
+    },
+    {
+      "id": "personal_rookie_2",
+      "text": "Лена заплатила за пропавшую аптечку Павлика. Он отмалчивается: у него нет денег. Цель: Найти проводника. Место: Кордон. Отчёт принимает Лена «Карта» — Кордон.",
+      "type": "personal",
+      "personalStory": true,
+      "backgroundId": "rookie",
+      "storyChapter": 1,
+      "target": "cordon",
+      "count": 1,
+      "giver": "personal_npc_rookie_2",
+      "giverNpcId": "personal_npc_rookie_2",
+      "turnInNpcId": "personal_npc_rookie_2",
+      "rep": "loners",
+      "repGain": 2,
+      "reward": 125,
+      "giverLocations": [
+        "cordon"
+      ],
+      "turnInLocations": [
+        "cordon"
+      ],
+      "requiresDialogue": true,
+      "autoTurnInEligible": false,
+      "rewardTrigger": "turnIn",
+      "requiredCompletedQuest": "personal_rookie_1"
+    },
+    {
+      "id": "personal_rookie_3",
+      "text": "На кузове зацепилась лямка Павлика. Под машиной лежат его записи и целый полевой пакет. Цель: Искать вещи Павлика. Место: Свалка. Отчёт принимает Павлик — Свалка.",
+      "type": "personal",
+      "personalStory": true,
+      "backgroundId": "rookie",
+      "storyChapter": 2,
+      "target": "garbage",
+      "count": 1,
+      "giver": "personal_npc_rookie_3",
+      "giverNpcId": "personal_npc_rookie_3",
+      "turnInNpcId": "personal_npc_rookie_3",
+      "rep": "loners",
+      "repGain": 2,
+      "reward": 160,
+      "giverLocations": [
+        "garbage"
+      ],
+      "turnInLocations": [
+        "garbage"
+      ],
+      "requiresDialogue": true,
+      "autoTurnInEligible": false,
+      "rewardTrigger": "turnIn",
+      "requiredCompletedQuest": "personal_rookie_2"
+    },
+    {
+      "id": "personal_rookie_4",
+      "text": "Тихон спрашивает, кто отправил Павлика одного. Лена просит не впутывать её: она продала ему неверную схему. Цель: Рассказать Тихону о находке. Место: Деревня новичков. Отчёт принимает Павлик — Свалка.",
+      "type": "personal",
+      "personalStory": true,
+      "backgroundId": "rookie",
+      "storyChapter": 3,
+      "target": "rookie",
+      "count": 1,
+      "giver": "personal_npc_rookie_3",
+      "giverNpcId": "personal_npc_rookie_3",
+      "turnInNpcId": "personal_npc_rookie_3",
+      "rep": "loners",
+      "repGain": 2,
+      "reward": 195,
+      "giverLocations": [
+        "garbage"
+      ],
+      "turnInLocations": [
+        "garbage"
+      ],
+      "requiresDialogue": true,
+      "autoTurnInEligible": false,
+      "rewardTrigger": "turnIn",
+      "requiredCompletedQuest": "personal_rookie_3"
+    },
+    {
+      "id": "personal_rookie_5",
+      "text": "У насыпи псы прижали Павлика к вагону. Можно расчистить путь или отвлечь стаю и вывести его через дренаж. Цель: Проверить путь к деревне. Место: Старая железная дорога. Отчёт принимает Лена «Карта» — Кордон.",
+      "type": "personal",
+      "personalStory": true,
+      "backgroundId": "rookie",
+      "storyChapter": 4,
+      "target": "railway",
+      "count": 1,
+      "giver": "personal_npc_rookie_2",
+      "giverNpcId": "personal_npc_rookie_2",
+      "turnInNpcId": "personal_npc_rookie_2",
+      "rep": "loners",
+      "repGain": 2,
+      "reward": 230,
+      "giverLocations": [
+        "cordon"
+      ],
+      "turnInLocations": [
+        "cordon"
+      ],
+      "requiresDialogue": true,
+      "autoTurnInEligible": false,
+      "rewardTrigger": "turnIn",
+      "requiredCompletedQuest": "personal_rookie_4"
+    },
+    {
+      "id": "personal_rookie_6",
+      "text": "Тихон кладёт рядом две карты: свободные дороги и маршруты совместных дозоров. «Теперь выбираешь ты». Цель: Вернуться к наставнику. Место: Деревня новичков. Отчёт принимает Тихон — Деревня новичков.",
+      "type": "personal",
+      "personalStory": true,
+      "backgroundId": "rookie",
+      "storyChapter": 5,
+      "target": "rookie",
+      "count": 1,
+      "giver": "personal_npc_rookie_1",
+      "giverNpcId": "personal_npc_rookie_1",
+      "turnInNpcId": "personal_npc_rookie_1",
+      "rep": "loners",
+      "repGain": 2,
+      "reward": 265,
+      "giverLocations": [
+        "rookie"
+      ],
+      "turnInLocations": [
+        "rookie"
+      ],
+      "requiresDialogue": true,
+      "autoTurnInEligible": false,
+      "rewardTrigger": "turnIn",
+      "requiredCompletedQuest": "personal_rookie_5"
+    },
+    {
+      "id": "personal_soldier_1",
+      "text": "Ты ушёл из части и теперь проходишь блокпост как вольный сталкер. Капитан Вязов узнаёт твой старый позывной и отводит в сторону: патруль со склада не вернулся. Он просит проверить маршрут, который ты знаешь по прежней службе. Цель: Назвать старый позывной. Место: Военный блокпост. Отчёт принимает Капитан Вязов — Военный блокпост.",
+      "type": "personal",
+      "personalStory": true,
+      "backgroundId": "soldier",
+      "storyChapter": 0,
+      "target": "checkpoint",
+      "count": 1,
+      "giver": "personal_npc_soldier_1",
+      "giverNpcId": "personal_npc_soldier_1",
+      "turnInNpcId": "personal_npc_soldier_1",
+      "rep": "military",
+      "repGain": 2,
+      "reward": 90,
+      "giverLocations": [
+        "checkpoint"
+      ],
+      "turnInLocations": [
+        "checkpoint"
+      ],
+      "requiresDialogue": true,
+      "autoTurnInEligible": false,
+      "rewardTrigger": "turnIn",
+      "requiredCompletedQuest": null
+    },
+    {
+      "id": "personal_soldier_2",
+      "text": "Пломба вскрыта изнутри. Под маркировкой грузов спрятан приказ о вывозе гражданских. Цель: Проверить маркировку склада. Место: Заброшенный арсенал. Отчёт принимает Капитан Вязов — Военный блокпост.",
+      "type": "personal",
+      "personalStory": true,
+      "backgroundId": "soldier",
+      "storyChapter": 1,
+      "target": "militaryDepot",
+      "count": 1,
+      "giver": "personal_npc_soldier_2",
+      "giverNpcId": "personal_npc_soldier_1",
+      "turnInNpcId": "personal_npc_soldier_1",
+      "rep": "military",
+      "repGain": 2,
+      "reward": 125,
+      "giverLocations": [
+        "checkpoint"
+      ],
+      "turnInLocations": [
+        "checkpoint"
+      ],
+      "requiresDialogue": true,
+      "autoTurnInEligible": false,
+      "rewardTrigger": "turnIn",
+      "requiredCompletedQuest": "personal_soldier_1"
+    },
+    {
+      "id": "personal_soldier_3",
+      "text": "Саша сидит за решёткой без автомата. Он вывел гражданских вместо выполнения приказа. Цель: Найти Сашу в тоннеле. Место: Южный тоннель. Отчёт принимает Рита «Эфир» — Военные склады.",
+      "type": "personal",
+      "personalStory": true,
+      "backgroundId": "soldier",
+      "storyChapter": 2,
+      "target": "southTunnel",
+      "count": 1,
+      "giver": "personal_npc_soldier_3",
+      "giverNpcId": "personal_npc_soldier_3",
+      "turnInNpcId": "personal_npc_soldier_3",
+      "rep": "military",
+      "repGain": 2,
+      "reward": 160,
+      "giverLocations": [
+        "warehouses"
+      ],
+      "turnInLocations": [
+        "warehouses"
+      ],
+      "requiresDialogue": true,
+      "autoTurnInEligible": false,
+      "rewardTrigger": "turnIn",
+      "requiredCompletedQuest": "personal_soldier_2"
+    },
+    {
+      "id": "personal_soldier_4",
+      "text": "Рита может передать приказ военным или по открытой частоте. Обратного хода у передачи не будет. Цель: Связаться с радисткой. Место: Военные склады. Отчёт принимает Рита «Эфир» — Военные склады.",
+      "type": "personal",
+      "personalStory": true,
+      "backgroundId": "soldier",
+      "storyChapter": 3,
+      "target": "warehouses",
+      "count": 1,
+      "giver": "personal_npc_soldier_3",
+      "giverNpcId": "personal_npc_soldier_3",
+      "turnInNpcId": "personal_npc_soldier_3",
+      "rep": "military",
+      "repGain": 2,
+      "reward": 195,
+      "giverLocations": [
+        "warehouses"
+      ],
+      "turnInLocations": [
+        "warehouses"
+      ],
+      "requiresDialogue": true,
+      "autoTurnInEligible": false,
+      "rewardTrigger": "turnIn",
+      "requiredCompletedQuest": "personal_soldier_3"
+    },
+    {
+      "id": "personal_soldier_5",
+      "text": "На месте сбора ждёт вооружённый посредник. Он требует копию и обещает забыть о Саше. Цель: Проверить место сбора. Место: Заброшенный арсенал. Отчёт принимает Саша «Линия» — Заброшенный арсенал.",
+      "type": "personal",
+      "personalStory": true,
+      "backgroundId": "soldier",
+      "storyChapter": 4,
+      "target": "militaryDepot",
+      "count": 1,
+      "giver": "personal_npc_soldier_2",
+      "giverNpcId": "personal_npc_soldier_2",
+      "turnInNpcId": "personal_npc_soldier_2",
+      "rep": "military",
+      "repGain": 2,
+      "reward": 230,
+      "giverLocations": [
+        "militaryDepot"
+      ],
+      "turnInLocations": [
+        "militaryDepot"
+      ],
+      "requiresDialogue": true,
+      "autoTurnInEligible": false,
+      "rewardTrigger": "turnIn",
+      "requiredCompletedQuest": "personal_soldier_4"
+    },
+    {
+      "id": "personal_soldier_6",
+      "text": "Вязов предлагает вернуть позывной. Рита готова стереть твой след в списках части. Цель: Передать последний рапорт. Место: Военный блокпост. Отчёт принимает Капитан Вязов — Военный блокпост.",
+      "type": "personal",
+      "personalStory": true,
+      "backgroundId": "soldier",
+      "storyChapter": 5,
+      "target": "checkpoint",
+      "count": 1,
+      "giver": "personal_npc_soldier_1",
+      "giverNpcId": "personal_npc_soldier_1",
+      "turnInNpcId": "personal_npc_soldier_1",
+      "rep": "military",
+      "repGain": 2,
+      "reward": 265,
+      "giverLocations": [
+        "checkpoint"
+      ],
+      "turnInLocations": [
+        "checkpoint"
+      ],
+      "requiresDialogue": true,
+      "autoTurnInEligible": false,
+      "rewardTrigger": "turnIn",
+      "requiredCompletedQuest": "personal_soldier_5"
+    },
+    {
+      "id": "personal_technician_1",
+      "text": "Гена нашёл схему резервного питания. Половину подписей смыло, но почерк знаком тебе по прежней работе. Цель: Разобрать старую схему. Место: Старая железная дорога. Отчёт принимает Гена «Контакт» — Старая железная дорога.",
+      "type": "personal",
+      "personalStory": true,
+      "backgroundId": "technician",
+      "storyChapter": 0,
+      "target": "railway",
+      "count": 1,
+      "giver": "personal_npc_technician_1",
+      "giverNpcId": "personal_npc_technician_1",
+      "turnInNpcId": "personal_npc_technician_1",
+      "rep": "ecologists",
+      "repGain": 2,
+      "reward": 90,
+      "giverLocations": [
+        "railway"
+      ],
+      "turnInLocations": [
+        "railway"
+      ],
+      "requiresDialogue": true,
+      "autoTurnInEligible": false,
+      "rewardTrigger": "turnIn",
+      "requiredCompletedQuest": null
+    },
+    {
+      "id": "personal_technician_2",
+      "text": "Ира держит снятый регулятор. Она не отдаст работу случайному человеку, но готова разделить риск. Цель: Починить генератор. Место: Машинный двор. Отчёт принимает Ира «Контур» — Машинный двор.",
+      "type": "personal",
+      "personalStory": true,
+      "backgroundId": "technician",
+      "storyChapter": 1,
+      "target": "machineYard",
+      "count": 1,
+      "giver": "personal_npc_technician_2",
+      "giverNpcId": "personal_npc_technician_2",
+      "turnInNpcId": "personal_npc_technician_2",
+      "rep": "ecologists",
+      "repGain": 2,
+      "reward": 125,
+      "giverLocations": [
+        "machineYard"
+      ],
+      "turnInLocations": [
+        "machineYard"
+      ],
+      "requiresDialogue": true,
+      "autoTurnInEligible": false,
+      "rewardTrigger": "turnIn",
+      "requiredCompletedQuest": "personal_technician_1"
+    },
+    {
+      "id": "personal_technician_3",
+      "text": "Терминал показывает не секреты мира, а список сломанных насосов. Один ещё может питать лабораторию. Цель: Включить терминал. Место: Агропром. Отчёт принимает Доктор Левин — Янтарь.",
+      "type": "personal",
+      "personalStory": true,
+      "backgroundId": "technician",
+      "storyChapter": 2,
+      "target": "agro",
+      "count": 1,
+      "giver": "personal_npc_technician_3",
+      "giverNpcId": "personal_npc_technician_3",
+      "turnInNpcId": "personal_npc_technician_3",
+      "rep": "ecologists",
+      "repGain": 2,
+      "reward": 160,
+      "giverLocations": [
+        "yantar"
+      ],
+      "turnInLocations": [
+        "yantar"
+      ],
+      "requiresDialogue": true,
+      "autoTurnInEligible": false,
+      "rewardTrigger": "turnIn",
+      "requiredCompletedQuest": "personal_technician_2"
+    },
+    {
+      "id": "personal_technician_4",
+      "text": "Левин просит эксклюзивный доступ. Ира считает, что свет сначала нужен полевым мастерским. Цель: Обсудить схему с Левиным. Место: Янтарь. Отчёт принимает Доктор Левин — Янтарь.",
+      "type": "personal",
+      "personalStory": true,
+      "backgroundId": "technician",
+      "storyChapter": 3,
+      "target": "yantar",
+      "count": 1,
+      "giver": "personal_npc_technician_3",
+      "giverNpcId": "personal_npc_technician_3",
+      "turnInNpcId": "personal_npc_technician_3",
+      "rep": "ecologists",
+      "repGain": 2,
+      "reward": 195,
+      "giverLocations": [
+        "yantar"
+      ],
+      "turnInLocations": [
+        "yantar"
+      ],
+      "requiresDialogue": true,
+      "autoTurnInEligible": false,
+      "rewardTrigger": "turnIn",
+      "requiredCompletedQuest": "personal_technician_3"
+    },
+    {
+      "id": "personal_technician_5",
+      "text": "Вода под узлом потрескивает. Перемычка не выдержит прямого включения. Нужен обход или рискованный замер. Цель: Проверить силовой узел. Место: Подземный коллектор. Отчёт принимает Ира «Контур» — Машинный двор.",
+      "type": "personal",
+      "personalStory": true,
+      "backgroundId": "technician",
+      "storyChapter": 4,
+      "target": "underground",
+      "count": 1,
+      "giver": "personal_npc_technician_2",
+      "giverNpcId": "personal_npc_technician_2",
+      "turnInNpcId": "personal_npc_technician_2",
+      "rep": "ecologists",
+      "repGain": 2,
+      "reward": 230,
+      "giverLocations": [
+        "machineYard"
+      ],
+      "turnInLocations": [
+        "machineYard"
+      ],
+      "requiresDialogue": true,
+      "autoTurnInEligible": false,
+      "rewardTrigger": "turnIn",
+      "requiredCompletedQuest": "personal_technician_4"
+    },
+    {
+      "id": "personal_technician_6",
+      "text": "Ира предлагает продать сборку. Левин ждёт открытый комплект. Гена оставил место на твоём стенде. Цель: Собрать полевой прибор. Место: Старая железная дорога. Отчёт принимает Гена «Контакт» — Старая железная дорога.",
+      "type": "personal",
+      "personalStory": true,
+      "backgroundId": "technician",
+      "storyChapter": 5,
+      "target": "railway",
+      "count": 1,
+      "giver": "personal_npc_technician_1",
+      "giverNpcId": "personal_npc_technician_1",
+      "turnInNpcId": "personal_npc_technician_1",
+      "rep": "ecologists",
+      "repGain": 2,
+      "reward": 265,
+      "giverLocations": [
+        "railway"
+      ],
+      "turnInLocations": [
+        "railway"
+      ],
+      "requiresDialogue": true,
+      "autoTurnInEligible": false,
+      "rewardTrigger": "turnIn",
+      "requiredCompletedQuest": "personal_technician_5"
+    },
+    {
+      "id": "personal_hunter_1",
+      "text": "Егор пропустил встречу. На его тропе один глубокий след поверх собачьих, а на ветке висит красная нить. Цель: Определить следы у леса. Место: Деревня новичков. Отчёт принимает Ника «Соль» — Каменоломня.",
+      "type": "personal",
+      "personalStory": true,
+      "backgroundId": "hunter",
+      "storyChapter": 0,
+      "target": "rookie",
+      "count": 1,
+      "giver": "personal_npc_hunter_1",
+      "giverNpcId": "personal_npc_hunter_2",
+      "turnInNpcId": "personal_npc_hunter_2",
+      "rep": "loners",
+      "repGain": 2,
+      "reward": 90,
+      "giverLocations": [
+        "quarry"
+      ],
+      "turnInLocations": [
+        "quarry"
+      ],
+      "requiresDialogue": true,
+      "autoTurnInEligible": false,
+      "rewardTrigger": "turnIn",
+      "requiredCompletedQuest": null
+    },
+    {
+      "id": "personal_hunter_2",
+      "text": "Ника нашла пустой привал. Она хочет трофей; ты ищешь человека. На золе сохранились следы носилок. Цель: Найти привал Егора. Место: Каменоломня. Отчёт принимает Ника «Соль» — Каменоломня.",
+      "type": "personal",
+      "personalStory": true,
+      "backgroundId": "hunter",
+      "storyChapter": 1,
+      "target": "quarry",
+      "count": 1,
+      "giver": "personal_npc_hunter_2",
+      "giverNpcId": "personal_npc_hunter_2",
+      "turnInNpcId": "personal_npc_hunter_2",
+      "rep": "loners",
+      "repGain": 2,
+      "reward": 125,
+      "giverLocations": [
+        "quarry"
+      ],
+      "turnInLocations": [
+        "quarry"
+      ],
+      "requiresDialogue": true,
+      "autoTurnInEligible": false,
+      "rewardTrigger": "turnIn",
+      "requiredCompletedQuest": "personal_hunter_1"
+    },
+    {
+      "id": "personal_hunter_3",
+      "text": "Мирон изучает шерсть: зверь не легенда, а раненый кабан с аномальными пластинами. Цель: Показать образец Мирону. Место: Заброшенные теплицы. Отчёт принимает Мирон — Заброшенные теплицы.",
+      "type": "personal",
+      "personalStory": true,
+      "backgroundId": "hunter",
+      "storyChapter": 2,
+      "target": "greenhouse",
+      "count": 1,
+      "giver": "personal_npc_hunter_3",
+      "giverNpcId": "personal_npc_hunter_3",
+      "turnInNpcId": "personal_npc_hunter_3",
+      "rep": "loners",
+      "repGain": 2,
+      "reward": 160,
+      "giverLocations": [
+        "greenhouse"
+      ],
+      "turnInLocations": [
+        "greenhouse"
+      ],
+      "requiresDialogue": true,
+      "autoTurnInEligible": false,
+      "rewardTrigger": "turnIn",
+      "requiredCompletedQuest": "personal_hunter_2"
+    },
+    {
+      "id": "personal_hunter_4",
+      "text": "Егор жив, но нога не держит. Ника просит оставить его в укрытии на время охоты. Цель: Подготовить выход из леса. Место: Рыжий лес. Отчёт принимает Мирон — Заброшенные теплицы.",
+      "type": "personal",
+      "personalStory": true,
+      "backgroundId": "hunter",
+      "storyChapter": 3,
+      "target": "redforest",
+      "count": 1,
+      "giver": "personal_npc_hunter_3",
+      "giverNpcId": "personal_npc_hunter_3",
+      "turnInNpcId": "personal_npc_hunter_3",
+      "rep": "loners",
+      "repGain": 2,
+      "reward": 195,
+      "giverLocations": [
+        "greenhouse"
+      ],
+      "turnInLocations": [
+        "greenhouse"
+      ],
+      "requiresDialogue": true,
+      "autoTurnInEligible": false,
+      "rewardTrigger": "turnIn",
+      "requiredCompletedQuest": "personal_hunter_3"
+    },
+    {
+      "id": "personal_hunter_5",
+      "text": "На воде идут кольца. Секач узнаёт запах приманки и закрывает голову костяными пластинами. Цель: Найти раненого секача. Место: Рыжий лес. Отчёт принимает Ника «Соль» — Каменоломня.",
+      "type": "personal",
+      "personalStory": true,
+      "backgroundId": "hunter",
+      "storyChapter": 4,
+      "target": "redforest",
+      "count": 1,
+      "giver": "personal_npc_hunter_2",
+      "giverNpcId": "personal_npc_hunter_2",
+      "turnInNpcId": "personal_npc_hunter_2",
+      "rep": "loners",
+      "repGain": 2,
+      "reward": 230,
+      "giverLocations": [
+        "quarry"
+      ],
+      "turnInLocations": [
+        "quarry"
+      ],
+      "requiresDialogue": true,
+      "autoTurnInEligible": false,
+      "rewardTrigger": "turnIn",
+      "requiredCompletedQuest": "personal_hunter_4"
+    },
+    {
+      "id": "personal_hunter_6",
+      "text": "Мирон ждёт наблюдения, Ника — имя победителя. Егор спрашивает, вернутся ли сюда новые охотники. Цель: Передать итог охоты. Место: Заброшенные теплицы. Отчёт принимает Егор «Сухарь» — Деревня новичков.",
+      "type": "personal",
+      "personalStory": true,
+      "backgroundId": "hunter",
+      "storyChapter": 5,
+      "target": "greenhouse",
+      "count": 1,
+      "giver": "personal_npc_hunter_1",
+      "giverNpcId": "personal_npc_hunter_1",
+      "turnInNpcId": "personal_npc_hunter_1",
+      "rep": "loners",
+      "repGain": 2,
+      "reward": 265,
+      "giverLocations": [
+        "rookie"
+      ],
+      "turnInLocations": [
+        "rookie"
+      ],
+      "requiresDialogue": true,
+      "autoTurnInEligible": false,
+      "rewardTrigger": "turnIn",
+      "requiredCompletedQuest": "personal_hunter_5"
+    },
+    {
+      "id": "personal_scavenger_1",
+      "text": "Федька оставил двойную черту на кузове. Вера считает старый груз твоим долгом, хотя ты его не получал. Цель: Узнать метку шайки. Место: Свалка. Отчёт принимает Федька «Шов» — Свалка.",
+      "type": "personal",
+      "personalStory": true,
+      "backgroundId": "scavenger",
+      "storyChapter": 0,
+      "target": "garbage",
+      "count": 1,
+      "giver": "personal_npc_scavenger_1",
+      "giverNpcId": "personal_npc_scavenger_1",
+      "turnInNpcId": "personal_npc_scavenger_1",
+      "rep": "bandits",
+      "repGain": 2,
+      "reward": 90,
+      "giverLocations": [
+        "garbage"
+      ],
+      "turnInLocations": [
+        "garbage"
+      ],
+      "requiresDialogue": true,
+      "autoTurnInEligible": false,
+      "rewardTrigger": "turnIn",
+      "requiredCompletedQuest": null
+    },
+    {
+      "id": "personal_scavenger_2",
+      "text": "В настиле лежит твой прежний тайник. Пломба вскрыта, но двойное дно никто не заметил. Цель: Найти старый тайник. Место: Машинный двор. Отчёт принимает Вера «Касса» — Тёмная долина.",
+      "type": "personal",
+      "personalStory": true,
+      "backgroundId": "scavenger",
+      "storyChapter": 1,
+      "target": "machineYard",
+      "count": 1,
+      "giver": "personal_npc_scavenger_2",
+      "giverNpcId": "personal_npc_scavenger_2",
+      "turnInNpcId": "personal_npc_scavenger_2",
+      "rep": "bandits",
+      "repGain": 2,
+      "reward": 125,
+      "giverLocations": [
+        "darkvalley"
+      ],
+      "turnInLocations": [
+        "darkvalley"
+      ],
+      "requiresDialogue": true,
+      "autoTurnInEligible": false,
+      "rewardTrigger": "turnIn",
+      "requiredCompletedQuest": "personal_scavenger_1"
+    },
+    {
+      "id": "personal_scavenger_3",
+      "text": "Данила узнаёт бирку: груз принадлежал полевому госпиталю. Вера переписала его как собственный. Цель: Проверить накладную у перевозчика. Место: Старая железная дорога. Отчёт принимает Данила «Рейс» — Старая железная дорога.",
+      "type": "personal",
+      "personalStory": true,
+      "backgroundId": "scavenger",
+      "storyChapter": 2,
+      "target": "railway",
+      "count": 1,
+      "giver": "personal_npc_scavenger_3",
+      "giverNpcId": "personal_npc_scavenger_3",
+      "turnInNpcId": "personal_npc_scavenger_3",
+      "rep": "bandits",
+      "repGain": 2,
+      "reward": 160,
+      "giverLocations": [
+        "railway"
+      ],
+      "turnInLocations": [
+        "railway"
+      ],
+      "requiresDialogue": true,
+      "autoTurnInEligible": false,
+      "rewardTrigger": "turnIn",
+      "requiredCompletedQuest": "personal_scavenger_2"
+    },
+    {
+      "id": "personal_scavenger_4",
+      "text": "Вера предлагает убрать накладную. Федька согласен свидетельствовать, но тогда ему придётся уйти из шайки. Цель: Обсудить долг с Верой. Место: Тёмная долина. Отчёт принимает Данила «Рейс» — Старая железная дорога.",
+      "type": "personal",
+      "personalStory": true,
+      "backgroundId": "scavenger",
+      "storyChapter": 3,
+      "target": "darkvalley",
+      "count": 1,
+      "giver": "personal_npc_scavenger_3",
+      "giverNpcId": "personal_npc_scavenger_3",
+      "turnInNpcId": "personal_npc_scavenger_3",
+      "rep": "bandits",
+      "repGain": 2,
+      "reward": 195,
+      "giverLocations": [
+        "railway"
+      ],
+      "turnInLocations": [
+        "railway"
+      ],
+      "requiresDialogue": true,
+      "autoTurnInEligible": false,
+      "rewardTrigger": "turnIn",
+      "requiredCompletedQuest": "personal_scavenger_3"
+    },
+    {
+      "id": "personal_scavenger_5",
+      "text": "У выхода из Свалки стоит сборщик. Он ждёт Федьку и чужую накладную. Цель: Проверить дорогу Федьки. Место: Свалка. Отчёт принимает Вера «Касса» — Тёмная долина.",
+      "type": "personal",
+      "personalStory": true,
+      "backgroundId": "scavenger",
+      "storyChapter": 4,
+      "target": "garbage",
+      "count": 1,
+      "giver": "personal_npc_scavenger_2",
+      "giverNpcId": "personal_npc_scavenger_2",
+      "turnInNpcId": "personal_npc_scavenger_2",
+      "rep": "bandits",
+      "repGain": 2,
+      "reward": 230,
+      "giverLocations": [
+        "darkvalley"
+      ],
+      "turnInLocations": [
+        "darkvalley"
+      ],
+      "requiresDialogue": true,
+      "autoTurnInEligible": false,
+      "rewardTrigger": "turnIn",
+      "requiredCompletedQuest": "personal_scavenger_4"
+    },
+    {
+      "id": "personal_scavenger_6",
+      "text": "Вера ждёт последнего слова. Данила готов вернуть имя владельца груза в записи. Цель: Закончить разговор о долге. Место: Тёмная долина. Отчёт принимает Федька «Шов» — Свалка.",
+      "type": "personal",
+      "personalStory": true,
+      "backgroundId": "scavenger",
+      "storyChapter": 5,
+      "target": "darkvalley",
+      "count": 1,
+      "giver": "personal_npc_scavenger_1",
+      "giverNpcId": "personal_npc_scavenger_1",
+      "turnInNpcId": "personal_npc_scavenger_1",
+      "rep": "bandits",
+      "repGain": 2,
+      "reward": 265,
+      "giverLocations": [
+        "garbage"
+      ],
+      "turnInLocations": [
+        "garbage"
+      ],
+      "requiresDialogue": true,
+      "autoTurnInEligible": false,
+      "rewardTrigger": "turnIn",
+      "requiredCompletedQuest": "personal_scavenger_5"
+    },
+    {
+      "id": "personal_medic_1",
+      "text": "Ася показывает повязку Володи. Пальцы холодные, хотя дозиметр почти молчит. Цель: Осмотреть знакомую рану. Место: Кордон. Отчёт принимает Ася — Кордон.",
+      "type": "personal",
+      "personalStory": true,
+      "backgroundId": "medic",
+      "storyChapter": 0,
+      "target": "cordon",
+      "count": 1,
+      "giver": "personal_npc_medic_1",
+      "giverNpcId": "personal_npc_medic_1",
+      "turnInNpcId": "personal_npc_medic_1",
+      "rep": "ecologists",
+      "repGain": 2,
+      "reward": 90,
+      "giverLocations": [
+        "cordon"
+      ],
+      "turnInLocations": [
+        "cordon"
+      ],
+      "requiresDialogue": true,
+      "autoTurnInEligible": false,
+      "rewardTrigger": "turnIn",
+      "requiredCompletedQuest": null
+    },
+    {
+      "id": "personal_medic_2",
+      "text": "Ночью приходят двое раненых. Одного можно стабилизировать бинтом; второму нужна аптечка. Цель: Проверить запас лекарств. Место: Деревня новичков. Отчёт принимает Володя «Тёплый» — Деревня новичков.",
+      "type": "personal",
+      "personalStory": true,
+      "backgroundId": "medic",
+      "storyChapter": 1,
+      "target": "rookie",
+      "count": 1,
+      "giver": "personal_npc_medic_2",
+      "giverNpcId": "personal_npc_medic_2",
+      "turnInNpcId": "personal_npc_medic_2",
+      "rep": "ecologists",
+      "repGain": 2,
+      "reward": 125,
+      "giverLocations": [
+        "rookie"
+      ],
+      "turnInLocations": [
+        "rookie"
+      ],
+      "requiresDialogue": true,
+      "autoTurnInEligible": false,
+      "rewardTrigger": "turnIn",
+      "requiredCompletedQuest": "personal_medic_1"
+    },
+    {
+      "id": "personal_medic_3",
+      "text": "Романова видит дрожь в пробе, но запрещает давать неизвестный препарат человеку. Володя просит рискнуть. Цель: Определить симптомы у учёных. Место: Янтарь. Отчёт принимает Доктор Романова — Янтарь.",
+      "type": "personal",
+      "personalStory": true,
+      "backgroundId": "medic",
+      "storyChapter": 2,
+      "target": "yantar",
+      "count": 1,
+      "giver": "personal_npc_medic_3",
+      "giverNpcId": "personal_npc_medic_3",
+      "turnInNpcId": "personal_npc_medic_3",
+      "rep": "ecologists",
+      "repGain": 2,
+      "reward": 160,
+      "giverLocations": [
+        "yantar"
+      ],
+      "turnInLocations": [
+        "yantar"
+      ],
+      "requiresDialogue": true,
+      "autoTurnInEligible": false,
+      "rewardTrigger": "turnIn",
+      "requiredCompletedQuest": "personal_medic_2"
+    },
+    {
+      "id": "personal_medic_4",
+      "text": "В теплице сухие материалы рядом с заражённым стоком. Один пакет можно вынести, второй уже мокрый. Цель: Найти чистые перевязочные материалы. Место: Заброшенные теплицы. Отчёт принимает Доктор Романова — Янтарь.",
+      "type": "personal",
+      "personalStory": true,
+      "backgroundId": "medic",
+      "storyChapter": 3,
+      "target": "greenhouse",
+      "count": 1,
+      "giver": "personal_npc_medic_3",
+      "giverNpcId": "personal_npc_medic_3",
+      "turnInNpcId": "personal_npc_medic_3",
+      "rep": "ecologists",
+      "repGain": 2,
+      "reward": 195,
+      "giverLocations": [
+        "yantar"
+      ],
+      "turnInLocations": [
+        "yantar"
+      ],
+      "requiresDialogue": true,
+      "autoTurnInEligible": false,
+      "rewardTrigger": "turnIn",
+      "requiredCompletedQuest": "personal_medic_3"
+    },
+    {
+      "id": "personal_medic_5",
+      "text": "Романова предлагает короткий контролируемый курс. Володя согласен только если ты останешься рядом. Цель: Провести контроль лечения. Место: Янтарь. Отчёт принимает Володя «Тёплый» — Деревня новичков.",
+      "type": "personal",
+      "personalStory": true,
+      "backgroundId": "medic",
+      "storyChapter": 4,
+      "target": "yantar",
+      "count": 1,
+      "giver": "personal_npc_medic_2",
+      "giverNpcId": "personal_npc_medic_2",
+      "turnInNpcId": "personal_npc_medic_2",
+      "rep": "ecologists",
+      "repGain": 2,
+      "reward": 230,
+      "giverLocations": [
+        "rookie"
+      ],
+      "turnInLocations": [
+        "rookie"
+      ],
+      "requiresDialogue": true,
+      "autoTurnInEligible": false,
+      "rewardTrigger": "turnIn",
+      "requiredCompletedQuest": "personal_medic_4"
+    },
+    {
+      "id": "personal_medic_6",
+      "text": "Ася ждёт карточки наблюдений. Романова предлагает закрытый протокол, чтобы исключить опасные копии. Цель: Вернуться в полевой пункт. Место: Кордон. Отчёт принимает Ася — Кордон.",
+      "type": "personal",
+      "personalStory": true,
+      "backgroundId": "medic",
+      "storyChapter": 5,
+      "target": "cordon",
+      "count": 1,
+      "giver": "personal_npc_medic_1",
+      "giverNpcId": "personal_npc_medic_1",
+      "turnInNpcId": "personal_npc_medic_1",
+      "rep": "ecologists",
+      "repGain": 2,
+      "reward": 265,
+      "giverLocations": [
+        "cordon"
+      ],
+      "turnInLocations": [
+        "cordon"
+      ],
+      "requiresDialogue": true,
+      "autoTurnInEligible": false,
+      "rewardTrigger": "turnIn",
+      "requiredCompletedQuest": "personal_medic_5"
+    },
+    {
+      "id": "zone_quest_1",
+      "text": "Под водительским сиденьем автобуса лежит крышка полевого регистратора. На внутренней стороне нацарапано «Рубеж-6». Клей под биркой ещё липкий: вещь принесли сюда позже, чем заржавел автобус.",
+      "type": "zoneStory",
+      "zoneStory": true,
+      "target": "garbage",
+      "giver": "zone_npc_motyl",
+      "count": 1,
+      "reward": 0,
+      "rep": "loners",
+      "repGain": 0,
+      "turnInLocations": [
+        "garbage"
+      ],
+      "requiresDialogue": true,
+      "giverLocations": [
+        "researchCamp"
+      ]
+    },
+    {
+      "id": "zone_quest_2",
+      "text": "Ремонтный вагон заперт проволокой. Через выбитое окно виден стол с разобранными батареями. На стене осталась схема питания регистратора, а рядом — отметка о грузовике до Агропрома.",
+      "type": "zoneStory",
+      "zoneStory": true,
+      "target": "railway",
+      "giver": "zone_npc_rivet",
+      "count": 1,
+      "reward": 0,
+      "rep": "loners",
+      "repGain": 0,
+      "turnInLocations": [
+        "railway"
+      ],
+      "requiresDialogue": true,
+      "giverLocations": [
+        "railway"
+      ]
+    },
+    {
+      "id": "zone_quest_3",
+      "text": "Под лестницей административного корпуса сухо, хотя подвалы залиты водой. В коробке из-под предохранителей лежит промокший журнал. Страницы склеились, но маршрутная сетка читается.",
+      "type": "zoneStory",
+      "zoneStory": true,
+      "target": "agro",
+      "giver": "zone_npc_motyl",
+      "count": 1,
+      "reward": 0,
+      "rep": "loners",
+      "repGain": 0,
+      "turnInLocations": [
+        "agro"
+      ],
+      "requiresDialogue": true,
+      "giverLocations": [
+        "researchCamp"
+      ]
+    },
+    {
+      "id": "zone_quest_4",
+      "text": "У колодца старик чинит ворот. Он вспоминает грузовик с белой полосой, но называет другой день. На вопрос о людях отвечает осторожнее, чем о машине.",
+      "type": "zoneStory",
+      "zoneStory": true,
+      "target": "deadVillage",
+      "giver": "zone_npc_motyl",
+      "count": 1,
+      "reward": 0,
+      "rep": "loners",
+      "repGain": 0,
+      "turnInLocations": [
+        "deadVillage"
+      ],
+      "requiresDialogue": true,
+      "giverLocations": [
+        "researchCamp"
+      ]
+    },
+    {
+      "id": "zone_quest_5",
+      "text": "У измерительного поста Элина Громова ставит рядом два приёмника. Один ловит обычный шум. Второй через равные промежутки передаёт короткую последовательность цифр, уже встречавшуюся в сломанном КПК.",
+      "type": "zoneStory",
+      "zoneStory": true,
+      "target": "yantar",
+      "giver": "zone_npc_gromova",
+      "count": 1,
+      "reward": 0,
+      "rep": "loners",
+      "repGain": 0,
+      "turnInLocations": [
+        "yantar"
+      ],
+      "requiresDialogue": true,
+      "giverLocations": [
+        "yantar"
+      ]
+    },
+    {
+      "id": "zone_quest_6",
+      "text": "За ангаром забит досками старый колодец. По журналу Серова здесь должен быть резервный тайник. На свежей доске стоит тройная насечка проводника, поверх неё — чужой мел.",
+      "type": "zoneStory",
+      "zoneStory": true,
+      "target": "warehouses",
+      "giver": "zone_npc_motyl",
+      "count": 1,
+      "reward": 0,
+      "rep": "loners",
+      "repGain": 0,
+      "turnInLocations": [
+        "warehouses"
+      ],
+      "requiresDialogue": true,
+      "giverLocations": [
+        "researchCamp"
+      ]
+    },
+    {
+      "id": "zone_quest_7",
+      "text": "Радист Вера «Искра» даёт послушать старую ленту. Голос произносит позывной группы слишком ровно. На фоне слышен стук насоса, который повторяется в каждом сообщении.",
+      "type": "zoneStory",
+      "zoneStory": true,
+      "target": "radioHill",
+      "giver": "zone_npc_motyl",
+      "count": 1,
+      "reward": 0,
+      "rep": "loners",
+      "repGain": 0,
+      "turnInLocations": [
+        "radioHill"
+      ],
+      "requiresDialogue": true,
+      "giverLocations": [
+        "researchCamp"
+      ]
+    },
+    {
+      "id": "zone_quest_8",
+      "text": "На просеке шесть мест для спальников, но только четыре чашки. Кострище засыпано ровным слоем песка. Под корнем дерева лежит полевой шнур с узлом, похожим на метку у складов.",
+      "type": "zoneStory",
+      "zoneStory": true,
+      "target": "redforest",
+      "giver": "zone_npc_dron",
+      "count": 1,
+      "reward": 0,
+      "rep": "loners",
+      "repGain": 0,
+      "turnInLocations": [
+        "redforest"
+      ],
+      "requiresDialogue": true,
+      "giverLocations": [
+        "redforest"
+      ]
+    },
+    {
+      "id": "zone_quest_9",
+      "text": "У научного поста ждут два связных. Громова просит копию частот, капитан Орлов — список координат. Независимый курьер Мотыль предлагает оставить резерв у сталкеров. Каждый объясняет свою просьбу без обещания полной безопасности.",
+      "type": "zoneStory",
+      "zoneStory": true,
+      "target": "researchCamp",
+      "giver": "zone_npc_motyl",
+      "count": 1,
+      "reward": 0,
+      "rep": "loners",
+      "repGain": 0,
+      "turnInLocations": [
+        "researchCamp"
+      ],
+      "requiresDialogue": true,
+      "giverLocations": [
+        "researchCamp"
+      ]
+    },
+    {
+      "id": "zone_quest_10",
+      "text": "В перевязочном пункте Рада Котова сортирует пустые ампулы. Она узнаёт фамилии из журнала, но не торопится рассказывать. Белецкого отправили к периметру с раненым; сама она потеряла связь, когда вернулась за медикаментами.",
+      "type": "zoneStory",
+      "zoneStory": true,
+      "target": "cordon",
+      "giver": "zone_npc_rada",
+      "count": 1,
+      "reward": 0,
+      "rep": "loners",
+      "repGain": 0,
+      "turnInLocations": [
+        "cordon"
+      ],
+      "requiresDialogue": true,
+      "giverLocations": [
+        "cordon"
+      ]
+    },
+    {
+      "id": "zone_quest_11",
+      "text": "На складе Орлов показывает журнал смен. Между двумя страницами вырезан лист, но копия осталась на обороте заявки. Там отмечено задержание картографа без оружия.",
+      "type": "zoneStory",
+      "zoneStory": true,
+      "target": "militaryDepot",
+      "giver": "zone_npc_orlov",
+      "count": 1,
+      "reward": 0,
+      "rep": "loners",
+      "repGain": 0,
+      "turnInLocations": [
+        "militaryDepot"
+      ],
+      "requiresDialogue": true,
+      "giverLocations": [
+        "militaryDepot"
+      ]
+    },
+    {
+      "id": "zone_quest_12",
+      "text": "Посредник Ждан стоит за бетонной опорой. Он предлагает вещи Серова за копию координат. В кармане куртки виден угол карты; рядом лежит запечатанный пакет, который можно получить и через поручительство курьера.",
+      "type": "zoneStory",
+      "zoneStory": true,
+      "target": "wild",
+      "giver": "zone_npc_zhdan",
+      "count": 1,
+      "reward": 0,
+      "rep": "loners",
+      "repGain": 0,
+      "turnInLocations": [
+        "wild"
+      ],
+      "requiresDialogue": true,
+      "giverLocations": [
+        "wild"
+      ]
+    },
+    {
+      "id": "zone_quest_13",
+      "text": "На островке под мостом уцелел второй тайник группы. Внутри лежит мокрая катушка с маркировкой Верес. Снаружи вода тёплая, хотя воздух холодный. Под досками щёлкает дозиметр.",
+      "type": "zoneStory",
+      "zoneStory": true,
+      "target": "swamp",
+      "giver": "zone_npc_reed",
+      "count": 1,
+      "reward": 0,
+      "rep": "loners",
+      "repGain": 0,
+      "turnInLocations": [
+        "swamp"
+      ],
+      "requiresDialogue": true,
+      "giverLocations": [
+        "swamp"
+      ]
+    },
+    {
+      "id": "zone_quest_14",
+      "text": "На посту пустые гильзы лежат отдельно от кострища. Проводник Грач показывает следы патруля Монолита. Он знает служебный проход, но настаивает: сначала проверить приборы, затем идти по одному.",
+      "type": "zoneStory",
+      "zoneStory": true,
+      "target": "northOutpost",
+      "giver": "zone_npc_grach",
+      "count": 1,
+      "reward": 0,
+      "rep": "loners",
+      "repGain": 0,
+      "turnInLocations": [
+        "northOutpost"
+      ],
+      "requiresDialogue": true,
+      "giverLocations": [
+        "northOutpost"
+      ]
+    },
+    {
+      "id": "zone_quest_15",
+      "text": "В квартире над пустой аптекой Серов развесил карты без названий улиц. Он не хочет возвращаться на юг: там его снова будут искать. На столе лежат последние снимки регистратора.",
+      "type": "zoneStory",
+      "zoneStory": true,
+      "target": "pripyat",
+      "giver": "zone_npc_serov",
+      "count": 1,
+      "reward": 0,
+      "rep": "loners",
+      "repGain": 0,
+      "turnInLocations": [
+        "pripyat"
+      ],
+      "requiresDialogue": true,
+      "giverLocations": [
+        "pripyat"
+      ]
+    },
+    {
+      "id": "zone_quest_16",
+      "text": "За белыми вешками стоит человек с разбитой рацией. Он называет себя Дрон и признаёт, что ушёл от патруля Монолита. В рации лежит пакет Верес; выдавать его он боится сильнее, чем остаться без еды.",
+      "type": "zoneStory",
+      "zoneStory": true,
+      "target": "redforest",
+      "giver": "zone_npc_dron",
+      "count": 1,
+      "reward": 0,
+      "rep": "loners",
+      "repGain": 0,
+      "turnInLocations": [
+        "redforest"
+      ],
+      "requiresDialogue": true,
+      "giverLocations": [
+        "redforest"
+      ]
+    },
+    {
+      "id": "zone_quest_17",
+      "text": "В подвале Грач расстилает карту на ящике. Северный проход не обозначен на обычной схеме. Перед выходом он проверяет защиту, воду и лекарства: за стеной нельзя рассчитывать на торговца.",
+      "type": "zoneStory",
+      "zoneStory": true,
+      "target": "pripyat",
+      "giver": "zone_npc_serov",
+      "count": 1,
+      "reward": 0,
+      "rep": "loners",
+      "repGain": 0,
+      "turnInLocations": [
+        "pripyat"
+      ],
+      "requiresDialogue": true,
+      "giverLocations": [
+        "pripyat"
+      ]
+    },
+    {
+      "id": "zone_quest_18",
+      "text": "За шлюзом тихо, кроме насоса, который слышен на лентах. На стене журнал дежурств Левина. Последняя запись сделана недавно; рядом лежит сломанная личная кружка, тщательно склеенная проволокой.",
+      "type": "zoneStory",
+      "zoneStory": true,
+      "target": "chNpp",
+      "giver": "zone_npc_levin",
+      "count": 1,
+      "reward": 0,
+      "rep": "loners",
+      "repGain": 0,
+      "turnInLocations": [
+        "chNpp"
+      ],
+      "requiresDialogue": true,
+      "giverLocations": [
+        "chNpp"
+      ]
+    },
+    {
+      "id": "zone_quest_19",
+      "text": "Верес выходит из соседнего коридора с батареей в руках. Она проверяла, что в пакетах повторяется, а что меняется. Её журнал хранит ошибки, удачные проходы и фамилии тех, кому не успели ответить.",
+      "type": "zoneStory",
+      "zoneStory": true,
+      "target": "chNpp",
+      "giver": "zone_npc_levin",
+      "count": 1,
+      "reward": 0,
+      "rep": "loners",
+      "repGain": 0,
+      "turnInLocations": [
+        "chNpp"
+      ],
+      "requiresDialogue": true,
+      "giverLocations": [
+        "chNpp"
+      ]
+    },
+    {
+      "id": "zone_quest_20",
+      "text": "В комнате связи лежат три готовых копии и пустой носитель. Левин ждёт решения у насоса, Верес выключила микрофон. Снаружи проходит патруль; до следующего пакета остаётся несколько минут.",
+      "type": "zoneStory",
+      "zoneStory": true,
+      "target": "chNpp",
+      "giver": "zone_npc_levin",
+      "count": 1,
+      "reward": 0,
+      "rep": "loners",
+      "repGain": 0,
+      "turnInLocations": [
+        "chNpp"
+      ],
+      "requiresDialogue": true,
+      "giverLocations": [
+        "chNpp"
+      ]
+    },
+    {
+      "id": "zone_after_science",
+      "text": "После передачи архива нужно проверить, как работает выбранный порядок. Выход в сектор «Янтарь» даст проверяемый отчёт.",
+      "zoneStory": true,
+      "type": "zoneStory",
+      "giver": "zone_npc_motyl",
+      "target": "yantar",
+      "reward": 0,
+      "rep": "loners",
+      "repGain": 0,
+      "turnInLocations": [
+        "yantar"
+      ],
+      "giverLocations": [
+        "researchCamp"
+      ]
+    },
+    {
+      "id": "zone_after_control",
+      "text": "После передачи архива нужно проверить, как работает выбранный порядок. Выход в сектор «Северная застава» даст проверяемый отчёт.",
+      "zoneStory": true,
+      "type": "zoneStory",
+      "giver": "zone_npc_motyl",
+      "target": "northOutpost",
+      "reward": 0,
+      "rep": "loners",
+      "repGain": 0,
+      "turnInLocations": [
+        "northOutpost"
+      ],
+      "giverLocations": [
+        "researchCamp"
+      ]
+    },
+    {
+      "id": "zone_after_independent",
+      "text": "После передачи архива нужно проверить, как работает выбранный порядок. Выход в сектор «Полевой институт» даст проверяемый отчёт.",
+      "zoneStory": true,
+      "type": "zoneStory",
+      "giver": "zone_npc_motyl",
+      "target": "researchCamp",
+      "reward": 0,
+      "rep": "loners",
+      "repGain": 0,
+      "turnInLocations": [
+        "researchCamp"
+      ],
+      "giverLocations": [
+        "researchCamp"
+      ]
+    },
+    {
+      "id": "zone_after_channel",
+      "text": "После передачи архива нужно проверить, как работает выбранный порядок. Выход в сектор «ЧАЭС · Саркофаг» даст проверяемый отчёт.",
+      "zoneStory": true,
+      "type": "zoneStory",
+      "giver": "zone_npc_motyl",
+      "target": "chNpp",
+      "reward": 0,
+      "rep": "loners",
+      "repGain": 0,
+      "turnInLocations": [
+        "chNpp"
+      ],
+      "giverLocations": [
+        "researchCamp"
+      ]
+    }
+  ],
+  "eventIds": [
+    "event_1_1",
+    "event_1_2",
+    "event_1_3",
+    "event_1_4",
+    "event_1_5",
+    "event_2_1",
+    "event_2_2",
+    "event_2_3",
+    "event_2_4",
+    "event_2_5",
+    "event_3_1",
+    "event_3_2",
+    "event_3_3",
+    "event_3_4",
+    "event_3_5",
+    "event_4_1",
+    "event_4_2",
+    "event_4_3",
+    "event_4_4",
+    "event_4_5",
+    "event_5_1",
+    "event_5_2",
+    "event_5_3",
+    "event_5_4",
+    "event_5_5",
+    "event_6_1",
+    "event_6_2",
+    "event_6_3",
+    "event_6_4",
+    "event_6_5",
+    "event_7_1",
+    "event_7_2",
+    "event_7_3",
+    "event_7_4",
+    "event_7_5",
+    "event_8_1",
+    "event_8_2",
+    "event_8_3",
+    "event_8_4",
+    "event_8_5",
+    "event_9_1",
+    "event_9_2",
+    "event_9_3",
+    "event_9_4",
+    "event_9_5",
+    "event_10_1",
+    "event_10_2",
+    "event_10_3",
+    "event_10_4",
+    "event_10_5",
+    "event_11_1",
+    "event_11_2",
+    "event_11_3",
+    "event_11_4",
+    "voice_help_signal",
+    "garbage_depot_ambush",
+    "cordon_watchman",
+    "swamp_fisher",
+    "yantar_signal",
+    "redforest_footsteps",
+    "night_warehouse_patrol",
+    "darkvalley_bloodtrail",
+    "pripyat_last_broadcast",
+    "deep_cache_echo",
+    "secret_stalker",
+    "military_checkpoint_order",
+    "agroprom_locked_lab",
+    "wild_sniper_glint",
+    "rare_field_calm",
+    "pripyat_roof_mutant",
+    "tower_keeper",
+    "rookie_missing_radio",
+    "checkpoint_wounded",
+    "garbage_tagged_crate",
+    "agro_generator",
+    "valley_captive",
+    "swamp_will_o_wisp",
+    "yantar_rain",
+    "wild_broken_convoy",
+    "warehouse_old_friend",
+    "redforest_tree_mark",
+    "pripyat_classroom",
+    "chNpp_monolith_signal",
+    "cordon_trader_debt",
+    "mutant_den",
+    "loner_scout",
+    "rare_alpha_boar",
+    "rare_damaged_bloodsucker",
+    "rare_anomalous_dog",
+    "radio_silent_call",
+    "chain_abandoned_camp",
+    "chain_wounded_stalker",
+    "chain_suspicious_cache",
+    "chain_road_tracks",
+    "chain_strange_signal",
+    "site_cordon_1",
+    "site_cordon_2",
+    "site_cordon_3",
+    "site_rookie_1",
+    "site_rookie_2",
+    "site_rookie_3",
+    "site_checkpoint_1",
+    "site_checkpoint_2",
+    "site_checkpoint_3",
+    "site_garbage_1",
+    "site_garbage_2",
+    "site_garbage_3",
+    "site_agro_1",
+    "site_agro_2",
+    "site_agro_3",
+    "site_darkvalley_1",
+    "site_darkvalley_2",
+    "site_darkvalley_3",
+    "site_swamp_1",
+    "site_swamp_2",
+    "site_swamp_3",
+    "site_yantar_1",
+    "site_yantar_2",
+    "site_yantar_3",
+    "site_wild_1",
+    "site_wild_2",
+    "site_wild_3",
+    "site_warehouses_1",
+    "site_warehouses_2",
+    "site_warehouses_3",
+    "site_redforest_1",
+    "site_redforest_2",
+    "site_redforest_3",
+    "site_pripyat_1",
+    "site_pripyat_2",
+    "site_pripyat_3",
+    "site_chNpp_1",
+    "site_chNpp_2",
+    "site_chNpp_3",
+    "site_railway_1",
+    "site_railway_2",
+    "site_railway_3",
+    "site_deadVillage_1",
+    "site_deadVillage_2",
+    "site_deadVillage_3",
+    "site_machineYard_1",
+    "site_machineYard_2",
+    "site_machineYard_3",
+    "site_underground_1",
+    "site_underground_2",
+    "site_underground_3",
+    "site_militaryDepot_1",
+    "site_militaryDepot_2",
+    "site_militaryDepot_3",
+    "site_anomalyRidge_1",
+    "site_anomalyRidge_2",
+    "site_anomalyRidge_3",
+    "site_southTunnel_1",
+    "site_southTunnel_2",
+    "site_southTunnel_3",
+    "site_northOutpost_1",
+    "site_northOutpost_2",
+    "site_northOutpost_3",
+    "quest_signal_underpass",
+    "depot_standoff",
+    "ridge_false_signal",
+    "mast_future_call",
+    "v61_rail_beacon",
+    "v61_rail_luggage",
+    "v61_village_stove",
+    "v61_village_well",
+    "v61_yard_crane",
+    "v61_yard_mechanic",
+    "v61_under_wire",
+    "v61_under_water",
+    "v61_depot_ammo",
+    "v61_depot_mutiny",
+    "v61_ridge_stones",
+    "v61_ridge_glass",
+    "v61_tunnel_whistle",
+    "v61_tunnel_marks",
+    "v61_outpost_wrongfreq",
+    "v61_outpost_bootprints",
+    "v61_cordon_radio",
+    "v61_rookie_camp",
+    "v61_checkpoint_deserter",
+    "v61_garbage_tagged",
+    "v61_agro_samples",
+    "v61_dark_medic",
+    "v61_swamp_hunter",
+    "v61_yantar_survey",
+    "v61_wild_mercbag",
+    "v61_warehouse_patrol",
+    "v61_forest_tracks",
+    "v61_pripyat_flat",
+    "v61_chnpp_monitor",
+    "v61_dark_ditch",
+    "npc_story_sidorovich",
+    "npc_story_bar",
+    "npc_story_technician",
+    "npc_story_rookie",
+    "npc_story_loner",
+    "npc_story_military",
+    "npc_story_duty",
+    "npc_story_ecologist",
+    "npc_story_bandits",
+    "npc_story_merc",
+    "npc_story_freedom",
+    "npc_story_freedomTrader",
+    "npc_story_yura",
+    "npc_story_anika",
+    "npc_story_rusty",
+    "npc_story_lev",
+    "npc_story_kapral",
+    "npc_story_sava",
+    "npc_story_fedya",
+    "npc_story_ines",
+    "npc_story_makar",
+    "npc_story_vera",
+    "npc_story_hunter",
+    "npc_story_radio",
+    "npc_story_mara",
+    "npc_story_sergei",
+    "npc_story_mira",
+    "quest_tunnel_contact",
+    "v63_ratSwarm",
+    "v63_marshLeech",
+    "v63_ironBoar",
+    "v63_nightLurker",
+    "v63_ashWalker",
+    "first_visit_cache",
+    "first_visit_dog",
+    "v7_floodplain_survey",
+    "v7_floodplain_supply",
+    "v7_quarry_survey",
+    "v7_quarry_supply",
+    "v7_radioHill_survey",
+    "v7_radioHill_supply",
+    "v7_greenhouse_survey",
+    "v7_greenhouse_supply",
+    "v7_researchCamp_survey",
+    "v7_researchCamp_supply",
+    "v7_dutyFort_survey",
+    "v7_dutyFort_supply",
+    "v7_freeCamp_survey",
+    "v7_freeCamp_supply",
+    "v7_mirrorLake_survey",
+    "v7_mirrorLake_supply",
+    "v7_artifact_reed",
+    "v7_artifact_anchor",
+    "v7_artifact_lens",
+    "v7_artifact_dew",
+    "v7_artifact_scar",
+    "v7_artifact_echoHeart",
+    "v7_local_cordon",
+    "v7_local_rookie",
+    "v7_local_checkpoint",
+    "v7_local_garbage",
+    "v7_local_agro",
+    "v7_local_darkvalley",
+    "v7_local_swamp",
+    "v7_local_yantar",
+    "v7_local_wild",
+    "v7_local_warehouses",
+    "v7_local_redforest",
+    "v7_local_pripyat",
+    "v7_local_chNpp",
+    "v7_local_railway",
+    "v7_local_deadVillage",
+    "v7_local_machineYard",
+    "v7_local_underground",
+    "v7_local_militaryDepot",
+    "v7_local_anomalyRidge",
+    "v7_local_southTunnel",
+    "v7_local_northOutpost",
+    "v7_enemy_quarryDog",
+    "v7_enemy_reedCrawler",
+    "v7_enemy_mirrorStalker",
+    "v7_enemy_banditScout",
+    "v7_enemy_mercMarksman",
+    "v7_enemy_dutyDeserter",
+    "v7_enemy_electroSnork",
+    "npc_story_guide7",
+    "npc_story_damMedic",
+    "npc_story_quarryTech",
+    "npc_story_glassHunter",
+    "npc_story_prof7",
+    "npc_story_guard7",
+    "npc_story_freedom7",
+    "npc_story_mirror7",
+    "npc_story_quarter7",
+    "npc_story_dealer7",
+    "npc_story_labShop7",
+    "npc_story_rookie7",
+    "npc_story_bandit7",
+    "npc_story_army7",
+    "npc_story_merc7",
+    "npc_story_tracker7",
+    "v7_compass_chain",
+    "v7_research_prof7",
+    "v7_research_quarryTech",
+    "v7_research_damMedic",
+    "v7_research_guide7",
+    "v7_road_ambush",
+    "v7_rumor_stash_floodplain",
+    "v7_rumor_stash_quarry",
+    "v7_rumor_stash_radioHill",
+    "v7_rumor_stash_greenhouse",
+    "v7_rumor_stash_researchCamp",
+    "v7_rumor_stash_dutyFort",
+    "v7_rumor_stash_freeCamp",
+    "v7_rumor_stash_mirrorLake",
+    "v7_mirror_chain",
+    "npc_story_npc_threeLeggedPigBandit",
+    "v72_anomaly_field_samples",
+    "v72_anomaly_ridge_reading",
+    "v72_document_search",
+    "v72_post_combat",
+    "v72_intro_rookie",
+    "v72_intro_soldier",
+    "v72_intro_technician",
+    "v72_intro_hunter",
+    "v72_intro_scavenger",
+    "v72_intro_medic",
+    "v103_medical_crate",
+    "npc_story_personal_npc_rookie_1",
+    "npc_story_personal_npc_rookie_2",
+    "npc_story_personal_npc_rookie_3",
+    "personal_event_rookie_1",
+    "personal_event_rookie_2",
+    "personal_event_rookie_3",
+    "personal_event_rookie_4",
+    "personal_event_rookie_5",
+    "personal_event_rookie_6",
+    "personal_side_rookie_1",
+    "personal_side_rookie_2",
+    "personal_side_rookie_3",
+    "npc_story_personal_npc_soldier_1",
+    "npc_story_personal_npc_soldier_2",
+    "npc_story_personal_npc_soldier_3",
+    "personal_event_soldier_1",
+    "personal_event_soldier_2",
+    "personal_event_soldier_3",
+    "personal_event_soldier_4",
+    "personal_event_soldier_5",
+    "personal_event_soldier_6",
+    "personal_side_soldier_1",
+    "personal_side_soldier_2",
+    "personal_side_soldier_3",
+    "npc_story_personal_npc_technician_1",
+    "npc_story_personal_npc_technician_2",
+    "npc_story_personal_npc_technician_3",
+    "personal_event_technician_1",
+    "personal_event_technician_2",
+    "personal_event_technician_3",
+    "personal_event_technician_4",
+    "personal_event_technician_5",
+    "personal_event_technician_6",
+    "personal_side_technician_1",
+    "personal_side_technician_2",
+    "personal_side_technician_3",
+    "npc_story_personal_npc_hunter_1",
+    "npc_story_personal_npc_hunter_2",
+    "npc_story_personal_npc_hunter_3",
+    "personal_event_hunter_1",
+    "personal_event_hunter_2",
+    "personal_event_hunter_3",
+    "personal_event_hunter_4",
+    "personal_event_hunter_5",
+    "personal_event_hunter_6",
+    "personal_side_hunter_1",
+    "personal_side_hunter_2",
+    "personal_side_hunter_3",
+    "npc_story_personal_npc_scavenger_1",
+    "npc_story_personal_npc_scavenger_2",
+    "npc_story_personal_npc_scavenger_3",
+    "personal_event_scavenger_1",
+    "personal_event_scavenger_2",
+    "personal_event_scavenger_3",
+    "personal_event_scavenger_4",
+    "personal_event_scavenger_5",
+    "personal_event_scavenger_6",
+    "personal_side_scavenger_1",
+    "personal_side_scavenger_2",
+    "personal_side_scavenger_3",
+    "npc_story_personal_npc_medic_1",
+    "npc_story_personal_npc_medic_2",
+    "npc_story_personal_npc_medic_3",
+    "personal_event_medic_1",
+    "personal_event_medic_2",
+    "personal_event_medic_3",
+    "personal_event_medic_4",
+    "personal_event_medic_5",
+    "personal_event_medic_6",
+    "personal_side_medic_1",
+    "personal_side_medic_2",
+    "personal_side_medic_3",
+    "v9_site_garbage",
+    "v9_callback_garbage_help",
+    "v9_callback_garbage_betray",
+    "v9_site_cordon",
+    "v9_callback_cordon_help",
+    "v9_callback_cordon_betray",
+    "v9_site_agro",
+    "v9_callback_agro_help",
+    "v9_callback_agro_betray",
+    "v9_site_darkvalley",
+    "v9_callback_darkvalley_help",
+    "v9_callback_darkvalley_betray",
+    "v9_site_swamp",
+    "v9_callback_swamp_help",
+    "v9_callback_swamp_betray",
+    "v9_site_yantar",
+    "v9_callback_yantar_help",
+    "v9_callback_yantar_betray",
+    "v9_site_wild",
+    "v9_callback_wild_help",
+    "v9_callback_wild_betray",
+    "v9_site_warehouses",
+    "v9_callback_warehouses_help",
+    "v9_callback_warehouses_betray",
+    "v9_site_railway",
+    "v9_callback_railway_help",
+    "v9_callback_railway_betray",
+    "v9_site_redforest",
+    "v9_callback_redforest_help",
+    "v9_callback_redforest_betray",
+    "v9_emission_contact",
+    "v9_dogMigration_contact",
+    "v9_northMigration_contact",
+    "v9_armySweep_contact",
+    "v9_valleyRaid_contact",
+    "v9_factionClash_contact",
+    "v9_southCaravan_contact",
+    "v9_scienceConvoy_contact",
+    "v9_missingGroup_contact",
+    "v9_newField_contact",
+    "v9_medShortage_contact",
+    "v9_dryStores_contact",
+    "v9_safePatrol_contact",
+    "v9_marshBloom_contact",
+    "v9_mercSearch_contact",
+    "v9_railEscort_contact",
+    "v9_legend_lastBroadcast",
+    "v9_legend_glassMarker",
+    "v9_legend_sealedShift",
+    "v9_legend_silentEscort",
+    "v9_legend_emptyConvoy",
+    "v9_legend_rainRecorder",
+    "v9_legend_blindNest",
+    "v9_legend_warmStation",
+    "v9_secret_railMarks_0",
+    "v9_secret_railMarks_1",
+    "v9_secret_railMarks_2",
+    "v9_secret_waterSamples_0",
+    "v9_secret_waterSamples_1",
+    "v9_secret_waterSamples_2",
+    "v9_secret_brokenFrequency_0",
+    "v9_secret_brokenFrequency_1",
+    "v9_secret_brokenFrequency_2",
+    "v9_renownTarget",
+    "v9_nightSignals",
+    "npc_story_v9_caravan",
+    "field_lost_survey",
+    "field_echo_shelter",
+    "field_survey_wreck",
+    "field_old_mail",
+    "field_return_marker",
+    "field_followup_survey",
+    "zone_main_1",
+    "zone_main_2",
+    "zone_main_3",
+    "zone_main_4",
+    "zone_main_5",
+    "zone_main_6",
+    "zone_main_7",
+    "zone_main_8",
+    "zone_main_9",
+    "zone_main_10",
+    "zone_main_11",
+    "zone_main_12",
+    "zone_main_13",
+    "zone_main_14",
+    "zone_main_15",
+    "zone_main_16",
+    "zone_main_17",
+    "zone_main_18",
+    "zone_main_19",
+    "zone_main_20",
+    "zone_hook_0",
+    "zone_hook_1",
+    "zone_hook_2",
+    "zone_secret_weather_0",
+    "zone_secret_weather_1",
+    "zone_secret_weather_2",
+    "zone_secret_drain_0",
+    "zone_secret_drain_1",
+    "zone_secret_drain_2",
+    "zone_secret_ferry_0",
+    "zone_secret_ferry_1",
+    "zone_secret_ferry_2",
+    "zone_secret_cellar_0",
+    "zone_secret_cellar_1",
+    "zone_secret_cellar_2",
+    "zone_secret_freight_0",
+    "zone_secret_freight_1",
+    "zone_secret_freight_2",
+    "zone_secret_water_0",
+    "zone_secret_water_1",
+    "zone_secret_water_2",
+    "npc_story_zone_npc_gromova",
+    "npc_story_zone_npc_orlov",
+    "npc_story_zone_npc_motyl",
+    "npc_story_zone_npc_rada",
+    "npc_story_zone_npc_zhdan",
+    "npc_story_zone_npc_serov",
+    "npc_story_zone_npc_dron",
+    "npc_story_zone_npc_levin",
+    "npc_story_zone_npc_veres",
+    "npc_story_zone_npc_grach",
+    "npc_story_zone_npc_reed",
+    "npc_story_zone_npc_rivet",
+    "zone_poi_0",
+    "zone_poi_1",
+    "zone_poi_2",
+    "zone_poi_3",
+    "zone_poi_4",
+    "zone_poi_5",
+    "zone_poi_6",
+    "zone_poi_7",
+    "zone_poi_8",
+    "zone_poi_9",
+    "zone_poi_10",
+    "zone_poi_11",
+    "zone_poi_12",
+    "zone_poi_13",
+    "zone_poi_14",
+    "zone_poi_15",
+    "zone_poi_16",
+    "zone_poi_17",
+    "zone_after_science",
+    "zone_after_control",
+    "zone_after_independent",
+    "zone_after_channel",
+    "zone_endgame_zone_elite_boar",
+    "zone_endgame_zone_elite_guard"
+  ],
+  "locations": {
+    "cordon": {
+      "name": "Кордон",
+      "description": "Железная дорога, старый КПП и поля, уходящие в туман. Здесь Зона ещё притворяется обычной землёй.",
+      "neighbors": [
+        "garbage",
+        "rookie",
+        "checkpoint",
+        "railway",
+        "southTunnel",
+        "deadVillage"
+      ],
+      "danger": 1,
+      "rad": 4,
+      "mutants": 7,
+      "bandits": 9,
+      "stalkers": 26,
+      "npcs": [
+        "sidorovich",
+        "rookie",
+        "mara",
+        "personal_npc_rookie_2",
+        "personal_npc_medic_1",
+        "zone_npc_rada"
+      ],
+      "trader": "sidorovich",
+      "camp": true,
+      "tags": [
+        "south"
+      ],
+      "layout": "Тихие поля и заброшенный блокпост"
+    },
+    "rookie": {
+      "name": "Деревня новичков",
+      "description": "Несколько уцелевших хат и костёр, вокруг которого новички делят байки и патроны.",
+      "neighbors": [
+        "cordon",
+        "garbage",
+        "deadVillage",
+        "southTunnel",
+        "railway"
+      ],
+      "danger": 1,
+      "rad": 2,
+      "mutants": 5,
+      "bandits": 3,
+      "stalkers": 38,
+      "npcs": [
+        "rookie",
+        "rookie7",
+        "personal_npc_rookie_1",
+        "personal_npc_hunter_1",
+        "personal_npc_medic_2"
+      ],
+      "trader": null,
+      "camp": true,
+      "tags": [
+        "south"
+      ],
+      "layout": "Деревня у старой дороги"
+    },
+    "checkpoint": {
+      "name": "Военный блокпост",
+      "description": "Бетонные блоки, прожектор и солдаты, которым не нравится чужое любопытство.",
+      "neighbors": [
+        "cordon",
+        "garbage"
+      ],
+      "danger": 2,
+      "rad": 5,
+      "mutants": 3,
+      "bandits": 6,
+      "stalkers": 9,
+      "npcs": [
+        "military",
+        "army7",
+        "npc_threeLeggedPigBandit",
+        "personal_npc_soldier_1"
+      ],
+      "trader": null,
+      "tags": [
+        "south",
+        "military"
+      ],
+      "layout": "Пост на южном периметре"
+    },
+    "garbage": {
+      "name": "Свалка",
+      "description": "Километры ржавого металла. Под ногами звенит стекло, а из груды кузовов кто-то наблюдает.",
+      "neighbors": [
+        "cordon",
+        "rookie",
+        "checkpoint",
+        "agro",
+        "darkvalley",
+        "deadVillage",
+        "railway",
+        "quarry"
+      ],
+      "danger": 2,
+      "rad": 12,
+      "mutants": 15,
+      "bandits": 24,
+      "stalkers": 22,
+      "npcs": [
+        "bar",
+        "loner",
+        "makar",
+        "sergei",
+        "personal_npc_rookie_3",
+        "personal_npc_scavenger_1"
+      ],
+      "trader": "bar",
+      "camp": true,
+      "tags": [
+        "center"
+      ],
+      "layout": "Кладбище техники"
+    },
+    "agro": {
+      "name": "Агропром",
+      "description": "Промышленный комплекс и сырые подвалы. Военные давно ушли, но эхо шагов осталось.",
+      "neighbors": [
+        "garbage",
+        "yantar",
+        "darkvalley",
+        "machineYard",
+        "underground"
+      ],
+      "danger": 3,
+      "rad": 18,
+      "mutants": 22,
+      "bandits": 14,
+      "stalkers": 21,
+      "npcs": [
+        "technician",
+        "duty"
+      ],
+      "trader": "technician",
+      "tags": [
+        "center"
+      ],
+      "layout": "Промзона и затопленные тоннели"
+    },
+    "darkvalley": {
+      "name": "Тёмная долина",
+      "description": "Низина с чёрной водой и силуэтами труб. Ночью здесь лучше не задерживаться.",
+      "neighbors": [
+        "garbage",
+        "agro",
+        "swamp",
+        "warehouses",
+        "wild",
+        "machineYard"
+      ],
+      "danger": 4,
+      "rad": 24,
+      "mutants": 32,
+      "bandits": 34,
+      "stalkers": 9,
+      "npcs": [
+        "bandits",
+        "bandit7",
+        "personal_npc_scavenger_2"
+      ],
+      "trader": null,
+      "tags": [
+        "east"
+      ],
+      "layout": "Трубы и низкие холмы"
+    },
+    "swamp": {
+      "name": "Болота",
+      "description": "Топь скрывает старые тропы. В камышах шевелится что-то тяжёлое.",
+      "neighbors": [
+        "darkvalley",
+        "yantar",
+        "anomalyRidge",
+        "floodplain"
+      ],
+      "danger": 4,
+      "rad": 21,
+      "mutants": 37,
+      "bandits": 8,
+      "stalkers": 12,
+      "npcs": [
+        "ecologist",
+        "zone_npc_reed"
+      ],
+      "trader": null,
+      "tags": [
+        "north"
+      ],
+      "layout": "Топи и редкие сухие островки"
+    },
+    "yantar": {
+      "name": "Янтарь",
+      "description": "Озеро под пепельным небом и лаборатория, из которой иногда доносится гул.",
+      "neighbors": [
+        "agro",
+        "swamp",
+        "redforest",
+        "underground",
+        "researchCamp"
+      ],
+      "danger": 4,
+      "rad": 42,
+      "mutants": 25,
+      "bandits": 5,
+      "stalkers": 16,
+      "npcs": [
+        "bar",
+        "ecologist",
+        "technician",
+        "vera",
+        "mira",
+        "personal_npc_technician_3",
+        "personal_npc_medic_3",
+        "zone_npc_gromova"
+      ],
+      "trader": "technician",
+      "tags": [
+        "north"
+      ],
+      "layout": "Берег озера и периметр лаборатории"
+    },
+    "wild": {
+      "name": "Дикая территория",
+      "description": "Открытая местность между складами и свалкой. Снайперская позиция меняется каждый день.",
+      "neighbors": [
+        "darkvalley",
+        "warehouses",
+        "militaryDepot"
+      ],
+      "danger": 5,
+      "rad": 17,
+      "mutants": 20,
+      "bandits": 38,
+      "stalkers": 8,
+      "npcs": [
+        "merc",
+        "merc7",
+        "zone_npc_zhdan"
+      ],
+      "trader": null,
+      "tags": [
+        "center",
+        "hostile"
+      ],
+      "layout": "Открытое поле и редкие укрытия"
+    },
+    "warehouses": {
+      "name": "Военные склады",
+      "description": "Колонны бронетехники под маскировочной сетью. «Свобода» держит здесь свой рубеж.",
+      "neighbors": [
+        "darkvalley",
+        "wild",
+        "redforest",
+        "pripyat",
+        "militaryDepot",
+        "freeCamp"
+      ],
+      "danger": 5,
+      "rad": 26,
+      "mutants": 22,
+      "bandits": 10,
+      "stalkers": 12,
+      "npcs": [
+        "freedom",
+        "merc",
+        "radio",
+        "personal_npc_soldier_3"
+      ],
+      "trader": "freedomTrader",
+      "tags": [
+        "north",
+        "military"
+      ],
+      "layout": "Складские ангары и лесополоса"
+    },
+    "redforest": {
+      "name": "Рыжий лес",
+      "description": "Сосны покрыты рыжей пылью. Компас ведёт себя странно, а тропы меняются местами.",
+      "neighbors": [
+        "yantar",
+        "warehouses",
+        "pripyat",
+        "anomalyRidge",
+        "northOutpost"
+      ],
+      "danger": 6,
+      "rad": 54,
+      "mutants": 38,
+      "bandits": 8,
+      "stalkers": 12,
+      "npcs": [
+        "ecologist",
+        "hunter",
+        "tracker7",
+        "zone_npc_dron"
+      ],
+      "trader": null,
+      "tags": [
+        "north"
+      ],
+      "layout": "Рыжие сосны и выжженная просека"
+    },
+    "pripyat": {
+      "name": "Припять",
+      "description": "Пустые многоэтажки и площадь, где ветер гоняет обрывки афиш.",
+      "neighbors": [
+        "warehouses",
+        "redforest",
+        "chNpp",
+        "northOutpost"
+      ],
+      "danger": 7,
+      "rad": 48,
+      "mutants": 45,
+      "bandits": 14,
+      "stalkers": 7,
+      "npcs": [
+        "loner",
+        "ecologist",
+        "zone_npc_serov"
+      ],
+      "trader": null,
+      "tags": [
+        "north",
+        "endgame"
+      ],
+      "layout": "Городские кварталы и площадь"
+    },
+    "chNpp": {
+      "name": "ЧАЭС · Саркофаг",
+      "description": "Сердце Зоны. За бетонными стенами приборы сходят с ума.",
+      "neighbors": [
+        "pripyat"
+      ],
+      "danger": 10,
+      "rad": 92,
+      "mutants": 60,
+      "bandits": 14,
+      "stalkers": 0,
+      "npcs": [
+        "zone_npc_levin",
+        "zone_npc_veres"
+      ],
+      "trader": null,
+      "tags": [
+        "endgame",
+        "final"
+      ],
+      "layout": "Периметр станции"
+    },
+    "railway": {
+      "name": "Старая железная дорога",
+      "description": "Разобранные пути уходят под насыпь; вдоль шпал тянется старая тропа сталкеров.",
+      "neighbors": [
+        "cordon",
+        "rookie",
+        "garbage",
+        "radioHill"
+      ],
+      "danger": 2,
+      "rad": 7,
+      "mutants": 8,
+      "bandits": 10,
+      "stalkers": 22,
+      "npcs": [
+        "yura",
+        "personal_npc_technician_1",
+        "personal_npc_scavenger_3",
+        "zone_npc_rivet"
+      ],
+      "tags": [
+        "south"
+      ],
+      "layout": "Насыпь и заросший перегон"
+    },
+    "deadVillage": {
+      "name": "Мёртвая деревня",
+      "description": "Дома стоят целыми, но в окнах нет стёкол и уже много лет не горит свет.",
+      "neighbors": [
+        "rookie",
+        "garbage",
+        "cordon",
+        "greenhouse"
+      ],
+      "danger": 3,
+      "rad": 11,
+      "mutants": 14,
+      "bandits": 12,
+      "stalkers": 16,
+      "npcs": [
+        "anika"
+      ],
+      "tags": [
+        "south"
+      ],
+      "layout": "Пустые дворы и колодец"
+    },
+    "machineYard": {
+      "name": "Машинный двор",
+      "description": "Ряды разобранной техники скрывают ходы между Тёмной долиной и Агропромом.",
+      "neighbors": [
+        "agro",
+        "darkvalley"
+      ],
+      "danger": 4,
+      "rad": 20,
+      "mutants": 20,
+      "bandits": 23,
+      "stalkers": 12,
+      "npcs": [
+        "rusty",
+        "personal_npc_technician_2"
+      ],
+      "tags": [
+        "center"
+      ],
+      "layout": "Кран-балки и ремонтные ямы"
+    },
+    "underground": {
+      "name": "Подземный коллектор",
+      "description": "Вода по щиколотку, ржавые трубы и маркировка старого научного комплекса.",
+      "neighbors": [
+        "agro",
+        "yantar"
+      ],
+      "danger": 5,
+      "rad": 38,
+      "mutants": 29,
+      "bandits": 8,
+      "stalkers": 6,
+      "npcs": [
+        "lev"
+      ],
+      "tags": [
+        "underground"
+      ],
+      "layout": "Коллектор под лабораторией"
+    },
+    "militaryDepot": {
+      "name": "Заброшенный арсенал",
+      "description": "Пустые казармы и опрокинутые ящики. Металл здесь звенит от каждого шага.",
+      "neighbors": [
+        "warehouses",
+        "wild",
+        "dutyFort"
+      ],
+      "danger": 6,
+      "rad": 23,
+      "mutants": 18,
+      "bandits": 31,
+      "stalkers": 8,
+      "npcs": [
+        "kapral",
+        "personal_npc_soldier_2",
+        "zone_npc_orlov"
+      ],
+      "tags": [
+        "military"
+      ],
+      "layout": "Казармы и склад боеприпасов"
+    },
+    "anomalyRidge": {
+      "name": "Гребень аномалий",
+      "description": "На открытом склоне компас вращается, а трава ложится против ветра.",
+      "neighbors": [
+        "swamp",
+        "redforest",
+        "mirrorLake"
+      ],
+      "danger": 6,
+      "rad": 63,
+      "mutants": 24,
+      "bandits": 3,
+      "stalkers": 5,
+      "npcs": [
+        "sava"
+      ],
+      "tags": [
+        "anomaly"
+      ],
+      "layout": "Каменный гребень и поля помех"
+    },
+    "southTunnel": {
+      "name": "Южный тоннель",
+      "description": "Старая водопропускная труба связывает периметр с деревней новичков.",
+      "neighbors": [
+        "cordon",
+        "rookie"
+      ],
+      "danger": 2,
+      "rad": 5,
+      "mutants": 6,
+      "bandits": 4,
+      "stalkers": 11,
+      "npcs": [
+        "fedya"
+      ],
+      "tags": [
+        "south",
+        "underground"
+      ],
+      "layout": "Тоннель под трассой"
+    },
+    "northOutpost": {
+      "name": "Северная застава",
+      "description": "Сломанная мачта связи торчит над лесом. Ветер приносит обрывки переговоров.",
+      "neighbors": [
+        "redforest",
+        "pripyat"
+      ],
+      "danger": 7,
+      "rad": 47,
+      "mutants": 33,
+      "bandits": 13,
+      "stalkers": 7,
+      "npcs": [
+        "ines",
+        "zone_npc_grach"
+      ],
+      "tags": [
+        "north"
+      ],
+      "layout": "Застава и радиомачта"
+    },
+    "floodplain": {
+      "name": "Затопленная пойма",
+      "description": "Вода скрывает старую дамбу; над тростником дрожат сигнальные огни.",
+      "neighbors": [
+        "swamp"
+      ],
+      "danger": 3,
+      "rad": 18,
+      "mutants": 23,
+      "bandits": 8,
+      "stalkers": 14,
+      "npcs": [
+        "damMedic"
+      ],
+      "trader": null,
+      "tags": [
+        "swamp",
+        "v7"
+      ],
+      "layout": "Вода скрывает старую дамбу; над тростником дрожат сигнальные огни."
+    },
+    "quarry": {
+      "name": "Каменоломня",
+      "description": "Обрушенный карьер. Тросы звенят над шахтными колодцами.",
+      "neighbors": [
+        "garbage"
+      ],
+      "danger": 4,
+      "rad": 24,
+      "mutants": 24,
+      "bandits": 8,
+      "stalkers": 14,
+      "npcs": [
+        "quarryTech",
+        "personal_npc_hunter_2"
+      ],
+      "trader": null,
+      "tags": [
+        "industrial",
+        "v7"
+      ],
+      "layout": "Обрушенный карьер. Тросы звенят над шахтными колодцами."
+    },
+    "radioHill": {
+      "name": "Радиовысота",
+      "description": "Сломанная антенна ловит чужие переговоры.",
+      "neighbors": [
+        "railway"
+      ],
+      "danger": 3,
+      "rad": 14,
+      "mutants": 23,
+      "bandits": 8,
+      "stalkers": 14,
+      "npcs": [
+        "guide7"
+      ],
+      "trader": null,
+      "tags": [
+        "road",
+        "v7"
+      ],
+      "layout": "Сломанная антенна ловит чужие переговоры."
+    },
+    "greenhouse": {
+      "name": "Заброшенные теплицы",
+      "description": "Стёкла укрыты мхом. Под землёй работают старые насосы.",
+      "neighbors": [
+        "deadVillage"
+      ],
+      "danger": 3,
+      "rad": 20,
+      "mutants": 23,
+      "bandits": 8,
+      "stalkers": 14,
+      "npcs": [
+        "glassHunter",
+        "personal_npc_hunter_3"
+      ],
+      "trader": null,
+      "tags": [
+        "village",
+        "v7"
+      ],
+      "layout": "Стёкла укрыты мхом. Под землёй работают старые насосы."
+    },
+    "researchCamp": {
+      "name": "Полевой институт",
+      "description": "Учёные установили защищённые палатки вокруг измерительной станции.",
+      "neighbors": [
+        "yantar"
+      ],
+      "danger": 4,
+      "rad": 28,
+      "mutants": 24,
+      "bandits": 8,
+      "stalkers": 14,
+      "npcs": [
+        "prof7",
+        "labShop7",
+        "zone_npc_motyl"
+      ],
+      "trader": "labShop7",
+      "tags": [
+        "camp",
+        "v7"
+      ],
+      "layout": "Учёные установили защищённые палатки вокруг измерительной станции."
+    },
+    "dutyFort": {
+      "name": "Форт Долга",
+      "description": "Бетонный периметр прикрывает дорогу в северные сектора.",
+      "neighbors": [
+        "militaryDepot"
+      ],
+      "danger": 5,
+      "rad": 20,
+      "mutants": 25,
+      "bandits": 8,
+      "stalkers": 14,
+      "npcs": [
+        "guard7",
+        "quarter7"
+      ],
+      "trader": "quarter7",
+      "tags": [
+        "industrial",
+        "v7"
+      ],
+      "layout": "Бетонный периметр прикрывает дорогу в северные сектора."
+    },
+    "freeCamp": {
+      "name": "Вольный лагерь",
+      "description": "Старый санаторий стал базой Свободы. Дежурные слушают лес.",
+      "neighbors": [
+        "warehouses"
+      ],
+      "danger": 5,
+      "rad": 22,
+      "mutants": 25,
+      "bandits": 8,
+      "stalkers": 14,
+      "npcs": [
+        "freedom7",
+        "dealer7"
+      ],
+      "trader": "dealer7",
+      "tags": [
+        "village",
+        "v7"
+      ],
+      "layout": "Старый санаторий стал базой Свободы. Дежурные слушают лес."
+    },
+    "mirrorLake": {
+      "name": "Зеркальное озеро",
+      "description": "Отражение движется позже человека. Берег закрыт следами пропавших.",
+      "neighbors": [
+        "anomalyRidge"
+      ],
+      "danger": 8,
+      "rad": 50,
+      "mutants": 28,
+      "bandits": 8,
+      "stalkers": 14,
+      "npcs": [
+        "mirror7"
+      ],
+      "trader": null,
+      "tags": [
+        "swamp",
+        "v7"
+      ],
+      "layout": "Отражение движется позже человека. Берег закрыт следами пропавших."
+    }
+  },
+  "enemyTypes": {
+    "bandit": {
+      "name": "Бандит",
+      "visual": "bandit",
+      "description": "Вооружённый мародёр ищет лёгкую добычу.",
+      "hp": 54,
+      "damage": 11,
+      "accuracy": 0.58,
+      "armor": 0.04,
+      "weapon": "pm",
+      "loot": [
+        "ammo918",
+        "valuables",
+        "parts"
+      ],
+      "faction": "bandits",
+      "xp": 18,
+      "kind": "human"
+    },
+    "rookie": {
+      "name": "Озлобленный новичок",
+      "visual": "stalker",
+      "description": "Испуганный сталкер действует резко и неуверенно.",
+      "hp": 42,
+      "damage": 8,
+      "accuracy": 0.55,
+      "armor": 0,
+      "weapon": "knife",
+      "loot": [
+        "bread",
+        "ammo918"
+      ],
+      "faction": "loners",
+      "xp": 12,
+      "kind": "human"
+    },
+    "merc": {
+      "name": "Наёмник",
+      "visual": "merc",
+      "description": "Подготовленный боец в тяжёлом снаряжении.",
+      "hp": 88,
+      "damage": 16,
+      "accuracy": 0.7,
+      "armor": 0.2,
+      "weapon": "aksu",
+      "loot": [
+        "ammo545",
+        "medkit",
+        "parts"
+      ],
+      "faction": "mercs",
+      "xp": 36,
+      "kind": "human"
+    },
+    "dog": {
+      "name": "Слепой пёс",
+      "visual": "dog",
+      "description": "Мутант быстрый, но уязвимый.",
+      "hp": 34,
+      "damage": 10,
+      "accuracy": 0.64,
+      "armor": 0,
+      "weapon": "knife",
+      "loot": [
+        "meatchunk"
+      ],
+      "faction": "mutants",
+      "xp": 10,
+      "kind": "mutant",
+      "evasion": 0.04
+    },
+    "boar": {
+      "name": "Кабан",
+      "visual": "boar",
+      "description": "Тяжёлый мутант несётся напролом.",
+      "hp": 78,
+      "damage": 17,
+      "accuracy": 0.62,
+      "armor": 0.08,
+      "weapon": "knife",
+      "loot": [
+        "meatchunk",
+        "canned"
+      ],
+      "faction": "mutants",
+      "xp": 22,
+      "kind": "mutant",
+      "windup": 3
+    },
+    "bloodsucker": {
+      "name": "Кровосос",
+      "visual": "bloodsucker",
+      "description": "Невидимый охотник сближается из тумана.",
+      "hp": 105,
+      "damage": 20,
+      "accuracy": 0.72,
+      "armor": 0.12,
+      "weapon": "knife",
+      "loot": [
+        "flash",
+        "meatchunk"
+      ],
+      "faction": "mutants",
+      "xp": 44,
+      "kind": "mutant"
+    },
+    "controller": {
+      "name": "Контролёр",
+      "visual": "controller",
+      "description": "Пси-излучение сбивает концентрацию.",
+      "hp": 125,
+      "damage": 23,
+      "accuracy": 0.76,
+      "armor": 0.16,
+      "weapon": "knife",
+      "loot": [
+        "jellyfish",
+        "electronics"
+      ],
+      "faction": "mutants",
+      "xp": 65,
+      "kind": "mutant"
+    },
+    "monolith": {
+      "name": "Монолитовец",
+      "visual": "monolith",
+      "description": "Боец фанатичной группировки держит позицию.",
+      "hp": 118,
+      "damage": 21,
+      "accuracy": 0.72,
+      "armor": 0.3,
+      "weapon": "ak",
+      "loot": [
+        "ammo762",
+        "armySuit",
+        "valuables"
+      ],
+      "faction": "monolith",
+      "xp": 55,
+      "kind": "human"
+    },
+    "pseudogiant": {
+      "name": "Псевдогигант",
+      "visual": "pseudogiant",
+      "description": "Огромный мутант медленно готовит сокрушительный удар.",
+      "hp": 175,
+      "damage": 29,
+      "accuracy": 0.55,
+      "armor": 0.28,
+      "weapon": "knife",
+      "loot": [
+        "meatchunk",
+        "valuables"
+      ],
+      "faction": "mutants",
+      "xp": 82,
+      "kind": "mutant"
+    },
+    "snork": {
+      "name": "Снорк",
+      "visual": "snork",
+      "description": "Прыгает из укрытия, почти не давая прицелиться.",
+      "hp": 67,
+      "damage": 15,
+      "accuracy": 0.72,
+      "armor": 0.06,
+      "weapon": "knife",
+      "loot": [
+        "meatchunk",
+        "flash"
+      ],
+      "faction": "mutants",
+      "xp": 29,
+      "kind": "mutant"
+    },
+    "duty": {
+      "name": "Боец Долга",
+      "visual": "duty",
+      "description": "Опытный патрульный в бронежилете.",
+      "hp": 82,
+      "damage": 15,
+      "accuracy": 0.68,
+      "armor": 0.2,
+      "weapon": "ak",
+      "loot": [
+        "ammo762",
+        "bandage"
+      ],
+      "faction": "duty",
+      "xp": 32,
+      "kind": "human"
+    },
+    "alphaBoar": {
+      "name": "Матёрый кабан",
+      "visual": "alphaBoar",
+      "description": "Старый мутант покрыт шрамами и не боится выстрелов.",
+      "hp": 112,
+      "damage": 22,
+      "accuracy": 0.67,
+      "armor": 0.16,
+      "weapon": "knife",
+      "loot": [
+        "meatchunk",
+        "canned",
+        "stoneflower"
+      ],
+      "faction": "mutants",
+      "xp": 42,
+      "kind": "mutant"
+    },
+    "damagedBloodsucker": {
+      "name": "Искажённый кровосос",
+      "visual": "damagedBloodsucker",
+      "description": "Повреждённая тварь движется рывками, но бьёт яростно.",
+      "hp": 91,
+      "damage": 24,
+      "accuracy": 0.68,
+      "armor": 0.08,
+      "weapon": "knife",
+      "loot": [
+        "flash",
+        "meatchunk",
+        "electronics"
+      ],
+      "faction": "mutants",
+      "xp": 49,
+      "kind": "mutant"
+    },
+    "anomalousDog": {
+      "name": "Аномальный псевдопёс",
+      "visual": "anomalousDog",
+      "description": "Шерсть мерцает от статического разряда. Удары быстрые и непредсказуемые.",
+      "hp": 48,
+      "damage": 14,
+      "accuracy": 0.72,
+      "armor": 0.04,
+      "weapon": "knife",
+      "loot": [
+        "meatchunk",
+        "spark"
+      ],
+      "faction": "mutants",
+      "xp": 20,
+      "kind": "mutant"
+    },
+    "snorkVeteran": {
+      "name": "Снорк-ветеран",
+      "visual": "snorkVeteran",
+      "description": "Старая тварь прыгает из мёртвой зоны и не даёт прицелиться.",
+      "hp": 91,
+      "damage": 19,
+      "accuracy": 0.76,
+      "armor": 0.1,
+      "weapon": "knife",
+      "loot": [
+        "flash",
+        "meatchunk"
+      ],
+      "faction": "mutants",
+      "xp": 43,
+      "kind": "mutant"
+    },
+    "armoredBandit": {
+      "name": "Бандит в бронежилете",
+      "visual": "armoredBandit",
+      "description": "Мародёр прикрылся украденной бронёй и держит узкий проход.",
+      "hp": 92,
+      "damage": 15,
+      "accuracy": 0.62,
+      "armor": 0.28,
+      "weapon": "pm",
+      "loot": [
+        "ammo918",
+        "bandage",
+        "valuables"
+      ],
+      "faction": "bandits",
+      "xp": 34,
+      "kind": "human"
+    },
+    "psydog": {
+      "name": "Пси-пёс",
+      "visual": "psydog",
+      "description": "Мутант сбивает ритм атаки короткими пси-импульсами.",
+      "hp": 72,
+      "damage": 18,
+      "accuracy": 0.69,
+      "armor": 0.06,
+      "weapon": "knife",
+      "loot": [
+        "spark",
+        "meatchunk"
+      ],
+      "faction": "mutants",
+      "xp": 38,
+      "kind": "mutant"
+    },
+    "military": {
+      "name": "Солдат блокпоста",
+      "visual": "military",
+      "description": "Военный держит укрытие и контролирует сектор огня.",
+      "hp": 82,
+      "damage": 15,
+      "accuracy": 0.68,
+      "armor": 0.2,
+      "weapon": "aksu",
+      "loot": [
+        "ammo545",
+        "bandage"
+      ],
+      "faction": "military",
+      "xp": 32,
+      "kind": "human"
+    },
+    "ratSwarm": {
+      "name": "Стая тоннельных крыс",
+      "visual": "ratSwarm",
+      "hp": 28,
+      "damage": 7,
+      "accuracy": 0.78,
+      "armor": 0,
+      "evasion": 0.13,
+      "xp": 12,
+      "loot": [
+        "meatchunk"
+      ],
+      "faction": "mutants",
+      "weapon": "knife",
+      "description": "Мелкие звери окружают ноги и быстро меняют направление.",
+      "intro": "Из-под шпал хлынула стая. Мелкие цели трудно удержать на мушке.",
+      "lootChances": {
+        "meatchunk": 0.03
+      },
+      "kind": "mutant"
+    },
+    "marshLeech": {
+      "name": "Болотный ползун",
+      "visual": "marshLeech",
+      "hp": 58,
+      "damage": 12,
+      "accuracy": 0.68,
+      "armor": 0.03,
+      "radiationOnHit": 4,
+      "xp": 26,
+      "loot": [
+        "meatchunk",
+        "bubble"
+      ],
+      "faction": "mutants",
+      "weapon": "knife",
+      "description": "Влажная кожа источает радиоактивную слизь.",
+      "intro": "Из чёрной воды поднимается гибкая тварь. Прикрой открытые участки кожи.",
+      "lootChances": {
+        "meatchunk": 0.06,
+        "bubble": 0.04
+      },
+      "kind": "mutant"
+    },
+    "ironBoar": {
+      "name": "Панцирный секач",
+      "visual": "ironBoar",
+      "hp": 142,
+      "damage": 24,
+      "accuracy": 0.48,
+      "armor": 0.34,
+      "windup": 2,
+      "xp": 58,
+      "loot": [
+        "meatchunk",
+        "gravi"
+      ],
+      "faction": "mutants",
+      "weapon": "knife",
+      "description": "Медленный тяжёлый мутант прикрыт костяными пластинами.",
+      "intro": "Секач скребёт землю. Костяные пластины сдвигаются, закрывая голову перед тяжёлым броском.",
+      "lootChances": {
+        "meatchunk": 0.12,
+        "gravi": 0.04
+      },
+      "kind": "mutant"
+    },
+    "nightLurker": {
+      "name": "Ночной прыгун",
+      "visual": "nightLurker",
+      "hp": 96,
+      "damage": 18,
+      "accuracy": 0.79,
+      "armor": 0.05,
+      "evasion": 0.14,
+      "xp": 46,
+      "loot": [
+        "meatchunk",
+        "moonlight"
+      ],
+      "faction": "mutants",
+      "weapon": "knife",
+      "description": "Ночной хищник быстро перескакивает между тенями.",
+      "intro": "Две светлые точки исчезают в тени. Тварь уже готовит прыжок.",
+      "lootChances": {
+        "meatchunk": 0.08,
+        "moonlight": 0.03
+      },
+      "kind": "mutant"
+    },
+    "ashWalker": {
+      "name": "Пепельный ходок",
+      "visual": "ashWalker",
+      "hp": 132,
+      "damage": 20,
+      "accuracy": 0.62,
+      "armor": 0.18,
+      "radiationOnHit": 6,
+      "xp": 64,
+      "loot": [
+        "electronics",
+        "spark"
+      ],
+      "faction": "mutants",
+      "weapon": "knife",
+      "description": "Аномальный мутант оставляет после ударов радиоактивную пыль.",
+      "intro": "Пепел собирается в высокий силуэт. Дозиметр трещит при каждом его шаге.",
+      "lootChances": {
+        "electronics": 0.55,
+        "spark": 0.06
+      },
+      "kind": "mutant"
+    },
+    "quarryDog": {
+      "name": "Карьерный пёс",
+      "visual": "quarryDog",
+      "description": "Карьерный пёс · контакт в секторе Каменоломня",
+      "hp": 54,
+      "damage": 14,
+      "accuracy": 0.64,
+      "armor": 0,
+      "weapon": "knife",
+      "loot": [
+        "meatchunk"
+      ],
+      "faction": "mutants",
+      "xp": 18,
+      "kind": "mutant",
+      "evasion": 0.04,
+      "intro": "Карьерный пёс замечает тебя у укрытия.",
+      "home": "quarry"
+    },
+    "reedCrawler": {
+      "name": "Камышовый ползун",
+      "visual": "reedCrawler",
+      "hp": 86,
+      "damage": 18,
+      "accuracy": 0.68,
+      "armor": 0.03,
+      "radiationOnHit": 4,
+      "xp": 29,
+      "loot": [
+        "meatchunk",
+        "bubble"
+      ],
+      "faction": "mutants",
+      "weapon": "knife",
+      "description": "Камышовый ползун · контакт в секторе Затопленная пойма",
+      "intro": "Камышовый ползун замечает тебя у укрытия.",
+      "lootChances": {
+        "meatchunk": 0.06,
+        "bubble": 0.04
+      },
+      "kind": "mutant",
+      "home": "floodplain"
+    },
+    "mirrorStalker": {
+      "name": "Зеркальный двойник",
+      "visual": "mirrorStalker",
+      "hp": 145,
+      "damage": 23,
+      "accuracy": 0.62,
+      "armor": 0.18,
+      "radiationOnHit": 6,
+      "xp": 48,
+      "loot": [
+        "electronics",
+        "spark"
+      ],
+      "faction": "mutants",
+      "weapon": "knife",
+      "description": "Зеркальный двойник · контакт в секторе Зеркальное озеро",
+      "intro": "Зеркальный двойник замечает тебя у укрытия.",
+      "lootChances": {
+        "electronics": 0.55,
+        "spark": 0.06
+      },
+      "kind": "mutant",
+      "home": "mirrorLake"
+    },
+    "banditScout": {
+      "name": "Бандит-разведчик",
+      "visual": "banditScout",
+      "description": "Бандит-разведчик · контакт в секторе Каменоломня",
+      "hp": 80,
+      "damage": 18,
+      "accuracy": 0.58,
+      "armor": 0.04,
+      "weapon": "pm",
+      "loot": [
+        "ammo918",
+        "valuables",
+        "parts"
+      ],
+      "faction": "bandits",
+      "xp": 27,
+      "kind": "human",
+      "intro": "Бандит-разведчик замечает тебя у укрытия.",
+      "home": "quarry"
+    },
+    "mercMarksman": {
+      "name": "Наёмник-стрелок",
+      "visual": "mercMarksman",
+      "description": "Наёмник-стрелок · контакт в секторе Радиовысота",
+      "hp": 125,
+      "damage": 25,
+      "accuracy": 0.7,
+      "armor": 0.2,
+      "weapon": "aksu",
+      "loot": [
+        "ammo545",
+        "medkit",
+        "parts"
+      ],
+      "faction": "mercs",
+      "xp": 42,
+      "kind": "human",
+      "intro": "Наёмник-стрелок замечает тебя у укрытия.",
+      "home": "radioHill"
+    },
+    "dutyDeserter": {
+      "name": "Дезертир",
+      "visual": "dutyDeserter",
+      "description": "Дезертир · контакт в секторе Форт Долга",
+      "hp": 100,
+      "damage": 21,
+      "accuracy": 0.68,
+      "armor": 0.2,
+      "weapon": "ak",
+      "loot": [
+        "ammo762",
+        "bandage"
+      ],
+      "faction": "duty",
+      "xp": 33,
+      "kind": "human",
+      "intro": "Дезертир замечает тебя у укрытия.",
+      "home": "dutyFort"
+    },
+    "electroSnork": {
+      "name": "Искровой снорк",
+      "visual": "electroSnork",
+      "description": "Искровой снорк · контакт в секторе Заброшенные теплицы",
+      "hp": 112,
+      "damage": 22,
+      "accuracy": 0.72,
+      "armor": 0.06,
+      "weapon": "knife",
+      "loot": [
+        "meatchunk",
+        "flash"
+      ],
+      "faction": "mutants",
+      "xp": 37,
+      "kind": "mutant",
+      "intro": "Искровой снорк замечает тебя у укрытия.",
+      "home": "greenhouse"
+    },
+    "storyScarBoar": {
+      "name": "Секач с красным шрамом",
+      "visual": "ironBoar",
+      "hp": 108,
+      "damage": 16,
+      "accuracy": 0.5,
+      "armor": 0.34,
+      "windup": 2,
+      "xp": 48,
+      "loot": [
+        "meatchunk"
+      ],
+      "faction": "mutants",
+      "weapon": "knife",
+      "description": "Раненый секач из личной охоты. Бережёт лапу и закрывает голову пластинами.",
+      "intro": "Вода дрожит у берега. Зверь хромает, но тяжёлый бросок всё ещё опасен.",
+      "lootChances": {
+        "meatchunk": 0.12,
+        "gravi": 0.04
+      },
+      "kind": "mutant"
+    },
+    "zone_elite_boar": {
+      "name": "Матёрый секач шлюза",
+      "visual": "zone_elite_boar",
+      "hp": 159,
+      "damage": 24,
+      "accuracy": 0.48,
+      "armor": 0.34,
+      "windup": 2,
+      "xp": 73,
+      "loot": [
+        "meatchunk",
+        "gravi",
+        "goldfish"
+      ],
+      "faction": "mutants",
+      "weapon": "knife",
+      "description": "Опытный противник у северного коридора. Медленный тяжёлый мутант прикрыт костяными пластинами.",
+      "intro": "Секач скребёт землю. Костяные пластины сдвигаются, закрывая голову перед тяжёлым броском.",
+      "lootChances": {
+        "meatchunk": 0.12,
+        "gravi": 0.04,
+        "goldfish": 0.015
+      },
+      "kind": "mutant",
+      "zoneEnemy": true
+    },
+    "zone_elite_guard": {
+      "name": "Старший дозор канала",
+      "visual": "zone_elite_guard",
+      "description": "Опытный противник у северного коридора. Боец фанатичной группировки держит позицию.",
+      "hp": 132,
+      "damage": 21,
+      "accuracy": 0.72,
+      "armor": 0.3,
+      "weapon": "ak",
+      "loot": [
+        "ammo762",
+        "armySuit",
+        "valuables",
+        "goldfish"
+      ],
+      "faction": "monolith",
+      "xp": 70,
+      "kind": "human",
+      "zoneEnemy": true,
+      "lootChances": {
+        "goldfish": 0.015
+      }
+    }
+  },
+  "factions": {
+    "loners": {
+      "name": "Одиночки",
+      "color": "#adba83",
+      "minimumRank": 0,
+      "base": "cordon",
+      "description": "Взаимовыручка и свободные дороги.",
+      "enemies": [
+        "bandits"
+      ],
+      "minRep": 5,
+      "minRank": 1,
+      "joinable": true,
+      "discount": 0.08,
+      "benefit": "Скидка 8% у своих торговцев, доступ к контрактам базы."
+    },
+    "bandits": {
+      "name": "Бандиты",
+      "color": "#a68162",
+      "minimumRank": 1,
+      "base": "darkvalley",
+      "description": "Долги, контрабанда и власть над дорогами.",
+      "enemies": [
+        "loners",
+        "duty",
+        "military"
+      ],
+      "minRep": 12,
+      "minRank": 2,
+      "joinable": true,
+      "discount": 0.08,
+      "benefit": "Скидка 8% у своих торговцев, доступ к контрактам базы."
+    },
+    "duty": {
+      "name": "Долг",
+      "color": "#b96853",
+      "minimumRank": 3,
+      "base": "dutyFort",
+      "description": "Сдержать угрозу Зоны и защитить периметр.",
+      "enemies": [
+        "freedom",
+        "bandits"
+      ],
+      "minRep": 10,
+      "minRank": 2,
+      "joinable": true,
+      "discount": 0.08,
+      "benefit": "Скидка 8% у своих торговцев, доступ к контрактам базы."
+    },
+    "freedom": {
+      "name": "Свобода",
+      "color": "#75a17c",
+      "minimumRank": 2,
+      "base": "freeCamp",
+      "description": "Исследовать Зону без военного контроля.",
+      "enemies": [
+        "duty",
+        "military"
+      ],
+      "minRep": 10,
+      "minRank": 2,
+      "joinable": true,
+      "discount": 0.08,
+      "benefit": "Скидка 8% у своих торговцев, доступ к контрактам базы."
+    },
+    "military": {
+      "name": "Военные",
+      "color": "#8595a2",
+      "minimumRank": 2,
+      "base": "checkpoint",
+      "description": "Охранять периметр и контролировать проходы.",
+      "enemies": [
+        "bandits",
+        "freedom"
+      ],
+      "minRep": 15,
+      "minRank": 3,
+      "joinable": true,
+      "discount": 0.08,
+      "benefit": "Скидка 8% у своих торговцев, доступ к контрактам базы."
+    },
+    "ecologists": {
+      "name": "Учёные",
+      "color": "#d6c87c",
+      "minimumRank": 2,
+      "base": "researchCamp",
+      "description": "Сохранить данные, жизнь и редкие образцы.",
+      "enemies": [
+        "monolith"
+      ],
+      "minRep": 8,
+      "minRank": 2,
+      "joinable": true,
+      "discount": 0.08,
+      "benefit": "Скидка 8% у своих торговцев, доступ к контрактам базы."
+    },
+    "mercs": {
+      "name": "Наёмники",
+      "color": "#87949e",
+      "minimumRank": 4,
+      "base": "wild",
+      "description": "Контракты важнее чужих лозунгов.",
+      "enemies": [
+        "loners"
+      ],
+      "minRep": 15,
+      "minRank": 3,
+      "joinable": true,
+      "discount": 0.08,
+      "benefit": "Скидка 8% у своих торговцев, доступ к контрактам базы."
+    },
+    "mutants": {
+      "name": "Мутанты",
+      "color": "#a18467",
+      "minimumRank": 0,
+      "description": "Обитатели Зоны. Не ведут переговоров.",
+      "joinable": false,
+      "enemies": [],
+      "base": null
+    },
+    "monolith": {
+      "name": "Монолит",
+      "color": "#b19c91",
+      "minimumRank": 0,
+      "base": "chNpp",
+      "description": "Голоса за северным периметром.",
+      "enemies": [
+        "loners",
+        "ecologists",
+        "duty"
+      ],
+      "minRep": 50,
+      "minRank": 8,
+      "joinable": false,
+      "discount": 0.08,
+      "benefit": "Скидка 8% у своих торговцев, доступ к контрактам базы."
+    }
+  }
+}
