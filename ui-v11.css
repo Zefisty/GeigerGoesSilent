@@ -645,3 +645,22 @@ body[data-motion="reduced"] #app :is(button,.panel-window,.reward-toast) { anima
 #app .player-name-input { box-sizing:border-box;width:100%;min-width:0;flex:1;height:36px;padding:6px 8px;border:1px solid #657d4f;border-radius:4px;background:#111a13;color:#e3ebd6;font:600 16px/1.3 var(--pda-font); }
 #app .player-name-input:focus { outline:2px solid #adc47a;outline-offset:1px; }
 #app .player-name-hint { display:block;min-height:30px;margin:-3px 0 8px;color:#b6c78c;font:10px/1.5 var(--pda-mono);overflow-wrap:anywhere; }
+/* Field journal additions: event-driven UI, bounded and readable on small screens. */
+#app .field-new{display:inline-block;margin-left:4px;padding:1px 3px;border:1px solid var(--pda-accent);border-radius:3px;font:9px var(--pda-mono);color:var(--pda-accent);vertical-align:middle;white-space:nowrap}
+#app .quest-heading strong{min-width:0;flex:1;overflow-wrap:anywhere}
+#app .quest-heading .quest-pin{flex:0 0 36px;width:36px;height:36px;min-width:36px;min-height:36px;padding:0;display:grid;place-items:center;border-radius:4px;line-height:1;font-size:20px}
+#app .field-actions{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+#app .field-actions>button{min-width:0;min-height:44px;white-space:normal;overflow-wrap:anywhere;flex:1 1 140px}
+#app .field-metrics{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:12px 0}
+#app .field-metrics>div{min-width:0;padding:8px;background:var(--pda-raised);border:1px solid var(--pda-line);border-radius:4px}
+#app .field-metrics small,#app .field-metrics strong{display:block;overflow-wrap:anywhere}
+#app .field-return-label{color:var(--pda-accent);font:12px var(--pda-mono);letter-spacing:.08em}
+#app .field-summary,#app .field-record,#app .field-timeline{min-width:0;overflow-wrap:anywhere}
+#app .panel-window.field-return-panel{max-width:min(580px,calc(100vw - 24px))}
+#app .field-summary details{margin:10px 0;border-top:1px solid var(--pda-line);padding-top:8px}
+#app .field-record{padding:12px;margin:10px 0;border:1px solid var(--pda-line);border-radius:4px;background:var(--pda-panel)}
+#app .field-record h3{margin-top:0}
+#app .field-timeline{padding-left:20px}
+#app .field-timeline li{padding:8px 0;border-bottom:1px solid var(--pda-line)}
+#app .field-copy-text{box-sizing:border-box;width:100%;max-width:100%;min-height:160px;color:var(--pda-ink);background:var(--pda-panel);border:1px solid var(--pda-line);padding:8px;resize:vertical}
+@media(max-width:480px){#app .field-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}#app .field-actions>button{flex-basis:100%}}

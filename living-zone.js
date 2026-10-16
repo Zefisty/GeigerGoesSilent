@@ -73,6 +73,7 @@
     if(mutant&&s.player.time>=21||mutant&&s.player.time<5)n*=1.1;
     if(mutant&&weather(s)==='Туман')n*=1.1;
     if(enemies.length&&s.expedition.flags.loudBattle)n*=1.1;
+    const rumors=window.ZoneRPGFieldJournal;n*=1+(mutant?rumors.rumorBonus(s,'mutants',loc)*.3:military?rumors.rumorBonus(s,'military',loc)*.3:0);
     return clamp(n,.25,3.5);
   }
   function priority(s,loc){return W.events.find(e=>e.callback&&e.locations.includes(loc)&&eligible(e,s,loc))||W.events.find(e=>e.secret?.stage>0&&e.locations.includes(loc)&&eligible(e,s,loc));}
@@ -98,7 +99,7 @@
     if(!D.npcContacts.includes(id))return [];
     const m=s.worldState.npcMemory[id],used=s.worldState.visitActions.includes(id),known=m?.helped&&m.trust>0;
     if(used)return [{label:'Вспомнить текущий разговор',finish:true,resultText:'Вы уже обсудили обстановку в этом посещении. Вернись после дороги в другой сектор.'}];
-    return [{label:'Обсудить перемены в секторе',finish:true,effects:{living:{visit:id,observe:true}},resultText:'Собеседник сверил местную частоту. Информация в КПК обновлена.'},...(known?[{label:'Попросить совет старого знакомого',finish:true,effects:{living:{visit:id,observe:true},stamina:2},resultText:'Собеседник помнит помощь и показывает короткий обход. Это совет, а не бесконечная награда.'}]:[{label:'Предложить помощь с ближайшим дозором',when:{items:{bandage:1}},finish:true,effects:{itemCost:{bandage:1},living:{visit:id,npc:id,help:true}},resultText:'Твою помощь запомнили. Она пригодится в следующих разговорах.'}]),{label:s.worldState.renown>=25?'Спросить, что говорят о твоём позывном':'Назвать свой позывной',finish:true,effects:{living:{visit:id,observe:true}},resultText:s.worldState.renown>=45?'Позывной уже узнают. Это помогает разговорам, но за твоими выходами могут следить чужие группы.':s.worldState.renown>=25?'Твой позывной знают по прошлым делам. Отношение группировки всё равно зависит от её собственной репутации.':'Здесь тебя ещё узнают по конкретным делам. Новая известность не выдаётся за представление.'}];
+    return [{label:'Обсудить перемены в секторе',finish:true,effects:{living:{visit:id,observe:true}},resultText:'Собеседник сверил местную частоту. Информация в КПК обновлена.'},...(known?[{label:'Попросить совет старого знакомого',finish:true,effects:{living:{visit:id,observe:true},stamina:2},resultText:'«{playerName}, твою помощь помнят». Собеседник показывает короткий обход. Это совет, а не бесконечная награда.'}]:[{label:'Предложить помощь с ближайшим дозором',when:{items:{bandage:1}},finish:true,effects:{itemCost:{bandage:1},living:{visit:id,npc:id,help:true}},resultText:'Твою помощь запомнили. Она пригодится в следующих разговорах.'}]),{label:s.worldState.renown>=25?'Спросить, что говорят о твоём позывном':'Назвать свой позывной',finish:true,effects:{living:{visit:id,observe:true}},resultText:s.worldState.renown>=45?'Позывной уже узнают. Это помогает разговорам, но за твоими выходами могут следить чужие группы.':s.worldState.renown>=25?'Твой позывной знают по прошлым делам. Отношение группировки всё равно зависит от её собственной репутации.':'Здесь тебя ещё узнают по конкретным делам. Новая известность не выдаётся за представление.'}];
   }
   function caravanAt(s){const e=s.worldEvents.find(a=>a.endsAt>s.worldClock&&incident(a.id)?.state==='caravan');if(!e)return null;const locations=incident(e.id).locations.filter(l=>W.people.v9_caravan.possibleLocations.includes(l));return locations.length?locations[(Math.floor(s.worldClock/2)+s.worldState.seed)%locations.length]:null;}
   function npcAvailable(s,id,loc){
@@ -108,7 +109,17 @@
     if(p.mobileOrdinary&&modifier(s,'npc',loc)<1)return false;
     return peopleAt(s,loc).includes(id);
   }
-  function peopleAt(s,loc){const list=[...W.locations[loc].npcs];if(caravanAt(s)===loc)list.push('v9_caravan');return list.filter(id=>W.people[id]?.personalStory||id==='npc_threeLeggedPigBandit'||s.quests.active.some(q=>W.quests.find(d=>d.id===q.id)?.giver===id)||!W.people[id]?.mobileOrdinary||modifier(s,'npc',loc)>=1);}
+  function npcLocation(s,id){
+    const p=W.people[id];if(!p||p.requiresBackground&&p.requiresBackground!==s.backgroundId||!window.ZoneRPGZone.npcVisible(s,id)||!window.ZoneRPGStories.npcPresent(s,id))return null;
+    if(id==='v9_caravan')return caravanAt(s);
+    const move=p.relocation;if(move&&s.worldEvents.some(e=>e.id===move.incident&&e.endsAt>s.worldClock))return move.destination;
+    const home=Object.keys(W.locations).find(loc=>W.locations[loc].npcs.includes(id));
+    return home&&(!p.mobileOrdinary||modifier(s,'npc',home)>=1)?home:null;
+  }
+  function questLocations(s,q,action){const id=action==='accept'?(q.giverNpcId||q.giver):(q.turnInNpcId||q.giver);return W.people[id]?.relocation?[npcLocation(s,id)].filter(Boolean):(action==='accept'?q.giverLocations:q.turnInLocations)||[];}
+  function peopleAt(s,loc){const list=W.locations[loc].npcs.filter(id=>!W.people[id]?.relocation||npcLocation(s,id)===loc);for(const [id,p]of Object.entries(W.people))if(p.relocation&&npcLocation(s,id)===loc&&!list.includes(id))list.push(id);if(caravanAt(s)===loc)list.push('v9_caravan');return list.filter(id=>W.people[id]?.personalStory||id==='npc_threeLeggedPigBandit'||s.quests.active.some(q=>W.quests.find(d=>d.id===q.id)?.giver===id)||!W.people[id]?.mobileOrdinary||modifier(s,'npc',loc)>=1);}
+
+
   function decorate(s,e){
     const loc=s.expedition.active?s.expedition.originLocationId:s.travelTo||s.player.location;
     if(!e.legendary&&!e.secret){const status=stateAt(s,loc);if(status!=='calm')e.text+=' Обстановка: '+D.states[status].name.toLocaleLowerCase('ru-RU')+'.';if(s.player.time>=21||s.player.time<5)e.text+=' На тропе ночь; ориентиры приходится сверять ближе.';if(weather(s)!=='Тихо')e.text+=' '+weather(s)+': звук и видимость меняются.';}
@@ -139,5 +150,5 @@
     }
     return errors;
   }
-  window.ZoneRPGLiving={fresh,normalize,modifier,stateAt,observe,arrive,tick,eligible,weight,available,priority,canApply,apply,onEncounter,onExplore,onReturn,renown,onQuest,renownName,memoryText,npcChoices,npcAvailable,peopleAt,caravanAt,decorate,rumor,view,depth,weather,validate};
+  window.ZoneRPGLiving={fresh,normalize,modifier,stateAt,observe,arrive,tick,eligible,weight,available,priority,canApply,apply,onEncounter,onExplore,onReturn,renown,onQuest,renownName,memoryText,npcChoices,npcAvailable,npcLocation,questLocations,peopleAt,caravanAt,decorate,rumor,view,depth,weather,validate};
 })();

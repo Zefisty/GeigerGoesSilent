@@ -76,6 +76,7 @@
     state.personalStory=window.ZoneRPGStories.fresh(state.backgroundId);
     state.worldState=window.ZoneRPGLiving.fresh(state.player.location);window.ZoneRPGShops.sync(state);
     window.ZoneRPGLiving.observe(state,state.player.location);
+    state.fieldJournal=window.ZoneRPGFieldJournal.fresh(state);for(const key of window.ZoneRPGFieldJournal.flags)state.worldFlags[key]=false;
     return state;
   }
 
@@ -250,6 +251,7 @@
     base.deathSummary=input.deathSummary&&typeof input.deathSummary==='object'?input.deathSummary:null;
     base.panelReturn=null;
     if(base.player.health<=0){base.mode='dead';base.combat=null;base.event=null;base.travelTo=null;base.expedition=window.ZoneRPGExpedition.empty();window.ZoneRPGExpedition.project(base);}
+    base.fieldJournal=window.ZoneRPGFieldJournal.normalize(input.fieldJournal,base);
     return base;
   }
 

@@ -1,5 +1,7 @@
 // Lightweight offline shell only; regenerate this list when adding local images/scripts.
 self.ZoneRPGPrecache = [
+  "./field-journal.js",
+  "./field-journal-ui.js",
   "./ui-v11.css",
   "./assets/ui/alert.svg",
   "./assets/ui/back.svg",

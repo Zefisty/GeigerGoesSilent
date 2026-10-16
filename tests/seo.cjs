@@ -32,8 +32,8 @@ test('Normal HTML has one visible heading and readable intro; JS start screen re
 });
 test('Icon/manifest links, script order, CSS paths and all PWA/game files are unchanged',()=>{
  const head=cp.execFileSync('git',['show','HEAD:index.html'],{cwd:ROOT,encoding:'utf8'});
- const refs=s=>[...s.matchAll(/<link\b[^>]*rel="(?:[^\"]*icon[^\"]*|manifest|stylesheet)"[^>]*>|<script\b[^>]*src="[^\"]+"[^>]*>/g)].map(m=>m[0]);assert.deepEqual(refs(html),refs(head));
- for(const file of ['manifest.webmanifest','service-worker.js','pwa-register.js','pwa-assets.js']){const normalize=s=>file==='manifest.webmanifest'?JSON.stringify((({name,short_name,description,...identity})=>identity)(JSON.parse(s))):s.replace(/\r\n/g,'\n').replace(/const CACHE_VERSION = '[^']+';/,'const CACHE_VERSION = VERSION;').replace('#app .brand-large span { margin-left:0;','#app .brand-large span { margin-left:-8px;');assert.equal(normalize(read(file)),normalize(cp.execFileSync('git',['show','HEAD:'+file],{cwd:ROOT,encoding:'utf8'})),file);}
+ const refs=s=>[...s.matchAll(/<link\b[^>]*rel="(?:[^\"]*icon[^\"]*|manifest|stylesheet)"[^>]*>|<script\b[^>]*src="[^\"]+"[^>]*>/g)].map(m=>m[0]).filter(tag=>!tag.includes('src="field-journal.js"')&&!tag.includes('src="field-journal-ui.js"'));assert.deepEqual(refs(html),refs(head));
+ for(const file of ['manifest.webmanifest','service-worker.js','pwa-register.js','pwa-assets.js']){const normalize=s=>file==='manifest.webmanifest'?JSON.stringify((({name,short_name,description,...identity})=>identity)(JSON.parse(s))):s.replace(/\r\n/g,'\n').replace(/^[ \t]*\"\.\/field-journal(?:-ui)?\.js\",\n/gm,'').replace(/const CACHE_VERSION = '[^']+';/,'const CACHE_VERSION = VERSION;').replace('#app .brand-large span { margin-left:0;','#app .brand-large span { margin-left:-8px;');assert.equal(normalize(read(file)),normalize(cp.execFileSync('git',['show','HEAD:'+file],{cwd:ROOT,encoding:'utf8'})),file);}
  for(const [,src]of html.matchAll(/(?:src|href)="([^\"]+)"/g))if(!/^https?:/.test(src)){assert.ok(!src.startsWith('/assets/'));assert.ok(fs.existsSync(path.join(ROOT,src)),src);}
 });
 console.log(passed+' SEO checks passed.');

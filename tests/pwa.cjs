@@ -57,7 +57,7 @@ await test('Version replacement cleans only this ZoneRPG scope and leaves active
 await test('Final green cache purges legacy icon caches and stores only approved icon bytes',async()=>{
  const base=BASE,prefix='zonerpg-'+encodeURIComponent(new URL(BASE).pathname)+'-',shared=new Map();
  for(const version of ['v1','v2-radiation-icons','v3-green-radiation-icons','v4-green-radiation-final','v5-green-shortcut-icons','v6-header-radiation','v7-field-art','v8-pda-interface','v9-menu-polish','v10-last-cordon'])shared.set(prefix+version,new Map([[base+'assets/pwa/icon-512.png',new Response('old Z')]]));
- shared.set('another-app',new Map());const w=worker(base,shared);assert.equal(w.name(),prefix+'v12-geiger-goes-silent');await w.install();await w.activate();
+ shared.set('another-app',new Map());const w=worker(base,shared);assert.equal(w.name(),prefix+'v13-field-journal');await w.install();await w.activate();
  assert.deepEqual([...shared.keys()].sort(),['another-app',w.name()].sort());
  const icons=[...shared.get(w.name()).keys()].filter(url=>url.includes('/assets/pwa/')||url.endsWith('/favicon.ico'));assert.equal(icons.length,8);
  w.ctl.online=false;for(const url of icons){assert.match(url,/radiation-green-v[23]-|\/favicon\.ico$/);assert.deepEqual(Buffer.from(await(await w.request(url)).arrayBuffer()),fs.readFileSync(path.join(ROOT,new URL(url).pathname.slice(new URL(BASE).pathname.length))));}

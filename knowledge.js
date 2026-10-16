@@ -19,6 +19,7 @@
     shared.forEach((id,i)=>aliases.set(('rumor_'+loc+'_'+String(i+1).padStart(2,'0')).toLowerCase(),id));
     for(const key of ['rumor:'+loc,'camp news '+loc])notes.set(key,{title:'Дорожные новости · '+data.name,text:'Разговоры в этом секторе записаны в разделе «Слухи». '});
   }
+  for(const r of W.fieldRumors||[]){add(r.id,r.title,r.text);Object.assign(definitions.get(r.id),{fieldDynamic:true,target:r.target});for(const loc of Object.keys(W.locations))pools[loc].push(r.id);}
   // Consequences are canonical rumors too: the archive and loaded saves use the same text.
   for(const site of window.ZoneRPGLivingData.sites)for(const decision of ['help','betray']){
     const id=add('rumor_consequence_'+site.loc+'_'+decision,'Разговоры · '+W.locations[site.loc].name,
@@ -66,5 +67,5 @@
     return {...raw,id:def?.id||candidate||null,title:def?.title||raw.title,text:def?.text||raw.text};
   }
   function heard(input,records,knowledge){return [...new Set([...(Array.isArray(input)?input:[]),...records.map(r=>r.id),...knowledge.filter(k=>/^rumor_/i.test(k))].filter(id=>typeof id==='string').map(canonical))];}
-  window.ZoneRPGKnowledge={display,record,heard,canonical,pool:(loc,s)=>[...(pools[loc]||[]),...(s?.zoneStory?.ending?['zone_ending_'+s.zoneStory.ending]:[])].map(id=>definitions.get(id)).filter(r=>{if(!r.consequence)return true;const d=s?.worldState?.locations[r.consequence.location];return d?.decision===r.consequence.decision&&s.worldClock-d.decidedAt>=3;}),rumor:id=>definitions.get(canonical(id))};
+  window.ZoneRPGKnowledge={display,record,heard,canonical,pool:(loc,s)=>[...(pools[loc]||[]),...(s?.zoneStory?.ending?['zone_ending_'+s.zoneStory.ending]:[])].map(id=>definitions.get(id)).filter(r=>{if(r.fieldDynamic&&s&&!s.known?.includes(r.target))return false;if(!r.consequence)return true;const d=s?.worldState?.locations[r.consequence.location];return d?.decision===r.consequence.decision&&s.worldClock-d.decidedAt>=3;}),rumor:id=>definitions.get(canonical(id))};
 })();

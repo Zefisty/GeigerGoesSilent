@@ -4,7 +4,7 @@ const ROOT=path.resolve(__dirname,'..'),BASE=require('../deployment.json').curre
 const read=f=>fs.readFileSync(path.join(ROOT,f),'utf8');let passed=0;
 async function test(name,fn){await fn();passed++;console.log('PASS '+name);}
 const ctx={self:{}};vm.runInNewContext(read('pwa-assets.js'),ctx);const assets=Array.from(ctx.self.ZoneRPGPrecache);
-const sameAsHead=f=>assert.equal(read(f).replace(/\r\n/g,'\n').replace(/,questSource:'signal'/g,''),cp.execFileSync('git',['show','HEAD:'+f],{cwd:ROOT,encoding:'utf8'}).replace(/\r\n/g,'\n').replace(/,questSource:'signal'/g,''),f);
+const sameAsHead=f=>assert.equal(read(f).replace(/\r\n/g,'\n').replace(/^[ \t]*\"\.\/field-journal(?:-ui)?\.js\",\n/gm,'').replace(/,questSource:'signal'/g,''),cp.execFileSync('git',['show','HEAD:'+f],{cwd:ROOT,encoding:'utf8'}).replace(/\r\n/g,'\n').replace(/^[ \t]*\"\.\/field-journal(?:-ui)?\.js\",\n/gm,'').replace(/,questSource:'signal'/g,''),f);
 (async()=>{
 await test('Public HTML, SEO and repository links use the renamed deployment',()=>{
  const html=read('index.html');assert.equal(html.match(/<link rel="canonical" href="([^"]+)"/)[1],BASE);
@@ -46,7 +46,7 @@ await test('Save keys, legacy migration, namespaces and gameplay bytes stay comp
 });
 await test('Service worker changes exactly one cache version without strategy changes',()=>{
  const old=cp.execFileSync('git',['show','HEAD:service-worker.js'],{cwd:ROOT,encoding:'utf8'}),current=read('service-worker.js');
- assert.match(current,/const CACHE_VERSION = 'v12-geiger-goes-silent';/);
+ assert.match(current,/const CACHE_VERSION = 'v13-field-journal';/);
  assert.equal(current.replace(/const CACHE_VERSION = '[^']+';/,"const CACHE_VERSION = 'VERSION';"),old.replace(/const CACHE_VERSION = '[^']+';/,"const CACHE_VERSION = 'VERSION';"));
 });
 await test('Every pre-cached resource and browser fixture serves through /GeigerGoesSilent/',async()=>{

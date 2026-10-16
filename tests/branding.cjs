@@ -1,6 +1,6 @@
 const assert=require('node:assert/strict'),fs=require('node:fs'),path=require('node:path'),cp=require('node:child_process');
 const {runtime}=require('./runtime.cjs');const ROOT=path.resolve(__dirname,'..'),BASE=require('../deployment.json').current.pages;let passed=0;
-const read=f=>fs.readFileSync(path.join(ROOT,f),'utf8'),head=f=>cp.execFileSync('git',['show','HEAD:'+f],{cwd:ROOT,encoding:'utf8'}),normalize=s=>s.replace(/\r\n/g,'\n');
+const read=f=>fs.readFileSync(path.join(ROOT,f),'utf8'),head=f=>cp.execFileSync('git',['show','HEAD:'+f],{cwd:ROOT,encoding:'utf8'}),normalize=s=>s.replace(/\r\n/g,'\n').replace(/^[ \t]*\"\.\/field-journal(?:-ui)?\.js\",\n/gm,'');
 function test(name,fn){fn();passed++;console.log('PASS '+name);}
 test('Public HTML, app labels and structured data use Geiger Goes Silent while keeping the real URL',()=>{
  const html=read('index.html'),m=JSON.parse(read('manifest.webmanifest'));assert.match(html,/<title>Geiger Goes Silent by Zefisty/);assert.match(html,/<h1>Geiger Goes Silent<\/h1>/);
@@ -34,7 +34,7 @@ test('Manifest preserves install identity, scope, start URL, theme and original 
 });
 test('Worker changes only cache version so the rebranded cached interface updates safely',()=>{
  const worker=s=>normalize(s).replace(/const CACHE_VERSION = '[^']+';/,'const CACHE_VERSION = VERSION;');assert.equal(worker(read('service-worker.js')),worker(head('service-worker.js')));
- assert.match(read('service-worker.js'),/CACHE_VERSION = 'v12-geiger-goes-silent'/);assert.match(read('service-worker.js'),/zonerpg-/);
+ assert.match(read('service-worker.js'),/CACHE_VERSION = 'v13-field-journal'/);assert.match(read('service-worker.js'),/zonerpg-/);
 });
 test('All SVG artwork is preserved apart from public accessible title text',()=>{
  const files=cp.execFileSync('git',['diff','--name-only','--','assets'],{cwd:ROOT,encoding:'utf8'}).trim().split(/\r?\n/).filter(Boolean);

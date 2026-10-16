@@ -11,7 +11,7 @@ test('All catalog entries have unique nonempty flavor without numeric effect lis
  }
 });
 test('Every item and weapon retains all non-text gameplay data compared with HEAD',()=>{
- assert.deepEqual(Object.keys(items),Object.keys(old.I.items));for(const id of Object.keys(items))assert.deepEqual(strip(items[id]),strip(old.I.items[id]),id);
+ assert.equal(Object.keys(items).length,Object.keys(old.I.items).length+Object.keys(r.ctx.window.ZoneRPGFieldJournal.named).length);for(const id of Object.keys(old.I.items))assert.deepEqual(strip(items[id]),strip(old.I.items[id]),id);
  assert.deepEqual(Object.keys(r.I.weapons),Object.keys(old.I.weapons));for(const id of Object.keys(r.I.weapons))assert.deepEqual(strip(r.I.weapons[id]),strip(old.I.weapons[id]),id);
 });
 test('Formatter covers every real effect combination once and never mutates definitions',()=>{
@@ -78,5 +78,5 @@ test('All actual meter effects and common supplies have unambiguous text, with d
 });
 const groups=new Map();for(const [id,item]of Object.entries(old.I.items))groups.set(item.description,[...(groups.get(item.description)||[]),id]);
 const duplicates=[...groups.values()].filter(ids=>ids.length>1);
-console.log('AUDIT '+JSON.stringify({items:Object.keys(items).length,changedDescriptions:Object.keys(items).filter(id=>items[id].description!==old.I.items[id].description).length,duplicateGroupsBefore:duplicates.length,duplicateItemsBefore:duplicates.reduce((n,g)=>n+g.length,0),duplicateGroupsAfter:0,numericEffectDescriptionsBefore:Object.values(old.I.items).filter(x=>['medicine','artifact'].includes(x.type)&&/\d/.test(x.description)).length,weaponFlavorRepeatedAsTraitBefore:Object.values(old.I.items).filter(x=>x.type==='weapon'&&old.I.weapons[x.weaponId]?.traitText===x.description).length}));
+console.log('AUDIT '+JSON.stringify({items:Object.keys(items).length,changedDescriptions:Object.keys(items).filter(id=>items[id].description!==old.I.items[id]?.description).length,duplicateGroupsBefore:duplicates.length,duplicateItemsBefore:duplicates.reduce((n,g)=>n+g.length,0),duplicateGroupsAfter:0,numericEffectDescriptionsBefore:Object.values(old.I.items).filter(x=>['medicine','artifact'].includes(x.type)&&/\d/.test(x.description)).length,weaponFlavorRepeatedAsTraitBefore:Object.values(old.I.items).filter(x=>x.type==='weapon'&&old.I.weapons[x.weaponId]?.traitText===x.description).length}));
 console.log(passed+' item catalog checks passed.');

@@ -13,6 +13,7 @@
    e.flags=raw?.flags&&typeof raw.flags==='object'?Object.fromEntries(Object.entries(raw.flags).filter(([k,v])=>k.length<100&&typeof v==='boolean')):{};
    for(const k of ['xp','money','kills','hours'])e.summary[k]=finite(raw?.summary?.[k]);
    if(raw?.summary?.items)for(const [id,n]of Object.entries(raw.summary.items))if(window.ZoneRPGItems.items[id])e.summary.items[id]=finite(n);
+   e.details=window.ZoneRPGFieldJournal.normalizeDetails(raw?.details,state);
    return e;
  }
  const tier=d=>d<3?0:d<6?1:d<10?2:3;

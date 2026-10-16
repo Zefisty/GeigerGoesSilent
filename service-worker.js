@@ -1,5 +1,5 @@
 // Bump CACHE_VERSION whenever publishing a new release. No forced game reloads.
-const CACHE_VERSION = 'v12-geiger-goes-silent';
+const CACHE_VERSION = 'v13-field-journal';
 const BASE = new URL('./', self.location.href);
 const CACHE_PREFIX = 'zonerpg-' + encodeURIComponent(BASE.pathname) + '-';
 const CACHE_NAME = CACHE_PREFIX + CACHE_VERSION;

@@ -16,7 +16,16 @@
     Math.random=()=>.4;
     if(!ZoneRPGSave.has()){
       const s=ZoneRPGState.fresh();
-      if(scenario.startsWith('quest-access-')){
+      if(scenario.startsWith('field-life')){
+        s.playerName='Александр Северный';s.mode='play';s.known=Object.keys(ZoneRPGWorld.locations);s.tutorial.battles=2;
+        s.quests.active=['first_road','bandit_problem','mara_bandages','parts_run'].map(id=>({id,step:0,progress:0,acceptedAtLocation:'cordon'}));
+        s.worldState.npcMemory.sidorovich={trust:2,helped:true,lastSeen:0};
+        const F=window.ZoneRPGFieldJournal;s.rumors=F.rumorDefinitions.slice(0,2).map((d,i)=>({...d,dynamic:F.rumor(s,d,i?.05:.5)}));s.heardRumors=s.rumors.map(r=>r.id);s.fieldJournal.unread.rumors=s.heardRumors;
+        if(scenario==='field-life-event'){
+          const d=ZoneRPGWorld.events.find(e=>e.id==='field_survey_wreck'),stage=d.stages[0];s.player.location='yantar';s.expedition={...window.ZoneRPGExpedition.empty(),active:true,originLocationId:'yantar',depth:6};F.begin(s);s.expedition.details.partial=false;s.expedition.details.events=7;s.expedition.summary.hours=6;
+          s.explorationActive=true;s.explorationOriginLocationId='yantar';s.event={id:d.id,category:d.category,rarity:d.rarity,text:stage.text,choices:stage.choices,flow:{version:1,stageId:stage.id,stageIndex:0,phase:'choices',origin:'explore',chain:[d.id],visitedStages:[stage.id],claimedActions:[],history:[],flags:{},pending:null,resultText:'',lastChoice:''}};
+        }
+      }else if(scenario.startsWith('quest-access-')){
         s.mode='play';s.settings.autoTurnInQuests=false;s.tutorial.seen=Object.keys(window.ZoneRPGOnboarding?.hints||{});s.tutorial.queue=[];
         s.quests.active=[{id:'first_road',step:1,progress:0,acceptedAtLocation:'cordon'}];
         if(scenario==='quest-access-absent'){
