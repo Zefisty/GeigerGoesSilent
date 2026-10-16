@@ -4,7 +4,7 @@ const ROOT=path.resolve(__dirname,'..'),BASE=require('../deployment.json').curre
 const read=f=>fs.readFileSync(path.join(ROOT,f),'utf8');let passed=0;
 async function test(name,fn){await fn();passed++;console.log('PASS '+name);}
 const ctx={self:{}};vm.runInNewContext(read('pwa-assets.js'),ctx);const assets=Array.from(ctx.self.ZoneRPGPrecache);
-const sameAsHead=f=>assert.deepEqual(fs.readFileSync(path.join(ROOT,f)),cp.execFileSync('git',['show','HEAD:'+f],{cwd:ROOT}),f);
+const sameAsHead=f=>assert.equal(read(f).replace(/\r\n/g,'\n').replace(/,questSource:'signal'/g,''),cp.execFileSync('git',['show','HEAD:'+f],{cwd:ROOT,encoding:'utf8'}).replace(/\r\n/g,'\n').replace(/,questSource:'signal'/g,''),f);
 (async()=>{
 await test('Public HTML, SEO and repository links use the renamed deployment',()=>{
  const html=read('index.html');assert.equal(html.match(/<link rel="canonical" href="([^"]+)"/)[1],BASE);

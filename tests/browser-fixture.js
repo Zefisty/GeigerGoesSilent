@@ -16,7 +16,17 @@
     Math.random=()=>.4;
     if(!ZoneRPGSave.has()){
       const s=ZoneRPGState.fresh();
-      if(scenario==='player-name'){
+      if(scenario.startsWith('quest-access-')){
+        s.mode='play';s.settings.autoTurnInQuests=false;s.tutorial.seen=Object.keys(window.ZoneRPGOnboarding?.hints||{});s.tutorial.queue=[];
+        s.quests.active=[{id:'first_road',step:1,progress:0,acceptedAtLocation:'cordon'}];
+        if(scenario==='quest-access-absent'){
+          Object.assign(s,ZoneRPGState.fresh('rookie'));s.mode='play';s.player.location='rookie';s.settings.autoTurnInQuests=false;s.personalStory.relationships.personal_npc_rookie_1={dead:true};s.quests.active=[{id:'personal_rookie_1',progress:1,step:0,acceptedAtLocation:'rookie'}];
+        }else if(['quest-access-event','quest-access-turnin'].includes(scenario)){
+          const def=ZoneRPGWorld.events.find(e=>e.id===(scenario==='quest-access-event'?'npc_story_technician':'npc_story_sidorovich')),stage=def.stages.find(s=>s.id==='work');
+          s.player.location=scenario==='quest-access-event'?'agro':'cordon';s.explorationActive=true;
+          s.event={id:def.id,category:def.category,text:stage.text,choices:stage.choices,flow:{version:1,stageId:stage.id,stageIndex:1,phase:'choices',origin:'explore',chain:[def.id],visitedStages:[stage.id],claimedActions:[],history:[],flags:{},pending:null,resultText:'',lastChoice:''}};
+        }else if(scenario==='quest-access-explore')s.explorationActive=true;
+      }else if(scenario==='player-name'){
         s.playerName='Слава';s.mode='event';s.event={id:'arrival_player_name_qa',category:'Связной',text:'Рад тебя видеть, {playerName}.',choices:[{label:'Уйти',finish:true}]};
       }else if(scenario.startsWith('v9-')){
         s.known=['cordon','garbage','agro'];s.player.location='garbage';s.visited=['cordon','garbage'];s.worldState=window.ZoneRPGLiving.fresh('garbage');s.worldClock=4;

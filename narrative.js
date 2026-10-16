@@ -190,7 +190,7 @@
     for(const choice of field.choices){if(!choice.effects?.story)continue;const side=choice.effects.story.choice;choice.resultText=side==='b'?storyResults[bg][n][1]:side==='a'?storyResults[bg][n][0]:c[8];}
     for(const stage of e.stages.filter(s=>s.id==='evidence'))for(const choice of stage.choices){const side=choice.effects?.story?.choice;if(side==='a'||side==='b')choice.resultText=storyResults[bg][n][side==='a'?0:1];}
     const evidence=e.stages.find(s=>s.id==='evidence');if(evidence)evidence.text='После контакта ты возвращаешься к исходной задаче. Если путь не удалось расчистить, остаётся обход, который обсуждался до боя. Решение о людях и сведениях ещё нужно довести до заказчика.';
-    const q=W.quests.find(q=>q.id===T.qid(bg,n));q.text=c[3]+' Цель: '+c[2]+'. Место: '+W.locations[c[1]].name+'. Отчёт принимает '+W.people[q.giver].name+' — '+W.locations[q.turnInLocations[0]].name+'.';
+    const q=W.quests.find(q=>q.id===T.qid(bg,n));q.text=c[3]+' Цель: '+c[2]+'. Место: '+W.locations[c[1]].name+'. Отчёт принимает '+W.people[q.turnInNpcId||q.giver].name+' — '+W.locations[q.turnInLocations[0]].name+'.';
   });
   // Do not claim a trophy after a non-combat resolution.
   const hunt=T.arcs.hunter.chapters[5];hunt[3]=storyFields.hunter[5];hunt[4]='Передать наблюдения учёным';const finale=W.events.find(e=>e.id==='personal_event_hunter_6');finale.stages.find(s=>s.id==='field').choices[0].label=hunt[4];finale.text=finale.stages[0].text='Ты возвращаешься к теплицам после последнего контакта. Мирон ждёт проверенные наблюдения, Ника — твой рассказ. Егор уже может выйти к дороге и спрашивает, что следует знать тем, кто придёт следом.';
@@ -291,8 +291,8 @@
   }
   const changed=()=>W.events.filter(e=>before.get(e.id)!==JSON.stringify(e)).map(e=>e.id);
   function contact(s,event){if(!event.flow||event.flow.phase!=='choices')return;const id=event.id.slice(10);
-    if(id==='personal_npc_soldier_2'&&s.personalStory.currentChapter<3)event.text='У складского поста сохранилась запись Саши «Линии» с прошлой смены. Сам он пока не вернулся. Ты можешь сверить поручение или послушать старое сообщение, не принимая его за свежую связь.';
-    if(id==='personal_npc_hunter_1'&&s.personalStory.currentChapter<2)event.text='На привале лежат старые заметки Егора. Он не пришёл к назначенному времени; новых сообщений пока нет. Ты можешь сверить поручение с записями, но говорить с охотником лично ещё рано.';
+    if(id==='personal_npc_soldier_2'&&!window.ZoneRPGStories.npcPresent(s,id))event.text='У складского поста сохранилась запись Саши «Линии» с прошлой смены. Сам он пока не вернулся. Ты можешь сверить поручение или послушать старое сообщение, не принимая его за свежую связь.';
+    if(id==='personal_npc_hunter_1'&&!window.ZoneRPGStories.npcPresent(s,id))event.text='На привале лежат старые заметки Егора. Он не пришёл к назначенному времени; новых сообщений пока нет. Ты можешь сверить поручение с записями, но говорить с охотником лично ещё рано.';
   }
   window.ZoneRPGNarrative={changed,contact};
 })();

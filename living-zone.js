@@ -101,6 +101,13 @@
     return [{label:'Обсудить перемены в секторе',finish:true,effects:{living:{visit:id,observe:true}},resultText:'Собеседник сверил местную частоту. Информация в КПК обновлена.'},...(known?[{label:'Попросить совет старого знакомого',finish:true,effects:{living:{visit:id,observe:true},stamina:2},resultText:'Собеседник помнит помощь и показывает короткий обход. Это совет, а не бесконечная награда.'}]:[{label:'Предложить помощь с ближайшим дозором',when:{items:{bandage:1}},finish:true,effects:{itemCost:{bandage:1},living:{visit:id,npc:id,help:true}},resultText:'Твою помощь запомнили. Она пригодится в следующих разговорах.'}]),{label:s.worldState.renown>=25?'Спросить, что говорят о твоём позывном':'Назвать свой позывной',finish:true,effects:{living:{visit:id,observe:true}},resultText:s.worldState.renown>=45?'Позывной уже узнают. Это помогает разговорам, но за твоими выходами могут следить чужие группы.':s.worldState.renown>=25?'Твой позывной знают по прошлым делам. Отношение группировки всё равно зависит от её собственной репутации.':'Здесь тебя ещё узнают по конкретным делам. Новая известность не выдаётся за представление.'}];
   }
   function caravanAt(s){const e=s.worldEvents.find(a=>a.endsAt>s.worldClock&&incident(a.id)?.state==='caravan');if(!e)return null;const locations=incident(e.id).locations.filter(l=>W.people.v9_caravan.possibleLocations.includes(l));return locations.length?locations[(Math.floor(s.worldClock/2)+s.worldState.seed)%locations.length]:null;}
+  function npcAvailable(s,id,loc){
+    const p=W.people[id];
+    if(!p||!W.locations[loc]||!window.ZoneRPGZone.npcVisible(s,id)||p.requiresBackground&&p.requiresBackground!==s.backgroundId||s.personalStory.relationships[id]?.dead)return false;
+    if(!window.ZoneRPGStories.npcPresent(s,id))return false;
+    if(p.mobileOrdinary&&modifier(s,'npc',loc)<1)return false;
+    return peopleAt(s,loc).includes(id);
+  }
   function peopleAt(s,loc){const list=[...W.locations[loc].npcs];if(caravanAt(s)===loc)list.push('v9_caravan');return list.filter(id=>W.people[id]?.personalStory||id==='npc_threeLeggedPigBandit'||s.quests.active.some(q=>W.quests.find(d=>d.id===q.id)?.giver===id)||!W.people[id]?.mobileOrdinary||modifier(s,'npc',loc)>=1);}
   function decorate(s,e){
     const loc=s.expedition.active?s.expedition.originLocationId:s.travelTo||s.player.location;
@@ -132,5 +139,5 @@
     }
     return errors;
   }
-  window.ZoneRPGLiving={fresh,normalize,modifier,stateAt,observe,arrive,tick,eligible,weight,available,priority,canApply,apply,onEncounter,onExplore,onReturn,renown,onQuest,renownName,memoryText,npcChoices,peopleAt,caravanAt,decorate,rumor,view,depth,weather,validate};
+  window.ZoneRPGLiving={fresh,normalize,modifier,stateAt,observe,arrive,tick,eligible,weight,available,priority,canApply,apply,onEncounter,onExplore,onReturn,renown,onQuest,renownName,memoryText,npcChoices,npcAvailable,peopleAt,caravanAt,decorate,rumor,view,depth,weather,validate};
 })();
